@@ -42,7 +42,6 @@ try:
     import time
     import numpy as np
     from datetime import datetime
-    import codecarbon
 except ImportError as e:
     raise ImportError(
         f"Missing required library: {e.name}\n"
