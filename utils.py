@@ -72,24 +72,24 @@ EXPERIMENT_CONFIG = [
 # Base models benchmark suite (10 benchmarks)
 # Default: 0-shot unless specified otherwise
 BENCHMARKS_BASE = [
-    {"name": "belebele_spa_eur", "num_fewshot": 0},
-    {"name": "xcopa_es", "num_fewshot": 0},
-    {"name": "mmlu_es", "num_fewshot": 5},
-    {"name": "wikitext", "num_fewshot": 0},
-    {"name": "boolq", "num_fewshot": 0},
-    {"name": "lambada_openai", "num_fewshot": 0},
-    {"name": "mmlu", "num_fewshot": 5},  # Standard is 5-shot for MMLU
-    {"name": "arc_challenge", "num_fewshot": 0},
-    {"name": "hellaswag", "num_fewshot": 0},
-    {"name": "winogrande", "num_fewshot": 0},
-    {"name": "piqa", "num_fewshot": 0},
-    {"name": "truthfulqa_mc1", "num_fewshot": 0},
-    {"name": "truthfulqa_mc2", "num_fewshot": 0},
-    {"name": "gsm8k", "num_fewshot": 5},  # Chain-of-thought requires few-shot
-    {"name": "ifeval", "num_fewshot": 0},
-    {"name": "leaderboard_musr", "num_fewshot": 0},
-]
+    # --- English Core Capabilities ---
+    {"name": "wikitext", "num_fewshot": 0},       # Perplexity / Modeling base
+    {"name": "lambada_openai", "num_fewshot": 0}, # Next-token prediction
+    {"name": "ifeval", "num_fewshot": 0},         # Instruction Following
+    
+    # --- English Reasoning & Knowledge ---
+    {"name": "gsm8k", "num_fewshot": 5},          # Multi-step Reasoning (Fragile metric)
+    {"name": "mmlu", "num_fewshot": 5},           # General Knowledge (Standard 5-shot)
+    {"name": "arc_challenge", "num_fewshot": 0},  # Reasoning
+    {"name": "hellaswag", "num_fewshot": 0},      # Commonsense
+    {"name": "truthfulqa_mc2", "num_fewshot": 0}, # Hallucinations (MC2 is standard)
 
+    # --- Spanish / Cross-Lingual Capabilities (Symmetrical) ---
+    {"name": "global_mmlu_es", "num_fewshot": 5}, # Spanish Knowledge
+    {"name": "arc_es", "num_fewshot": 0},         # Spanish Reasoning
+    {"name": "hellaswag_es", "num_fewshot": 0},   # Spanish Commonsense
+    {"name": "belebele_spa_Latn", "num_fewshot": 0}, # Native Reading Comprehension
+]
 
 # =============================================================================
 # GLOBAL CONFIGURATION
