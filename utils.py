@@ -54,7 +54,7 @@ except ImportError as e:
 # EXPERIMENT CONFIGURATION
 # =============================================================================
 
-MODELS_CONFIG = [
+EXPERIMENT_CONFIG = [
     {
         "base_model": "meta-llama/Llama-3.2-1B",
     },
