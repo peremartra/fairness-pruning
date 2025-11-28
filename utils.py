@@ -1,39 +1,37 @@
 """
-GLU Pruning Width Pruning Research - Utility Functions
-========================================================
+Fairness Pruning Research - Utility Functions
+=============================================
 
-This module provides core utilities for the GLU expansion ratio pruning experiments
-on Llama-3.2 models (1B and 3B variants).
+This module provides the core infrastructure for the "Fairness Pruning" experiments,
+focusing on bias mitigation in Llama-3.2 and Salamandra models through activation-guided
+width pruning.
 
 Key Responsibilities:
 --------------------
-1. Experiment configuration management (models, pruning levels, HF repos)
-2. Robust evaluation orchestration with checkpoint/resume support
-3. LM Evaluation Harness integration with error handling
-4. Model loading (HF Hub or on-the-fly pruning with OptiPFair)
-5. GPU memory management and cleanup utilities
-6. Results formatting and export to CSV/JSON
-
-Target Environment:
-------------------
-- Google Colab (T4/V100 GPUs)
-- Supports disconnection recovery via checkpoint system
-- Designed for ~20 hours of total compute time across 4 models
+1. Experiment Orchestration: Manages configuration for Llama-3.2 (1B/3B) and Salamandra-2B.
+2. Robust Evaluation: Wraps `lm-evaluation-harness` with a fault-tolerant checkpoint system,
+   allowing experiments to resume automatically after disconnections (essential for Colab).
+3. Dynamic Pruning: Integrates with `OptiPFair` to apply pruning masks on-the-fly before evaluation.
+4. Cross-Lingual Support: Configured to handle both English (MMLU, HellaSwag) and 
+   Spanish (Belebele, XCOPA) benchmarks.
+5. Resource Management: Handles GPU memory cleanup and optional carbon profiling.
 
 Usage:
 ------
-    from utils import run_robust_evaluation, load_or_create_model, EXPERIMENT_CONFIG
+    from utils import run_robust_evaluation, load_or_create_model, ALL_TASKS
     
-    model, tokenizer = load_or_create_model(config_entry)
+    # Load model and apply pruning if specified in config
+    model, tokenizer, stats = load_or_create_model(config_entry)
+    
+    # Run benchmarks with automatic state saving
     results = run_robust_evaluation(
         model, tokenizer, 
-        tasks=BENCHMARKS_BASE, 
-        checkpoint_path="./checkpoints/llama_1b_20pct.json"
+        tasks=ALL_TASKS, 
+        checkpoint_path="./checkpoints/llama_1b_fairness.json"
     )
-
-Author: Pere Martra
-Repository: https://github.com/peremartra/llama-glu-expansion-pruning
-Paper: "Exploring GLU Expansion Ratios: Structured Pruning in Llama-3.2 Models"
+    
+author: Pere Martra
+Repository: https://github.com/peremartra/fairness-pruning
 """
 
 try:
@@ -56,107 +54,15 @@ except ImportError as e:
 # EXPERIMENT CONFIGURATION
 # =============================================================================
 
-EXPERIMENT_CONFIG = [
-    # -------------------------------------------------------------------------
-    # Llama-3.2-1B Experiments (6 models)
-    # -------------------------------------------------------------------------
+MODELS_CONFIG = [
     {
         "base_model": "meta-llama/Llama-3.2-1B",
-        "pruning_pct": 10,
-        "hf_repo_id": "oopere/Llama-3.2-1B-pruned-10pct",
-        "is_star": False,  # Recreate on-the-fly
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-1B",
-        "pruning_pct": 20,
-        "hf_repo_id": "oopere/Llama-3.2-1B-pruned-20pct",
-        "is_star": False,  # Recreate on-the-fly
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-1B",
-        "pruning_pct": 30,
-        "hf_repo_id": "oopere/Llama-3.2-1B-pruned-30pct",
-        "is_star": False,  
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-1B",
-        "pruning_pct": 40,
-        "hf_repo_id": "oopere/Llama-3.2-1B-pruned-40pct",
-        "is_star": True,  # ⭐ Star model (140% expansion - paper's optimal)
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-1B",
-        "pruning_pct": 50,
-        "hf_repo_id": "oopere/Llama-3.2-1B-pruned-50pct",
-        "is_star": False,  
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-1B",
-        "pruning_pct": 60,
-        "hf_repo_id": "oopere/Llama-3.2-1B-pruned-60pct",
-        "is_star": False,
-    },
-
-    # -------------------------------------------------------------------------
-    # Llama-3.2-1B Instruct Experiments (2 models)
-    # -------------------------------------------------------------------------
-    {
-        "base_model": "meta-llama/Llama-3.2-1B-Instruct",
-        "pruning_pct": 10,
-        "hf_repo_id": "oopere/Llama-3.2-1B-I-pruned-10pct",
-        "is_star": False,  
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-1B-Instruct",
-        "pruning_pct": 40,
-        "hf_repo_id": "oopere/Llama-3.2-1B-I-pruned-40pct",
-        "is_star": True,  
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-1B-Instruct",
-        "pruning_pct": 60,
-        "hf_repo_id": "oopere/Llama-3.2-1B-I-pruned-60pct",
-        "is_star": False,
-    },
-    
-    # -------------------------------------------------------------------------
-    # Llama-3.2-3B Experiments (6 models)
-    # -------------------------------------------------------------------------
-    {
-        "base_model": "meta-llama/Llama-3.2-3B",
-        "pruning_pct": 10,
-        "hf_repo_id": "oopere/Llama-3.2-3B-pruned-10pct",
-        "is_star": True,  # ⭐ Star model (140% expansion - paper's optimal)
     },
     {
         "base_model": "meta-llama/Llama-3.2-3B",
-        "pruning_pct": 20,
-        "hf_repo_id": "oopere/Llama-3.2-3B-pruned-20pct",
-        "is_star": False,
     },
     {
         "base_model": "meta-llama/Llama-3.2-3B",
-        "pruning_pct": 30,
-        "hf_repo_id": "oopere/Llama-3.2-3B-pruned-30pct",
-        "is_star": False,
-    },    
-    {
-        "base_model": "meta-llama/Llama-3.2-3B",
-        "pruning_pct": 40,
-        "hf_repo_id": "oopere/Llama-3.2-3B-pruned-40pct",
-        "is_star": False,
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-3B",
-        "pruning_pct": 50,
-        "hf_repo_id": "oopere/Llama-3.2-3B-pruned-50pct",
-        "is_star": False,
-    },
-    {
-        "base_model": "meta-llama/Llama-3.2-3B",
-        "pruning_pct": 60,
-        "hf_repo_id": "oopere/Llama-3.2-3B-pruned-60pct",
-        "is_star": False,
     },
 ]
 
@@ -167,6 +73,9 @@ EXPERIMENT_CONFIG = [
 # Base models benchmark suite (10 benchmarks)
 # Default: 0-shot unless specified otherwise
 BENCHMARKS_BASE = [
+    {"name": "belebele_spa_eur", "num_fewshot": 0},
+    {"name": "xcopa_es", "num_fewshot": 0},
+    {"name": "mmlu_es", "num_fewshot": 5},
     {"name": "wikitext", "num_fewshot": 0},
     {"name": "boolq", "num_fewshot": 0},
     {"name": "lambada_openai", "num_fewshot": 0},
