@@ -55,10 +55,10 @@ except ImportError as e:
 
 EXPERIMENT_CONFIG = [
     {
-        "base_model": "meta-llama/Llama-3.2-1B",
+        "base_model": "BSC-LT/salamandra-2b",
     },
     {
-        "base_model": "meta-llama/Llama-3.2-3B",
+        "base_model": "meta-llama/Llama-3.2-1B",
     },
     {
         "base_model": "meta-llama/Llama-3.2-3B",
