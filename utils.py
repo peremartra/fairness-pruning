@@ -397,7 +397,7 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         tasks=task_names,
         num_fewshot=fewshot_value,
         batch_size="auto",
-        limit=limit,
+        limit=5,
         device=str(DEVICE)
     )
 
