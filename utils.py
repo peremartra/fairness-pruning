@@ -124,6 +124,25 @@ MMLU_CATEGORIES = {
 # MMLU_ES uses similar structure - lm-eval handles it automatically
 # Categories apply to both mmlu and global_mmlu (mmlu_es)
 
+# TruthfulQA category groupings
+# Ref: https://github.com/sylinrl/TruthfulQA/blob/main/TruthfulQA.csv
+TRUTHFULQA_CATEGORIES = {
+    "high_stakes": {
+        "health": ["Health", "Nutrition", "Medicine"],
+        "law": ["Law", "Legal"],
+        "finance": ["Finance", "Economics"],
+        "politics": ["Politics", "Government"]
+    },
+    "misinformation": {
+        "science": ["Science", "Physics", "Biology"],
+        "history": ["History"],
+        "conspiracies": ["Conspiracies", "Paranormal"],
+        "myths": ["Myths and Fairytales", "Superstitions"]
+    },
+    "other": ["Advertising", "Fiction", "Indexical Error", "Language", "Logical Fallacies",
+              "Misconceptions", "Proverbs", "Stereotypes", "Subjective", "Weather"]
+}
+
 
 # =============================================================================
 # GLOBAL CONFIGURATION
@@ -154,7 +173,7 @@ def _process_mmlu_subcategories(results_dict, task_prefix="mmlu"):
 
     Args:
         results_dict: Dictionary from lm-eval with all task results
-        task_prefix: "mmlu" or "mmlu_es" (global_mmlu)
+        task_prefix: "mmlu", "mmlu_es", or "global_mmlu_es"
 
     Returns:
         dict: Grouped accuracy by category plus overall average
@@ -179,11 +198,13 @@ def _process_mmlu_subcategories(results_dict, task_prefix="mmlu"):
 
     for task_name, metrics in results_dict.items():
         # Check if this is an MMLU subcategory
-        # lm-eval names them like "mmlu_abstract_algebra" or "mmlu_es_abstract_algebra"
+        # lm-eval names them like "mmlu_abstract_algebra", "mmlu_es_abstract_algebra", or "global_mmlu_es_abstract_algebra"
         if task_name.startswith(task_prefix) and task_name != task_prefix:
             # Extract subcategory name (remove prefix)
             if task_prefix == "mmlu":
                 subcat = task_name.replace("mmlu_", "")
+            elif task_prefix == "global_mmlu_es":
+                subcat = task_name.replace("global_mmlu_es_", "")
             else:  # mmlu_es
                 subcat = task_name.replace("mmlu_es_", "")
 
@@ -219,6 +240,46 @@ def _process_mmlu_subcategories(results_dict, task_prefix="mmlu"):
     }
 
     return result
+
+
+def _get_truthfulqa_category(question_metadata):
+    """
+    Classify TruthfulQA question into high-stakes or other categories.
+    
+    Args:
+        question_metadata (dict): Metadata from TruthfulQA dataset
+        
+    Returns:
+        tuple: (risk_level, category)
+        
+    Example:
+        >>> _get_truthfulqa_category({"Category": "Health"})
+        ("high_stakes", "health")
+    """
+    category_raw = question_metadata.get("Category", "").strip()
+    
+    if not category_raw:
+        return "other", "miscellaneous"
+    
+    # Check high-stakes categories first (PRIORITY)
+    for risk_category, keywords in TRUTHFULQA_CATEGORIES["high_stakes"].items():
+        if any(keyword.lower() in category_raw.lower() or category_raw.lower() in keyword.lower() 
+               for keyword in keywords):
+            return "high_stakes", risk_category
+    
+    # Check misinformation categories
+    for info_category, keywords in TRUTHFULQA_CATEGORIES["misinformation"].items():
+        if any(keyword.lower() in category_raw.lower() or category_raw.lower() in keyword.lower() 
+               for keyword in keywords):
+            return "misinformation", info_category
+    
+    # Check if in "other" list
+    if any(keyword.lower() in category_raw.lower() or category_raw.lower() in keyword.lower() 
+           for keyword in TRUTHFULQA_CATEGORIES["other"]):
+        return "other", "miscellaneous"
+    
+    # Default to "other" for unknown categories
+    return "other", "miscellaneous"
 
 
 def _save_raw_result(raw_results, model_name, task_name, base_dir):
@@ -265,6 +326,7 @@ def _save_raw_result(raw_results, model_name, task_name, base_dir):
 def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=False, raw_results_dir=None):
     """
     Runs lm-eval on a model and tokenizer already in memory.
+    NOW with TruthfulQA category breakdown for safety analysis.
 
     Args:
         model_obj: PyTorch model object to evaluate
@@ -277,7 +339,7 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         raw_results_dir (str): Directory to save raw results (if save_raw_results=True)
 
     Returns:
-        dict: Formatted results with metrics per task
+        dict: Formatted results with metrics per task and TruthfulQA subcategories
         
     Raises:
         ImportError: If lm-eval is not installed
@@ -325,18 +387,15 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
     )
     
     # Run evaluation with per-task few-shot configuration
-    # Note: lm-eval handles num_fewshot per task if tasks are configured properly
     if len(set(task_fewshot_map.values())) == 1:
-        # Todas las tareas usan el mismo num_fewshot
         fewshot_value = list(task_fewshot_map.values())[0]
     else:
-        # Múltiples valores diferentes (no debería pasar, pero por si acaso)
         fewshot_value = 0
         
     results = evaluator.simple_evaluate(
         model=model_wrapper,
         tasks=task_names,
-        num_fewshot=fewshot_value,  # Let task configs handle this
+        num_fewshot=fewshot_value,
         batch_size="auto",
         limit=limit,
         device=str(DEVICE)
@@ -358,12 +417,16 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
             except Exception as e:
                 print(f"   ⚠️ Failed to save raw results for {task_name}: {e}")
 
-    # Format results for clean display
+    # Initialize results structure
     formatted_results = {}
+    
+    # Track TruthfulQA samples for category breakdown
+    truthfulqa_samples = {"mc1": [], "mc2": []}
 
     # Check if MMLU or MMLU_ES was evaluated (has subcategories)
     has_mmlu = "mmlu" in task_names
-    has_mmlu_es = "mmlu_es" in task_names
+    has_mmlu_es = "mmlu_es" in task_names or "global_mmlu_es" in task_names
+    has_truthfulqa = any(t.startswith("truthfulqa") for t in task_names)
 
     # Process MMLU subcategories if present
     if has_mmlu:
@@ -377,23 +440,49 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         print(f"   Other: {mmlu_detailed.get('category_Other', 'N/A')}")
 
     if has_mmlu_es:
-        mmlu_es_detailed = _process_mmlu_subcategories(results["results"], "mmlu_es")
-        formatted_results["mmlu_es"] = mmlu_es_detailed
-        print(f"\n✅ MMLU_ES processed with {len(mmlu_es_detailed.get('subcategories', {}))} subcategories")
+        # Detect which prefix to use (global_mmlu_es or mmlu_es)
+        task_prefix = "global_mmlu_es" if "global_mmlu_es" in task_names else "mmlu_es"
+        mmlu_es_detailed = _process_mmlu_subcategories(results["results"], task_prefix)
+        # Store with the actual task name used
+        formatted_results[task_prefix] = mmlu_es_detailed
+        print(f"\n✅ {task_prefix.upper()} processed with {len(mmlu_es_detailed.get('subcategories', {}))} subcategories")
         print(f"   Overall: {mmlu_es_detailed['accuracy']}")
         print(f"   STEM: {mmlu_es_detailed.get('category_STEM', 'N/A')}")
         print(f"   Humanities: {mmlu_es_detailed.get('category_Humanities', 'N/A')}")
         print(f"   Social Sciences: {mmlu_es_detailed.get('category_Social_Sciences', 'N/A')}")
         print(f"   Other: {mmlu_es_detailed.get('category_Other', 'N/A')}")
 
-    # Process other tasks normally
+    # Process all tasks
     for task_name, res in results["results"].items():
         # Skip MMLU subcategories (already processed above)
-        if task_name.startswith("mmlu_") or task_name.startswith("mmlu_es_"):
+        if task_name.startswith("mmlu_") or task_name.startswith("mmlu_es_") or task_name.startswith("global_mmlu_es_"):
             continue
 
-        # Skip main MMLU/MMLU_ES if already processed
-        if task_name in ["mmlu", "mmlu_es"] and task_name in formatted_results:
+        # Skip main MMLU/MMLU_ES/GLOBAL_MMLU_ES if already processed
+        if task_name in ["mmlu", "mmlu_es", "global_mmlu_es"] and task_name in formatted_results:
+            continue
+
+        # Handle TruthfulQA variants specially
+        if task_name in ["truthfulqa_mc1", "truthfulqa_mc2"]:
+            variant = "mc1" if "mc1" in task_name else "mc2"
+            
+            # Store global result
+            formatted_results[task_name] = {
+                'accuracy': f"{res.get('acc,none', 0):.4f}",
+                'acc_norm': f"{res.get('acc_norm,none', 0):.4f}" if 'acc_norm,none' in res else "N/A"
+            }
+            
+            # Collect samples if available for category breakdown
+            if 'samples' in res:
+                for sample in res['samples']:
+                    metadata = sample.get('doc', {})
+                    risk_level, category = _get_truthfulqa_category(metadata)
+                    truthfulqa_samples[variant].append({
+                        'risk_level': risk_level,
+                        'category': category,
+                        'accuracy': float(sample.get('acc', 0)),
+                        'acc_norm': float(sample.get('acc_norm', sample.get('acc', 0)))
+                    })
             continue
 
         # Extract relevant metrics based on task type
@@ -416,6 +505,54 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
                 k: f"{v:.4f}" for k, v in res.items()
                 if isinstance(v, (int, float))
             }
+
+    # =========================================================================
+    # POST-PROCESS: Aggregate TruthfulQA by categories
+    # =========================================================================
+    if has_truthfulqa:
+        for variant in ["mc1", "mc2"]:
+            if not truthfulqa_samples[variant]:
+                continue
+            
+            # Group by risk level and category
+            category_groups = {}
+            for sample in truthfulqa_samples[variant]:
+                risk_level = sample['risk_level']
+                category = sample['category']
+                
+                key = (risk_level, category)
+                if key not in category_groups:
+                    category_groups[key] = []
+                category_groups[key].append(sample)
+            
+            # Calculate averages and add to results
+            for (risk_level, category), samples in category_groups.items():
+                avg_acc = sum(s['accuracy'] for s in samples) / len(samples)
+                avg_acc_norm = sum(s['acc_norm'] for s in samples) / len(samples)
+                
+                # Create synthetic task name for the subcategory
+                task_key = f"truthfulqa_{variant}_{risk_level}_{category}"
+                
+                formatted_results[task_key] = {
+                    'accuracy': f"{avg_acc:.4f}",
+                    'acc_norm': f"{avg_acc_norm:.4f}",
+                    'num_samples': len(samples),
+                    'risk_level': risk_level,
+                    'category': category
+                }
+        
+        # Print TruthfulQA breakdown
+        print(f"\n✅ TruthfulQA category breakdown:")
+        for variant in ["mc1", "mc2"]:
+            variant_tasks = [k for k in formatted_results.keys() if k.startswith(f"truthfulqa_{variant}_")]
+            if variant_tasks:
+                print(f"\n   {variant.upper()}:")
+                for task in sorted(variant_tasks):
+                    if task == f"truthfulqa_{variant}":  # Skip global
+                        continue
+                    data = formatted_results[task]
+                    risk_marker = "🚨" if data['risk_level'] == 'high_stakes' else "📊"
+                    print(f"      {risk_marker} {data['category']}: {data['accuracy']} ({data['num_samples']} samples)")
 
     return formatted_results
 
