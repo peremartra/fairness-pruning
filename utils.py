@@ -91,6 +91,40 @@ BENCHMARKS_BASE = [
     {"name": "belebele_spa_Latn", "num_fewshot": 0}, # Native Reading Comprehension
 ]
 
+# MMLU Category Groupings for detailed analysis
+MMLU_CATEGORIES = {
+    "STEM": [
+        "abstract_algebra", "anatomy", "astronomy", "college_biology",
+        "college_chemistry", "college_computer_science", "college_mathematics",
+        "college_physics", "computer_security", "conceptual_physics",
+        "electrical_engineering", "elementary_mathematics", "high_school_biology",
+        "high_school_chemistry", "high_school_computer_science", "high_school_mathematics",
+        "high_school_physics", "high_school_statistics", "machine_learning"
+    ],
+    "Humanities": [
+        "formal_logic", "high_school_european_history", "high_school_us_history",
+        "high_school_world_history", "international_law", "jurisprudence",
+        "logical_fallacies", "moral_disputes", "moral_scenarios", "philosophy",
+        "prehistory", "professional_law", "world_religions"
+    ],
+    "Social_Sciences": [
+        "econometrics", "high_school_geography", "high_school_government_and_politics",
+        "high_school_macroeconomics", "high_school_microeconomics", "high_school_psychology",
+        "human_aging", "human_sexuality", "management", "marketing",
+        "professional_psychology", "public_relations", "security_studies",
+        "sociology", "us_foreign_policy"
+    ],
+    "Other": [
+        "business_ethics", "clinical_knowledge", "college_medicine", "global_facts",
+        "miscellaneous", "nutrition", "professional_accounting", "professional_medicine",
+        "virology"
+    ]
+}
+
+# MMLU_ES uses similar structure - lm-eval handles it automatically
+# Categories apply to both mmlu and global_mmlu (mmlu_es)
+
+
 # =============================================================================
 # GLOBAL CONFIGURATION
 # =============================================================================
@@ -114,11 +148,124 @@ LIBRARY_VERSIONS = {
 # CORE EVALUATION FUNCTIONS
 # =============================================================================
 
+def _process_mmlu_subcategories(results_dict, task_prefix="mmlu"):
+    """
+    Process MMLU subcategories and group them by academic domain.
 
-def model_evaluation(model_obj, tokenizer, tasks, limit=None):
+    Args:
+        results_dict: Dictionary from lm-eval with all task results
+        task_prefix: "mmlu" or "mmlu_es" (global_mmlu)
+
+    Returns:
+        dict: Grouped accuracy by category plus overall average
+
+    Example output:
+        {
+            "accuracy": "0.3111",  # Overall average
+            "STEM": "0.2950",
+            "Humanities": "0.3200",
+            "Social_Sciences": "0.3150",
+            "Other": "0.3080",
+            "subcategories": {
+                "abstract_algebra": "0.2800",
+                "anatomy": "0.3200",
+                ...
+            }
+        }
+    """
+    # Find all MMLU subcategory results
+    subcategory_results = {}
+    overall_scores = []
+
+    for task_name, metrics in results_dict.items():
+        # Check if this is an MMLU subcategory
+        # lm-eval names them like "mmlu_abstract_algebra" or "mmlu_es_abstract_algebra"
+        if task_name.startswith(task_prefix) and task_name != task_prefix:
+            # Extract subcategory name (remove prefix)
+            if task_prefix == "mmlu":
+                subcat = task_name.replace("mmlu_", "")
+            else:  # mmlu_es
+                subcat = task_name.replace("mmlu_es_", "")
+
+            # Get accuracy score
+            if 'acc,none' in metrics:
+                score = metrics['acc,none']
+                subcategory_results[subcat] = score
+                overall_scores.append(score)
+
+    # Group by category
+    category_scores = {}
+    for category, subcats in MMLU_CATEGORIES.items():
+        category_results = [subcategory_results[sc] for sc in subcats if sc in subcategory_results]
+        if category_results:
+            category_scores[category] = sum(category_results) / len(category_results)
+
+    # Calculate overall average
+    overall_avg = sum(overall_scores) / len(overall_scores) if overall_scores else 0.0
+
+    # Format result
+    result = {
+        "accuracy": f"{overall_avg:.4f}",
+        "acc_norm": "N/A"
+    }
+
+    # Add category breakdowns
+    for category, score in category_scores.items():
+        result[f"category_{category}"] = f"{score:.4f}"
+
+    # Add detailed subcategory scores (optional, for debugging/analysis)
+    result["subcategories"] = {
+        k: f"{v:.4f}" for k, v in subcategory_results.items()
+    }
+
+    return result
+
+
+def _save_raw_result(raw_results, model_name, task_name, base_dir):
+    """
+    Save raw lm-eval results to JSON file.
+
+    Args:
+        raw_results: Complete results dict from lm-eval
+        model_name: HuggingFace model identifier
+        task_name: Name of the evaluated task
+        base_dir: Base directory for raw results
+
+    File pattern: {safe_model_name}_{task_name}.json
+    Location: {base_dir}/{safe_model_name}_{task_name}.json
+
+    Returns:
+        str: Path to saved file
+    """
+    import json
+    import os
+
+    # Sanitize model name for filename
+    safe_model = model_name.replace('/', '_').replace('-', '_').lower()
+    safe_task = task_name.lower().replace(' ', '_')
+
+    # Create directory if it doesn't exist
+    os.makedirs(base_dir, exist_ok=True)
+
+    # Build filename
+    filename = f"{safe_model}_{safe_task}.json"
+    filepath = os.path.join(base_dir, filename)
+
+    # Save with atomic write (following existing pattern)
+    temp_path = filepath + ".tmp"
+    with open(temp_path, 'w') as f:
+        json.dump(raw_results, f, indent=2, ensure_ascii=False)
+
+    # Atomic rename
+    os.replace(temp_path, filepath)
+
+    return filepath
+
+
+def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=False, raw_results_dir=None):
     """
     Runs lm-eval on a model and tokenizer already in memory.
-    
+
     Args:
         model_obj: PyTorch model object to evaluate
         tokenizer: Tokenizer object for the model
@@ -126,7 +273,9 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None):
                      [{"name": "wikitext", "num_fewshot": 0}, ...]
                      OR simple list of strings: ["wikitext", "boolq"]
         limit (int, optional): Number of samples per task for quick testing
-        
+        save_raw_results (bool): If True, save raw lm-eval output to JSON files
+        raw_results_dir (str): Directory to save raw results (if save_raw_results=True)
+
     Returns:
         dict: Formatted results with metrics per task
         
@@ -192,10 +341,61 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None):
         limit=limit,
         device=str(DEVICE)
     )
-    
+
+    # Save raw results if requested
+    if save_raw_results and raw_results_dir:
+        import os
+        print(f"\n💾 Saving raw results to: {raw_results_dir}")
+        for task_name in task_names:
+            try:
+                filepath = _save_raw_result(
+                    raw_results=results,
+                    model_name=model_name,
+                    task_name=task_name,
+                    base_dir=raw_results_dir
+                )
+                print(f"   ✅ Saved: {os.path.basename(filepath)}")
+            except Exception as e:
+                print(f"   ⚠️ Failed to save raw results for {task_name}: {e}")
+
     # Format results for clean display
     formatted_results = {}
+
+    # Check if MMLU or MMLU_ES was evaluated (has subcategories)
+    has_mmlu = "mmlu" in task_names
+    has_mmlu_es = "mmlu_es" in task_names
+
+    # Process MMLU subcategories if present
+    if has_mmlu:
+        mmlu_detailed = _process_mmlu_subcategories(results["results"], "mmlu")
+        formatted_results["mmlu"] = mmlu_detailed
+        print(f"\n✅ MMLU processed with {len(mmlu_detailed.get('subcategories', {}))} subcategories")
+        print(f"   Overall: {mmlu_detailed['accuracy']}")
+        print(f"   STEM: {mmlu_detailed.get('category_STEM', 'N/A')}")
+        print(f"   Humanities: {mmlu_detailed.get('category_Humanities', 'N/A')}")
+        print(f"   Social Sciences: {mmlu_detailed.get('category_Social_Sciences', 'N/A')}")
+        print(f"   Other: {mmlu_detailed.get('category_Other', 'N/A')}")
+
+    if has_mmlu_es:
+        mmlu_es_detailed = _process_mmlu_subcategories(results["results"], "mmlu_es")
+        formatted_results["mmlu_es"] = mmlu_es_detailed
+        print(f"\n✅ MMLU_ES processed with {len(mmlu_es_detailed.get('subcategories', {}))} subcategories")
+        print(f"   Overall: {mmlu_es_detailed['accuracy']}")
+        print(f"   STEM: {mmlu_es_detailed.get('category_STEM', 'N/A')}")
+        print(f"   Humanities: {mmlu_es_detailed.get('category_Humanities', 'N/A')}")
+        print(f"   Social Sciences: {mmlu_es_detailed.get('category_Social_Sciences', 'N/A')}")
+        print(f"   Other: {mmlu_es_detailed.get('category_Other', 'N/A')}")
+
+    # Process other tasks normally
     for task_name, res in results["results"].items():
+        # Skip MMLU subcategories (already processed above)
+        if task_name.startswith("mmlu_") or task_name.startswith("mmlu_es_"):
+            continue
+
+        # Skip main MMLU/MMLU_ES if already processed
+        if task_name in ["mmlu", "mmlu_es"] and task_name in formatted_results:
+            continue
+
         # Extract relevant metrics based on task type
         if 'perplexity,none' in res:
             # Perplexity tasks (wikitext, lambada)
@@ -213,10 +413,10 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None):
         else:
             # Fallback: store all numeric metrics
             formatted_results[task_name] = {
-                k: f"{v:.4f}" for k, v in res.items() 
+                k: f"{v:.4f}" for k, v in res.items()
                 if isinstance(v, (int, float))
             }
-    
+
     return formatted_results
 
 # =============================================================================
@@ -441,24 +641,32 @@ def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=N
     if not tasks_to_run:
         print("🎉 All tasks already completed!")
         return checkpoint["results"]
-    
+
+    # Determine raw results directory
+    raw_results_dir = os.path.join(
+        os.path.dirname(os.path.dirname(checkpoint_path)),  # Go up 2 levels from checkpoint
+        "results", "lm_evals"
+    )
+
     print(f"\n{'='*70}")
     print(f"🚀 Starting evaluation: {len(tasks_to_run)} tasks remaining")
     print(f"{'='*70}\n")
-    
+
     # Run each pending task
     for i, task in enumerate(tasks_to_run, 1):
         task_name = task["name"] if isinstance(task, dict) else task
-        
+
         print(f"\n[{i}/{len(tasks_to_run)}] Evaluating: {task_name}")
         print(f"{'─'*70}")
-        
+
         try:
             # Run evaluation for single task
             result = model_evaluation(
-                model, tokenizer, 
+                model, tokenizer,
                 tasks=[task],
-                limit=None
+                limit=None,
+                save_raw_results=True,  # Enable raw result saving
+                raw_results_dir=raw_results_dir
             )
             
             # Store result in checkpoint
