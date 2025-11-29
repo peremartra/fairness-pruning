@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "model_name": "meta-llama/Llama-3.2-3B",
+    "started_at": "2025-11-28T19:18:40.106189",
+    "last_updated": "2025-11-29T10:54:05.126845",
+    "completed": true,
+    "completed_at": "2025-11-29T10:54:05.135192"
+  },
+  "results": {
+    "wikitext": {
+      "word_perplexity,none": "9.5372",
+      "byte_perplexity,none": "1.5246",
+      "bits_per_byte,none": "0.6084"
+    },
+    "lambada_openai": {
+      "perplexity": "3.88",
+      "word_perplexity": "0.00",
+      "bits_per_byte": "0.0000"
+    },
+    "ifeval": {
+      "prompt_level_strict_acc,none": "0.0684",
+      "prompt_level_strict_acc_stderr,none": "0.0109",
+      "inst_level_strict_acc,none": "0.1199",
+      "prompt_level_loose_acc,none": "0.0758",
+      "prompt_level_loose_acc_stderr,none": "0.0114",
+      "inst_level_loose_acc,none": "0.1259"
+    },
+    "gsm8k": {
+      "exact_match,strict-match": "0.2616",
+      "exact_match_stderr,strict-match": "0.0121",
+      "exact_match,flexible-extract": "0.2661",
+      "exact_match_stderr,flexible-extract": "0.0122"
+    },
+    "mmlu": {
+      "accuracy": "0.5783",
+      "acc_norm": "N/A",
+      "category_STEM": "0.4892",
+      "category_Humanities": "0.6155",
+      "category_Social_Sciences": "0.6668",
+      "category_Other": "0.5536",
+      "subcategories": {
+        "humanities": "0.5131",
+        "formal_logic": "0.3968",
+        "high_school_european_history": "0.6909",
+        "high_school_us_history": "0.7059",
+        "high_school_world_history": "0.7511",
+        "international_law": "0.7438",
+        "jurisprudence": "0.6852",
+        "logical_fallacies": "0.6810",
+        "moral_disputes": "0.6156",
+        "moral_scenarios": "0.2872",
+        "philosophy": "0.6302",
+        "prehistory": "0.6605",
+        "professional_law": "0.4224",
+        "world_religions": "0.7310",
+        "other": "0.6411",
+        "business_ethics": "0.5900",
+        "clinical_knowledge": "0.6377",
+        "college_medicine": "0.5376",
+        "global_facts": "0.2500",
+        "human_aging": "0.6413",
+        "management": "0.7379",
+        "marketing": "0.8077",
+        "medical_genetics": "0.7100",
+        "miscellaneous": "0.7561",
+        "nutrition": "0.6667",
+        "professional_accounting": "0.4539",
+        "professional_medicine": "0.5846",
+        "virology": "0.5060",
+        "social_sciences": "0.6529",
+        "econometrics": "0.3509",
+        "high_school_geography": "0.7071",
+        "high_school_government_and_politics": "0.7617",
+        "high_school_macroeconomics": "0.5590",
+        "high_school_microeconomics": "0.5924",
+        "high_school_psychology": "0.7651",
+        "human_sexuality": "0.6641",
+        "professional_psychology": "0.5931",
+        "public_relations": "0.6364",
+        "security_studies": "0.6245",
+        "sociology": "0.7612",
+        "us_foreign_policy": "0.8000",
+        "stem": "0.4805",
+        "abstract_algebra": "0.3500",
+        "anatomy": "0.6074",
+        "astronomy": "0.6118",
+        "college_biology": "0.6389",
+        "college_chemistry": "0.4500",
+        "college_computer_science": "0.5200",
+        "college_mathematics": "0.3700",
+        "college_physics": "0.3627",
+        "computer_security": "0.7300",
+        "conceptual_physics": "0.4936",
+        "electrical_engineering": "0.6000",
+        "elementary_mathematics": "0.3598",
+        "high_school_biology": "0.6484",
+        "high_school_chemistry": "0.4581",
+        "high_school_computer_science": "0.5900",
+        "high_school_mathematics": "0.3259",
+        "high_school_physics": "0.3775",
+        "high_school_statistics": "0.4074",
+        "machine_learning": "0.3929"
+      }
+    },
+    "arc_challenge": {
+      "accuracy": "0.4249",
+      "acc_norm": "0.4616"
+    },
+    "hellaswag": {
+      "accuracy": "0.5581",
+      "acc_norm": "0.7411"
+    },
+    "truthfulqa_mc2": {
+      "accuracy": "0.3918",
+      "acc_norm": "N/A"
+    },
+    "global_mmlu_es": {
+      "accuracy": "0.5495",
+      "acc_norm": "N/A",
+      "subcategories": {
+        "business": "0.5862",
+        "humanities": "0.6078",
+        "medical": "0.5556",
+        "other": "0.5714",
+        "social_sciences": "0.5196",
+        "stem": "0.4565"
+      }
+    },
+    "arc_es": {
+      "accuracy": "0.3675",
+      "acc_norm": "0.3940"
+    },
+    "hellaswag_es": {
+      "accuracy": "0.4532",
+      "acc_norm": "0.5889"
+    },
+    "belebele_spa_Latn": {
+      "accuracy": "0.5656",
+      "acc_norm": "0.5656"
+    }
+  },
+  "pending_tasks": [],
+  "failed_tasks": []
+}
