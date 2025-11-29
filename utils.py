@@ -313,7 +313,7 @@ def _save_raw_result(raw_results, model_name, task_name, base_dir):
     filepath = os.path.join(base_dir, filename)
 
     # Save with atomic write (following existing pattern)
-    temp_path = filepath + ".tmp"
+    temp_path = filepath
     with open(temp_path, 'w') as f:
         json.dump(raw_results, f, indent=2, ensure_ascii=False)
 
