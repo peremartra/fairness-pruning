@@ -328,6 +328,24 @@ def _save_raw_result(raw_results, model_name, task_name, base_dir):
 
     return filepath
 
+def parse_veritasqa_choices(doc):
+    """Parse and clean VeritasQA answer choices.
+    
+    VeritasQA stores answers as semicolon-separated strings.
+    This function splits them, cleans whitespace, and returns
+    correct answers first (so index 0 is always correct).
+    
+    Args:
+        doc: Dataset example with 'correct_answers' and 'incorrect_answers'
+        
+    Returns:
+        list: All answer choices (correct + incorrect)
+    """
+    correct = [ans.strip() for ans in doc['correct_answers'].split(';')]
+    incorrect = [ans.strip() for ans in doc['incorrect_answers'].split(';')]
+    
+    # Return correct answers first (doc_to_target=0 expects this)
+    return correct + incorrect
 
 def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=False, raw_results_dir=None):
     """
