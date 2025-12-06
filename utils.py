@@ -403,7 +403,8 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         num_fewshot=fewshot_value,
         batch_size="auto",
         limit=limit,
-        device=str(DEVICE)
+        device=str(DEVICE), 
+        include_path="/content/",
     )
 
     # Save raw results if requested
