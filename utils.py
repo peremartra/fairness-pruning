@@ -290,22 +290,21 @@ def _get_truthfulqa_category(question_metadata):
 
 def _save_raw_result(raw_results, model_name, task_name, base_dir):
     """
-    Save raw lm-eval results to JSON file.
-
-    Args:
-        raw_results: Complete results dict from lm-eval
-        model_name: HuggingFace model identifier
-        task_name: Name of the evaluated task
-        base_dir: Base directory for raw results
-
-    File pattern: {safe_model_name}_{task_name}.json
-    Location: {base_dir}/{safe_model_name}_{task_name}.json
-
-    Returns:
-        str: Path to saved file
+    Save raw lm-eval results to JSON file with robust type handling.
     """
     import json
     import os
+    import numpy as np
+    
+    # Clase auxiliar para convertir tipos no serializables (NumPy, Torch, etc.)
+    class RobustEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, (np.integer, np.floating, np.bool_)):
+                return obj.item()
+            if isinstance(obj, np.ndarray):
+                return obj.tolist()
+            # Convertir cualquier otro tipo extraño a string (ej. torch.dtype)
+            return str(obj)
 
     # Sanitize model name for filename
     safe_model = model_name.replace('/', '_').replace('-', '_').lower()
@@ -318,12 +317,13 @@ def _save_raw_result(raw_results, model_name, task_name, base_dir):
     filename = f"{safe_model}_{safe_task}.json"
     filepath = os.path.join(base_dir, filename)
 
-    # Save with atomic write (following existing pattern)
+    # Save with atomic write using the custom encoder
     temp_path = filepath
     with open(temp_path, 'w') as f:
-        json.dump(raw_results, f, indent=2, ensure_ascii=False)
+        # Usamos cls=RobustEncoder para evitar el error de "dtype is not JSON serializable"
+        json.dump(raw_results, f, indent=2, ensure_ascii=False, cls=RobustEncoder)
 
-    # Atomic rename
+    # Atomic rename (si estás en Windows esto puede dar error si existe, pero en Colab/Linux va bien)
     os.replace(temp_path, filepath)
 
     return filepath
@@ -816,7 +816,8 @@ def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=N
             
             # Store result in checkpoint
             checkpoint["results"][task_name] = result[task_name]
-            checkpoint["pending_tasks"].remove(task_name)
+            if task_name in checkpoint["pending_tasks"]:
+                checkpoint["pending_tasks"].remove(task_name)
             checkpoint["metadata"]["last_updated"] = datetime.now().isoformat()
             
             # Remove from failed tasks if it was there
