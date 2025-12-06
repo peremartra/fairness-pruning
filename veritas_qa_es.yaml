@@ -5,7 +5,7 @@ output_type: multiple_choice
 test_split: test
 doc_to_text: "Pregunta: {{question}}\nRespuesta:"
 doc_to_target: 0
-doc_to_choice: !function utils.parse_veritasqa_choices
+doc_to_choice: !function veritas_lm.parse_veritasqa_choices
 should_decontaminate: true
 doc_to_decontamination_query: question
 metric_list:
