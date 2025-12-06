@@ -11,8 +11,7 @@ def parse_veritasqa_choices(doc):
     Returns:
         list: All answer choices (correct + incorrect)
     """
-    correct = [ans.strip() for ans in doc['correct_answers'].split(';')]
-    incorrect = [ans.strip() for ans in doc['incorrect_answers'].split(';')]
+    correct = [doc['best_answer'].strip()] 
     
-    # Return correct answers first (doc_to_target=0 expects this)
+    incorrect = [ans.strip() for ans in doc['incorrect_answers'].split(';')]
     return correct + incorrect
