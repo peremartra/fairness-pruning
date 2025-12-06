@@ -388,6 +388,7 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
     # Wrap model for lm-eval
     model_wrapper = HFLM(
         pretrained=model_obj,
+        batch_size=8,
         tokenizer=tokenizer,
         device=str(DEVICE)
     )
@@ -398,15 +399,14 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
     else:
         fewshot_value = 0
 
-    tm = TaskManager(include_path="/content/")
+    # tm = TaskManager(include_path="/content/")
     results = evaluator.simple_evaluate(
         model=model_wrapper,
         tasks=task_names,
         num_fewshot=fewshot_value,
-        batch_size=8,
         limit=limit,
         device=str(DEVICE), 
-        log_samples=False
+        log_samples=True
     )
 
     # Save raw results if requested
