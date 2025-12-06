@@ -2,9 +2,9 @@
   "metadata": {
     "model_name": "meta-llama/Llama-3.2-1B",
     "started_at": "2025-11-28T23:29:15.654688",
-    "last_updated": "2025-11-29T04:53:39.735388",
+    "last_updated": "2025-12-06T14:28:41.186021",
     "completed": true,
-    "completed_at": "2025-11-29T04:53:39.743728"
+    "completed_at": "2025-12-06T14:28:41.193713"
   },
   "results": {
     "wikitext": {
@@ -137,8 +137,19 @@
     "belebele_spa_Latn": {
       "accuracy": "0.3233",
       "acc_norm": "0.3233"
+    },
+    "veritas_qa_es": {
+      "accuracy": "0.1530",
+      "acc_norm": "N/A"
+    },
+    "veritas_qa_ca": {
+      "accuracy": "0.1785",
+      "acc_norm": "N/A"
     }
   },
   "pending_tasks": [],
-  "failed_tasks": []
+  "failed_tasks": [
+    "veritas_qa_es",
+    "veritas_qa_ca"
+  ]
 }
