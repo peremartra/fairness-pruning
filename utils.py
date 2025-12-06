@@ -1060,4 +1060,3 @@ def format_results_table(results_dict):
     
     df = pd.DataFrame(rows)
     return df.to_string(index=False)
-    return checkpoint["results"]
