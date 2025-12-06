@@ -49,6 +49,8 @@ except ImportError as e:
         "  pip install optipfair lm-eval transformers torch langdetect"
     )
 
+os.environ["LMEVAL_INCLUDE_PATH"] = "."
+
 # =============================================================================
 # EXPERIMENT CONFIGURATION
 # =============================================================================
@@ -89,6 +91,8 @@ BENCHMARKS_BASE = [
     {"name": "arc_es", "num_fewshot": 0},         # Spanish Reasoning
     {"name": "hellaswag_es", "num_fewshot": 0},   # Spanish Commonsense
     {"name": "belebele_spa_Latn", "num_fewshot": 0}, # Native Reading Comprehension
+   {"name": "veritas_qa_es", "num_fewshot": 0}, # Search veritas_qa_es.yaml
+    {"name": "veritas_qa_ca", "num_fewshot": 0}, # Search veritas_qa_ca.yaml
 ]
 
 # MMLU Category Groupings for detailed analysis
