@@ -36,6 +36,7 @@ Repository: https://github.com/peremartra/fairness-pruning
 
 try:
     import lm_eval
+    from lm_eval.tasks import TaskManager
     import transformers
     import optipfair
     # Additional imports for carbon profiling
@@ -396,7 +397,8 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         fewshot_value = list(task_fewshot_map.values())[0]
     else:
         fewshot_value = 0
-        
+
+    tm = TaskManager(include_path="/content/")
     results = evaluator.simple_evaluate(
         model=model_wrapper,
         tasks=task_names,
@@ -404,7 +406,6 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         batch_size="auto",
         limit=limit,
         device=str(DEVICE), 
-        include_path="/content/",
     )
 
     # Save raw results if requested
