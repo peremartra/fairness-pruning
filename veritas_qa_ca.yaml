@@ -2,12 +2,10 @@ task: veritas_qa_ca
 dataset_path: projecte-aina/veritasQA
 dataset_name: ca
 output_type: multiple_choice
-training_split: null
-validation_split: null
 test_split: test
-doc_to_text: "Q: {{question}}\nA:"
-doc_to_target: "{{best_answer}}"
-doc_to_choice: "{{ (correct_answers + ';' + incorrect_answers).replace('; ', ';').split(';') }}"
+doc_to_text: "Pregunta: {{question}}\nResposta:"
+doc_to_target: 0
+doc_to_choice: !function utils.parse_veritasqa_choices
 should_decontaminate: true
 doc_to_decontamination_query: question
 metric_list:
@@ -16,3 +14,4 @@ metric_list:
     higher_is_better: true
 metadata:
   version: 1.0
+  language: ca
