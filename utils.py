@@ -42,6 +42,7 @@ try:
     import time
     import numpy as np
     from datetime import datetime
+    import os
 except ImportError as e:
     raise ImportError(
         f"Missing required library: {e.name}\n"
