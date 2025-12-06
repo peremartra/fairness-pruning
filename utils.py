@@ -49,8 +49,8 @@ except ImportError as e:
         "Install all dependencies with:\n"
         "  pip install optipfair lm-eval transformers torch langdetect"
     )
-
-os.environ["LMEVAL_INCLUDE_PATH"] = "."
+# /content/veritas_qa_ca.yaml
+os.environ["LMEVAL_INCLUDE_PATH"] = "/content/"
 
 # =============================================================================
 # EXPERIMENT CONFIGURATION
