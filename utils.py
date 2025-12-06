@@ -403,9 +403,10 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         model=model_wrapper,
         tasks=task_names,
         num_fewshot=fewshot_value,
-        batch_size="auto",
+        batch_size=8,
         limit=limit,
         device=str(DEVICE), 
+        log_samples=False
     )
 
     # Save raw results if requested
