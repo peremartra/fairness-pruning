@@ -2,9 +2,9 @@
   "metadata": {
     "model_name": "BSC-LT/salamandra-2b",
     "started_at": "2025-11-28T23:33:35.133565",
-    "last_updated": "2025-12-06T14:27:48.034686",
+    "last_updated": "2025-12-06T17:51:21.840644",
     "completed": true,
-    "completed_at": "2025-12-06T14:27:48.041826"
+    "completed_at": "2025-12-06T17:51:21.848119"
   },
   "results": {
     "wikitext": {
@@ -139,17 +139,14 @@
       "acc_norm": "0.2544"
     },
     "veritas_qa_es": {
-      "accuracy": "0.1303",
+      "accuracy": "0.2125",
       "acc_norm": "N/A"
     },
     "veritas_qa_ca": {
-      "accuracy": "0.1303",
+      "accuracy": "0.2068",
       "acc_norm": "N/A"
     }
   },
   "pending_tasks": [],
-  "failed_tasks": [
-    "veritas_qa_es",
-    "veritas_qa_ca"
-  ]
+  "failed_tasks": []
 }
