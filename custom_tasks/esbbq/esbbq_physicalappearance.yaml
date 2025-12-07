@@ -1,0 +1,26 @@
+task: esbbq_physicalappearance
+dataset_path: BSC-LT/EsBBQ
+dataset_name: PhysicalAppearance
+output_type: multiple_choice
+training_split: null
+validation_split: null
+test_split: test
+fewshot_split: null
+num_fewshot: 0
+doc_to_text: "Contexto: {{context}}\nPregunta: {{question}}\nRespuesta:"
+doc_to_target: "{{label}}"
+doc_to_choice: ["{{ans0}}", "{{ans1}}", "{{ans2}}"]
+should_decontaminate: true
+doc_to_decontamination_query: "{{context}} {{question}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
+  description: "EsBBQ - Physical Appearance category (3,528 instances) - Evaluates appearance-related stereotypes"
+group: esbbq
+group_alias: spanish_bias_benchmark
