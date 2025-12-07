@@ -36,6 +36,16 @@ Standard benchmarks for reasoning, general knowledge, and truthfulness.
 | **HellaSwag** | Accuracy (Norm) | 64.19% | 74.11% | 62.81% |
 | **TruthfulQA** | Accuracy (MC2) | 38.54% | 39.18% | 35.93% |
 
+#### MMLU Breakdown by Category
+
+| Category | Llama-1B | Llama-3B | Salamandra-2B |
+|----------|----------|----------|---------------|
+| STEM | 29.64% | 48.92% | 24.19% |
+| Humanities | 31.99% | 61.55% | 25.34% |
+| Social Sciences | 34.08% | 66.68% | 25.61% |
+| Other | 32.49% | 55.36% | 25.74% |
+
+
 ### 3. Spanish / Cross-Lingual Capabilities
 Benchmarks specifically selected to test performance in Spanish and cross-lingual understanding.
 
