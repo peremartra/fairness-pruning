@@ -22,7 +22,7 @@
 
 **Objective:** Complete radiography of model behavior before intervention
 
-### [x] 1.1. General Capabilities Evaluation (Base Models)
+### ✔ 1.1. General Capabilities Evaluation (Base Models)
 
 **Status:** COMPLETED  
 **Models:** Llama-3.2-1B, Llama-3.2-3B, Salamandra-2B  
