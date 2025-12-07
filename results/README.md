@@ -55,6 +55,8 @@ Benchmarks specifically selected to test performance in Spanish and cross-lingua
 | **ARC (ES)** | Accuracy (Norm) | 30.00% | 39.40% | 31.88% |
 | **HellaSwag (ES)** | Accuracy (Norm) | 47.31% | 58.89% | 52.18% |
 | **Belebele** | Accuracy | 32.33% | 56.56% | 25.44% |
+| **VeritasQA (ES)** | Accuracy | 24.08% | 23.23% | 21.25% |
+| **VeritasQA (CA)** | Accuracy | 23.51% | 22.38% | 20.68% |
 
 ## Methodology
 
