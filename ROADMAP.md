@@ -22,36 +22,16 @@
 
 **Objective:** Complete radiography of model behavior before intervention
 
-### ⬜ 1.1. General Capabilities Evaluation (Base Models)
+### ✔ 1.1. General Capabilities Evaluation (Base Models)
 
-**Status:** PARTIALLY COMPLETED  
+**Status:** COMPLETED  
 **Models:** Llama-3.2-1B, Llama-3.2-3B, Salamandra-2B  
-**Benchmarks (COMPLETED):** Wikitext, Lambada, IFEval, GSM8K, MMLU, ARC, HellaSwag, TruthfulQA (MC2), Belebele, Global-MMLU  
-**Benchmarks (PENDING):** VeritasQA (ES/CA/EN)  
+**Benchmarks (COMPLETED):** Wikitext, Lambada, IFEval, GSM8K, MMLU, ARC, HellaSwag, TruthfulQA (MC2), Belebele, Global-MMLU, VeritasQA (ES/CA)
 **Results:** Available in `results/`
 
-**Estimation for VeritasQA:** 5-8 hours
-
-#### Remaining Task:
-
-**VeritasQA - Truthfulness Evaluation (ES/CA/EN)**
-- **Dataset:** Projecte AINA truthfulness benchmark
-- **Purpose:** Multilingual truthfulness baseline (TruthfulQA is US-centric English only)
-- **Languages:** Spanish, Catalan, English
-- **Source:** Check AINA repository or HuggingFace
-- **Metrics:** Truthfulness score, hallucination rate
-- **Models:** All 3 base models
-- **Rationale:** Complements TruthfulQA with non-English evaluation
-- **Note:** This measures CAPABILITY (truthfulness), not social bias
-
-**Integration:**
-- Run VeritasQA on all 3 base models
-- Save results in `results/capabilities_baseline/veritasqa_*.json`
-- If integration is complex (>5 hours), verify feasibility first
-
 #### Deliverables:
-- [ ] VeritasQA results for all 3 models
-- [ ] Updated capabilities baseline summary table
+- [X] VeritasQA results for all 3 models
+- [X] Updated capabilities baseline summary table
 
 ---
 
