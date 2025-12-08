@@ -1,0 +1,4 @@
+model,model_size,task,accuracy,acc_norm
+BSC-LT/salamandra-2b,2b,bbq,0.2905,N/A
+meta-llama/Llama-3.2-1B,1b,bbq,0.3115,N/A
+meta-llama/Llama-3.2-3B,3b,bbq,0.4052,N/A

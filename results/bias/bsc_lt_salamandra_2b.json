@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "model_name": "BSC-LT/salamandra-2b",
+    "started_at": "2025-12-07T14:58:41.723226",
+    "last_updated": "2025-12-07T16:16:37.575601",
+    "completed": true,
+    "completed_at": "2025-12-07T16:16:38.631511"
+  },
+  "results": {
+    "bbq": {
+      "accuracy": "0.2905",
+      "acc_norm": "N/A"
+    }
+  },
+  "pending_tasks": [],
+  "failed_tasks": []
+}
