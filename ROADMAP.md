@@ -81,8 +81,8 @@
 - Calculate 95% confidence intervals using bootstrap (if time permits)
 
 #### Deliverables:
-- [ ] BBQ results for all 3 models
-- [ ] MBBQ results for all 3 models
+- [X] BBQ results for all 3 models
+- [0.5] MBBQ results for all 3 models
 - [ ] Baseline bias summary table (CSV/Excel)
 - [ ] Brief analysis document noting initial observations
 
