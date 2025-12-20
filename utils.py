@@ -501,11 +501,24 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
                 'bits_per_byte': f"{res.get('bits_per_byte,none', 0):.4f}"
             }
         elif 'acc,none' in res:
-            # Accuracy tasks (boolq, arc, hellaswag, etc.)
-            formatted_results[task_name] = {
-                'accuracy': f"{res.get('acc,none', 0):.4f}",
-                'acc_norm': f"{res.get('acc_norm,none', 0):.4f}" if 'acc_norm,none' in res else "N/A"
-            }
+          # Check if this is BBQ (has detailed bias metrics)
+          if task_name == 'bbq' or 'bbq' in task_name.lower():
+              # Save ALL BBQ metrics (bias scores, amb/disamb, categories)
+              formatted_results[task_name] = {}
+              for key, value in res.items():
+                  if key.endswith('_stderr'):
+                      # Skip stderr metrics to reduce clutter (optional)
+                      continue
+                  if isinstance(value, (int, float)):
+                      formatted_results[task_name][key.replace(',none', '')] = f"{value:.4f}"
+                  else:
+                      formatted_results[task_name][key.replace(',none', '')] = value
+          else:
+              # Standard accuracy tasks (arc, hellaswag, etc.)
+              formatted_results[task_name] = {
+                  'accuracy': f"{res.get('acc,none', 0):.4f}",
+                  'acc_norm': f"{res.get('acc_norm,none', 0):.4f}" if 'acc_norm,none' in res else "N/A"
+              }
         else:
             # Fallback: store all numeric metrics
             formatted_results[task_name] = {
