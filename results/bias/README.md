@@ -69,35 +69,35 @@ Several categories show negative bias scores (e.g., Race/ethnicity in Llama-1B: 
 
 ### Ambiguous Context Bias
 
-| Category | Salamandra-2b | Llama-1B | Llama-3B | Scaling Trend |
-|----------|---------------|----------|----------|---------------|
-| **Physical_appearance** | 9.90% | 10.15% | **17.89%** | ⬆️ Worsens |
-| **Age** | 2.72% | 7.50% | **16.30%** | ⬆️ Worsens |
-| **Gender_identity** | 4.37% | 1.55% | **10.86%** | ⬆️ Worsens |
-| **Religion** | 2.17% | 5.33% | 6.00% | ⬆️ Worsens |
-| **SES** | 5.30% | 3.70% | 1.37% | ⬇️ Improves |
-| **Nationality** | 5.00% | 1.43% | 4.74% | ↔️ Mixed |
-| **Disability_status** | 4.37% | -0.51% | 4.63% | ↔️ Mixed |
-| **Sexual_orientation** | 2.08% | 2.55% | 4.86% | ⬆️ Worsens |
-| **Race_x_SES** | 1.54% | 0.61% | 1.52% | ↔️ Stable |
-| **Race_ethnicity** | -0.52% | **-1.66%** | 1.34% | ↔️ Mixed |
-| **Race_x_gender** | -0.38% | 0.89% | 1.40% | ↔️ Mixed |
+| Category | Salamandra-2b | Llama-1B | Llama-3B |
+|----------|---------------|----------|----------|
+| **Physical_appearance** | 9.90% | 10.15% | **17.89%** |
+| **Age** | 2.72% | 7.50% | **16.30%** |
+| **Gender_identity** | 4.37% | 1.55% | **10.86%** |
+| **Religion** | 2.17% | 5.33% | 6.00% |
+| **SES** | 5.30% | 3.70% | 1.37% |
+| **Nationality** | 5.00% | 1.43% | 4.74% |
+| **Disability_status** | 4.37% | -0.51% | 4.63% |
+| **Sexual_orientation** | 2.08% | 2.55% | 4.86% |
+| **Race_x_SES** | 1.54% | 0.61% | 1.52% |
+| **Race_ethnicity** | -0.52% | **-1.66%** | 1.34% |
+| **Race_x_gender** | -0.38% | 0.89% | 1.40% |
 
 ### Disambiguated Context Bias
 
-| Category | Salamandra-2b | Llama-1B | Llama-3B | Scaling Trend |
-|----------|---------------|----------|----------|---------------|
-| **Physical_appearance** | 13.37% | **14.84%** | 9.02% | ⬇️ Improves |
-| **Gender_identity** | 6.84% | 1.97% | 8.04% | ↔️ Mixed |
-| **Age** | 1.30% | 6.85% | 8.48% | ⬆️ Worsens |
-| **SES** | **6.36%** | 4.52% | 0.17% | ⬇️ Improves |
-| **Disability_status** | 4.11% | 3.08% | 0.51% | ⬇️ Improves |
-| **Race_x_SES** | 3.77% | -1.52% | -0.69% | ⬇️ Improves |
-| **Religion** | 2.00% | 3.74% | 3.84% | ⬆️ Worsens |
-| **Nationality** | 1.56% | -1.84% | 3.52% | ↔️ Mixed |
-| **Race_ethnicity** | 0.15% | 1.37% | 1.34% | ↔️ Stable |
-| **Race_x_gender** | 0.38% | 0.18% | 0.50% | ↔️ Stable |
-| **Sexual_orientation** | **-4.17%** | -0.71% | 0.93% | ↔️ Mixed |
+| Category | Salamandra-2b | Llama-1B | Llama-3B |
+|----------|---------------|----------|----------|
+| **Physical_appearance** | 13.37% | **14.84%** | 9.02% |
+| **Gender_identity** | 6.84% | 1.97% | 8.04% |
+| **Age** | 1.30% | 6.85% | 8.48% |
+| **SES** | **6.36%** | 4.52% | 0.17% |
+| **Disability_status** | 4.11% | 3.08% | 0.51% |
+| **Race_x_SES** | 3.77% | -1.52% | -0.69% |
+| **Religion** | 2.00% | 3.74% | 3.84% |
+| **Nationality** | 1.56% | -1.84% | 3.52% |
+| **Race_ethnicity** | 0.15% | 1.37% | 1.34% |
+| **Race_x_gender** | 0.38% | 0.18% | 0.50% |
+| **Sexual_orientation** | **-4.17%** | -0.71% | 0.93% |
 
 **Important Note on Negative Values:**  
 Negative bias scores indicate the model favors groups **opposite** to typical stereotypes. For example, a -4.17% score means the model systematically associates attributes with the counter-stereotypical group. This represents bias in the opposite direction, not absence of bias.
@@ -110,24 +110,31 @@ Negative bias scores indicate the model favors groups **opposite** to typical st
 Based on baseline measurements, the following categories should be primary targets for bias mitigation through selective pruning:
 
 1. **Physical Appearance** (9.9-17.9% bias): Highest magnitude across models
-2. **Age** (2.7-16.3% bias): Dramatic amplification with model scale
-3. **Gender Identity** (1.5-10.9% bias): 7× increase from 1B to 3B
+2. **Age** (2.7-16.3% bias): Dramatic amplification in Llama family (1B→3B)
+3. **Gender Identity** (1.5-10.9% bias): 7× increase in Llama 3B vs 1B
 
 ### Key Observations for Pruning Strategy
 
-**Categories that worsen with scale** (candidates for aggressive pruning):
-- Physical appearance (+8pp from 1B to 3B)
-- Age (+9pp from 1B to 3B)
-- Gender identity (+9pp from 1B to 3B)
+**Within Llama family (1B → 3B scaling effects):**
+- Physical appearance: +8pp increase (10.15% → 17.89%)
+- Age: +9pp increase (7.50% → 16.30%)
+- Gender identity: +9pp increase (1.55% → 10.86%)
+- SES: -2.3pp decrease (3.70% → 1.37%) - improves with scale
 
-**Categories with lower/stable bias** (monitor during pruning):
-- Race × SES (consistently low)
+**Salamandra-specific patterns:**
+- Shows different bias distribution than Llama models
+- Underperforms Llama-1B despite 2× parameters (likely due to language domain mismatch)
+- Highest SES bias in ambiguous contexts (5.30%)
+
+**Categories with lower/stable bias across all models:**
+- Race × SES (< 4% in most cases)
 - Nationality (< 5% in most cases)
-- Some disability metrics (mixed results)
+- Race/ethnicity (consistently low, though directionally variable)
 
 **Bidirectional bias** (requires nuanced approach):
-- Race/ethnicity (switches from negative to positive with scale)
-- Sexual orientation (varies significantly by model)
+- Race/ethnicity (negative in Salamandra/Llama-1B, positive in Llama-3B)
+- Sexual orientation (varies significantly: -4.17% to +4.86%)
+- Some categories show bias reversal between models
 
 ---
 
