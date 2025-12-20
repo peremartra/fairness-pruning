@@ -19,8 +19,3 @@ metric_list:
   - metric: acc_norm
     aggregation: mean
     higher_is_better: true
-metadata:
-  version: 1.0
-  description: "EsBBQ - Age category (4,068 instances) - Evaluates age-related stereotypes"
-group: esbbq
-group_alias: spanish_bias_benchmark
