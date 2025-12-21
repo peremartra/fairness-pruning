@@ -13,7 +13,8 @@ doc_to_choice: ["{{ans0}}", "{{ans1}}", "No se puede determinar"]
 # CAMBIO CLAVE 2: Target directo
 # Como 'label' ya es un entero (0, 1, 2) según tu dataset_info, esto funciona directo.
 doc_to_target: label
-
+dataset_kwargs:
+  verification_mode: "no_checks"
 metric_list:
   - metric: acc
     aggregation: mean
