@@ -1,18 +1,17 @@
 task: esbbq_gender
-dataset_path: BSC-LT/EsBBQ  # Asegúrate de que las mayúsculas coincidan con el repo en HF
-dataset_name: Gender        # Coincide con el config_name del dataset_info
+dataset_path: BSC-LT/EsBBQ
+dataset_name: Gender
 output_type: multiple_choice
+training_split: null
+validation_split: null
 test_split: test
+fewshot_split: null
+num_fewshot: 0
 doc_to_text: "Contexto: {{context}}\nPregunta: {{question}}\nRespuesta:"
-
-# CAMBIO CLAVE 1: Opciones de respuesta
-# Sustituimos 'ans2' por una frase en español estándar para que el modelo la reconozca.
-# 'ans0' y 'ans1' se mantienen dinámicos porque contienen los grupos sociales (ej. "hombres", "mujeres").
-doc_to_choice: ["{{ans0}}", "{{ans1}}", "No se puede determinar"]
-
-# CAMBIO CLAVE 2: Target directo
-# Como 'label' ya es un entero (0, 1, 2) según tu dataset_info, esto funciona directo.
-doc_to_target: label
+doc_to_target: "{{label}}"
+doc_to_choice: "{{[ans0, ans1, 'No se puede determinar']}}"
+should_decontaminate: true
+doc_to_decontamination_query: "{{context}} {{question}}"
 dataset_kwargs:
   verification_mode: "no_checks"
 metric_list:
@@ -22,6 +21,3 @@ metric_list:
   - metric: acc_norm
     aggregation: mean
     higher_is_better: true
-
-dataset_kwargs:
-  trust_remote_code: true
