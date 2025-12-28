@@ -1,201 +1,140 @@
-# BBQ Baseline Evaluation Results
+# Bias Evaluation Results
 
-Bias Benchmark for QA (BBQ) evaluation results for unpruned base models.  
-**Part of the fairness-pruning research project.**
+Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Spanish) benchmarks.
 
-**Evaluation Date:** December 7, 2025  
-**Framework:** lm-evaluation-harness  
-**Task:** BBQ (0-shot)
-
----
+**Evaluation Framework:** lm-evaluation-harness  
+**Task Configuration:** 0-shot  
+**Evaluation Dates:** BBQ (Dec 7, 2025), EsBBQ (Dec 21-22, 2025)
 
 ## Models Evaluated
 
-| Model | Parameters | Status | Evaluation Time |
-|-------|------------|--------|-----------------|
-| BSC-LT/salamandra-2b | 2B | ✅ Complete | 1h 18m |
-| meta-llama/Llama-3.2-1B | 1B | ✅ Complete | 53m |
-| meta-llama/Llama-3.2-3B | 3B | ✅ Complete | 2h 1m |
+| Model | Parameters | BBQ Status | EsBBQ Status |
+|-------|-----------|------------|--------------|
+| BSC-LT/salamandra-2b | 2B | ✅ Complete | ✅ Complete |
+| meta-llama/Llama-3.2-1B | 1B | ✅ Complete | ✅ Complete |
+| meta-llama/Llama-3.2-3B | 3B | ✅ Complete | ✅ Complete |
 
 ---
 
-## Key Findings
+## BBQ Baseline Results (English)
 
-### 1. **Scaling Paradox in Bias**
-Llama-3B shows **superior disambiguation capability** (73.5% vs 52.3% in 1B) but exhibits **2.4× higher bias in ambiguous contexts** (4.12% vs 1.70%). Larger models may encode stronger stereotypical associations while being more competent at reasoning when sufficient information is provided.
-
-### 2. **Critical Bias Hotspots**
-Three categories show concerning bias levels across all models:
-- **Physical Appearance**: 9.9-17.9% (worsens dramatically with scale)
-- **Age**: 2.7-16.3% (9pp increase from 1B to 3B)
-- **Gender Identity**: 1.5-10.9% (7× amplification in 3B vs 1B)
-
-### 3. **Cross-Architecture Comparison**
-Salamandra-2b underperforms Llama-1B (-2.1pp overall accuracy) despite having 2× parameters, potentially due to language domain mismatch (BBQ is English-only; Salamandra optimized for ES/CA).
-
-### 4. **Bidirectional Bias Patterns**
-Several categories show negative bias scores (e.g., Race/ethnicity in Llama-1B: -1.7%), indicating bias **against** typical stereotypes rather than absence of bias. Both positive and negative values represent problematic model behavior.
-
----
-
-## Overall Performance
+### Overall Performance
 
 | Model | Overall Acc | Amb Acc | Disamb Acc | Amb-Disamb Gap |
 |-------|-------------|---------|------------|----------------|
-| **Salamandra-2b** | 29.05% | 7.66% | 50.45% | -42.79pp |
-| **Llama-3.2-1B** | 31.15% | 10.01% | 52.28% | -42.27pp |
-| **Llama-3.2-3B** | 40.52% | 7.51% | 73.54% | **-66.03pp** |
+| Salamandra-2b | 29.05% | 7.66% | 50.45% | -42.79pp |
+| Llama-3.2-1B | 31.15% | 10.01% | 52.28% | -42.27pp |
+| Llama-3.2-3B | 40.52% | 7.51% | 73.54% | -66.03pp |
 
-**Interpretation:**
-- **Amb Acc**: Model performance when context is ambiguous (tests reliance on stereotypes)
-- **Disamb Acc**: Model performance when sufficient information is provided
-- **Gap**: Larger gaps indicate stronger dependence on contextual information vs stereotypical assumptions
+### Aggregate Bias Scores
 
----
+| Model | Ambiguous Bias | Disambiguated Bias | Ratio (Amb/Disamb) |
+|-------|----------------|--------------------|--------------------|
+| Salamandra-2b | 2.07% | 2.77% | 0.75 |
+| Llama-3.2-1B | 1.70% | 1.75% | 0.97 |
+| Llama-3.2-3B | 4.12% | 2.24% | 1.84 |
 
-## Aggregate Bias Scores
-
-| Model | Ambiguous Bias | Disambiguated Bias | Bias Ratio (Amb/Disamb) |
-|-------|----------------|--------------------|-----------------------|
-| **Salamandra-2b** | 2.07% | 2.77% | 0.75 |
-| **Llama-3.2-1B** | 1.70% | 1.75% | 0.97 |
-| **Llama-3.2-3B** | **4.12%** | 2.24% | **1.84** |
-
-**Note:** Bias ratio > 1 indicates models rely more heavily on stereotypes when information is ambiguous.
-
----
-
-## Bias Breakdown by Category
-
-### Ambiguous Context Bias
+### Top Bias Categories (Ambiguous Context)
 
 | Category | Salamandra-2b | Llama-1B | Llama-3B |
 |----------|---------------|----------|----------|
-| **Physical_appearance** | 9.90% | 10.15% | **17.89%** |
-| **Age** | 2.72% | 7.50% | **16.30%** |
-| **Gender_identity** | 4.37% | 1.55% | **10.86%** |
-| **Religion** | 2.17% | 5.33% | 6.00% |
-| **SES** | 5.30% | 3.70% | 1.37% |
-| **Nationality** | 5.00% | 1.43% | 4.74% |
-| **Disability_status** | 4.37% | -0.51% | 4.63% |
-| **Sexual_orientation** | 2.08% | 2.55% | 4.86% |
-| **Race_x_SES** | 1.54% | 0.61% | 1.52% |
-| **Race_ethnicity** | -0.52% | **-1.66%** | 1.34% |
-| **Race_x_gender** | -0.38% | 0.89% | 1.40% |
+| Physical Appearance | 9.90% | 10.15% | 17.89% |
+| Age | 2.72% | 7.50% | 16.30% |
+| Gender Identity | 4.37% | 1.55% | 10.86% |
 
-### Disambiguated Context Bias
+---
+
+## EsBBQ Baseline Results (Spanish)
+
+### Overall Performance
+
+| Model | Overall Acc | Amb Acc | Disamb Acc | Amb-Disamb Gap |
+|-------|-------------|---------|------------|----------------|
+| Salamandra-2b | 41.69% | 25.10% | 49.55% | -24.45pp |
+| Llama-3.2-1B | 44.98% | 38.19% | 48.19% | -10.00pp |
+| Llama-3.2-3B | 54.50% | 18.59% | 71.61% | -53.02pp |
+
+### Aggregate Bias Scores
+
+| Model | Ambiguous Bias | Disambiguated Bias | Ratio (Amb/Disamb) |
+|-------|----------------|--------------------|--------------------|
+| Salamandra-2b | 1.69% | 1.76% | 0.96 |
+| Llama-3.2-1B | 1.03% | 3.31% | 0.31 |
+| Llama-3.2-3B | 3.96% | 0.76% | 5.21 |
+
+### Top Bias Categories (Ambiguous Context)
 
 | Category | Salamandra-2b | Llama-1B | Llama-3B |
 |----------|---------------|----------|----------|
-| **Physical_appearance** | 13.37% | **14.84%** | 9.02% |
-| **Gender_identity** | 6.84% | 1.97% | 8.04% |
-| **Age** | 1.30% | 6.85% | 8.48% |
-| **SES** | **6.36%** | 4.52% | 0.17% |
-| **Disability_status** | 4.11% | 3.08% | 0.51% |
-| **Race_x_SES** | 3.77% | -1.52% | -0.69% |
-| **Religion** | 2.00% | 3.74% | 3.84% |
-| **Nationality** | 1.56% | -1.84% | 3.52% |
-| **Race_ethnicity** | 0.15% | 1.37% | 1.34% |
-| **Race_x_gender** | 0.38% | 0.18% | 0.50% |
-| **Sexual_orientation** | **-4.17%** | -0.71% | 0.93% |
+| Physical Appearance | 1.79% | -0.51% | 9.69% |
+| Spanish Region | 4.63% | -0.93% | 8.02% |
+| Gender | -0.47% | 0.86% | 8.64% |
 
-**Important Note on Negative Values:**  
-Negative bias scores indicate the model favors groups **opposite** to typical stereotypes. For example, a -4.17% score means the model systematically associates attributes with the counter-stereotypical group. This represents bias in the opposite direction, not absence of bias.
+**Note:** Spanish Region is a category unique to EsBBQ.
 
 ---
 
-## Implications for Fairness-Pruning Research
+## Cross-Lingual Observations
 
-### Priority Target Categories
-Based on baseline measurements, the following categories should be primary targets for bias mitigation through selective pruning:
+### Performance Shifts
 
-1. **Physical Appearance** (9.9-17.9% bias): Highest magnitude across models
-2. **Age** (2.7-16.3% bias): Dramatic amplification in Llama family (1B→3B)
-3. **Gender Identity** (1.5-10.9% bias): 7× increase in Llama 3B vs 1B
+All models show higher overall accuracy on EsBBQ (Spanish) compared to BBQ (English):
+- **Salamandra-2b:** +12.64pp (29.05% → 41.69%)
+- **Llama-3.2-1B:** +13.83pp (31.15% → 44.98%)
+- **Llama-3.2-3B:** +13.98pp (40.52% → 54.50%)
 
-### Key Observations for Pruning Strategy
+### Ambiguous Context Accuracy
 
-**Within Llama family (1B → 3B scaling effects):**
-- Physical appearance: +8pp increase (10.15% → 17.89%)
-- Age: +9pp increase (7.50% → 16.30%)
-- Gender identity: +9pp increase (1.55% → 10.86%)
-- SES: -2.3pp decrease (3.70% → 1.37%) - improves with scale
+All models perform substantially better in ambiguous Spanish contexts than English:
+- **Salamandra-2b:** +17.44pp (7.66% → 25.10%)
+- **Llama-3.2-1B:** +28.18pp (10.01% → 38.19%)
+- **Llama-3.2-3B:** +11.08pp (7.51% → 18.59%)
 
-**Salamandra-specific patterns:**
-- Shows different bias distribution than Llama models
-- Underperforms Llama-1B despite 2× parameters (likely due to language domain mismatch)
-- Highest SES bias in ambiguous contexts (5.30%)
+### Bias Pattern Consistency
 
-**Categories with lower/stable bias across all models:**
-- Race × SES (< 4% in most cases)
-- Nationality (< 5% in most cases)
-- Race/ethnicity (consistently low, though directionally variable)
+**Llama-3.2-3B** maintains similar bias patterns across languages:
+- BBQ: Ambiguous bias (4.12%) > Disambiguated bias (2.24%)
+- EsBBQ: Ambiguous bias (3.96%) > Disambiguated bias (0.76%)
+- Ratio shift: 1.84 → 5.21
 
-**Bidirectional bias** (requires nuanced approach):
-- Race/ethnicity (negative in Salamandra/Llama-1B, positive in Llama-3B)
-- Sexual orientation (varies significantly: -4.17% to +4.86%)
-- Some categories show bias reversal between models
+**Llama-3.2-1B** shows inverted pattern in Spanish:
+- BBQ: Ambiguous bias (1.70%) ≈ Disambiguated bias (1.75%)
+- EsBBQ: Ambiguous bias (1.03%) < Disambiguated bias (3.31%)
+- Ratio shift: 0.97 → 0.31
 
----
+**Salamandra-2b** maintains balanced pattern in both languages:
+- BBQ: Ambiguous bias (2.07%) < Disambiguated bias (2.77%)
+- EsBBQ: Ambiguous bias (1.69%) < Disambiguated bias (1.76%)
+- Ratio: 0.75 → 0.96
 
-## Methodology
+### Category-Level Consistency
 
-### BBQ Benchmark
-The Bias Benchmark for QA evaluates model bias through question-answering tasks with two context types:
-- **Ambiguous contexts**: Insufficient information to answer correctly (tests stereotype reliance)
-- **Disambiguated contexts**: Sufficient information provided (tests reasoning capability)
+**Physical Appearance** ranks among top 3 bias categories in both languages for Llama-3.2-3B:
+- BBQ: Ambiguous 17.89%, Disambiguated 9.02%
+- EsBBQ: Ambiguous 9.69%, Disambiguated 5.44%
 
-**Bias score** = Percentage of times model selects stereotypical answer when both options are equally plausible.
+**Age** shows high bias in BBQ but not in EsBBQ:
+- BBQ: Ambiguous 16.30%, Disambiguated 8.48%
+- EsBBQ: Ambiguous 2.71%, Disambiguated 4.47%
 
-### Evaluation Setup
-- **Task**: BBQ (0-shot)
-- **Hardware**: Google Colab (L4/A100 GPU)
-- **Framework**: lm-evaluation-harness v0.4+
-- **Date**: December 7, 2025
-- **Scope**: English-language evaluation (ES/CA variants pending)
+**Gender/Gender Identity** increases with model scale in both languages:
+- BBQ: Llama-1B (Amb 1.55%, Disamb 1.97%) → Llama-3B (Amb 10.86%, Disamb 8.04%)
+- EsBBQ: Llama-1B (Amb 0.86%, Disamb 2.04%) → Llama-3B (Amb 8.64%, Disamb 4.57%)
 
-### Categories Evaluated
-11 social bias dimensions: Age, Disability status, Gender identity, Nationality, Physical appearance, Race/ethnicity, Race × Gender, Race × SES, Religion, Socioeconomic status (SES), Sexual orientation.
+**SES (Socioeconomic Status)** shows opposite scaling trends:
+- BBQ: Llama-1B (Amb 3.70%, Disamb 4.52%) → Llama-3B (Amb 1.37%, Disamb 0.17%)
+- EsBBQ: Llama-1B (Amb 2.17%, Disamb 8.69%) → Llama-3B (Amb 6.30%, Disamb 1.34%)
 
 ---
 
-## Next Steps
+## Data Files
 
-1. **Spanish/Catalan Evaluation**: Run EsBBQ and CatBBQ to assess Salamandra in native languages
-2. **Pruned Model Comparison**: Evaluate fairness-pruned variants against these baselines
-3. **Category-Specific Analysis**: Deep dive into Physical appearance, Age, and Gender bias mechanisms
-4. **Cross-Lingual Bias Transfer**: Investigate whether bias patterns transfer across languages
+**BBQ (English):**
+- `bsc_lt_salamandra_2b.json` - Salamandra-2B results
+- `meta_llama_llama_3.2_1b.json` - Llama-3.2-1B results
+- `meta_llama_llama_3.2_3b.json` - Llama-3.2-3B results
 
----
-
-## Files in This Directory
-
-### Model Result Files
-- `bsc_lt_salamandra_2b.json`: Complete BBQ metrics for Salamandra-2b
-- `meta_llama_llama_3_2_1b.json`: Complete BBQ metrics for Llama-3.2-1B
-- `meta_llama_llama_3_2_3b.json`: Complete BBQ metrics for Llama-3.2-3B
-
-### Metrics Structure
-Each JSON contains:
-- **metadata**: Model name, evaluation timestamps, completion status
-- **results.bbq**: 
-  - Overall accuracy metrics (`acc,none`, `accuracy_amb,none`, `accuracy_disamb,none`)
-  - Aggregate bias scores (`amb_bias_score,none`, `disamb_bias_score,none`)
-  - Per-category bias scores for all 11 social dimensions (ambiguous + disambiguated)
-
-**File size**: ~10KB per model (aggregated metrics only, no raw samples)
-
----
-
-## References
-
-1. **BBQ Dataset**: Parrish et al. (2022). "BBQ: A Hand-Built Bias Benchmark for Question Answering"
-2. **Evaluation Framework**: EleutherAI lm-evaluation-harness
-3. **OptiPFair Library**: [github.com/peremartra/OptiPFair](https://github.com/peremartra/OptiPFair)
-4. **Research Repository**: [github.com/peremartra/fairness-pruning](https://github.com/peremartra/fairness-pruning)
-
----
-
-**Author**: Pere Martra  
-**Project**: Fairness-Pruning Research (Rearchitecting LLMs - Manning Publications)  
-**License**: Results available for research purposes
+**EsBBQ (Spanish):**
+- `esbbq_final_results_salamandra2b.json` - Salamandra-2B results
+- `esbbq_final_results_llama-3.2-1B.json` - Llama-3.2-1B results
+- `esbbq_final_results_llama-3.2-3B.json` - Llama-3.2-3B results
