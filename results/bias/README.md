@@ -34,6 +34,9 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 | Llama-3.2-1B | 1.70% | 1.75% | 0.97 |
 | Llama-3.2-3B | 4.12% | 2.24% | 1.84 |
 
+![Bias Pattern Comparison](../../notebooks/results/figures/bias/bias_pattern_comparison_20251228_170656.png)
+*Overall bias pattern comparison showing ambiguous vs disambiguated bias scores across BBQ (English) and EsBBQ (Spanish) benchmarks.*
+
 ### Top Bias Categories (Ambiguous Context)
 
 | Category | Salamandra-2b | Llama-1B | Llama-3B |
@@ -41,6 +44,9 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 | Physical Appearance | 9.90% | 10.15% | 17.89% |
 | Age | 2.72% | 7.50% | 16.30% |
 | Gender Identity | 4.37% | 1.55% | 10.86% |
+
+![Top Bias Categories Heatmap](../../notebooks/results/figures/bias/top_categories_heatmap_20251228_170656.png)
+*Heatmap visualization of the top four bias categories (Physical Appearance, Age, Gender, SES) across models and benchmarks.*
 
 ---
 
@@ -106,6 +112,9 @@ All models perform substantially better in ambiguous Spanish contexts than Engli
 - BBQ: Ambiguous bias (2.07%) < Disambiguated bias (2.77%)
 - EsBBQ: Ambiguous bias (1.69%) < Disambiguated bias (1.76%)
 - Ratio: 0.75 → 0.96
+
+![Gap Comparison](../../notebooks/results/figures/bias/gap_comparison_20251228_170656.png)
+*Amb-Disamb gap comparison showing bias localization across languages. Larger gaps indicate more concentrated bias patterns suitable for targeted pruning.*
 
 ### Category-Level Consistency
 

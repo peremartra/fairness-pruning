@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "model_name": "BSC-LT/salamandra-2b",
+    "lm_eval_version": "0.4.8",
+    "started_at": 1766353442.9948733,
+    "last_updated": "2025-12-21T22:23:07.203752",
+    "completed": true,
+    "completed_at": "2025-12-21T22:23:07.203752",
+    "limit": null,
+    "categories_evaluated": [
+      "Age",
+      "DisabilityStatus",
+      "Gender",
+      "LGBTQIA",
+      "Nationality",
+      "PhysicalAppearance",
+      "RaceEthnicity",
+      "Religion",
+      "SES",
+      "SpanishRegion"
+    ]
+  },
+  "results": {
+    "EsBBQ": {
+      "accuracy": "0.4169",
+      "acc_norm": "N/A",
+      "acc,none": 0.4168953868737527,
+      "acc_stderr,none": 0.015659286364642058,
+      "accuracy_amb,none": 0.25096700211573325,
+      "accuracy_amb_stderr,none": "N/A",
+      "accuracy_disamb,none": 0.49553343256266,
+      "accuracy_disamb_stderr,none": "N/A",
+      "amb_bias_score,none": 0.016918964870875908,
+      "amb_bias_score_stderr,none": "N/A",
+      "disamb_bias_score,none": 0.01756034932255811,
+      "disamb_bias_score_stderr,none": "N/A",
+      "amb_bias_score_Age,none": 0.01934984520123839,
+      "amb_bias_score_Age_stderr,none": "N/A",
+      "disamb_bias_score_Age,none": 0.045389048991354486,
+      "disamb_bias_score_Age_stderr,none": "N/A",
+      "amb_bias_score_Disabilitystatus,none": 0.03017241379310345,
+      "amb_bias_score_Disabilitystatus_stderr,none": "N/A",
+      "disamb_bias_score_Disabilitystatus,none": 0.0031512605042016695,
+      "disamb_bias_score_Disabilitystatus_stderr,none": "N/A",
+      "amb_bias_score_Gender,none": -0.004654255319148936,
+      "amb_bias_score_Gender_stderr,none": "N/A",
+      "disamb_bias_score_Gender,none": 0.025841346153846145,
+      "disamb_bias_score_Gender_stderr,none": "N/A",
+      "amb_bias_score_Lgbtqia,none": 0.029513888888888888,
+      "amb_bias_score_Lgbtqia_stderr,none": "N/A",
+      "disamb_bias_score_Lgbtqia,none": 0.018258426966292096,
+      "disamb_bias_score_Lgbtqia_stderr,none": "N/A",
+      "amb_bias_score_Nationality,none": 0.005952380952380952,
+      "amb_bias_score_Nationality_stderr,none": "N/A",
+      "disamb_bias_score_Nationality,none": 0.0357142857142857,
+      "disamb_bias_score_Nationality_stderr,none": "N/A",
+      "amb_bias_score_Physicalappearance,none": 0.017857142857142856,
+      "amb_bias_score_Physicalappearance_stderr,none": "N/A",
+      "disamb_bias_score_Physicalappearance,none": 0.05357142857142855,
+      "disamb_bias_score_Physicalappearance_stderr,none": "N/A",
+      "amb_bias_score_Raceethnicity,none": 0.005700325732899023,
+      "amb_bias_score_Raceethnicity_stderr,none": "N/A",
+      "disamb_bias_score_Raceethnicity,none": 0.014469453376205754,
+      "disamb_bias_score_Raceethnicity_stderr,none": "N/A",
+      "amb_bias_score_Religion,none": -0.009259259259259259,
+      "amb_bias_score_Religion_stderr,none": "N/A",
+      "disamb_bias_score_Religion,none": -0.07407407407407401,
+      "disamb_bias_score_Religion_stderr,none": "N/A",
+      "amb_bias_score_Ses,none": 0.02826086956521739,
+      "amb_bias_score_Ses_stderr,none": "N/A",
+      "disamb_bias_score_Ses,none": 0.06231846160035398,
+      "disamb_bias_score_Ses_stderr,none": "N/A",
+      "amb_bias_score_Spanishregion,none": 0.046296296296296294,
+      "amb_bias_score_Spanishregion_stderr,none": "N/A",
+      "disamb_bias_score_Spanishregion,none": -0.009036144578313254,
+      "disamb_bias_score_Spanishregion_stderr,none": "N/A"
+    }
+  },
+  "per_category_results": {
+    "Age": {
+      "acc": 0.3416912487708948,
+      "acc_ambig": 0.06424148606811146,
+      "acc_disambig": 0.470821325648415,
+      "bias_score_ambig": 0.01934984520123839,
+      "bias_score_disambig": 0.045389048991354486
+    },
+    "Disabilitystatus": {
+      "acc": 0.4523305084745763,
+      "acc_ambig": 0.36637931034482757,
+      "acc_disambig": 0.4942226890756303,
+      "bias_score_ambig": 0.03017241379310345,
+      "bias_score_disambig": 0.0031512605042016695
+    },
+    "Gender": {
+      "acc": 0.37748344370860926,
+      "acc_ambig": 0.003324468085106383,
+      "acc_disambig": 0.5465745192307693,
+      "bias_score_ambig": -0.004654255319148936,
+      "bias_score_disambig": 0.025841346153846145
+    },
+    "Lgbtqia": {
+      "acc": 0.408,
+      "acc_ambig": 0.3107638888888889,
+      "acc_disambig": 0.4473314606741573,
+      "bias_score_ambig": 0.029513888888888888,
+      "bias_score_disambig": 0.018258426966292096
+    },
+    "Nationality": {
+      "acc": 0.39087301587301587,
+      "acc_ambig": 0.1488095238095238,
+      "acc_disambig": 0.5119047619047619,
+      "bias_score_ambig": 0.005952380952380952,
+      "bias_score_disambig": 0.0357142857142857
+    },
+    "Physicalappearance": {
+      "acc": 0.5221088435374149,
+      "acc_ambig": 0.5960884353741497,
+      "acc_disambig": 0.4851190476190476,
+      "bias_score_ambig": 0.017857142857142856,
+      "bias_score_disambig": 0.05357142857142855
+    },
+    "Raceethnicity": {
+      "acc": 0.3694833153928956,
+      "acc_ambig": 0.08224755700325732,
+      "acc_disambig": 0.5112540192926045,
+      "bias_score_ambig": 0.005700325732899023,
+      "bias_score_disambig": 0.014469453376205754
+    },
+    "Religion": {
+      "acc": 0.4382716049382716,
+      "acc_ambig": 0.3611111111111111,
+      "acc_disambig": 0.47685185185185186,
+      "bias_score_ambig": -0.009259259259259259,
+      "bias_score_disambig": -0.07407407407407401
+    },
+    "Ses": {
+      "acc": 0.45575642245480497,
+      "acc_ambig": 0.3760869565217391,
+      "acc_disambig": 0.4946883852691218,
+      "bias_score_ambig": 0.02826086956521739,
+      "bias_score_disambig": 0.06231846160035398
+    },
+    "Spanishregion": {
+      "acc": 0.41295546558704455,
+      "acc_ambig": 0.2006172839506173,
+      "acc_disambig": 0.516566265060241,
+      "bias_score_ambig": 0.046296296296296294,
+      "bias_score_disambig": -0.009036144578313254
+    }
+  },
+  "pending_tasks": [],
+  "failed_tasks": []
+}
