@@ -7,6 +7,10 @@ validation_split: null
 test_split: test
 fewshot_split: null
 num_fewshot: 0
+
+doc_to_text: "Contexto: {{context}}\nPregunta: {{question}}\nRespuesta:"
+
+
 doc_to_target: !function esbbq_utils.doc_to_target
 doc_to_choice: !function esbbq_utils.doc_to_choice
 process_results: !function esbbq_utils.process_results
