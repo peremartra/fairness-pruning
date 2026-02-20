@@ -23,3 +23,15 @@ metric_list:
   - metric: acc_norm
     aggregation: mean
     higher_is_better: true
+  - metric: acc_ambig
+    aggregation: !function esbbq_utils.acc_ambig_agg
+    higher_is_better: true
+  - metric: acc_disambig
+    aggregation: !function esbbq_utils.acc_disambig_agg
+    higher_is_better: true
+  - metric: bias_score_ambig
+    aggregation: !function esbbq_utils.bias_score_ambig_agg
+    higher_is_better: false
+  - metric: bias_score_disambig
+    aggregation: !function esbbq_utils.bias_score_disambig_agg
+    higher_is_better: false
