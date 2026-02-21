@@ -35,7 +35,7 @@
 
 ---
 
-### ⬜ 1.2. Bias Benchmark Execution (Base)
+### [x] 1.2. Bias Benchmark Execution (Base)
 
 **Estimation:** 15-20 hours  
 **Description:** Establish baseline bias metrics using validated multilingual benchmarks
@@ -82,9 +82,9 @@
 
 #### Deliverables:
 - [X] BBQ results for all 3 models
-- [0.5] MBBQ results for all 3 models
-- [ ] Baseline bias summary table (CSV/Excel)
-- [ ] Brief analysis document noting initial observations
+- [X] MBBQ results for all 3 models
+- [X] Baseline bias summary table (CSV/Excel)
+- [X] Brief analysis document noting initial observations
 
 ---
 
