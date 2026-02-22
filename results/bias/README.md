@@ -4,7 +4,7 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 
 **Evaluation Framework:** lm-evaluation-harness  
 **Task Configuration:** 0-shot  
-**Evaluation Dates:** BBQ (Dec 7, 2025), EsBBQ (Dec 21-22, 2025)
+**Evaluation Dates:** BBQ (Dec 7, 2025), EsBBQ (Feb 20-22, 2026)
 
 ## Models Evaluated
 
@@ -45,8 +45,8 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 | Age | 2.72% | 7.50% | 16.30% |
 | Gender Identity | 4.37% | 1.55% | 10.86% |
 
-![Top Bias Categories Heatmap](../../notebooks/results/figures/bias/top_categories_heatmap_20251228_170656.png)
-*Heatmap visualization of the top four bias categories (Physical Appearance, Age, Gender, SES) across models and benchmarks.*
+![Top Categories Heatmap](../../notebooks/results/figures/bias/top_categories_heatmap_20251228_170656.png)
+*Heatmap visualization of the top bias categories across models and benchmarks.*
 
 ---
 
@@ -56,27 +56,27 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 
 | Model | Overall Acc | Amb Acc | Disamb Acc | Amb-Disamb Gap |
 |-------|-------------|---------|------------|----------------|
-| Salamandra-2b | 41.69% | 25.10% | 49.55% | -24.45pp |
-| Llama-3.2-1B | 44.98% | 38.19% | 48.19% | -10.00pp |
-| Llama-3.2-3B | 54.50% | 18.59% | 71.61% | -53.02pp |
+| Salamandra-2b | 41.98% | 25.11% | 50.01% | -24.90pp |
+| Llama-3.2-1B | 42.52% | 26.78% | 50.03% | -23.25pp |
+| Llama-3.2-3B | 53.22% | 16.05% | 70.97% | -54.92pp |
 
 ### Aggregate Bias Scores
 
 | Model | Ambiguous Bias | Disambiguated Bias | Ratio (Amb/Disamb) |
 |-------|----------------|--------------------|--------------------|
-| Salamandra-2b | 1.69% | 1.76% | 0.96 |
-| Llama-3.2-1B | 1.03% | 3.31% | 0.31 |
-| Llama-3.2-3B | 3.96% | 0.76% | 5.21 |
+| Salamandra-2b | 0.80% | 1.46% | 0.55 |
+| Llama-3.2-1B | 0.29% | 1.25% | 0.23 |
+| Llama-3.2-3B | 3.80% | 0.32% | 11.87 |
 
 ### Top Bias Categories (Ambiguous Context)
 
-| Category | Salamandra-2b | Llama-1B | Llama-3B |
-|----------|---------------|----------|----------|
-| Physical Appearance | 1.79% | -0.51% | 9.69% |
-| Spanish Region | 4.63% | -0.93% | 8.02% |
-| Gender | -0.47% | 0.86% | 8.64% |
+| Category Rank | Salamandra-2b | Llama-1B | Llama-3B |
+|---------------|---------------|----------|----------|
+| **1st** | SES (4.35%) | Disability Status (2.91%) | Physical Appearance (10.37%) |
+| **2nd** | Nationality (4.17%) | SES (2.61%) | Gender (8.51%) |
+| **3rd** | Race/Ethnicity (2.69%) | Age (1.47%) | Spanish Region (6.48%) |
 
-**Note:** Spanish Region is a category unique to EsBBQ.
+**Note:** "Spanish Region" is a category unique to EsBBQ that reflects localized social biases.
 
 ---
 
@@ -85,65 +85,61 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 ### Performance Shifts
 
 All models show higher overall accuracy on EsBBQ (Spanish) compared to BBQ (English):
-- **Salamandra-2b:** +12.64pp (29.05% → 41.69%)
-- **Llama-3.2-1B:** +13.83pp (31.15% → 44.98%)
-- **Llama-3.2-3B:** +13.98pp (40.52% → 54.50%)
+- **Salamandra-2b:** +12.93pp (29.05% → 41.98%)
+- **Llama-3.2-1B:** +11.37pp (31.15% → 42.52%)
+- **Llama-3.2-3B:** +12.70pp (40.52% → 53.22%)
 
 ### Ambiguous Context Accuracy
 
-All models perform substantially better in ambiguous Spanish contexts than English:
-- **Salamandra-2b:** +17.44pp (7.66% → 25.10%)
-- **Llama-3.2-1B:** +28.18pp (10.01% → 38.19%)
-- **Llama-3.2-3B:** +11.08pp (7.51% → 18.59%)
+All models perform substantially better in ambiguous Spanish contexts than in English, signaling either better default handling of unknowns or differences in dataset translation:
+- **Salamandra-2b:** +17.45pp (7.66% → 25.11%)
+- **Llama-3.2-1B:** +16.77pp (10.01% → 26.78%)
+- **Llama-3.2-3B:** +8.54pp (7.51% → 16.05%)
 
 ### Bias Pattern Consistency
 
-**Llama-3.2-3B** maintains similar bias patterns across languages:
+**Llama-3.2-3B** maintains similar bias patterns across languages (higher bias in ambiguity):
 - BBQ: Ambiguous bias (4.12%) > Disambiguated bias (2.24%)
-- EsBBQ: Ambiguous bias (3.96%) > Disambiguated bias (0.76%)
-- Ratio shift: 1.84 → 5.21
+- EsBBQ: Ambiguous bias (3.80%) > Disambiguated bias (0.32%)
+- Ratio shift: 1.84 → 11.87
 
-**Llama-3.2-1B** shows inverted pattern in Spanish:
+**Llama-3.2-1B** shows a more muted, inverted pattern in Spanish:
 - BBQ: Ambiguous bias (1.70%) ≈ Disambiguated bias (1.75%)
-- EsBBQ: Ambiguous bias (1.03%) < Disambiguated bias (3.31%)
-- Ratio shift: 0.97 → 0.31
+- EsBBQ: Ambiguous bias (0.29%) < Disambiguated bias (1.25%)
+- Ratio shift: 0.97 → 0.23
 
-**Salamandra-2b** maintains balanced pattern in both languages:
+**Salamandra-2b** maintains a balanced pattern with lower magnitude in Spanish:
 - BBQ: Ambiguous bias (2.07%) < Disambiguated bias (2.77%)
-- EsBBQ: Ambiguous bias (1.69%) < Disambiguated bias (1.76%)
-- Ratio: 0.75 → 0.96
+- EsBBQ: Ambiguous bias (0.80%) < Disambiguated bias (1.46%)
+- Ratio: 0.75 → 0.55
 
 ![Gap Comparison](../../notebooks/results/figures/bias/gap_comparison_20251228_170656.png)
 *Amb-Disamb gap comparison showing bias localization across languages. Larger gaps indicate more concentrated bias patterns suitable for targeted pruning.*
 
 ### Category-Level Consistency
 
-**Physical Appearance** ranks among top 3 bias categories in both languages for Llama-3.2-3B:
+**Physical Appearance** ranks among the top bias categories in both languages for Llama-3.2-3B:
 - BBQ: Ambiguous 17.89%, Disambiguated 9.02%
-- EsBBQ: Ambiguous 9.69%, Disambiguated 5.44%
+- EsBBQ: Ambiguous 10.37%, Disambiguated 6.04%
 
-**Age** shows high bias in BBQ but not in EsBBQ:
+**Age** shows high bias in English (BBQ) but drops significantly in Spanish (EsBBQ) for Llama-3.2-3B:
 - BBQ: Ambiguous 16.30%, Disambiguated 8.48%
-- EsBBQ: Ambiguous 2.71%, Disambiguated 4.47%
+- EsBBQ: Ambiguous 5.96%, Disambiguated 6.27%
 
-**Gender/Gender Identity** increases with model scale in both languages:
+**Gender/Gender Identity** bias increases with model scale in both languages:
 - BBQ: Llama-1B (Amb 1.55%, Disamb 1.97%) → Llama-3B (Amb 10.86%, Disamb 8.04%)
-- EsBBQ: Llama-1B (Amb 0.86%, Disamb 2.04%) → Llama-3B (Amb 8.64%, Disamb 4.57%)
+- EsBBQ: Llama-1B (Amb 0.27%, Disamb 1.50%) → Llama-3B (Amb 8.51%, Disamb 4.03%)
 
-**SES (Socioeconomic Status)** shows opposite scaling trends:
+**SES (Socioeconomic Status)** shows opposite scaling trends between languages:
 - BBQ: Llama-1B (Amb 3.70%, Disamb 4.52%) → Llama-3B (Amb 1.37%, Disamb 0.17%)
-- EsBBQ: Llama-1B (Amb 2.17%, Disamb 8.69%) → Llama-3B (Amb 6.30%, Disamb 1.34%)
+- EsBBQ: Llama-1B (Amb 2.61%, Disamb 6.54%) → Llama-3B (Amb 5.43%, Disamb -1.09%)
 
 ---
 
 ## Data Files
 
 **BBQ (English):**
-- `bsc_lt_salamandra_2b.json` - Salamandra-2B results
-- `meta_llama_llama_3.2_1b.json` - Llama-3.2-1B results
-- `meta_llama_llama_3.2_3b.json` - Llama-3.2-3B results
+- `base_models_bbq_results_latest.csv` / `.json`
 
 **EsBBQ (Spanish):**
-- `esbbq_final_results_salamandra2b.json` - Salamandra-2B results
-- `esbbq_final_results_llama-3.2-1B.json` - Llama-3.2-1B results
-- `esbbq_final_results_llama-3.2-3B.json` - Llama-3.2-3B results
+- `base_models_mbbq_results_latest.csv` / `.json`
