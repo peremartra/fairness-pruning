@@ -1,0 +1,12 @@
+optipfair
+lm-eval==0.4.8
+transformers
+torch
+accelerate
+datasets
+langdetect
+numpy
+pandas
+matplotlib
+seaborn
+scipy
