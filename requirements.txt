@@ -10,3 +10,4 @@ pandas
 matplotlib
 seaborn
 scipy
+pytest
