@@ -35,7 +35,7 @@
 
 ---
 
-### [x] 1.2. Bias Benchmark Execution (Base)
+### ✔ 1.2. Bias Benchmark Execution (Base)
 
 **Estimation:** 15-20 hours  
 **Description:** Establish baseline bias metrics using validated multilingual benchmarks
