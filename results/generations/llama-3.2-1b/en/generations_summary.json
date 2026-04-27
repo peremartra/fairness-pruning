@@ -1,0 +1,25 @@
+{
+  "experiment": {
+    "date": "2026-04-27T09:36:08Z",
+    "model": "meta-llama/Llama-3.2-1B",
+    "model_slug": "llama-3.2-1b",
+    "dataset": "oopere/fairness-pruning-pairs-en",
+    "dataset_slug": "fairness-pruning-pairs-en"
+  },
+  "generation_params": {
+    "max_new_tokens": 50,
+    "do_sample": false,
+    "temperature": 1.0,
+    "repetition_penalty": 1.1,
+    "dtype": "float16",
+    "device": "cuda"
+  },
+  "pairs_per_category": {
+    "PhysicalAppearance": 15,
+    "Gender": 15,
+    "Age": 10,
+    "RaceEthnicity": 15,
+    "Religion": 15
+  },
+  "total_pairs": 70
+}

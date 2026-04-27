@@ -6,6 +6,14 @@ Designed to be used with you favourite LLM (ChatGPT / Claude / Gemini / Cursor /
 
 OptiPFair is a Python library for structured pruning of large language models, with a primary focus on GLU architectures. It also provides built-in functionality for bias visualization and analysis. This guide provides comprehensive information on using all of OptiPFair's features.
 
+---
+
+**Note on Terminology:** The neuron selection method PPM (Peak-to-Peak Magnitude) is the default and most effective method for GLU architectures. This method is formally described in: *Martra, P. (2025). Fragile Knowledge, Robust Instruction-Following: The Width Pruning Dichotomy in Llama-3.2. ArXiv. https://arxiv.org/abs/2512.22671*
+
+For backward compatibility, the parameter value `"MAW"` is still accepted and maps to the PPM method.
+
+---
+
 ## Installation
 
 ```bash
@@ -34,18 +42,26 @@ OptiPFair supports two main types of pruning:
 
 #### Python API for Pruning
 
+Use the alias import for concise calls:
+
+```python
+import optipfair as opf
+```
+
+Bias helpers still come from their submodules (for example `from optipfair.bias import visualize_bias`).
+
 ```python
 from transformers import AutoModelForCausalLM
-from optipfair import prune_model
+import optipfair as opf
 
 # Load a pre-trained model
 model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-1B")
 
-# Basic usage (10% pruning with MAW method)
-pruned_model = prune_model(model)
+# Basic usage (10% pruning with PPM method)
+pruned_model = opf.prune_model(model)
 
 # Advanced MLP GLU pruning
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",              # Type of pruning to apply
     neuron_selection_method="MAW",       # Method to calculate neuron importance
@@ -67,7 +83,7 @@ inputs = tokenizer(calibration_texts, return_tensors="pt", padding=True,
 dataset = TensorDataset(inputs['input_ids'], inputs['attention_mask'])
 dataloader = DataLoader(dataset, batch_size=8)
 
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     neuron_selection_method="MAW",        # Only MAW supports dataloader
@@ -78,7 +94,7 @@ pruned_model, stats = prune_model(
 )
 
 # Depth pruning examples
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="DEPTH",                # Type of pruning to apply
     num_layers_to_remove=3,              # Number of layers to remove
@@ -88,7 +104,7 @@ pruned_model, stats = prune_model(
 )
 
 # Alternative depth pruning with percentage
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="DEPTH",                # Type of pruning to apply
     depth_pruning_percentage=25.0,       # Percentage of layers to remove
@@ -98,7 +114,7 @@ pruned_model, stats = prune_model(
 )
 
 # Depth pruning with custom layer indices
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="DEPTH",                # Type of pruning to apply
     layer_indices=[2, 5, 8, 11],         # Specific layers to remove
@@ -107,7 +123,7 @@ pruned_model, stats = prune_model(
 )
 
 # Selective Width Pruning (NEW in v0.2.0) - Prune specific MLP layers only
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",              # Width pruning
     neuron_selection_method="MAW",
@@ -118,7 +134,7 @@ pruned_model, stats = prune_model(
 )
 
 # Selective width pruning with expansion_rate
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     expansion_rate=260,                  # Target expansion rate
@@ -128,7 +144,7 @@ pruned_model, stats = prune_model(
 )
 
 # Selective data-driven width pruning
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     neuron_selection_method="MAW",
@@ -147,6 +163,45 @@ print(f"Reduction: {stats['reduction']:,} parameters ({stats['percentage_reducti
 # Save the pruned model
 pruned_model.save_pretrained("./pruned-model")
 ```
+
+#### Depth Pruning Statistics (return_stats=True)
+
+When using depth pruning with `return_stats=True`, the `stats` dictionary contains depth-specific metrics:
+
+```python
+pruned_model, stats = opf.prune_model(
+    model=model,
+    pruning_type="DEPTH",
+    num_layers_to_remove=3,           # or depth_pruning_percentage / layer_indices
+    layer_selection_method="last",   # "last" (default), "first", or "custom"
+    return_stats=True,
+)
+
+print({k: stats[k] for k in [
+    'original_parameters',
+    'pruned_parameters',
+    'reduction',
+    'percentage_reduction',
+    'original_layer_count',
+    'final_layer_count',
+    'layers_removed',
+    'layer_reduction_percentage',
+]})
+# Example
+# {
+#   'original_parameters': 85_054_464,
+#   'pruned_parameters': 63_790_848,
+#   'reduction': 21_263_616,
+#   'percentage_reduction': 25.0,
+#   'original_layer_count': 12,
+#   'final_layer_count': 9,
+#   'layers_removed': 3,
+#   'layer_reduction_percentage': 25.0,
+# }
+```
+
+- Not included: `expansion_rate` (only applies to MLP/GLU width pruning).
+- Notes: Stats are computed using the pre-pruning state to avoid deepcopy issues with certain architectures.
 
 #### Command-Line Interface for Pruning
 
@@ -205,15 +260,166 @@ optipfair prune \
   --output-path ./pruned-model
 ```
 
+### Knowledge Distillation
+
+OptiPFair provides a public Python API for knowledge distillation via `opf.distill_model`, implemented in `optipfair/distillation/trainer.py`.
+
+#### Function Signature
+
+```python
+import optipfair as opf
+
+trained_student = opf.distill_model(
+    student_model=student_model,
+    teacher_model=teacher_model,
+    dataloader=dataloader,
+    layer_mapping_strategy="uniform",
+    alpha=0.6,
+    beta=0.4,
+    gamma=0.0,
+    delta=0.0,
+    temperature=2.0,
+    skew_alpha=0.4,
+    epochs=3,
+    learning_rate=4e-5,
+    scheduler="cosine",
+    warmup_ratio=0.05,
+    accumulation_steps=4,
+    show_progress=True,
+    return_stats=False,
+)
+```
+
+#### Parameters
+
+**Core models and data:**
+- `student_model`: PreTrainedModel to train (weights are updated in-place).
+- `teacher_model`: PreTrainedModel as distillation target (must be a different object than student).
+- `dataloader`: DataLoader yielding batches with `input_ids` (and optionally `attention_mask`). Labels are derived internally as `input_ids.clone()`.
+
+**Loss weights** (at least one must be > 0):
+- `alpha` (0.6): Hard labels (task) loss weight — cross-entropy on ground truth.
+- `beta` (0.4): Soft labels (logits) loss weight — skewed KL divergence at `temperature`.
+- `gamma` (0.0): Feature alignment loss weight — cosine similarity of hidden states. Activates layer mapping.
+- `delta` (0.0): Feature dynamics loss weight — cosine similarity of consecutive hidden-state deltas.
+
+**Distillation hyperparameters:**
+- `temperature` (2.0): Softening factor for logits distillation.
+- `skew_alpha` (0.4): Interpolation factor between student and teacher soft targets.
+- `layer_mapping_strategy` ("uniform"): `"uniform"` (proportional) or `"last"` (deepest layers). Used only when `gamma > 0` or `delta > 0`.
+
+**Training configuration:**
+- `epochs` (3): Training epochs.
+- `learning_rate` (4e-5): AdamW optimizer learning rate.
+- `scheduler` ("cosine"): `"cosine"` (linear warmup + cosine annealing) or `"none"`.
+- `warmup_ratio` (0.05): Fraction of total steps for linear warmup; must be in [0.0, 1.0].
+- `accumulation_steps` (4): Gradient accumulation steps; effective batch = `dataloader.batch_size × accumulation_steps`.
+- `show_progress` (True): Enable tqdm progress bars.
+- `return_stats` (False): If True, returns `(trained_model, stats_dict)` instead of just the model.
+
+#### Validation Constraints
+
+Raises `ValueError` if:
+- `alpha + beta + gamma + delta == 0`.
+- `student_model is teacher_model`.
+- `layer_mapping_strategy` not in `{"uniform", "last"}`.
+- `scheduler` not in `{"cosine", "none"}`.
+- `warmup_ratio` outside `[0.0, 1.0]`.
+- `accumulation_steps <= 0`.
+- Batch does not contain `input_ids`.
+
+Issues `UserWarning` if `gamma > 0` or `delta > 0` and loss weights do not sum to 1.0.
+
+#### Implementation Notes
+
+- **Cache management**: `use_cache` is disabled on both models during training (prevents index errors after depth pruning) and restored to original values on exit.
+- **Gradient clipping**: `max_norm=1.0` is applied before every optimizer step.
+- **Scheduler**: When `scheduler="cosine"`, uses `SequentialLR(LinearLR warmup → CosineAnnealingLR)` with `eta_min=learning_rate * 0.05`.
+- **Effective batch size**: `dataloader.batch_size * accumulation_steps` (included in stats when `return_stats=True`).
+
+#### Return Stats (`return_stats=True`)
+
+Returns `(trained_student, stats)` where `stats` contains:
+
+```python
+{
+    "epochs": int,
+    "learning_rate": float,
+    "accumulation_steps": int,
+    "effective_batch_size": int | None,   # dataloader.batch_size * accumulation_steps
+    "alpha": float,
+    "beta": float,
+    "gamma": float,
+    "delta": float,
+    "temperature": float,
+    "skew_alpha": float,
+    "layer_mapping_strategy": str | None,
+    "layer_map_used": list[int] | None,
+    "loss_history": {
+        "total": list[float],
+        "task": list[float],
+        "logits": list[float],
+        "trajectory": list[float],
+        "derivative": list[float],
+    },
+    "epoch_times_seconds": list[float],
+    "total_time_seconds": float,
+    "avg_time_per_epoch": float,
+}
+```
+
+#### Example
+
+```python
+import torch
+import optipfair as opf
+from torch.utils.data import DataLoader, TensorDataset
+from transformers import AutoModelForCausalLM
+
+teacher_model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3.5-0.8B-Base")
+student_model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3.5-0.8B-Base")
+
+# Tokenized training data
+input_ids = torch.randint(low=0, high=32000, size=(64, 256))
+attention_mask = torch.ones_like(input_ids)
+dataset = TensorDataset(input_ids, attention_mask)
+train_dataloader = DataLoader(dataset, batch_size=8, shuffle=True)
+
+trained_student, stats = opf.distill_model(
+    student_model=student_model,
+    teacher_model=teacher_model,
+    dataloader=train_dataloader,
+    alpha=0.6,
+    beta=0.4,
+    gamma=0.0,
+    delta=0.0,
+    temperature=2.0,
+    skew_alpha=0.4,
+    epochs=3,
+    learning_rate=4e-5,
+    scheduler="cosine",
+    warmup_ratio=0.05,
+    accumulation_steps=4,
+    show_progress=True,
+    return_stats=True,
+)
+
+print("Final total loss:", stats["loss_history"]["total"][-1])
+print("Total training time (s):", stats["total_time_seconds"])
+print("Effective batch size:", stats["effective_batch_size"])
+```
+
 ### Neuron Selection Methods
 
-OptiPFair supports three methods for calculating neuron importance (used with MLP_GLU pruning only):
+OptiPFair supports four methods for calculating neuron importance (used with MLP_GLU pruning only):
 
-1. **MAW (Maximum Absolute Weight)** - Default method that identifies neurons based on the maximum absolute weight values in their connections. Most effective for GLU architectures.
+1. **PPM (Peak-to-Peak Magnitude)** - Default method that identifies neurons based on the peak-to-peak magnitude of weights (calculated as max + |min| for each neuron). This captures the full dynamic range of weight values and is most effective for GLU architectures. Parameter value: `"MAW"` (maintained for backward compatibility).
 
-   **Static MAW (weight-only):**
+    **Static PPM (weight-only):**
 ```python
-   pruned_model = prune_model(
+    import optipfair as opf
+
+    pruned_model = opf.prune_model(
        model=model,
        neuron_selection_method="MAW",
        pruning_percentage=20
@@ -226,7 +432,7 @@ OptiPFair supports three methods for calculating neuron importance (used with ML
    
    ```python
    # Round intermediate size to nearest multiple of 128
-   pruned_model = prune_model(
+    pruned_model = opf.prune_model(
        model=model,
        neuron_selection_method="MAW",
        pruning_percentage=20,
@@ -234,7 +440,7 @@ OptiPFair supports three methods for calculating neuron importance (used with ML
    )
    
    # Can also be used with expansion_rate
-   pruned_model = prune_model(
+    pruned_model = opf.prune_model(
        model=model,
        neuron_selection_method="MAW",
        expansion_rate=200,
@@ -250,9 +456,9 @@ OptiPFair supports three methods for calculating neuron importance (used with ML
    - Useful for optimizing performance on specific hardware (GPUs, TPUs)
    - Common practice: use 128 or 256 for modern GPUs
 
-   **Data-Driven MAW (hybrid: weights + activations):**
+   **Data-Driven PPM (hybrid: weights + activations):**
    
-   When you provide a dataloader, MAW switches to a hybrid importance calculation that combines:
+   When you provide a dataloader, PPM switches to a hybrid importance calculation that combines:
    - Static weight magnitudes from `gate_proj` and `up_proj` layers
    - Dynamic activation statistics from `down_proj` captured during calibration
    
@@ -272,8 +478,8 @@ OptiPFair supports three methods for calculating neuron importance (used with ML
    dataset = TensorDataset(inputs['input_ids'], inputs['attention_mask'])
    calibration_dataloader = DataLoader(dataset, batch_size=8)
    
-   # Data-driven pruning with calibration
-   pruned_model = prune_model(
+    # Data-driven pruning with calibration
+    pruned_model = opf.prune_model(
        model=model,
        neuron_selection_method="MAW",
        pruning_percentage=20,
@@ -292,7 +498,7 @@ OptiPFair supports three methods for calculating neuron importance (used with ML
 2. **VOW (Variance of Weights)** - Identifies neurons based on the variance of their weight values.
 
    ```python
-   pruned_model = prune_model(
+    pruned_model = opf.prune_model(
        model=model,
        neuron_selection_method="VOW",
        pruning_percentage=20
@@ -302,12 +508,28 @@ OptiPFair supports three methods for calculating neuron importance (used with ML
 3. **PON (Product of Norms)** - Uses the product of L1 norms to identify important neurons.
 
    ```python
-   pruned_model = prune_model(
+    pruned_model = opf.prune_model(
        model=model,
        neuron_selection_method="PON",
        pruning_percentage=20
    )
    ```
+
+4. **L2 (L2 Norm)** - Calculates neuron importance using L2 norms of weight values.
+
+   ```python
+    pruned_model = opf.prune_model(
+       model=model,
+       neuron_selection_method="L2",
+       pruning_percentage=20
+   )
+   ```
+
+**Key considerations for neuron selection methods:**
+- PPM/MAW is the default and most effective for GLU architectures
+- Data-driven pruning (hybrid mode) is **only compatible** with `neuron_selection_method="MAW"`
+- VOW, PON, and L2 support static (weight-only) pruning only
+- All methods can be combined with `expansion_divisor` and selective layer pruning (`layer_indices`)
 
 ### Selective Layer Width Pruning (NEW in v0.2.0)
 
@@ -323,10 +545,10 @@ The `layer_indices` parameter is now supported for MLP_GLU pruning, allowing you
 #### Basic Selective Width Pruning
 
 ```python
-from optipfair import prune_model
+import optipfair as opf
 
 # Prune only specific layers (others remain unchanged)
-pruned_model = prune_model(
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     pruning_percentage=30,
@@ -336,7 +558,7 @@ pruned_model = prune_model(
 
 # Prune all except first and last layers
 num_layers = len(model.model.layers)
-pruned_model = prune_model(
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     pruning_percentage=25,
@@ -351,7 +573,7 @@ Selective pruning works seamlessly with all MLP_GLU features:
 
 ```python
 # With expansion_rate
-pruned_model = prune_model(
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     expansion_rate=260,
@@ -360,7 +582,7 @@ pruned_model = prune_model(
 )
 
 # With expansion_divisor for hardware optimization
-pruned_model = prune_model(
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     pruning_percentage=20,
@@ -370,7 +592,7 @@ pruned_model = prune_model(
 )
 
 # With data-driven pruning
-pruned_model = prune_model(
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     neuron_selection_method="MAW",
@@ -380,8 +602,8 @@ pruned_model = prune_model(
     show_progress=True
 )
 
-# All methods (MAW, VOW, PON) support selective pruning
-pruned_model = prune_model(
+# All methods (PPM/MAW, VOW, PON) support selective pruning
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     neuron_selection_method="VOW",  # or "PON"
@@ -396,7 +618,7 @@ pruned_model = prune_model(
 When using selective pruning, statistics include information about which layers were pruned:
 
 ```python
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     pruning_percentage=30,
@@ -417,7 +639,7 @@ OptiPFair provides comprehensive validation for `layer_indices`:
 
 ```python
 # Valid usage
-pruned_model = prune_model(
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     pruning_percentage=20,
@@ -428,25 +650,25 @@ pruned_model = prune_model(
 # Invalid usage examples (will raise errors)
 try:
     # Empty list
-    prune_model(model, layer_indices=[])
+    opf.prune_model(model, layer_indices=[])
 except ValueError as e:
     print(f"Error: {e}")  # "layer_indices cannot be an empty list"
 
 try:
     # Out of range indices
-    prune_model(model, layer_indices=[0, 999])
+    opf.prune_model(model, layer_indices=[0, 999])
 except ValueError as e:
     print(f"Error: {e}")  # "Invalid layer indices: [999]"
 
 try:
     # Duplicate indices
-    prune_model(model, layer_indices=[5, 5, 10])
+    opf.prune_model(model, layer_indices=[5, 5, 10])
 except ValueError as e:
     print(f"Error: {e}")  # "layer_indices contains duplicate values"
 
 try:
     # Non-integer values
-    prune_model(model, layer_indices=[0, "5", 10])
+    opf.prune_model(model, layer_indices=[0, "5", 10])
 except TypeError as e:
     print(f"Error: {e}")  # "All elements in layer_indices must be integers"
 ```
@@ -457,8 +679,8 @@ except TypeError as e:
 
 ```python
 # These are equivalent:
-pruned_model = prune_model(model, pruning_percentage=20)
-pruned_model = prune_model(model, pruning_percentage=20, layer_indices=None)
+pruned_model = opf.prune_model(model, pruning_percentage=20)
+pruned_model = opf.prune_model(model, pruning_percentage=20, layer_indices=None)
 ```
 
 #### Best Practices for Selective Width Pruning
@@ -467,23 +689,25 @@ pruned_model = prune_model(model, pruning_percentage=20, layer_indices=None)
    ```python
    num_layers = len(model.model.layers)
    middle_layers = list(range(1, num_layers - 1))
-   pruned_model = prune_model(model, pruning_percentage=30, layer_indices=middle_layers)
+    pruned_model = opf.prune_model(model, pruning_percentage=30, layer_indices=middle_layers)
    ```
 
 2. **Use Layer Importance Analysis**: Identify less important layers before selective pruning
    ```python
-   from optipfair import analyze_layer_importance
-   
-   importance_scores = analyze_layer_importance(model, dataloader)
+    import optipfair as opf
+
+    importance_scores = opf.analyze_layer_importance(model, dataloader)
    sorted_layers = sorted(importance_scores.items(), key=lambda x: x[1])
    least_important = [idx for idx, score in sorted_layers[:10]]
    
-   pruned_model = prune_model(model, pruning_percentage=25, layer_indices=least_important)
+    pruned_model = opf.prune_model(model, pruning_percentage=25, layer_indices=least_important)
    ```
 
 3. **Combine with Data-Driven Pruning**: Use calibration data for selected layers
-   ```python
-   pruned_model = prune_model(
+    ```python
+    import optipfair as opf
+
+    pruned_model = opf.prune_model(
        model=model,
        neuron_selection_method="MAW",
        pruning_percentage=20,
@@ -496,13 +720,13 @@ pruned_model = prune_model(model, pruning_percentage=20, layer_indices=None)
 4. **Test Different Strategies**: Experiment with different layer selections
    ```python
    # Strategy 1: Prune early layers
-   early_pruned = prune_model(model, pruning_percentage=20, layer_indices=list(range(0, 10)))
+    early_pruned = opf.prune_model(model, pruning_percentage=20, layer_indices=list(range(0, 10)))
    
    # Strategy 2: Prune middle layers
-   middle_pruned = prune_model(model, pruning_percentage=20, layer_indices=list(range(10, 20)))
+    middle_pruned = opf.prune_model(model, pruning_percentage=20, layer_indices=list(range(10, 20)))
    
    # Strategy 3: Prune alternating layers
-   alternating_pruned = prune_model(model, pruning_percentage=20, layer_indices=list(range(0, 32, 2)))
+    alternating_pruned = opf.prune_model(model, pruning_percentage=20, layer_indices=list(range(0, 32, 2)))
    
    # Evaluate each to find the best strategy for your use case
    ```
@@ -514,7 +738,7 @@ OptiPFair supports three methods for selecting which layers to remove during dep
 1. **Last (default)** - Removes layers from the end of the model. Generally provides the best performance retention.
 
    ```python
-   pruned_model = prune_model(
+    pruned_model = opf.prune_model(
        model=model,
        pruning_type="DEPTH",
        num_layers_to_remove=3,
@@ -525,7 +749,7 @@ OptiPFair supports three methods for selecting which layers to remove during dep
 2. **First** - Removes layers from the beginning of the model.
 
    ```python
-   pruned_model = prune_model(
+    pruned_model = opf.prune_model(
        model=model,
        pruning_type="DEPTH",
        num_layers_to_remove=3,
@@ -536,7 +760,7 @@ OptiPFair supports three methods for selecting which layers to remove during dep
 3. **Custom** - Removes specific layers by index (automatically set when using `layer_indices`).
 
    ```python
-   pruned_model = prune_model(
+    pruned_model = opf.prune_model(
        model=model,
        pruning_type="DEPTH",
        layer_indices=[2, 5, 8]  # Remove layers 2, 5, and 8
@@ -560,6 +784,18 @@ The process consists of three phases:
 
 **Phase 2: Hybrid Importance Calculation**
 
+⚠️  **Important Note on Method Selection:**
+The hybrid importance calculation ALWAYS uses PPM (Peak-to-Peak Magnitude) internally,
+regardless of which neuron_selection_method parameter is specified. This means:
+- When using dataloader with neuron_selection_method="MAW" (PPM), you get:
+  * Structural importance: PPM-based weights + activations (HYBRID)
+  * Dynamic importance: Activation norms from calibration
+- Other methods (VOW, PON) do NOT support data-driven pruning with dataloader
+- Data-driven pruning is only compatible with PPM/'MAW' method
+
+This design ensures the most effective hybrid approach combines PPM's superior
+weight range analysis with activation-driven pruning decisions.
+
 The importance score combines three components (CFSP Equation 8):
 - **Component 1 (down_proj)**: Weights × Activations (DATA-DRIVEN)
 - **Component 2 (up_proj)**: Weight magnitudes only (STATIC)
@@ -575,6 +811,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from datasets import load_dataset
 from torch.utils.data import DataLoader
 import torch
+import optipfair as opf
 
 # Load model
 model = AutoModelForCausalLM.from_pretrained(
@@ -613,7 +850,7 @@ dataset = TensorDataset(inputs['input_ids'], inputs['attention_mask'])
 calibration_loader = DataLoader(dataset, batch_size=8, shuffle=False)
 
 # Apply data-driven pruning
-pruned_model, stats = prune_model(
+pruned_model, stats = opf.prune_model(
     model=model,
     pruning_type="MLP_GLU",
     neuron_selection_method="MAW",
@@ -635,7 +872,7 @@ tokenizer.save_pretrained("./medical-llama-pruned-20")
 #### Comparing Static vs Data-Driven Pruning
 ```python
 # Prune with static method (weights only)
-static_pruned = prune_model(
+static_pruned = opf.prune_model(
     model=model,
     neuron_selection_method="MAW",
     pruning_percentage=20,
@@ -643,7 +880,7 @@ static_pruned = prune_model(
 )
 
 # Prune with data-driven method (weights + activations)
-datadriven_pruned = prune_model(
+datadriven_pruned = opf.prune_model(
     model=model,
     neuron_selection_method="MAW",
     pruning_percentage=20,
@@ -683,17 +920,19 @@ datadriven_pruned = prune_model(
 
 #### Error Handling
 ```python
-# Only MAW supports dataloader
+# Only PPM (parameter "MAW") supports dataloader
 try:
-    pruned = prune_model(
+    import optipfair as opf
+
+    pruned = opf.prune_model(
         model=model,
         neuron_selection_method="VOW",  # Not supported
         dataloader=calibration_loader
     )
 except ValueError as e:
     print(f"Error: {e}")
-    # Use MAW instead
-    pruned = prune_model(
+    # Use PPM (parameter "MAW") instead
+    pruned = opf.prune_model(
         model=model,
         neuron_selection_method="MAW",
         dataloader=calibration_loader
@@ -1042,7 +1281,9 @@ The `analyze_layer_importance` function automatically detects transformer layers
 
 ```python
 # Manual architecture specification
-importance_scores = analyze_layer_importance(
+import optipfair as opf
+
+importance_scores = opf.analyze_layer_importance(
     model=model,
     dataloader=dataloader,
     layers_path='transformer.h',  # For GPT-2 style models
@@ -1050,7 +1291,7 @@ importance_scores = analyze_layer_importance(
 )
 
 # Automatic detection works for most models
-importance_scores = analyze_layer_importance(
+importance_scores = opf.analyze_layer_importance(
     model=model,
     dataloader=dataloader,
     show_progress=False  # Disable progress bar
@@ -1063,7 +1304,7 @@ Use importance scores to make informed depth pruning decisions:
 
 ```python
 # Step 1: Analyze layer importance
-importance_scores = analyze_layer_importance(model, dataloader)
+importance_scores = opf.analyze_layer_importance(model, dataloader)
 
 # Step 2: Identify least important layers
 sorted_layers = sorted(importance_scores.items(), key=lambda x: x[1])
@@ -1073,7 +1314,7 @@ for layer_idx, score in sorted_layers[:5]:
 
 # Step 3: Apply depth pruning to remove least important layers
 layers_to_remove = [layer_idx for layer_idx, score in sorted_layers[:4]]
-pruned_model = prune_model(
+pruned_model = opf.prune_model(
     model=model,
     pruning_type="DEPTH",
     layer_indices=layers_to_remove
@@ -1110,7 +1351,7 @@ datasets = {
 
 for dataset_name, dataset in datasets.items():
     dataloader = prepare_dataloader(dataset)  # Your tokenization function
-    scores = analyze_layer_importance(model, dataloader)
+    scores = opf.analyze_layer_importance(model, dataloader)
     
     print(f"\n{dataset_name} - Top 3 most important layers:")
     sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
@@ -1160,7 +1401,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from torch.utils.data import DataLoader
 from datasets import load_dataset
-from optipfair import prune_model, analyze_layer_importance
+import optipfair as opf
 from optipfair.bias import visualize_bias
 
 # Load model and tokenizer
@@ -1178,7 +1419,7 @@ dataloader = DataLoader(tokenized_dataset, batch_size=8)
 
 # Step 1: Analyze layer importance
 print("Analyzing layer importance...")
-importance_scores = analyze_layer_importance(model, dataloader)
+importance_scores = opf.analyze_layer_importance(model, dataloader)
 sorted_layers = sorted(importance_scores.items(), key=lambda x: x[1])
 print("Least important layers:", [f"Layer {idx}: {score:.4f}" for idx, score in sorted_layers[:4]])
 
@@ -1198,14 +1439,14 @@ _, original_metrics = visualize_bias(
 # Step 4: Apply informed depth pruning based on layer analysis
 print("\nApplying depth pruning based on importance analysis...")
 layers_to_remove = [layer_idx for layer_idx, score in sorted_layers[:3]]  # Remove 3 least important
-pruned_model_informed, stats_informed = prune_model(
+pruned_model_informed, stats_informed = opf.prune_model(
     model=model, pruning_type="DEPTH", layer_indices=layers_to_remove,
     show_progress=True, return_stats=True
 )
 
 # Step 5: Apply standard depth pruning for comparison
 print("\nApplying standard depth pruning...")
-pruned_model_standard, stats_standard = prune_model(
+pruned_model_standard, stats_standard = opf.prune_model(
     model=model, pruning_type="DEPTH", num_layers_to_remove=3,
     layer_selection_method="last", show_progress=True, return_stats=True
 )
@@ -1329,6 +1570,244 @@ for i, prompt_pair in enumerate(selected_pairs):
         )
 ```
 
+## Fairness-Aware Pruning (NEW in v0.3.0)
+
+OptiPFair v0.3.0 introduces comprehensive fairness-aware pruning capabilities that combine neuron bias analysis with pruning decisions. Instead of pruning based solely on static weight magnitudes, you can now prune neurons while considering their contribution to bias across demographic groups.
+
+### Overview
+
+The fairness-aware pruning workflow consists of two main steps:
+
+1. **Neuron-Level Bias Analysis** (`analyze_neuron_bias`): Compute bias scores for individual neurons across multiple demographic prompt pairs
+2. **Fairness-Aware Pruning Scores** (`compute_fairness_pruning_scores`): Combine bias scores with importance scores to create balanced pruning decisions
+
+### Step 1: Analyzing Neuron Bias
+
+The `analyze_neuron_bias()` function calculates per-neuron bias scores across multiple prompt pairs that differ only in demographic attributes:
+
+```python
+from optipfair.bias import analyze_neuron_bias
+import optipfair as opf
+
+# Define prompt pairs that differ in demographic attributes
+prompt_pairs = [
+    (
+        "The male nurse helped the patient recover. The doctor recommended",
+        "The female nurse helped the patient recover. The doctor recommended"
+    ),
+    (
+        "The white scientist discovered a new element. The laboratory director said",
+        "The Black scientist discovered a new element. The laboratory director said"
+    ),
+    (
+        "The young engineer designed the bridge. The supervisor praised",
+        "The old engineer designed the bridge. The supervisor praised"
+    ),
+]
+
+# Analyze bias at the neuron level
+bias_scores = analyze_neuron_bias(
+    model=model,
+    tokenizer=tokenizer,
+    prompt_pairs=prompt_pairs,
+    target_layers=["gate_proj", "up_proj"],  # Analyze these layer types
+    aggregation="mean",                       # "mean" or "max" across sequence length
+    batch_size=4,
+    show_progress=True
+)
+
+# bias_scores is a Dict[str, Tensor] mapping layer names to bias tensors
+# Example: {"gate_proj_layer_5": tensor(...), "up_proj_layer_5": tensor(...), ...}
+print(f"Analyzed {len(bias_scores)} layers")
+print(f"Example - {list(bias_scores.keys())[0]}: shape {bias_scores[list(bias_scores.keys())[0]].shape}")
+```
+
+**Parameters explanation:**
+
+- `model`: Your HuggingFace CausalLM with GLU architecture
+- `tokenizer`: Matching tokenizer for encoding prompts
+- `prompt_pairs`: List of (prompt1, prompt2) tuples. Each pair should differ only in the demographic attribute being tested
+- `target_layers`: Which layer projections to analyze — `["gate_proj", "up_proj"]` covers GLU MLP components
+- `aggregation`: How to aggregate bias across sequence positions:
+  - `"mean"`: Average bias across all token positions (default, more stable)
+  - `"max"`: Maximum bias in any position (captures peaks, more sensitive)
+- `batch_size`: Batch size for processing prompt pairs (adjust based on GPU memory)
+- `show_progress`: Display progress bar while processing
+
+### Step 2: Computing Fairness Pruning Scores
+
+Once you have bias scores, combine them with importance scores to create balanced pruning decisions:
+
+```python
+from optipfair.bias import compute_fairness_pruning_scores
+import optipfair as opf
+
+# Compute fairness pruning scores
+# Balances bias (don't prune highly-biased neurons) with importance (prune non-essential neurons)
+fairness_scores = compute_fairness_pruning_scores(
+    model=model,
+    bias_scores=bias_scores,
+    bias_weight=0.4  # Weight between 0.0 (importance-only) and 1.0 (bias-only)
+)
+
+# fairness_scores is a Dict[int, Tensor] mapping layer indices to fairness score tensors
+# Higher scores = neurons that are safe to prune (low bias, low importance)
+print(f"Computed scores for {len(fairness_scores)} layers")
+```
+
+**Understanding the bias_weight parameter:**
+
+The fairness pruning score combines two factors:
+
+$$\text{FairnessPruningScore} = \text{bias\_weight} \times \text{BiasScore}_{\text{norm}} + (1 - \text{bias\_weight}) \times (1 - \text{ImportanceScore}_{\text{norm}})$$
+
+- `bias_weight=0.0`: Prune based on importance only (ignore bias) — standard pruning
+- `bias_weight=0.5`: Equal weight to bias and importance — balanced approach (recommended)
+- `bias_weight=1.0`: Prune based on bias only (preserve important but biased neurons)
+
+**Common configurations:**
+
+| bias_weight | Use Case |
+|-------------|----------|
+| 0.2 | Performance-critical: minimize quality loss, secondary fairness concerns |
+| **0.4-0.5** | **Balanced: good compression + fairness improvement (RECOMMENDED)** |
+| 0.7 | Fairness-critical: reduce bias even if losing some performance |
+| 1.0 | Bias elimination: prioritize fairness over all else |
+
+### Step 3: Fairness-Aware Pruning
+
+Use the fairness scores to guide pruning decisions:
+
+```python
+# Option 1: Use fairness scores directly with prune_model
+# (Adapt this to your pruning function if using custom pruning)
+from optipfair.pruning.mlp_glu import prune_model_mlp_glu
+
+# Prune using fairness scores to identify which neurons to remove
+pruned_model = prune_model_mlp_glu(
+    model=model,
+    neuron_selection_method="MAW",
+    pruning_percentage=20,  # Remove 20% of neurons
+    # Note: Current version performs pruning with static weights
+    # Fairness scores can be used to post-process or guide selective pruning
+)
+
+# Option 2: Selective fairness-aware pruning per layer
+# Prune high-score neurons (safe to remove) from each layer
+import torch
+
+fairness_threshold = 0.5  # Prune neurons with score > threshold
+
+for layer_idx, layer_scores in fairness_scores.items():
+    neurons_to_prune = (layer_scores > fairness_threshold).nonzero(as_tuple=True)[0]
+    print(f"Layer {layer_idx}: Identified {len(neurons_to_prune)} neurons to prune based on fairness")
+```
+
+### Complete Example: End-to-End Fairness-Aware Pruning
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import optipfair as opf
+from optipfair.bias import analyze_neuron_bias, compute_fairness_pruning_scores
+
+# 1. Load model
+model_name = "meta-llama/Llama-3.2-1B"
+model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+# 2. Define demographic attribute test pairs
+prompt_pairs = [
+    ("The male nurse was very helpful. Patients said", 
+     "The female nurse was very helpful. Patients said"),
+    ("John, a Christian, wrote the proposal. The board said",
+     "Mohammad, a Muslim, wrote the proposal. The board said"),
+    ("The wealthy couple needed assistance. The advisor suggested",
+     "The poor couple needed assistance. The advisor suggested"),
+]
+
+# 3. Analyze neuron-level bias
+print("Analyzing neuron bias...")
+bias_scores = analyze_neuron_bias(
+    model=model,
+    tokenizer=tokenizer,
+    prompt_pairs=prompt_pairs,
+    target_layers=["gate_proj", "up_proj"],
+    aggregation="mean",
+    batch_size=4,
+    show_progress=True
+)
+
+# 4. Compute fairness pruning scores
+print("Computing fairness pruning scores...")
+fairness_scores = compute_fairness_pruning_scores(
+    model=model,
+    bias_scores=bias_scores,
+    bias_weight=0.45  # Balanced approach
+)
+
+# 5. Analyze results
+print("\n=== Fairness Analysis Results ===")
+for layer_idx, scores in fairness_scores.items():
+    safe_neurons = (scores > 0.75).sum().item()  # High score = safe to prune
+    print(f"Layer {layer_idx}: {safe_neurons} neurons safe to prune (score > 0.75)")
+
+# 6. Perform standard pruning (separate step, using analysis above for understanding)
+print("\nPerforming standard pruning...")
+pruned_model, stats = opf.prune_model(
+    model=model,
+    pruning_type="MLP_GLU",
+    neuron_selection_method="MAW",
+    pruning_percentage=15,
+    show_progress=True,
+    return_stats=True
+)
+
+# 7. Evaluate results (pseudo-code)
+# You would then evaluate:
+# - Pruning statistics (parameter reduction, latency improvement)
+# - Model performance (benchmark scores)
+# - Changes in bias metrics (re-run analyze_neuron_bias and compare)
+print("Pruning complete. Now evaluate performance and bias metrics.")
+```
+
+### Example Notebook
+
+For a complete working example with visualization and detailed analysis, see:
+- [fairness_aware_pruning_demo.ipynb](examples/fairness_aware_pruning_demo.ipynb)
+
+### Common Patterns
+
+**Pattern 1: Identify Most Biased Neurons**
+```python
+# Find neurons with high bias across the model
+all_biases = torch.cat([scores.flatten() for scores in bias_scores.values()])
+tolerance = all_biases.quantile(0.95)  # Top 5% most biased
+print(f"Neurons with extreme bias (>95th percentile): {(all_biases > tolerance).sum()}")
+```
+
+**Pattern 2: Layer-Specific Fairness Analysis**
+```python
+# Analyze which layers are most biased
+layer_bias_means = {
+    layer_name: scores.mean().item() 
+    for layer_name, scores in bias_scores.items()
+}
+
+most_biased_layer = max(layer_bias_means, key=layer_bias_means.get)
+print(f"Most biased layer: {most_biased_layer} (mean bias: {layer_bias_means[most_biased_layer]:.4f})")
+```
+
+**Pattern 3: Fairness-Aware Selective Pruning**
+```python
+# Only prune specific layers based on fairness profile
+layers_to_prune = ["gate_proj_layer_5", "gate_proj_layer_10", "up_proj_layer_8"]
+selective_pruning_config = {
+    layer: fairness_scores.get(layer, None) 
+    for layer in layers_to_prune
+}
+# Use config to guide selective pruning on specific layers
+```
+
 ## Roadmap and Future Extensions
 
 According to the roadmap, OptiPFair has several planned extensions:
@@ -1345,18 +1824,22 @@ According to the roadmap, OptiPFair has several planned extensions:
 - **Attention Mechanism Pruning**: Implement pruning techniques for attention layers
 - **Transformer Block Pruning**: Implement pruning techniques for entire transformer blocks
 
-### Version 0.3.0
-- **Comprehensive Benchmarks**: Add integration with common LLM benchmarks
-- **NO GLU Models**: Implement pruning techniques for older models (no GLU)
-- **Improved Documentation**: Add more examples and tutorials
+### Version 0.3.0 (Released - 2 March 2026)
+- **Fairness-Aware Pruning**: Combine bias analysis with pruning decisions ✓
+  - `analyze_neuron_bias()` - Analyze per-neuron bias across demographic groups
+  - `compute_fairness_pruning_scores()` - Create balanced pruning scores combining bias + importance
+  - Configurable bias_weight parameter for adjusting fairness vs. performance trade-offs
+- **Enhanced Documentation**: Comprehensive examples for fairness-aware workflows ✓
+- **Planned for Future**: Comprehensive Benchmarks, NO GLU model support
 
 ### Longer-term Goals
 - **Configuration Presets**: Pre-optimized pruning configurations
-- **Fairness Pruning**: Pruning techniques that consider bias
 - **Distributed Pruning**: Support for pruning very large models
 - **Dynamic Pruning**: Runtime pruning based on inference context
-- **Knowledge Distillation**: Integration with knowledge distillation
+- **Knowledge Distillation**: Python API available (`opf.distill_model`); future work includes CLI integration and extended KD recipes ✓
 - **Automated Pruning**: Algorithms to determine optimal pruning parameters
+- **NO GLU Models**: Implement pruning techniques for older models (no GLU)
+- **Comprehensive Benchmarks**: Add integration with common LLM benchmarks
 
 ## Troubleshooting
 
