@@ -73,35 +73,32 @@
 
 ---
 
-## Phase 2: Detection and Pruning (Intervention with OptiPFair)
+### ✅ 2.1. Neuron Detection via Differential Activation Analysis
 
-**Objective:** Identify bias-encoding neurons and generate pruned model variants
-
-### 🔄 2.1. Neuron Detection via Differential Activation Analysis
-
-**Status:** IN PROGRESS  
-**Estimation:** 25-30 hours  
+**Status:** COMPLETED
+**Estimation:** 25-30 hours
 **Description:** Use OptiPFair to map neurons that differentially activate under biased vs. neutral stimuli
 
 #### Subtasks:
 
-**A. Prompt Pair Dataset** ✔
+**A. Prompt Pair Dataset** ✅
 - Minimal pairs for each bias category, each pair differing only in the demographic attribute
 - **Hard constraint:** Both prompts in a pair must tokenize to the same length (Llama-3.2-1B tokenizer), required for position-by-position activation comparison
 - Token verification script: `scripts/token_verification.py`
 - Published on HuggingFace:
   - English: `oopere/fairness-pruning-pairs-en` (75 pairs, 6 categories)
   - Spanish: `oopere/fairness-pruning-pairs-es` (100 pairs, 5 categories)
+- Full construction process documented in `datasets/README.md` and replicable from `datasets/` in the repository
 - Categories: PhysicalAppearance, Gender, Age, RaceEthnicity, Religion, SES (EN only)
 - Social contexts per template: labour, institutional, healthcare, social, educational
 
-**B. Activation Capture and Neuron Scoring with OptiPFair** ✔ (Llama-1B, Llama-3B)
+**B. Activation Capture and Neuron Scoring with OptiPFair** ✅
 - Library: `optipfair` — `analyze_neuron_bias` + `compute_fairness_pruning_scores`
 - For each prompt pair, activations captured at:
   - Gate projection (`gate_proj_layer_N`)
   - Up projection (`up_proj_layer_N`)
 - Aggregation: `mean` across sequence positions
-- Models completed: Llama-3.2-1B ✔, Llama-3.2-3B ✔, Salamandra-2B ⬜
+- Models completed: Llama-3.2-1B ✅, Llama-3.2-3B ✅, Salamandra-2B ✅
 
 **Neuron Scoring:**
 
@@ -119,52 +116,68 @@ where bias_weight = 0.45 (balanced, slight edge toward structural importance)
 → High score = high bias sensitivity + low structural importance → PRUNE CANDIDATE
 ```
 
-**C. Preliminary Findings (Llama-1B and Llama-3B, EN)** ✔
+**C. Bias Path Analysis** ✅
+- Notebook: `notebooks/05_bias_path_analysis.ipynb`
+- Covers Sprints 1–4: data consolidation, Layer × Category heatmaps, Jaccard overlap, cross-lingual consistency, cross-model comparison
+- Input: `results/neuron_analysis/{model}/{lang}/{Category}_bias_scores.json`
+- Output: `results/figures/bias_path/` (PNG + PDF, 300 dpi)
 
-Key finding: **each bias category has a distinct dominant layer**, suggesting category-specific neural circuits rather than a universal bias circuit.
+**Sprint 1 — Data Consolidation, Validation & Normalization** ✅
+- Load and validate all bias score files for all models and languages
+- Min-Max normalization per category (global across all layers and neurons)
+- Top-K extraction at three thresholds: Top-0.1%, Top-1%, Top-5%
 
-| Category | Dominant layer(s) | Notes |
-|----------|------------------|-------|
-| PhysicalAppearance | 0, 1 | Early layers, surface representations |
-| Gender | 0 | Extremely concentrated (>70% of candidates in layer 0 for 3B) |
-| Age | 13, 22 | Mid-to-late layers |
-| RaceEthnicity | 0, 1, 13 | Bimodal distribution |
-| Religion | 14 (1B), 25 (3B) | Deepest layers; shifts with model scale |
-| SES | 12, 13 | Late-mid layers |
+**Sprint 2 — Bias Path Visualization** ✅
+- Layer × Category heatmap per model and language: three panels (gate_proj | up_proj | GLU combined)
+- Cross-model comparison heatmap: Llama-1B vs Llama-3B vs Salamandra-2B side by side on relative depth axis
+- Layer × Neuron-bin heatmap: spatial localization of bias signal within each layer, for all model × language × category combinations (bin_size=512)
+- Violin plots: removed — information more effectively conveyed by neuron heatmaps
 
-- N-way intersection across all 6 categories at 0.5% global threshold: **1 neuron** shared, consistently in layer 2
-- Bias circuits are **category-specific**, not universal — each type of demographic bias resides in different model depths
-- At larger scale (3B), bias circuits migrate toward deeper layers and become more concentrated
+**Sprint 3 — Overlap Analysis** ✅
+- Jaccard Index matrices between all category pairs, at Top-0.1%, Top-1% and Top-5%
+- N-way intersection across all categories simultaneously
+- Cross-lingual consistency: EN vs ES Jaccard per category and model
 
-**D. Qualitative Generation** ⬜
-- Notebook: `04_prompt_pair_generations.ipynb`
-- Generate model completions for all prompt pairs before pruning
-- Decoding: greedy (`do_sample=False`), `max_new_tokens=50`, `repetition_penalty=1.1`
-- Saved to: `results/generations/{model}/{dataset}/`
-- Purpose: qualitative evidence of bias pre-pruning; comparison baseline for post-pruning analysis
+**Sprint 4 — Cross-Model Summary** ✅
+- Dominant layers table by model, category and projection (gate_proj, English)
+- Visual cross-model comparison figures already generated in Sprint 2
 
-**E. Cross-Model Consistency Analysis (RQ1)** ⬜ (partial)
-- Compare neuron fairness score rankings between:
-  - Llama-3.2-1B vs. Llama-3.2-3B *(data available, formal analysis pending)*
-  - Llama-3.2-1B vs. Salamandra-2B *(pending Salamandra analysis)*
-- Metric: Spearman rank correlation coefficient
-- Hypothesis: ρ > 0.5 indicates consistent bias localization across architectures
+**Key findings from Phase 2.1:**
 
-**F. Cross-Bias Overlap Analysis (RQ2)** ⬜ (partial)
-- Top candidate intersection across all categories computed interactively
-- Formal Jaccard Index calculation and visualization pending
-- Preliminary result: very low N-way overlap confirms category-specific circuits
+| Finding | Detail |
+|---------|--------|
+| Dominant layers | Consistently final ~25% of each model across all architectures: L13-L15 (1B), L24-L27 (3B), L21-L23 (Salamandra) |
+| PhysicalAppearance | Dominant category in all models and languages; coherent signal across both GLU projections → strongest pruning candidate |
+| Gender | Sparse high-intensity encoding; few extreme outlier neurons, largely language-agnostic (highest cross-lingual Jaccard: 0.29-0.32) |
+| Age | Weakest and least consistent category; signal not jointly sustained by both projections |
+| Category circuits | Near-zero pairwise Jaccard (< 0.16) confirms category-specific bias circuits, not a universal bias circuit |
+| N-way shared neurons | 24–68 neurons (Top-1%) shared across all categories simultaneously — less than 0.05% of the neuron pool |
+| Salamandra Religion (ES) | Religion becomes dominant category at deepest layers in Spanish — unique inversion not observed in Llama models |
+| Cross-lingual | Bias localization pattern (dominant layers, category ranking) is structurally consistent across languages, but specific neurons differ |
+
+**D. Cross-Model Consistency Analysis (RQ1)** ✅
+- Visual and numerical evidence from Sprint 2 (side-by-side heatmaps) and Sprint 4 (dominant layers table)
+- Dominant layer positions are scale-invariant across all three architectures
+- Spearman ρ between neuron rankings excluded: direct neuron-to-neuron comparison across architectures with different layer counts and neuron pool sizes requires non-trivial alignment methodology that would not add substantive information beyond the visual and tabular evidence already available
+
+**E. Cross-Bias Overlap Analysis (RQ2)** ✅
+- Jaccard Index computed for all category pairs at three thresholds, for all models and languages
+- N-way intersection confirms: less than 0.05% of neurons are shared across all five categories simultaneously
+- Finding: bias circuits are category-specific, not universal — each demographic bias type resides in a distinct subset of MLP neurons
 
 #### Deliverables:
-- [X] Prompt pair datasets (HuggingFace: EN + ES)
-- [X] Activation capture notebook (`03_neuron_bias_detection_en.ipynb`)
-- [X] Neuron ranking files — Llama-1B EN/ES, Llama-3B EN/ES → `results/neuron_analysis/`
-- [X] `comparison_summary.json` per model/dataset
-- [ ] Neuron ranking files — Salamandra-2B
-- [ ] Qualitative generation notebook + outputs
-- [ ] Cross-model correlation analysis (plots + stats)
-- [ ] Cross-bias overlap analysis (Jaccard Index + plots)
-
+- [x] Prompt pair datasets (HuggingFace: EN + ES)
+- [x] Dataset construction documented in `datasets/README.md`, replicable from repository
+- [x] Neuron ranking files — Llama-1B EN/ES, Llama-3B EN/ES, Salamandra-2B EN/ES → `results/neuron_analysis/`
+- [x] `comparison_summary.json` per model/dataset
+- [x] Bias path analysis notebook (`notebooks/05_bias_path_analysis.ipynb`)
+- [x] Layer × Category heatmaps — all models and languages
+- [x] Cross-model comparison heatmaps (relative depth axis)
+- [x] Layer × Neuron-bin heatmaps — all model × language × category combinations
+- [x] Jaccard overlap matrices — all models, languages and thresholds
+- [x] N-way intersection analysis
+- [x] Cross-lingual consistency table (`cross_lingual_overlap.csv`)
+- [x] Dominant layers summary (`dominant_layers_summary.csv`)
 ---
 
 ### ⬜ 2.2. Fairness-Pruned Model Generation
