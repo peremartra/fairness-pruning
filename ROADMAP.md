@@ -374,94 +374,221 @@ Efficiency_Score = Δ_Bias / (Δ_Capability + 1)
 
 ## Phase 5: Thesis Writing
 
-**Objective:** Produce the academic document
+**Objective:** Produce the academic document in IEEE double-column format (12–14 pages), targeting UIMP defense in July 2026 and subsequent TMLR submission.
 
-### ⬜ 5.1. Introduction & State of the Art
-
-**Estimation:** 25 hours
-
-**A. Introduction (~5 pages)**
-- Motivation: bias in LLMs + limitations of existing mitigation methods
-- Gap: no prior work on bias localization via activation-guided MLP pruning
-- Contribution: novel method + cross-lingual validation
-- Thesis structure overview
-
-**B. State of the Art (~15 pages)**
-1. Bias in LLMs — types, measurement (BBQ, EsBBQ), real-world harms
-2. Bias mitigation — pre/in/post-processing approaches; gap in structural pruning
-3. Neural network pruning — structured vs. unstructured; magnitude-based vs. activation-based
-4. Activation analysis & interpretability — mechanistic interpretability, feature circuits
-5. Multilingual evaluation — native benchmarks vs. translations; cross-lingual bias patterns
-
-#### Deliverables:
-- [X] Introduction draft
-- [ ] State of the Art draft
-- [ ] Reference list (BibTeX)
+**Language note:** Draft in Spanish; English translation at final stage before submission.
 
 ---
 
-### ⬜ 5.2. Experimental Methodology
+### ⬜ 5.1. Abstract
 
-**Estimation:** 15 hours
+**Estimation:** 2 hours  
+**Target length:** ~half column (~150 words)
 
-**Sections:**
-- Method overview + flowchart: Baseline → Detection → Pruning → Evaluation
-- OptiPFair algorithm: activation capture, FairnessPruningScore formula, pruning strategy
-- Models & datasets: Llama-3.2-1B/3B, Salamandra-2B; BBQ, EsBBQ; prompt pair datasets
-- Evaluation protocol: metrics, statistical testing, hardware/software environment
+- Background: bias in LLMs and limitations of post-hoc mitigation
+- Gap: no prior work on activation-guided MLP pruning for fairness
+- Method: differential activation analysis + FairnessPruningScore + selective pruning
+- Key results: bias reduction achieved, capability retention, cross-lingual transfer
+- One-sentence conclusion
 
 #### Deliverables:
-- [X] Methodology chapter draft
-- [ ] Method flowchart
+- [ ] Abstract draft (Spanish)
+- [ ] Abstract final (English)
+
+---
+
+### ⬜ 5.2. Section 1 — Introduction
+
+**Estimation:** 5 hours  
+**Target length:** ~1 page (2 columns)
+
+**Subsections:**
+- **1.1 Motivation** — bias in LLMs: documented harms, real-world deployment risks, limitations of existing mitigation approaches (fine-tuning, prompting, post-hoc filters)
+- **1.2 Gap** — no prior work characterizes demographic bias as spatially localized in MLP neurons that can be surgically removed; existing interpretability work stops at description, not intervention
+- **1.3 Contributions** — three explicit contributions: (1) bias localization evidence across three architectures and two languages, (2) novel FairnessPruningScore combining bias sensitivity and structural importance, (3) empirical validation of ≥15% bias reduction with <5% capability degradation
+- **1.4 Document structure** — one-paragraph roadmap of the remaining sections
+
+#### Deliverables:
+- [ ] Section 1 draft
+
+---
+
+### ⬜ 5.3. Section 2 — Related Work
+
+**Estimation:** 10 hours  
+**Target length:** ~1.5 pages
+
+**Subsection 2.1 — Demographic Bias & Mitigation Strategies**
+- Taxonomy of bias types in LLMs (representation, allocation, stereotype)
+- Measurement benchmarks: BBQ (Parrish et al., 2022), EsBBQ (Ruiz-Fernández et al., 2025) — justify why these two and not others (CrowS-Pairs excluded: methodological justification)
+- Mitigation landscape: pre-processing, in-training (RLHF, DPO), post-processing; gap in structural/surgical approaches
+- Why existing methods are insufficient for deployment-time surgical correction
+
+**Subsection 2.2 — Pruning & Interpretability**
+- Structured vs. unstructured pruning; magnitude-based (Han et al.) vs. activation-based; GLU-specific methods
+- OptiPFair and PPM/MAW method (Martra, 2025 — arXiv:2512.22671); FairnessPruningScore formula as extension
+- Mechanistic interpretability: feature circuits (Anthropic Transformer Circuits), neuron-level analysis
+- Gap: interpretability work describes circuits, pruning work targets efficiency — this work is the first to connect both for fairness
+
+#### Deliverables:
+- [X] Section 2 draft
+- [ ] BibTeX reference list (target: 25–35 references)
+
+---
+
+### ⬜ 5.4. Section 3 — Methodology
+
+**Estimation:** 10 hours  
+**Target length:** ~2 pages
+
+**Subsection 3.1 — Pipeline Overview**
+- End-to-end flow: Baseline → Prompt Pair Construction → Activation Capture → Neuron Scoring → Pruning → Evaluation
+- Pipeline figure (to be produced as vector graphic, placed here)
+
+**Subsection 3.2 — Prompt Pair Datasets**
+- Token-equality hard constraint and its methodological justification
+- Construction procedure: candidate definition → token verification → template design
+- Dataset statistics: EN (75 pairs, 6 categories), ES (100 pairs, 5 categories)
+- Published on HuggingFace; SES exclusion from Spanish justified; CrowS-Pairs exclusion justified here
+
+**Subsection 3.3 — Neuron Bias Detection**
+- GLU combined score (gate × up, normalized): methodological justification over analyzing projections separately
+- `analyze_neuron_bias`: mean absolute differential activation, aggregation across pairs
+- FairnessPruningScore formula with notation:
+$$\text{FPS}_i = \alpha \cdot \hat{B}_i + (1-\alpha) \cdot (1 - \hat{I}_i), \quad \alpha = 0.45$$
+- Importance score via PPM (static, weight-based); why activation-based importance was not used
+
+**Subsection 3.4 — Fairness Pruning**
+- Selective layer pruning via `layer_indices` in OptiPFair
+- Pruning levels: 5%, 10%, 15%, 20%
+- Layer selection rationale derived from Phase 2.1 findings (dominant layers ~final 25%)
+- Decision on symmetric pruning across selected layers (asymmetric discarded for vLLM compatibility — forward-reference to Section 6.2)
+
+**Subsection 3.5 — Evaluation Protocol**
+- Capabilities benchmarks: suite of 12 tasks via lm-evaluation-harness (EN + ES, 0-shot and 5-shot as appropriate)
+- Bias benchmarks: BBQ + EsBBQ, same configuration as baseline
+- Delta metrics: Δ_Bias and Δ_Capability as percentage change from baseline
+- Trade-off efficiency score: Δ_Bias / (Δ_Capability + 1)
+- Statistical testing: bootstrap CI (95%) for all reported deltas
+
+#### Deliverables:
+- [X] Section 3 draft
+- [ ] Pipeline figure (vector, IEEE-ready)
 - [ ] Formal notation document
 
 ---
 
-### ⬜ 5.3. Results & Discussion
+### ⬜ 5.5. Section 4 — Experimental Setup
 
-**Estimation:** 25 hours
+**Estimation:** 3 hours  
+**Target length:** ~0.5 pages
 
-**Sections:**
-- Results organized by RQ (RQ1, RQ2, RQ3)
-- Per-model detailed results
-- Cross-lingual transfer analysis
-- Discussion: interpretation, comparison to related work, unexpected findings
-- Limitations: dataset scope (Western-centric), model size (<4B), MLP-only pruning, no user studies
-- Future work: attention pruning, larger models, more languages, dynamic pruning
+- **Models:** Llama-3.2-1B (primary — 16 layers, 8192 intermediate), Llama-3.2-3B (validation), Salamandra-2B (cross-lingual validation)
+- **Hardware:** Google Colab Pro — NVIDIA L4 (bfloat16) for Llama-3B and Salamandra; T4 (float16) for Llama-1B
+- **Software:** PyTorch 2.x, HuggingFace Transformers, lm-evaluation-harness, optipfair v0.3.x
+- **Reproducibility:** HuggingFace datasets published, tokenizer version pinned (Llama-3.2-1B), seeds fixed, generation config documented (greedy, repetition_penalty=1.1)
 
 #### Deliverables:
-- [ ] Results chapter draft
-- [ ] Discussion chapter draft
-- [ ] Limitations + future work sections
+- [X] Section 4 draft
 
 ---
 
-### ⬜ 5.4. Conclusions & Abstract
+### ⬜ 5.6. Section 5 — Results
 
-**Estimation:** 10 hours
+**Estimation:** 20 hours  
+**Target length:** ~4–5 pages
 
-- Conclusions (~3 pages): restate contributions, answer RQs, broader implications
-- Abstract (~300 words): background, gap, method, key results, conclusion
-- Thesis formatting: UIMP template, TOC, figures, bibliography
+**Subsection 5.1 — Baseline Capabilities and Bias**
+- Capabilities table: 12 benchmarks × 3 models (EN + ES)
+- BBQ + EsBBQ bias baseline: overall, ambiguous, disambiguated per model
+- Cross-lingual accuracy shift (+11–13pp on EsBBQ): note and flag for later discussion
+
+**Subsection 5.2 — Bias Localization Analysis (RQ1 + RQ2)**
+- Layer × Category heatmaps: GLU combined score, one per model
+- Key finding: dominant layers consistently in final ~25% across all three architectures
+- Jaccard matrices: near-zero pairwise overlap confirms category-specific circuits (RQ2)
+- N-way intersection: 24–68 shared neurons at Top-1% across all five categories simultaneously
+- Cross-lingual consistency table: bias localization pattern structurally stable across EN and ES; specific neurons differ
+- Salamandra anomaly: Religion becomes dominant category at deepest layers in Spanish
+
+**Subsection 5.3 — Pruning Results (RQ3)**
+- Results table: Δ_Bias (BBQ) × Δ_Capability (MMLU) × pruning level × model
+- Pareto frontier figure: bias reduction vs. capability loss, annotated "sweet spot"
+- Whether RQ3 target (≥15% bias, <5% capability) is met and at which pruning level
+- Cross-lingual transfer: Δ_Bias (BBQ) vs. Δ_Bias (EsBBQ) — does EN-guided pruning reduce Spanish bias?
+- Bootstrap CI table for primary results
+
+**Subsection 5.4 — Cross-Model Validation**
+- Llama-3B validation: does bias localization pattern hold at scale? Do pruning results generalize?
+- Salamandra-2B validation: cross-architecture and cross-lingual robustness of the method
+- Discussion of scale effects on bias concentration depth
 
 #### Deliverables:
-- [ ] Conclusions chapter
-- [ ] Abstract (Spanish + English)
-- [ ] Formatted thesis PDF
+- [ ] Section 5 draft
+- [ ] All result tables (CSV + LaTeX)
+- [ ] Pareto frontier figure
+- [ ] Cross-lingual transfer figure
+- [ ] Bootstrap CI tables
 
 ---
 
-### ⬜ 5.5. TMLR / Conference Paper (Optional)
+### ⬜ 5.7. Section 6 — Discussion
 
-**Estimation:** 10-15 hours
+**Estimation:** 5 hours  
+**Target length:** ~1 page
 
-- Target venue: TMLR or similar
-- Focus: Llama-3.2-1B primary results + cross-model validation
-- Length and format per venue guidelines
+**Subsection 6.1 — Two Encoding Strategies: Distributed vs. Sparse Bias**
+- Contrast between categories with broad distributed signal (PhysicalAppearance, Age) and categories with sparse high-intensity encoding (Gender — few extreme outlier neurons)
+- Implications for pruning: sparse encoding is harder to detect in layer averages but highly targetable once identified; distributed encoding requires broader intervention
+- Connection to mechanistic interpretability literature
+
+**Subsection 6.2 — Limitations**
+- Dataset scope: Western-centric attributes and social contexts; limited coverage of non-binary gender, intersectional bias, Global South demographics
+- Model size: all models <4B parameters; unknown generalization to larger-scale architectures
+- MLP-only pruning: attention mechanisms not analyzed; potential bias residue in attention heads
+- Asymmetric per-layer pruning discarded for vLLM compatibility — limits precision of intervention
+- No user studies: bias reduction measured via benchmarks only; real-world impact unverified
 
 #### Deliverables:
-- [ ] Paper draft (LaTeX)
+- [ ] Section 6 draft
 
+---
+
+### ⬜ 5.8. Section 7 — Conclusions
+
+**Estimation:** 3 hours  
+**Target length:** ~0.5 pages
+
+**Subsection 7.1 — Answers to RQ1, RQ2, RQ3**
+- RQ1: Yes — bias is spatially localized in the final ~25% of MLP layers; pattern is architecture-invariant across all three models
+- RQ2: Yes — Jaccard < 0.16 across all category pairs; bias circuits are category-specific, not universal
+- RQ3: [outcome pending Phase 3 results] — target ≥15% bias reduction with <5% capability degradation
+
+**Subsection 7.2 — Implications and Future Work**
+- Practical: surgical bias mitigation without retraining, deployable at inference time
+- Theoretical: demographic bias is not uniformly distributed — it is structured and locatable
+- Future work: attention mechanism analysis, SAEs for finer circuit decomposition (Anthropic Transformer Circuits), larger models (>7B), dynamic pruning at inference time, asymmetric per-layer pruning once vLLM compatibility constraints are relaxed
+
+#### Deliverables:
+- [ ] Section 7 draft
+- [ ] Full formatted thesis PDF (IEEE template, Overleaf)
+- [ ] Abstract final version (English, ~150 words)
+
+---
+
+### ⬜ 5.9. TMLR Paper (Post-Defense)
+
+**Estimation:** 10–15 hours
+
+- Condense thesis to TMLR format (~8–10 pages)
+- Focus: Llama-3.2-1B primary results + cross-model validation as secondary
+- Expand Related Work beyond what fits in the thesis
+- Address anticipated reviewer questions (attention mechanisms, larger models, user studies)
+
+#### Deliverables:
+- [ ] TMLR paper draft (LaTeX)
+
+---
 ---
 
 ## Phase 6: Defense Preparation
