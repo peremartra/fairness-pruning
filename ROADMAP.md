@@ -394,7 +394,7 @@ Efficiency_Score = Δ_Bias / (Δ_Capability + 1)
 5. Multilingual evaluation — native benchmarks vs. translations; cross-lingual bias patterns
 
 #### Deliverables:
-- [ ] Introduction draft
+- [X] Introduction draft
 - [ ] State of the Art draft
 - [ ] Reference list (BibTeX)
 
@@ -411,7 +411,7 @@ Efficiency_Score = Δ_Bias / (Δ_Capability + 1)
 - Evaluation protocol: metrics, statistical testing, hardware/software environment
 
 #### Deliverables:
-- [ ] Methodology chapter draft
+- [X] Methodology chapter draft
 - [ ] Method flowchart
 - [ ] Formal notation document
 
