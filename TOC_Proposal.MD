@@ -16,12 +16,10 @@
   - [ ] 1.2 Gap: no prior work on bias localization via activation-guided MLP pruning
   - [ ] 1.3 Contributions
   - [ ] 1.4 Document structure
-
+https://github.com/peremartra/fairness-pruning/blob/main/TOC_Proposal.MD
 - [ ] **2. Related Work** (~1.5 pages)
-  - [ ] 2.1 Bias in LLMs — types, measurement (BBQ, EsBBQ), real-world harms
-  - [ ] 2.2 Bias mitigation — pre/in/post-processing approaches; gap in structural pruning
-  - [ ] 2.3 Neural network pruning — structured vs. unstructured; magnitude-based vs. activation-based
-  - [ ] 2.4 Mechanistic interpretability — feature circuits, activation analysis, SAEs
+  - [ ] 2.1 Demographic Bias & Mitigation strategies 
+  - [ ] 2.2 Pruning & Interpretability
 
 - [ ] **3. Methodology** (~2 pages)
   - [ ] 3.1 Pipeline overview (flow figure)
