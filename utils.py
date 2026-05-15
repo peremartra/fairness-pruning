@@ -387,7 +387,7 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
     # Wrap model for lm-eval
     model_wrapper = HFLM(
         pretrained=model_obj,
-        batch_size=8,
+        batch_size="auto",
         tokenizer=tokenizer,
         device=str(DEVICE)
     )
@@ -728,7 +728,7 @@ def _get_memory_stats(model, device="cuda"):
     
     return stats
 
-def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None):
+def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None, limit=None):
     """
     Run evaluation with checkpoint/resume support for Colab disconnections.
     
@@ -821,7 +821,7 @@ def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=N
             result = model_evaluation(
                 model, tokenizer,
                 tasks=[task],
-                limit=None,
+                limit=limit,
                 save_raw_results=True,  # Enable raw result saving
                 raw_results_dir=raw_results_dir
             )
