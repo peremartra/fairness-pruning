@@ -17,7 +17,7 @@ scipy==1.16.3
 # Repo scripts/tests
 pytest==8.3.5
 PyYAML==6.0.2
-huggingface_hub==1.11.0
+huggingface_hub>=0.34.0,<1.0
 
 # Notebook runtime in VS Code/Colab
 ipykernel==6.29.5
