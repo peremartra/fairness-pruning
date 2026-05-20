@@ -166,5 +166,7 @@
 
 ---
 
+**Stability analysis of top-K neuron rankings**. Given the moderate dataset size (n=55 EN / n=55 ES per language), the robustness of the identified bias-carrying neurons should be quantified before claiming category-level localization. We will perform a leave-one-template-out (LOTO) bootstrap on the top-K rankings derived from down_proj_input activations: for each of the five templates per category, recompute the per-neuron bias scores excluding that template's pairs and measure the rank stability of the top-50 neurons (Kendall's τ and top-K overlap against the full-dataset ranking). The same procedure will be applied per context (labour, institutional, healthcare, social, educational) to disentangle template-specific from context-specific artifacts. Particular attention will be paid to the Religion L15:166 super-neuron in Llama-3.2-1B: if it remains top-1 across all five LOTO folds and across context-leave-one-out folds, the finding is robust to dataset composition and the n=55 limitation cannot be invoked to challenge the localization claim. Results will be reported as a stability table in the Evaluation section, with non-robust rankings flagged explicitly rather than presented as definitive.
+
 **Last Updated:** May 14, 2026  
 **Status:** Phase 1 ✅ | Phase 2.1 ✅ | Phase 2.2 🔄
