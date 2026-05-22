@@ -20,3 +20,5 @@ Liu, Z., Xie, T., & Zhang, X. (2024). Evaluating and Mitigating Social Bias for 
 
 Wagh, A., & Srivastava, S. (2025). "The Dentist is an involved parent, the bartender is not": Revealing Implicit Biases in QA with Implicit BBQ. ArXiv. https://arxiv.org/abs/2512.06732
 
+Kumar, A., Tan, C., & Sharma, A. (2022). Probing Classifiers are Unreliable for Concept Removal and Detection. ArXiv. https://arxiv.org/abs/2207.04153
+
