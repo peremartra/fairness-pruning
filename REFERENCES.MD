@@ -22,3 +22,13 @@ Wagh, A., & Srivastava, S. (2025). "The Dentist is an involved parent, the barte
 
 Kumar, A., Tan, C., & Sharma, A. (2022). Probing Classifiers are Unreliable for Concept Removal and Detection. ArXiv. https://arxiv.org/abs/2207.04153
 
+Turner, A. M., Thiergart, L., Leech, G., Udell, D., Vazquez, J. J., Mini, U., & MacDiarmid, M. (2023). Steering Language Models With Activation Engineering. ArXiv. https://arxiv.org/abs/2308.10248
+
+Zou, A., Phan, L., Chen, S., Campbell, J., Guo, P., Ren, R., Pan, A., Yin, X., Mazeika, M., Dombrowski, A. K., Goel, S., Li, N., Byun, M. J., Wang, Z., Mallen, A., Basart, S., Koyejo, S., Song, D., Fredrikson, M., . . .  Hendrycks, D. (2023). Representation Engineering: A Top-Down Approach to AI Transparency. ArXiv. https://arxiv.org/abs/2310.01405
+
+Turner et al. (2023) — "Steering Language Models With Activation Engineering" (ActAdd)
+https://arxiv.org/abs/2308.10248
+
+Zou et al. (2023) — "Representation Engineering: A Top-Down Approach to AI Transparency"
+https://arxiv.org/abs/2310.01405
+
