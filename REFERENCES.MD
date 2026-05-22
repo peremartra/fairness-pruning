@@ -12,3 +12,11 @@ Previous literature has largely shown that Large Language Models (LLMs) perpetua
       primaryClass={cs.CL},
       url={https://arxiv.org/abs/2507.11216}, 
 }
+
+
+Feder, A., Oved, N., Shalit, U., & Reichart, R. (2020). CausaLM: Causal Model Explanation Through Counterfactual Language Models. ArXiv. https://doi.org/10.1162/coli_a_00404
+
+Liu, Z., Xie, T., & Zhang, X. (2024). Evaluating and Mitigating Social Bias for Large Language Models in Open-ended Settings. ArXiv. https://arxiv.org/abs/2412.06134
+
+Wagh, A., & Srivastava, S. (2025). "The Dentist is an involved parent, the bartender is not": Revealing Implicit Biases in QA with Implicit BBQ. ArXiv. https://arxiv.org/abs/2512.06732
+
