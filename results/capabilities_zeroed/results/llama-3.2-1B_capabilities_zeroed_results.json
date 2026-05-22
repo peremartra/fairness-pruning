@@ -1,0 +1,202 @@
+[
+  {
+    "experiment_id":"exp2",
+    "experiment_name":"Religion | down_bias | Top-20",
+    "n_neurons":5,
+    "task":"wikitext",
+    "metric":"word_perplexity",
+    "baseline":11.9853,
+    "zeroed":12.0329,
+    "retention_pct":99.6
+  },
+  {
+    "experiment_id":"exp2",
+    "experiment_name":"Religion | down_bias | Top-20",
+    "n_neurons":5,
+    "task":"mmlu",
+    "metric":"accuracy",
+    "baseline":0.3198,
+    "zeroed":0.3241,
+    "retention_pct":101.34
+  },
+  {
+    "experiment_id":"exp2",
+    "experiment_name":"Religion | down_bias | Top-20",
+    "n_neurons":5,
+    "task":"arc_challenge",
+    "metric":"acc_norm",
+    "baseline":0.372,
+    "zeroed":0.3643,
+    "retention_pct":97.93
+  },
+  {
+    "experiment_id":"exp2",
+    "experiment_name":"Religion | down_bias | Top-20",
+    "n_neurons":5,
+    "task":"hellaswag",
+    "metric":"acc_norm",
+    "baseline":0.6419,
+    "zeroed":0.6405,
+    "retention_pct":99.78
+  },
+  {
+    "experiment_id":"exp2",
+    "experiment_name":"Religion | down_bias | Top-20",
+    "n_neurons":5,
+    "task":"hellaswag_es",
+    "metric":"acc_norm",
+    "baseline":0.4731,
+    "zeroed":0.4701,
+    "retention_pct":99.37
+  },
+  {
+    "experiment_id":"exp9",
+    "experiment_name":"Age | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"wikitext",
+    "metric":"word_perplexity",
+    "baseline":11.9853,
+    "zeroed":12.1168,
+    "retention_pct":98.91
+  },
+  {
+    "experiment_id":"exp9",
+    "experiment_name":"Age | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"mmlu",
+    "metric":"accuracy",
+    "baseline":0.3198,
+    "zeroed":0.32,
+    "retention_pct":100.06
+  },
+  {
+    "experiment_id":"exp9",
+    "experiment_name":"Age | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"arc_challenge",
+    "metric":"acc_norm",
+    "baseline":0.372,
+    "zeroed":0.3677,
+    "retention_pct":98.84
+  },
+  {
+    "experiment_id":"exp9",
+    "experiment_name":"Age | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"hellaswag",
+    "metric":"acc_norm",
+    "baseline":0.6419,
+    "zeroed":0.6417,
+    "retention_pct":99.97
+  },
+  {
+    "experiment_id":"exp9",
+    "experiment_name":"Age | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"hellaswag_es",
+    "metric":"acc_norm",
+    "baseline":0.4731,
+    "zeroed":0.4713,
+    "retention_pct":99.62
+  },
+  {
+    "experiment_id":"exp10",
+    "experiment_name":"Race | down_bias | Top-5",
+    "n_neurons":5,
+    "task":"wikitext",
+    "metric":"word_perplexity",
+    "baseline":11.9853,
+    "zeroed":12.0191,
+    "retention_pct":99.72
+  },
+  {
+    "experiment_id":"exp10",
+    "experiment_name":"Race | down_bias | Top-5",
+    "n_neurons":5,
+    "task":"mmlu",
+    "metric":"accuracy",
+    "baseline":0.3198,
+    "zeroed":0.3162,
+    "retention_pct":98.87
+  },
+  {
+    "experiment_id":"exp10",
+    "experiment_name":"Race | down_bias | Top-5",
+    "n_neurons":5,
+    "task":"arc_challenge",
+    "metric":"acc_norm",
+    "baseline":0.372,
+    "zeroed":0.366,
+    "retention_pct":98.39
+  },
+  {
+    "experiment_id":"exp10",
+    "experiment_name":"Race | down_bias | Top-5",
+    "n_neurons":5,
+    "task":"hellaswag",
+    "metric":"acc_norm",
+    "baseline":0.6419,
+    "zeroed":0.6421,
+    "retention_pct":100.03
+  },
+  {
+    "experiment_id":"exp10",
+    "experiment_name":"Race | down_bias | Top-5",
+    "n_neurons":5,
+    "task":"hellaswag_es",
+    "metric":"acc_norm",
+    "baseline":0.4731,
+    "zeroed":0.4721,
+    "retention_pct":99.79
+  },
+  {
+    "experiment_id":"exp11",
+    "experiment_name":"Race | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"wikitext",
+    "metric":"word_perplexity",
+    "baseline":11.9853,
+    "zeroed":12.0897,
+    "retention_pct":99.14
+  },
+  {
+    "experiment_id":"exp11",
+    "experiment_name":"Race | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"mmlu",
+    "metric":"accuracy",
+    "baseline":0.3198,
+    "zeroed":0.3204,
+    "retention_pct":100.19
+  },
+  {
+    "experiment_id":"exp11",
+    "experiment_name":"Race | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"arc_challenge",
+    "metric":"acc_norm",
+    "baseline":0.372,
+    "zeroed":0.3652,
+    "retention_pct":98.17
+  },
+  {
+    "experiment_id":"exp11",
+    "experiment_name":"Race | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"hellaswag",
+    "metric":"acc_norm",
+    "baseline":0.6419,
+    "zeroed":0.6417,
+    "retention_pct":99.97
+  },
+  {
+    "experiment_id":"exp11",
+    "experiment_name":"Race | down_bias | Top-20",
+    "n_neurons":20,
+    "task":"hellaswag_es",
+    "metric":"acc_norm",
+    "baseline":0.4731,
+    "zeroed":0.474,
+    "retention_pct":100.19
+  }
+]

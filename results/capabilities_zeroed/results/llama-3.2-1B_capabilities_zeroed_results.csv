@@ -1,0 +1,21 @@
+experiment_id,experiment_name,n_neurons,task,metric,baseline,zeroed,retention_pct
+exp2,Religion | down_bias | Top-20,5,wikitext,word_perplexity,11.9853,12.0329,99.6
+exp2,Religion | down_bias | Top-20,5,mmlu,accuracy,0.3198,0.3241,101.34
+exp2,Religion | down_bias | Top-20,5,arc_challenge,acc_norm,0.372,0.3643,97.93
+exp2,Religion | down_bias | Top-20,5,hellaswag,acc_norm,0.6419,0.6405,99.78
+exp2,Religion | down_bias | Top-20,5,hellaswag_es,acc_norm,0.4731,0.4701,99.37
+exp9,Age | down_bias | Top-20,20,wikitext,word_perplexity,11.9853,12.1168,98.91
+exp9,Age | down_bias | Top-20,20,mmlu,accuracy,0.3198,0.32,100.06
+exp9,Age | down_bias | Top-20,20,arc_challenge,acc_norm,0.372,0.3677,98.84
+exp9,Age | down_bias | Top-20,20,hellaswag,acc_norm,0.6419,0.6417,99.97
+exp9,Age | down_bias | Top-20,20,hellaswag_es,acc_norm,0.4731,0.4713,99.62
+exp10,Race | down_bias | Top-5,5,wikitext,word_perplexity,11.9853,12.0191,99.72
+exp10,Race | down_bias | Top-5,5,mmlu,accuracy,0.3198,0.3162,98.87
+exp10,Race | down_bias | Top-5,5,arc_challenge,acc_norm,0.372,0.366,98.39
+exp10,Race | down_bias | Top-5,5,hellaswag,acc_norm,0.6419,0.6421,100.03
+exp10,Race | down_bias | Top-5,5,hellaswag_es,acc_norm,0.4731,0.4721,99.79
+exp11,Race | down_bias | Top-20,20,wikitext,word_perplexity,11.9853,12.0897,99.14
+exp11,Race | down_bias | Top-20,20,mmlu,accuracy,0.3198,0.3204,100.19
+exp11,Race | down_bias | Top-20,20,arc_challenge,acc_norm,0.372,0.3652,98.17
+exp11,Race | down_bias | Top-20,20,hellaswag,acc_norm,0.6419,0.6417,99.97
+exp11,Race | down_bias | Top-20,20,hellaswag_es,acc_norm,0.4731,0.474,100.19
