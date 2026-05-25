@@ -1,134 +1,45 @@
-# Fairness Pruning: Bias Mitigation through Activation-Guided MLP Width Pruning in Large Language Models
+# Results Directory
 
-This repository contains the evaluation results and benchmarks for the Master's Thesis (TFM) regarding **Fairness Pruning**. The project aims to eliminate or zero out neurons exhibiting high bias but low structural importance using activation-guided pruning.
+This folder contains all generated artifacts for baseline and post-intervention (zeroed) experiments used in the fairness-pruning project.
 
-## Directory Structure
+The purpose of this README is to document the current folder structure and where each type of artifact lives.
+Detailed metric interpretation is intentionally delegated to each subdirectory README.
 
-| Directory | Description |
+## Current Structure
+
+| Path | Purpose |
 | :--- | :--- |
-| `bias-benchmarks-base/` | BBQ (English) and EsBBQ (Spanish) bias benchmark results for unpruned baseline models |
-| `generations/` | Model outputs generated from the HuggingFace prompt-pair datasets |
-| `neuron_analysis/` | Per-neuron bias and fairness scores computed with `optipfair` by comparing prompt pairs |
+| `bias-benchmarks-base/` | Baseline bias benchmark outputs (BBQ + EsBBQ) for unpruned models |
+| `bias-benchmarks-zeroed/` | Post-zeroing benchmark outputs and intervention manifests |
+| `capabilities_zeroed/` | Capability retention evaluations for zeroed variants |
+| `generations/` | Baseline paired generations used as analysis input |
+| `neuron_analysis/` | Per-neuron bias/fairness scores for pruning candidate selection |
+| `figures/bias_path/` | Bias-path visualizations and summary CSVs |
 
-## Evaluated Models
+## Top-Level Files In This Folder
 
-The following models have been evaluated to establish a baseline performance before pruning. The primary model for this study is **Llama-3.2-1B**, while **Llama-3.2-3B** and **Salamandra-2B** serve as reference points for performance and cross-lingual capabilities.
+These files are stored directly under `results/` (outside subfolders):
 
-* **Primary Model:** `meta-llama/Llama-3.2-1B`
-* **Reference (Larger):** `meta-llama/Llama-3.2-3B`
-* **Reference (Multi-lingual):** `BSC-LT/salamandra-2b`
+- Baseline capability result snapshots:
+  - `base_models_results_20251206_150732.json`
+  - `base_models_results_20251206_175322.json`
+- Baseline BBQ aggregate exports:
+  - `base_models_bbq_results_20251207_191101.json`
+  - `base_models_bbq_results_latest.csv`
+- Baseline EsBBQ/model-specific JSON artifacts:
+  - `esbbq_final_results_llama-3.2-1B.json`
+  - `meta_llama_llama_3.2_1b.json`
+  - `meta_llama_llama_3.2_3b.json`
+  - `bsc_lt_salamandra_2b.json`
 
-## Baseline Evaluation Results
+## Subdirectory Documentation
 
-The models were evaluated using `lm_eval` across three main categories: English Core Capabilities, English Reasoning & Knowledge, and Spanish/Cross-Lingual Capabilities.
+Use the README in each subfolder for schemas, provenance, and generation workflow details:
 
-### 1. English Core Capabilities
-Basic language modeling and instruction following performance.
+- `bias-benchmarks-base/README.md`
+- `bias-benchmarks-zeroed/README.md`
+- `capabilities_zeroed/README.md`
+- `generations/README.md`
+- `neuron_analysis/README.md`
+- `figures/bias_path/README.md`
 
-| Metric | Task | Llama-3.2-1B | Llama-3.2-3B | Salamandra-2B |
-| :--- | :--- | :---: | :---: | :---: |
-| **WikiText** | Word Perplexity (↓) | 11.99 | 9.54 | 11.89 |
-| **Lambada** | Perplexity (↓) | 5.43 | 3.88 | 7.27 |
-| **IFEval** | Instruction Strict Acc (↑)| 0.1475 | 0.1199 | 0.1691 |
-
-> **Note:** Lower is better for Perplexity. Higher is better for Accuracy.
-
-### 2. English Reasoning & Knowledge
-Standard benchmarks for reasoning, general knowledge, and truthfulness.
-
-| Task | Metric | Llama-3.2-1B | Llama-3.2-3B | Salamandra-2B |
-| :--- | :--- | :---: | :---: | :---: |
-| **GSM8K** | Exact Match (Strict) | 5.53% | 26.16% | 0.00% |
-| **MMLU** | Accuracy | 31.98% | 57.83% | 25.12% |
-| **ARC-Challenge**| Accuracy (Norm) | 37.20% | 46.16% | 37.37% |
-| **HellaSwag** | Accuracy (Norm) | 64.19% | 74.11% | 62.81% |
-| **TruthfulQA** | Accuracy (MC2) | 38.54% | 39.18% | 35.93% |
-
-#### MMLU Breakdown by Category
-
-| Category | Llama-1B | Llama-3B | Salamandra-2B |
-|----------|----------|----------|---------------|
-| STEM | 29.64% | 48.92% | 24.19% |
-| Humanities | 31.99% | 61.55% | 25.34% |
-| Social Sciences | 34.08% | 66.68% | 25.61% |
-| Other | 32.49% | 55.36% | 25.74% |
-
-
-### 3. Spanish / Cross-Lingual Capabilities
-Benchmarks specifically selected to test performance in Spanish and cross-lingual understanding.
-
-| Task | Metric | Llama-3.2-1B | Llama-3.2-3B | Salamandra-2B |
-| :--- | :--- | :---: | :---: | :---: |
-| **Global MMLU (ES)**| Accuracy | 35.09% | 54.95% | 27.52% |
-| **ARC (ES)** | Accuracy (Norm) | 30.00% | 39.40% | 31.88% |
-| **HellaSwag (ES)** | Accuracy (Norm) | 47.31% | 58.89% | 52.18% |
-| **Belebele** | Accuracy | 32.33% | 56.56% | 25.44% |
-| **VeritasQA (ES)** | Accuracy | 24.08% | 23.23% | 21.25% |
-| **VeritasQA (CA)** | Accuracy | 23.51% | 22.38% | 20.68% |
-
-## Methodology
-
-* **Bias Detection:** The `optipfair` library is used for identifying neurons with high bias contributions. Neuron-level bias and fairness scores are stored in `neuron_analysis/`.
-* **Generation:** Model outputs are produced from prompt pairs in the HuggingFace datasets [`oopere/fairness-pruning-pairs-en`](https://huggingface.co/datasets/oopere/fairness-pruning-pairs-en) and [`oopere/fairness-pruning-pairs-es`](https://huggingface.co/datasets/oopere/fairness-pruning-pairs-es), and stored in `generations/`.
-* **Bias Benchmarks:** BBQ and EsBBQ benchmark evaluations are stored in `bias-benchmarks-base/`.
-* **Evaluation Framework:** All quantitative metrics presented above were generated using the `lm_eval` harness.
-
----
-
-## Generations
-
-Model outputs generated by running the prompt pairs from the HuggingFace datasets through each model. Results are organised by model and language.
-
-**Source datasets:**
-* English: [`oopere/fairness-pruning-pairs-en`](https://huggingface.co/datasets/oopere/fairness-pruning-pairs-en)
-* Spanish: [`oopere/fairness-pruning-pairs-es`](https://huggingface.co/datasets/oopere/fairness-pruning-pairs-es)
-
-**Directory structure:**
-```
-generations/
-├── llama-3.2-1b/
-│   ├── en/
-│   └── es/
-└── llama-3.2-3b/
-    ├── en/
-    └── es/
-```
-
-**Files per language folder:**
-
-| File | Description |
-| :--- | :--- |
-| `{Category}_generations.csv` | Generated responses for each prompt pair, CSV format |
-| `{Category}_generations.json` | Generated responses for each prompt pair, JSON format |
-| `generations_summary.json` | Aggregate summary of all generations for the model/language |
-
-**Categories:** Age, Gender, PhysicalAppearance, RaceEthnicity, Religion
-
----
-
-## Neuron Analysis
-
-Per-neuron bias and fairness scores obtained by running `optipfair` on each model and comparing the responses to the stereotyped vs. anti-stereotyped prompt pairs from the same HuggingFace datasets.
-
-**Directory structure:**
-```
-neuron_analysis/
-├── llama-3.2-1B/
-│   ├── en/
-│   └── es/
-└── llama-3.2-3B/
-    ├── en/
-    └── es/
-```
-
-**Files per language folder:**
-
-| File | Description |
-| :--- | :--- |
-| `{Category}_bias_scores.json` | Neuron-level bias scores, JSON format |
-| `{Category}_bias_scores.pt` | Neuron-level bias scores, PyTorch tensor format |
-| `{Category}_fairness_scores.json` | Neuron-level fairness scores, JSON format |
-| `{Category}_fairness_scores.pt` | Neuron-level fairness scores, PyTorch tensor format |
-| `comparison_summary.json` | Aggregate summary of bias and fairness scores for the model/language |
-
-**Categories:** Age, Gender, PhysicalAppearance, RaceEthnicity, Religion
