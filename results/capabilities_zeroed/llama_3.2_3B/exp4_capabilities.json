@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "model_name": "meta-llama/Llama-3.2-3B",
+    "model_key": "llama-3.2-3B",
+    "experiment_id": "exp4",
+    "experiment_name": "RaceEthnicity | down_bias | Top-20",
+    "n_neurons": 20,
+    "completed": true,
+    "completed_at": "2026-05-26T12:27:43.207244"
+  },
+  "results": {
+    "wikitext": {
+      "word_perplexity,none": "9.7773",
+      "byte_perplexity,none": "1.5317",
+      "bits_per_byte,none": "0.6151"
+    },
+    "mmlu": {
+      "accuracy": "0.5682",
+      "acc_norm": "N/A",
+      "category_STEM": "0.4694",
+      "category_Humanities": "0.6080",
+      "category_Social_Sciences": "0.6618",
+      "category_Other": "0.5488",
+      "subcategories": {
+        "humanities": "0.5061",
+        "formal_logic": "0.3571",
+        "high_school_european_history": "0.7030",
+        "high_school_us_history": "0.7108",
+        "high_school_world_history": "0.7342",
+        "international_law": "0.7355",
+        "jurisprudence": "0.6759",
+        "logical_fallacies": "0.6748",
+        "moral_disputes": "0.6069",
+        "moral_scenarios": "0.2704",
+        "philosophy": "0.6270",
+        "prehistory": "0.6636",
+        "professional_law": "0.4192",
+        "world_religions": "0.7251",
+        "other": "0.6369",
+        "business_ethics": "0.5500",
+        "clinical_knowledge": "0.6415",
+        "college_medicine": "0.5202",
+        "global_facts": "0.3300",
+        "human_aging": "0.6502",
+        "management": "0.7282",
+        "marketing": "0.8120",
+        "medical_genetics": "0.7200",
+        "miscellaneous": "0.7573",
+        "nutrition": "0.6373",
+        "professional_accounting": "0.4468",
+        "professional_medicine": "0.5625",
+        "virology": "0.4940",
+        "social_sciences": "0.6454",
+        "econometrics": "0.3684",
+        "high_school_geography": "0.6970",
+        "high_school_government_and_politics": "0.7513",
+        "high_school_macroeconomics": "0.5615",
+        "high_school_microeconomics": "0.5672",
+        "high_school_psychology": "0.7523",
+        "human_sexuality": "0.6489",
+        "professional_psychology": "0.5948",
+        "public_relations": "0.6455",
+        "security_studies": "0.5837",
+        "sociology": "0.7662",
+        "us_foreign_policy": "0.8000",
+        "stem": "0.4634",
+        "abstract_algebra": "0.3400",
+        "anatomy": "0.5704",
+        "astronomy": "0.5592",
+        "college_biology": "0.6319",
+        "college_chemistry": "0.4400",
+        "college_computer_science": "0.4800",
+        "college_mathematics": "0.3500",
+        "college_physics": "0.2941",
+        "computer_security": "0.7300",
+        "conceptual_physics": "0.4851",
+        "electrical_engineering": "0.5586",
+        "elementary_mathematics": "0.3624",
+        "high_school_biology": "0.6387",
+        "high_school_chemistry": "0.4631",
+        "high_school_computer_science": "0.5400",
+        "high_school_mathematics": "0.3148",
+        "high_school_physics": "0.3311",
+        "high_school_statistics": "0.3657",
+        "machine_learning": "0.4643"
+      }
+    },
+    "arc_challenge": {
+      "accuracy": "0.4232",
+      "acc_norm": "0.4556"
+    },
+    "hellaswag": {
+      "accuracy": "0.5567",
+      "acc_norm": "0.7375"
+    },
+    "hellaswag_es": {
+      "accuracy": "0.4476",
+      "acc_norm": "0.5874"
+    }
+  },
+  "completed": true
+}
