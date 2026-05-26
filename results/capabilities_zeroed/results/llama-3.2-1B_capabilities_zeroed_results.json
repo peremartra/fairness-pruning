@@ -1,7 +1,7 @@
 [
   {
     "experiment_id":"exp2",
-    "experiment_name":"Religion | down_bias | Top-20",
+    "experiment_name":"Religion | down_bias | Top-5",
     "n_neurons":5,
     "task":"wikitext",
     "metric":"word_perplexity",
@@ -11,7 +11,7 @@
   },
   {
     "experiment_id":"exp2",
-    "experiment_name":"Religion | down_bias | Top-20",
+    "experiment_name":"Religion | down_bias | Top-5",
     "n_neurons":5,
     "task":"mmlu",
     "metric":"accuracy",
@@ -21,7 +21,7 @@
   },
   {
     "experiment_id":"exp2",
-    "experiment_name":"Religion | down_bias | Top-20",
+    "experiment_name":"Religion | down_bias | Top-5",
     "n_neurons":5,
     "task":"arc_challenge",
     "metric":"acc_norm",
@@ -31,7 +31,7 @@
   },
   {
     "experiment_id":"exp2",
-    "experiment_name":"Religion | down_bias | Top-20",
+    "experiment_name":"Religion | down_bias | Top-5",
     "n_neurons":5,
     "task":"hellaswag",
     "metric":"acc_norm",
@@ -41,7 +41,7 @@
   },
   {
     "experiment_id":"exp2",
-    "experiment_name":"Religion | down_bias | Top-20",
+    "experiment_name":"Religion | down_bias | Top-5",
     "n_neurons":5,
     "task":"hellaswag_es",
     "metric":"acc_norm",
