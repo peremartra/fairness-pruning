@@ -11,7 +11,7 @@ Detailed metric interpretation is intentionally delegated to each subdirectory R
 | :--- | :--- |
 | `bias-benchmarks-base/` | Baseline bias benchmark outputs (BBQ + EsBBQ) for unpruned models |
 | `bias-benchmarks-zeroed/` | Post-zeroing benchmark outputs and intervention manifests |
-| `capabilities_zeroed/` | Capability retention evaluations for zeroed variants |
+| `capabilities_zeroed/` | Capability retention evaluations for zeroed variants (raw artifacts for Llama-3.2-1B and Llama-3.2-3B; consolidated exports currently for Llama-3.2-1B) |
 | `generations/` | Baseline paired generations used as analysis input |
 | `neuron_analysis/` | Per-neuron bias/fairness scores for pruning candidate selection |
 | `figures/bias_path/` | Bias-path visualizations and summary CSVs |
