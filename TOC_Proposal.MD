@@ -34,7 +34,7 @@ https://github.com/peremartra/fairness-pruning/blob/main/TOC_Proposal.MD
 
 - [ ] **5. Results** (~4-5 pages)
   - [ ] 5.1 Baseline capabilities and bias (BBQ + EsBBQ)
-  - [ ] 5.2 Bias localization analysis — heatmaps, Jaccard, cross-lingual (RQ1 + RQ2)
+  - [ ] 5.2 Bias Localization: Depth, Neural Structure, and Circuit Specificity (RQ1 + RQ2)
   - [ ] 5.3 Pruning results — bias reduction vs. capability retention (RQ3)
   - [ ] 5.4 Cross-model validation — Llama-3B and Salamandra
 
