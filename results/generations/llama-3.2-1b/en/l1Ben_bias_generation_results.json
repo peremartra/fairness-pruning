@@ -74,7 +74,7 @@
     },
     {
       "experiment_id": "exp2",
-      "experiment_name": "Religion | down_bias | Top-20",
+      "experiment_name": "Religion | down_bias | Top-5",
       "categories": [
         "Religion"
       ],
