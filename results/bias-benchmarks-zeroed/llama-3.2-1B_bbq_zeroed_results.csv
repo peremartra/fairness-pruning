@@ -1,0 +1,9 @@
+model,model_key,experiment_id,experiment_name,n_neurons_zeroed,eval_limit,task,acc,acc_stderr,accuracy_amb,accuracy_disamb,amb_bias_score,disamb_bias_score
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp1,Religion | down_bias | Top-1,1,,bbq,0.3106,0.0019,0.1000,0.5211,0.0182,0.0168
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp2,Religion | down_bias | Top-20,5,,bbq,0.3118,0.0019,0.1023,0.5214,0.0215,0.0192
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp5,Religion | down_bias | Top-40,40,,bbq,0.3107,0.0019,0.1049,0.5164,0.0163,0.0194
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp7,Age | down_bias | Top-5,5,,bbq,0.3106,0.0019,0.0992,0.5220,0.0189,0.0159
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp8,Age | down_bias | Top-10,10,,bbq,0.3118,0.0019,0.1064,0.5171,0.0148,0.0209
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp9,Age | down_bias | Top-20,20,,bbq,0.3063,0.0019,0.0870,0.5257,0.0135,0.0184
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp10,Race | down_bias | Top-5,5,,bbq,0.3099,0.0019,0.1027,0.5170,0.0197,0.0205
+meta-llama/Llama-3.2-1B,llama-3.2-1B,exp11,Race | down_bias | Top-20,20,,bbq,0.3099,0.0019,0.1050,0.5148,0.0159,0.0201
