@@ -41,6 +41,9 @@ Note: 02_esbbq_lm_eval_harness.ipynb is kept as a legacy/validation notebook and
 
 ### 02_Evaluate_Base_Capabilities.ipynb
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/02_Evaluate_Base_Capabilities.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/02_Evaluate_Base_Capabilities.ipynb)
+
 Purpose:
 Builds baseline capability metrics for unpruned models.
 
@@ -56,6 +59,9 @@ Main outputs:
 
 ### 02_Evaluate_BBQ.ipynb
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/02_Evaluate_BBQ.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/02_Evaluate_BBQ.ipynb)
+
 Purpose:
 Runs English bias baseline evaluation using BBQ on unpruned models.
 
@@ -69,6 +75,9 @@ Main outputs:
 - BBQ summary CSV
 
 ### 02_Evaluate_MBBQ.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/02_Evaluate_MBBQ.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/02_Evaluate_MBBQ.ipynb)
 
 Purpose:
 Runs Spanish bias baseline evaluation with EsBBQ (MBBQ) across categories.
@@ -86,6 +95,9 @@ Main outputs:
 
 ### 02_esbbq_lm_eval_harness.ipynb (legacy)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/02_esbbq_lm_eval_harness.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/02_esbbq_lm_eval_harness.ipynb)
+
 Purpose:
 Legacy notebook for direct EsBBQ evaluation and metric validation with lm-evaluation-harness.
 
@@ -100,6 +112,9 @@ Status:
 Superseded by 02_Evaluate_MBBQ.ipynb for the current production workflow.
 
 ### 03_neuron_bias_detection_en.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/03_neuron_bias_detection_en.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/03_neuron_bias_detection_en.ipynb)
 
 Purpose:
 Computes neuron-level bias and fairness scores from demographic prompt pairs.
@@ -116,6 +131,9 @@ Main outputs:
 
 ### 04_Graphics_Base_Capabilities.ipynb
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/04_Graphics_Base_Capabilities.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/04_Graphics_Base_Capabilities.ipynb)
+
 Purpose:
 Creates visual analytics for baseline capability benchmarks.
 
@@ -129,6 +147,9 @@ Main outputs:
 - Summary metrics CSV in results/figures/
 
 ### 04_Graphics_Bias_BBQ.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/04_Graphics_Bias_BBQ.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/04_Graphics_Bias_BBQ.ipynb)
 
 Purpose:
 Visualizes bias behavior across BBQ (English) and EsBBQ (Spanish).
@@ -144,6 +165,9 @@ Main outputs:
 
 ### 05_bias_path_analysis.ipynb
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/05_bias_path_analysis.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/05_bias_path_analysis.ipynb)
+
 Purpose:
 Analyzes where bias is localized in model depth and neuron space.
 
@@ -157,6 +181,9 @@ Main outputs:
 - Figures and analysis CSVs in results/figures/bias_path/
 
 ### 06_zero_bias_neurons.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/06_zero_bias_neurons.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/06_zero_bias_neurons.ipynb)
 
 Purpose:
 Builds a fairness-zeroed model by silencing shared high-bias neurons.
@@ -173,6 +200,9 @@ Main outputs:
 
 ### 07_EvalPrunedModels.ipynb
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/07_EvalPrunedModels_Llama3B.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/07_EvalPrunedModels_Llama3B.ipynb)
+
 Purpose:
 Evaluates English BBQ and selected capability tasks on zeroed Llama-3.2-1B variants.
 
@@ -188,6 +218,9 @@ Main outputs:
 
 ### 08_EvalLlamaPrunedEsp.ipynb
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/08_EvalLlamaPrunedEsp.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/08_EvalLlamaPrunedEsp.ipynb)
+
 Purpose:
 Evaluates Spanish EsBBQ on zeroed Llama-3.2-1B experiments.
 
@@ -201,6 +234,9 @@ Main outputs:
 - Neuron manifest for Spanish experiments in results/bias-benchmarks-zeroed/
 
 ### 08_EvalSalamandraPrunedEsp.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/08_EvalSalamandraPrunedEsp.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/08_EvalSalamandraPrunedEsp.ipynb)
 
 Purpose:
 Evaluates Spanish EsBBQ on zeroed Salamandra-2B experiments.
