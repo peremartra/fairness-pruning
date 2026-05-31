@@ -14,9 +14,10 @@ Most notebooks are designed for Google Colab and include checkpoint/resume logic
 6. 03_neuron_bias_detection_en.ipynb
 7. 05_bias_path_analysis.ipynb
 8. 06_zero_bias_neurons.ipynb
-9. 07_EvalPrunedModels.ipynb
-10. 08_EvalLlamaPrunedEsp.ipynb
-11. 08_EvalSalamandraPrunedEsp.ipynb
+9. 07_EvalPrunedModels_Llama3B.ipynb
+10. 07B_EvalPrunedModels_Llama3B.ipynb
+11. 08_EvalLlamaPrunedEsp.ipynb
+12. 08_EvalSalamandraPrunedEsp.ipynb
 
 Note: 02_esbbq_lm_eval_harness.ipynb is kept as a legacy/validation notebook and is not required in the main pipeline.
 
@@ -33,7 +34,8 @@ Note: 02_esbbq_lm_eval_harness.ipynb is kept as a legacy/validation notebook and
 | 04_Graphics_Bias_BBQ.ipynb | Bias result JSON files (BBQ + EsBBQ) in results/bias/ | PNG/PDF figures in results/figures/bias/ + bias_summary_*.csv + bias_categories_*.csv |
 | 05_bias_path_analysis.ipynb | results/neuron_analysis/{model}/{lang}/{Category}_bias_scores.json | Bias-path figures (PNG/PDF) + overlap/summary CSVs in results/figures/bias_path/ |
 | 06_zero_bias_neurons.ipynb | Precomputed neuron scores in results/neuron_analysis/ + category set + Top-K threshold | In-memory zeroed model + neuron_indices mapping (optional saved model + zeroed_neuron_indices.json) |
-| 07_EvalPrunedModels.ipynb | Zeroing experiment configs + neuron manifests + English BBQ | checkpoints_bbq_zeroed/ + results/bias-benchmarks-zeroed/llama-3.2-1B_* (generation + BBQ + capabilities CSV/JSON + manifests) |
+| 07_EvalPrunedModels_Llama3B.ipynb | Zeroing experiment configs + neuron manifests + English BBQ | checkpoints_bbq_zeroed/ + results/bias-benchmarks-zeroed/llama-3.2-3B_* (generation + BBQ + capabilities CSV/JSON + manifests) |
+| 07B_EvalPrunedModels_Llama3B.ipynb | Zeroing experiment configs + fairness manifests + English BBQ + capability follow-up | checkpoints_bbq_zeroed/ + checkpoints_capabilities_zeroed/ + results/bias-benchmarks-zeroed/llama-3.2-3B_* (generation + BBQ + capabilities CSV/JSON + manifests) |
 | 08_EvalLlamaPrunedEsp.ipynb | Zeroing experiment configs + neuron manifests + Spanish EsBBQ | checkpoints_bbq_zeroed/ + results/bias-benchmarks-zeroed/llama-3.2-1B_esbbq_zeroed_results.csv/.json + ES manifest |
 | 08_EvalSalamandraPrunedEsp.ipynb | Zeroing experiment configs + neuron manifests + Spanish EsBBQ | checkpoints_bbq_zeroed/ + results/bias-benchmarks-zeroed/salamandra-2B_esbbq_zeroed_results.csv/.json + ES manifest |
 
@@ -198,13 +200,13 @@ Main outputs:
 - In-memory zeroed model for evaluation
 - Optional saved model and zeroed_neuron_indices.json (save block included but commented)
 
-### 07_EvalPrunedModels.ipynb
+### 07_EvalPrunedModels_Llama3B.ipynb
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/07_EvalPrunedModels_Llama3B.ipynb)
 [![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/07_EvalPrunedModels_Llama3B.ipynb)
 
 Purpose:
-Evaluates English BBQ and selected capability tasks on zeroed Llama-3.2-1B variants.
+Evaluates English BBQ and selected capability tasks on zeroed Llama-3.2-3B variants.
 
 What it does:
 - Builds multiple pruning experiments from neuron score manifests.
@@ -215,6 +217,24 @@ Main outputs:
 - Checkpoints in /content/drive/MyDrive/fair_pruning/checkpoints_bbq_zeroed/
 - Zeroed benchmark outputs in results/bias-benchmarks-zeroed/
 - Capability-zeroed outputs and backups (including drive backup path)
+
+### 07B_EvalPrunedModels_Llama3B.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/07B_EvalPrunedModels_Llama3B.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/07B_EvalPrunedModels_Llama3B.ipynb)
+
+Purpose:
+Extended pruning-evaluation pipeline for English BBQ on zeroed Llama-3.2-3B variants, including fairness-focused experiment tracking.
+
+What it does:
+- Runs bias-oriented and fairness-oriented pruning experiment grids.
+- Executes BBQ evaluation with checkpoint/resume per experiment.
+- Exports generation artifacts, manifests, and capability follow-up results for selected experiments.
+
+Main outputs:
+- Checkpoints in /content/drive/MyDrive/fair_pruning/checkpoints_bbq_zeroed/
+- Capability checkpoints in /content/drive/MyDrive/fair_pruning/checkpoints_capabilities_zeroed/
+- Consolidated artifacts in results/bias-benchmarks-zeroed/ (JSON/CSV + manifests)
 
 ### 08_EvalLlamaPrunedEsp.ipynb
 
