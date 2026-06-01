@@ -92,6 +92,31 @@ Dai, D., Dong, L., Hao, Y., Sui, Z., Chang, B., & Wei, F. (2021). Knowledge Neur
 
 Shazeer, N. (2020). GLU Variants Improve Transformer. ArXiv. https://arxiv.org/abs/2002.05202
 
+Cobbe, K., Kosaraju, V., Bavarian, M., Chen, M., Jun, H., Kaiser, L., Plappert, M., Tworek, J., Hilton, J., Nakano, R., Hesse, C., & Schulman, J. (2021). Training Verifiers to Solve Math Word Problems. ArXiv. https://arxiv.org/abs/2110.14168
+
+Zhou, J., Lu, T., Mishra, S., Brahma, S., Basu, S., Luan, Y., Zhou, D., & Hou, L. (2023). Instruction-Following Evaluation for Large Language Models. ArXiv. https://arxiv.org/abs/2311.07911
+
+Clark, P., Cowhey, I., Etzioni, O., Khot, T., Sabharwal, A., Schoenick, C., & Tafjord, O. (2018). Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge. ArXiv. https://arxiv.org/abs/1803.05457
+
+Bandarkar, L., Liang, D., Muller, B., Artetxe, M., Shukla, S. N., Husa, D., Goyal, N., Krishnan, A., Zettlemoyer, L., & Khabsa, M. (2023). The Belebele Benchmark: A Parallel Reading Comprehension Dataset in 122 Language Variants. ArXiv. https://doi.org/10.18653/v1/2024.acl-long.44
+
+Lin, S., Hilton, J., & Evans, O. (2021). TruthfulQA: Measuring How Models Mimic Human Falsehoods. ArXiv. https://arxiv.org/abs/2109.07958
+
+Merity, S., Xiong, C., Bradbury, J., & Socher, R. (2016). Pointer Sentinel Mixture Models. ArXiv. https://arxiv.org/abs/1609.07843
+
+Hendrycks, D., Burns, C., Basart, S., Zou, A., Mazeika, M., Song, D., & Steinhardt, J. (2020). Measuring Massive Multitask Language Understanding. ArXiv. https://arxiv.org/abs/2009.03300
+
+Clark, P., Cowhey, I., Etzioni, O., Khot, T., Sabharwal, A., Schoenick, C., & Tafjord, O. (2018). Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge. ArXiv. https://arxiv.org/abs/1803.05457
+
+Zellers, R., Holtzman, A., Bisk, Y., Farhadi, A., & Choi, Y. (2019). HellaSwag: Can a Machine Really Finish Your Sentence? ArXiv. https://arxiv.org/abs/1905.07830
+
+[X] Meta AI, "Llama 3.2: Revolutionizing edge AI and vision with open, customizable models," Meta AI Blog, 2024. [En línea]. Disponible en: https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/. [Accedido: 31-may-2026].
+
+Gonzalez-Agirre, A., Pàmies, M., Llop, J., Baucells, I., Da Dalt, S., Tamayo, D., Saiz, J. J., Espuña, F., Prats, J., Aula-Blasco, J., Mina, M., Pikabea, I., Rubio, A., Shvets, A., Sallés, A., Lacunza, I., Palomar, J., Falcão, J., Tormo, L., . . .  Villegas, M. (2025). Salamandra Technical Report. ArXiv. https://arxiv.org/abs/2502.08489
+
+Dalvi, F., Sajjad, H., Durrani, N., & Belinkov, Y. (2020). Analyzing Redundancy in Pretrained Transformer Models. ArXiv. https://arxiv.org/abs/2004.04010
+
+
 
 
 
