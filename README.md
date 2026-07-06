@@ -1,4 +1,4 @@
-# Fairness Pruning: Bias Mitigation Through Activation-Guided MLP Width Pruning
+# Fairness Pruning: Locating Demographic Bias in GLU-MLP Layers via Differential Activations
 
 Official implementation and experiment repository for the Fairness Pruning workflow.
 
