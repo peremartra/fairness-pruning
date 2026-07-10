@@ -1,0 +1,102 @@
+[
+  {
+    "experiment_id": "exp1",
+    "experiment_name": "Religion | down_bias | Top-5",
+    "n_neurons": 5,
+    "task": "wikitext",
+    "metric": "word_perplexity",
+    "baseline": 9.5372,
+    "zeroed": 9.6839,
+    "retention_pct": 98.49
+  },
+  {
+    "experiment_id": "exp1",
+    "experiment_name": "Religion | down_bias | Top-5",
+    "n_neurons": 5,
+    "task": "mmlu",
+    "metric": "accuracy",
+    "baseline": 0.5783,
+    "zeroed": 0.5786,
+    "retention_pct": 100.05
+  },
+  {
+    "experiment_id": "exp1",
+    "experiment_name": "Religion | down_bias | Top-5",
+    "n_neurons": 5,
+    "task": "arc_challenge",
+    "metric": "acc_norm",
+    "baseline": 0.4616,
+    "zeroed": 0.459,
+    "retention_pct": 99.44
+  },
+  {
+    "experiment_id": "exp1",
+    "experiment_name": "Religion | down_bias | Top-5",
+    "n_neurons": 5,
+    "task": "hellaswag",
+    "metric": "acc_norm",
+    "baseline": 0.7411,
+    "zeroed": 0.738,
+    "retention_pct": 99.58
+  },
+  {
+    "experiment_id": "exp1",
+    "experiment_name": "Religion | down_bias | Top-5",
+    "n_neurons": 5,
+    "task": "hellaswag_es",
+    "metric": "acc_norm",
+    "baseline": 0.5889,
+    "zeroed": 0.5889,
+    "retention_pct": 100.0
+  },
+  {
+    "experiment_id": "exp4",
+    "experiment_name": "RaceEthnicity | down_bias | Top-20",
+    "n_neurons": 20,
+    "task": "wikitext",
+    "metric": "word_perplexity",
+    "baseline": 9.5372,
+    "zeroed": 9.7773,
+    "retention_pct": 97.54
+  },
+  {
+    "experiment_id": "exp4",
+    "experiment_name": "RaceEthnicity | down_bias | Top-20",
+    "n_neurons": 20,
+    "task": "mmlu",
+    "metric": "accuracy",
+    "baseline": 0.5783,
+    "zeroed": 0.5682,
+    "retention_pct": 98.25
+  },
+  {
+    "experiment_id": "exp4",
+    "experiment_name": "RaceEthnicity | down_bias | Top-20",
+    "n_neurons": 20,
+    "task": "arc_challenge",
+    "metric": "acc_norm",
+    "baseline": 0.4616,
+    "zeroed": 0.4556,
+    "retention_pct": 98.7
+  },
+  {
+    "experiment_id": "exp4",
+    "experiment_name": "RaceEthnicity | down_bias | Top-20",
+    "n_neurons": 20,
+    "task": "hellaswag",
+    "metric": "acc_norm",
+    "baseline": 0.7411,
+    "zeroed": 0.7375,
+    "retention_pct": 99.51
+  },
+  {
+    "experiment_id": "exp4",
+    "experiment_name": "RaceEthnicity | down_bias | Top-20",
+    "n_neurons": 20,
+    "task": "hellaswag_es",
+    "metric": "acc_norm",
+    "baseline": 0.5889,
+    "zeroed": 0.5874,
+    "retention_pct": 99.75
+  }
+]

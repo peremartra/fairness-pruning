@@ -1,0 +1,1802 @@
+[
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 8,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 0,
+    "union": 40,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 7,
+    "union": 33,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 7,
+    "union": 33,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 40,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 8,
+    "union": 32,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 1,
+    "union": 79,
+    "jaccard": 0.0127
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 13,
+    "union": 67,
+    "jaccard": 0.194
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 16,
+    "union": 64,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 11,
+    "union": 69,
+    "jaccard": 0.1594
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 9,
+    "union": 71,
+    "jaccard": 0.1268
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 5,
+    "union": 75,
+    "jaccard": 0.0667
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 6,
+    "union": 74,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 19,
+    "union": 61,
+    "jaccard": 0.3115
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 16,
+    "union": 64,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 2,
+    "union": 8,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 0,
+    "union": 40,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 9,
+    "union": 31,
+    "jaccard": 0.2903
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 40,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 1,
+    "union": 39,
+    "jaccard": 0.0256
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 3,
+    "union": 37,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 6,
+    "union": 34,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 7,
+    "union": 33,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 4,
+    "union": 76,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 11,
+    "union": 69,
+    "jaccard": 0.1594
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 11,
+    "union": 69,
+    "jaccard": 0.1594
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 14,
+    "union": 66,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 3,
+    "union": 77,
+    "jaccard": 0.039
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 6,
+    "union": 74,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 5,
+    "union": 75,
+    "jaccard": 0.0667
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 10,
+    "union": 70,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 11,
+    "union": 69,
+    "jaccard": 0.1594
+  },
+  {
+    "model": "llama-3.2-1B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 18,
+    "union": 62,
+    "jaccard": 0.2903
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 2,
+    "union": 8,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 8,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 8,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 9,
+    "union": 31,
+    "jaccard": 0.2903
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 11,
+    "union": 29,
+    "jaccard": 0.3793
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 6,
+    "union": 34,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 3,
+    "union": 37,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 39,
+    "jaccard": 0.0256
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 8,
+    "union": 32,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 7,
+    "union": 33,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 6,
+    "union": 74,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 13,
+    "union": 67,
+    "jaccard": 0.194
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 23,
+    "union": 57,
+    "jaccard": 0.4035
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 13,
+    "union": 67,
+    "jaccard": 0.194
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 7,
+    "union": 73,
+    "jaccard": 0.0959
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 7,
+    "union": 73,
+    "jaccard": 0.0959
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 6,
+    "union": 74,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 14,
+    "union": 66,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 13,
+    "union": 67,
+    "jaccard": 0.194
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 3,
+    "union": 7,
+    "jaccard": 0.4286
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 10,
+    "union": 30,
+    "jaccard": 0.3333
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 8,
+    "union": 32,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 9,
+    "union": 31,
+    "jaccard": 0.2903
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 39,
+    "jaccard": 0.0256
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 8,
+    "union": 32,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 10,
+    "union": 30,
+    "jaccard": 0.3333
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 8,
+    "union": 32,
+    "jaccard": 0.25
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 6,
+    "union": 74,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 6,
+    "union": 74,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 6,
+    "union": 74,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 8,
+    "union": 72,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 14,
+    "union": 66,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 14,
+    "union": 66,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "llama-3.2-3B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 14,
+    "union": 66,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 5,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 8,
+    "jaccard": 0.25
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 7,
+    "union": 33,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 3,
+    "union": 37,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 20,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 14,
+    "union": 66,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 16,
+    "union": 64,
+    "jaccard": 0.25
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 17,
+    "union": 63,
+    "jaccard": 0.2698
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 16,
+    "union": 64,
+    "jaccard": 0.25
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 10,
+    "union": 70,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 13,
+    "union": 67,
+    "jaccard": 0.194
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 14,
+    "union": 66,
+    "jaccard": 0.2121
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 15,
+    "union": 65,
+    "jaccard": 0.2308
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "en",
+    "n_top": 40,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 2,
+    "union": 8,
+    "jaccard": 0.25
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 1,
+    "union": 9,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 5,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 0,
+    "union": 10,
+    "jaccard": 0.0
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 6,
+    "union": 34,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 9,
+    "union": 31,
+    "jaccard": 0.2903
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 5,
+    "union": 35,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 3,
+    "union": 37,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 3,
+    "union": 37,
+    "jaccard": 0.0811
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 2,
+    "union": 38,
+    "jaccard": 0.0526
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 6,
+    "union": 34,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 20,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 4,
+    "union": 36,
+    "jaccard": 0.1111
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Gender",
+    "intersection": 10,
+    "union": 70,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "PhysicalAppearance",
+    "intersection": 18,
+    "union": 62,
+    "jaccard": 0.2903
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "RaceEthnicity",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Age",
+    "category_b": "Religion",
+    "intersection": 10,
+    "union": 70,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "PhysicalAppearance",
+    "intersection": 9,
+    "union": 71,
+    "jaccard": 0.1268
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "RaceEthnicity",
+    "intersection": 10,
+    "union": 70,
+    "jaccard": 0.1429
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "Gender",
+    "category_b": "Religion",
+    "intersection": 9,
+    "union": 71,
+    "jaccard": 0.1268
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "RaceEthnicity",
+    "intersection": 13,
+    "union": 67,
+    "jaccard": 0.194
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "PhysicalAppearance",
+    "category_b": "Religion",
+    "intersection": 12,
+    "union": 68,
+    "jaccard": 0.1765
+  },
+  {
+    "model": "salamandra-2B",
+    "language": "es",
+    "n_top": 40,
+    "category_a": "RaceEthnicity",
+    "category_b": "Religion",
+    "intersection": 13,
+    "union": 67,
+    "jaccard": 0.194
+  }
+]

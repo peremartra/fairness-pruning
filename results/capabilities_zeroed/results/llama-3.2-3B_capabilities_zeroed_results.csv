@@ -1,0 +1,11 @@
+experiment_id,experiment_name,n_neurons,task,metric,baseline,zeroed,retention_pct
+exp1,Religion | down_bias | Top-5,5,wikitext,word_perplexity,9.5372,9.6839,98.49
+exp1,Religion | down_bias | Top-5,5,mmlu,accuracy,0.5783,0.5786,100.05
+exp1,Religion | down_bias | Top-5,5,arc_challenge,acc_norm,0.4616,0.459,99.44
+exp1,Religion | down_bias | Top-5,5,hellaswag,acc_norm,0.7411,0.738,99.58
+exp1,Religion | down_bias | Top-5,5,hellaswag_es,acc_norm,0.5889,0.5889,100.0
+exp4,RaceEthnicity | down_bias | Top-20,20,wikitext,word_perplexity,9.5372,9.7773,97.54
+exp4,RaceEthnicity | down_bias | Top-20,20,mmlu,accuracy,0.5783,0.5682,98.25
+exp4,RaceEthnicity | down_bias | Top-20,20,arc_challenge,acc_norm,0.4616,0.4556,98.7
+exp4,RaceEthnicity | down_bias | Top-20,20,hellaswag,acc_norm,0.7411,0.7375,99.51
+exp4,RaceEthnicity | down_bias | Top-20,20,hellaswag_es,acc_norm,0.5889,0.5874,99.75
