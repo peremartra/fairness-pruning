@@ -328,7 +328,7 @@ def _save_raw_result(raw_results, model_name, task_name, base_dir):
 
     return filepath
 
-def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=False, raw_results_dir=None):
+def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=False, raw_results_dir=None, batch_size="auto"):
     """
     Runs lm-eval on a model and tokenizer already in memory.
     NOW with TruthfulQA category breakdown for safety analysis.
@@ -387,7 +387,7 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
     # Wrap model for lm-eval
     model_wrapper = HFLM(
         pretrained=model_obj,
-        batch_size="auto",
+        batch_size=batch_size,
         tokenizer=tokenizer,
         device=str(DEVICE)
     )
@@ -728,8 +728,7 @@ def _get_memory_stats(model, device="cuda"):
     
     return stats
 
-def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None, limit=None):
-    """
+def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None, limit=None, batch_size="auto"):    """
     Run evaluation with checkpoint/resume support for Colab disconnections.
     
     This function saves progress after each benchmark, allowing recovery from
@@ -822,8 +821,9 @@ def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=N
                 model, tokenizer,
                 tasks=[task],
                 limit=limit,
-                save_raw_results=True,  # Enable raw result saving
-                raw_results_dir=raw_results_dir
+                save_raw_results=True,
+                raw_results_dir=raw_results_dir,
+                batch_size=batch_size
             )
             
             # Store result in checkpoint
