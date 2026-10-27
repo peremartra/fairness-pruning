@@ -24,7 +24,7 @@ Usage:
     model, tokenizer, stats = load_or_create_model(config_entry)
     
     # Run benchmarks with automatic state saving
-    results = run_robust_evaluation(
+    results = valuation(
         model, tokenizer, 
         tasks=ALL_TASKS, 
         checkpoint_path="./checkpoints/llama_1b_fairness.json"
@@ -728,7 +728,9 @@ def _get_memory_stats(model, device="cuda"):
     
     return stats
 
-def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None, limit=None, batch_size="auto"):    """
+def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None, limit=None, batch_size="auto"):
+    """
+    Run evaluation with checkpoint/resume support for Colab disconnections.
     Run evaluation with checkpoint/resume support for Colab disconnections.
     
     This function saves progress after each benchmark, allowing recovery from
