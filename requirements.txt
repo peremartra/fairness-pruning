@@ -20,5 +20,5 @@ PyYAML==6.0.2
 huggingface_hub>=0.34.0,<1.0
 
 # Notebook runtime in VS Code/Colab
-ipykernel==6.29.5
-jupyterlab==4.3.5
+#ipykernel==6.29.5
+#jupyterlab==4.3.5
