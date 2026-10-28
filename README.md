@@ -16,10 +16,14 @@ This project studies how to reduce social bias in LLMs by identifying neurons wi
 - meta-llama/Llama-3.2-1B
 - meta-llama/Llama-3.2-3B
 - BSC-LT/salamandra-2b
+- meta-llama/Llama-3.1-8B (baseline bias only)
+- BSC-LT/salamandra-7b (baseline bias only)
+- meta-llama/Llama-3.2-3B-Instruct (baseline bias only, BBQ with A/B/C options)
 
 Model coverage depends on stage:
 
-- Baseline bias/capability: all three models.
+- Baseline bias (BBQ, EsBBQ): the five base models. The instruct model is evaluated only on BBQ with A/B/C options, a format that is not comparable with the base-model results.
+- Baseline capabilities: Llama-3.2-1B, Llama-3.2-3B and Salamandra-2B.
 - Baseline generations: Llama-3.2-1B and Llama-3.2-3B.
 - Zeroed evaluations: Llama-3.2-1B (BBQ + EsBBQ + capabilities) and Salamandra-2B (EsBBQ).
 
@@ -27,7 +31,8 @@ Model coverage depends on stage:
 
 | Path | Purpose |
 |---|---|
-| custom_tasks/ | lm-eval YAML task configs for EsBBQ, CaBBQ, and VeritasQA |
+| custom_tasks/ | lm-eval task configs for EsBBQ, CaBBQ, VeritasQA, and BBQ with A/B/C options (instruct models) |
+| docs/ | Notes and scripts for experiment checks (for example, the E0 last-layer checks) |
 | datasets/ | Prompt-pair datasets and dataset utilities/docs |
 | notebooks/ | End-to-end experiment notebooks (baseline, analysis, intervention, validation) |
 | results/ | Generated artifacts (baseline + zeroed) and figures |
@@ -42,6 +47,7 @@ See the local READMEs for details:
 - results/README.md
 - custom_tasks/esbbq/README.md
 - custom_tasks/cabbq/README.md
+- custom_tasks/bbq_instruct/README.md
 
 ## Experiment Pipeline (Current)
 
@@ -50,7 +56,7 @@ See the local READMEs for details:
 - Output: baseline capability files under results/
 
 2. Baseline bias benchmarks
-- Notebooks: notebooks/02_Evaluate_BBQ.ipynb, notebooks/02_Evaluate_MBBQ.ipynb
+- Notebooks: notebooks/02_Evaluate_BBQ.ipynb, notebooks/02_Evaluate_MBBQ.ipynb, notebooks/02_Evaluate_BBQ_Instruct.ipynb (instruct model, A/B/C format)
 - Output: baseline bias files under results/ and results/bias-benchmarks-base/
 
 3. Neuron-level bias and fairness scoring
@@ -110,6 +116,7 @@ The repository includes ready-to-use YAML task definitions under custom_tasks/:
 - custom_tasks/esbbq/: 10 EsBBQ categories
 - custom_tasks/cabbq/: 10 CaBBQ categories
 - custom_tasks/veritasQA/: VeritasQA task definitions
+- custom_tasks/bbq_instruct/: BBQ with A/B/C options and chat template, for instruction-tuned models
 
 These configs are automatically validated by tests/test_task_configs.py for:
 
