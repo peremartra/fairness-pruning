@@ -328,7 +328,7 @@ def _save_raw_result(raw_results, model_name, task_name, base_dir):
 
     return filepath
 
-def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=False, raw_results_dir=None, batch_size="auto"):
+def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=False, raw_results_dir=None, batch_size="auto", apply_chat_template=False):
     """
     Runs lm-eval on a model and tokenizer already in memory.
     NOW with TruthfulQA category breakdown for safety analysis.
@@ -342,6 +342,8 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         limit (int, optional): Number of samples per task for quick testing
         save_raw_results (bool): If True, save raw lm-eval output to JSON files
         raw_results_dir (str): Directory to save raw results (if save_raw_results=True)
+        batch_size (int or "auto"): Batch size passed to lm-eval HFLM
+        apply_chat_template (bool): If True, lm-eval wraps each prompt in the tokenizer chat template (instruct models)
 
     Returns:
         dict: Formatted results with metrics per task and TruthfulQA subcategories
@@ -405,7 +407,8 @@ def model_evaluation(model_obj, tokenizer, tasks, limit=None, save_raw_results=F
         num_fewshot=fewshot_value,
         limit=limit,
         device=str(DEVICE), 
-        log_samples=True
+        log_samples=True,
+        apply_chat_template=apply_chat_template
     )
 
     # Save raw results if requested
@@ -728,7 +731,7 @@ def _get_memory_stats(model, device="cuda"):
     
     return stats
 
-def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None, limit=None, batch_size="auto"):
+def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=None, limit=None, batch_size="auto", apply_chat_template=False):
     """
     Run evaluation with checkpoint/resume support for Colab disconnections.
     Run evaluation with checkpoint/resume support for Colab disconnections.
@@ -825,7 +828,8 @@ def run_robust_evaluation(model, tokenizer, tasks, checkpoint_path, model_name=N
                 limit=limit,
                 save_raw_results=True,
                 raw_results_dir=raw_results_dir,
-                batch_size=batch_size
+                batch_size=batch_size,
+                apply_chat_template=apply_chat_template
             )
             
             # Store result in checkpoint
