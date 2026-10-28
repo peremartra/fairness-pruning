@@ -209,3 +209,4 @@ __marimo__/
 .DS_Store
 results/.DS_Store
 /results/capabilities_zeroed/results/lm_evals
+notebooks/.02_Evaluate_MBBQ.backup.ipynb
