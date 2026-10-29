@@ -13,7 +13,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 | Exp | What | Status | Models | Headline | Section |
 |---|---|---|---|---|---|
 | E0 | Last-layer checks on stored scores | Done | Llama-3.2-1B, 3B, Salamandra-2B | Last-layer share in top-1 %: 34–71 % raw, 12–31 % after per-layer normalisation | [E0](#e0--last-layer-checks) |
-| E1 | New models and baselines | Done (commit pending) | Llama-3.1-8B, Salamandra-7B | Disambiguated accuracy above 60 % in BBQ and EsBBQ; both OptiPFair-compatible | [E1](#e1--new-models-and-baselines) |
+| E1 | New models and baselines | In progress | Llama-3.1-8B, Salamandra-7B, Qwen3-4B-Base | Disambiguated accuracy above 60 % in BBQ and EsBBQ for the three; all OptiPFair-compatible; instruct-model question open | [E1](#e1--new-models-and-baselines) |
 | E2 | Random and cross controls (pilot) | Pending | Llama-3.2-3B | Not started | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
 | E3 | Intervention and controls in new models | Pending | Llama-3.1-8B, Salamandra-7B | Blocked by E1 and E2 | [E3](#e3--intervention-and-controls-in-the-new-models) |
 | E4 | Capabilities | Pending | All with interventions | Missing configurations listed | [E4](#e4--capabilities) |
@@ -47,8 +47,8 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E1 — New models and baselines
 
-- **Status:** Done (2026-10-29). Baselines finished on 2026-10-28; the data files are copied to the repository and only the commit is pending; the figures are left for the writing phase.
-- **Goal:** add Llama-3.1-8B and Salamandra-7B, and check that their baselines are clearly above chance. An instruct model (Llama-3.2-3B-Instruct) was evaluated and discarded for P0 (2026-10-29). Per-item logs are reused later for bootstrap (E5). Qwen and Gemma were discarded; the line stays with Llama and Salamandra.
+- **Status:** In progress. Baselines of Llama-3.1-8B and Salamandra-7B finished on 2026-10-28 and Qwen3-4B-Base on 2026-10-29; data files copied to the repository (commit pending); the figures are left for the writing phase. Open: the instruct-model question (see open items).
+- **Goal:** add Llama-3.1-8B and Salamandra-7B, and check that their baselines are clearly above chance. An instruct model (Llama-3.2-3B-Instruct) was evaluated; whether to include one is open again (see open items). Per-item logs are reused later for bootstrap (E5). Gemma was discarded; Qwen3-4B-Base was added as a third family (standard dense GLU-MLP, architecture `qwen3`; the hybrid-attention Qwen3.5 would need changes to the extraction code and is left for later).
 - **Design (as run):** BBQ (English) and EsBBQ (Spanish), 0-shot, full dataset, bfloat16, `batch_size=16`, `log_samples=True`. Llama-3.2-3B-Instruct was also evaluated, in English only, with a different task (`bbq_instruct_mc`: options A/B/C, chat template); its numbers are not comparable with the base-model ones and it is not used in P0. The position-bias diagnostic of the plan (is the ~50 % disambiguated accuracy of Llama-3.2-1B and Salamandra-2B in EsBBQ position bias or chance?) is dropped (2026-10-29); it will be run only if a reviewer asks. It would need the per-item logs of those two models, which exist on Drive.
 - **Results** (item-weighted; reference for "above chance": about 50 % in disambiguated items is random choice between the two named answers):
 
@@ -59,7 +59,9 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 | Llama-3.2-3B | 7.5 / 73.5 / 4.5 | 14.8 / 70.0 / 6.2 |
 | Llama-3.1-8B | 8.4 / 82.0 / 6.1 | 13.5 / 74.2 / 8.8 |
 | Salamandra-7B | 7.7 / 80.4 / 9.2 | 8.8 / 73.4 / 9.1 |
+| Qwen3-4B-Base | 15.0 / 86.7 / 15.1 | 12.0 / 88.8 / 20.1 |
 
+  - Qwen3-4B-Base (4B) has the highest disambiguated accuracy and the highest S in both languages, above the 7-8B models; S does not follow size across families (it grows with size within each family). No causal explanation is claimed.
   - Low ambiguous accuracy in every model is an aversion to the "unknown" option, not an inability: disambiguated accuracy is high.
   - EsBBQ values are reconstructed from category-level results (about ±0.1 pp); exact values will come from the per-item logs.
 - **Instruct side note** (A/B/C format, not comparable with the table above): ambiguous accuracy 59.0 %, disambiguated 78.5 %, S 17.8 %; kept in the README only.
@@ -69,7 +71,8 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   - [x] Acceptance: both new models are well above chance (disambiguated accuracy above 60 % in BBQ and EsBBQ; decision of 2026-10-29). The threshold itself was not written in the plan (it says "clearly above chance"); record it here if a formal value is wanted.
   - [x] GLU/OptiPFair compatibility (2026-10-29): both models report COMPATIBLE for pruning and for bias visualization (architecture `llama`, 32 layers, GLU structure; MLP expansion 350 % in Llama-3.1-8B and 269 % in Salamandra-7B).
   - [x] Per-item logs of the new models located on Drive (paths above).
-  - [x] Instruct model discarded for P0.
+  - [x] Qwen3-4B-Base (2026-10-29): compatible with OptiPFair (architecture `qwen3`, 36 layers, hidden size 2560, MLP expansion 380 %); BBQ and EsBBQ evaluated; per-item logs on Drive (`checkpoints_bbq/results/lm_evals/qwen_qwen3_4b_base_bbq.json` and `checkpoints_mbbq/results/lm_evals/qwen_qwen3_4b_base_esbbq_<category>.json`, located by name and size, not opened).
+  - [ ] Instruct question (reopened 2026-10-29): the ambiguous accuracy of Llama-3.2-3B-Instruct with A/B/C is far above the base models', and it is not known whether that comes from instruction tuning or from the A/B/C format. Proposed: evaluate Llama-3.2-3B base with the same A/B/C prompt, plus one more base/instruct pair (Llama-3.1-8B, or Qwen3-4B with thinking disabled). Not decided yet.
   - [x] Consolidated CSVs and JSONs of the five base models copied to the repository (2026-10-29): BBQ in `results/`, EsBBQ in `results/bias-benchmarks-base/`. The instruct CSV stays on Drive.
   - [ ] Commit and push.
   - Later (writing phase): the figures in `results/figures/` are from 2025-12-28 and show three models; [04_Graphics_Bias_BBQ](notebooks/04_Graphics_Bias_BBQ.ipynb) hard-codes the three models and reads old JSONs, so it needs a redesign, not just a rerun.
@@ -153,6 +156,6 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
-- 2026-10-29: E1 closed (both new models compatible with OptiPFair, logs located, Instruct discarded); file created.
+- 2026-10-29: Qwen3-4B-Base added and evaluated (BBQ, EsBBQ); instruct-model question reopened; Llama-3.1-8B and Salamandra-7B compatible with OptiPFair; per-item logs located; file created.
 - 2026-10-28: E1 baselines finished for Llama-3.1-8B and Salamandra-7B (BBQ, EsBBQ) and Llama-3.2-3B-Instruct (A/B/C format); READMEs and evaluation logs updated.
 - 2026-10-27: E0 documented in `docs/`; Llama-3.1-8B BBQ baseline run.

@@ -4,7 +4,7 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 
 **Evaluation Framework:** lm-evaluation-harness  
 **Task Configuration:** 0-shot  
-**Evaluation Dates:** BBQ (Dec 7, 2025; Oct 27-28, 2026), EsBBQ (Feb 20-22, 2026; Oct 28, 2026), BBQ with A/B/C options for the instruct model (Oct 28, 2026)  
+**Evaluation Dates:** BBQ (Dec 7, 2025; Oct 27-29, 2026), EsBBQ (Feb 20-22, 2026; Oct 28-29, 2026), BBQ with A/B/C options for the instruct model (Oct 28, 2026)  
 **Run details:** batch size, library versions and GPU of each run are in the evaluation log at the top of `notebooks/02_Evaluate_BBQ.ipynb`, `notebooks/02_Evaluate_MBBQ.ipynb` and `notebooks/02_Evaluate_BBQ_Instruct.ipynb`.
 
 ## Models Evaluated
@@ -16,6 +16,7 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 | meta-llama/Llama-3.2-3B | 3B | ✅ Complete | ✅ Complete |
 | meta-llama/Llama-3.1-8B | 8B | ✅ Complete | ✅ Complete |
 | BSC-LT/salamandra-7b | 7B | ✅ Complete | ✅ Complete |
+| Qwen/Qwen3-4B-Base | 4B | ✅ Complete | ✅ Complete |
 | meta-llama/Llama-3.2-3B-Instruct | 3B | ✅ A/B/C format only (see below) | Not evaluated |
 
 ## How to read the numbers
@@ -40,6 +41,7 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 | Llama-3.2-3B | 40.52% | 7.51% | 73.54% | -66.03pp |
 | Llama-3.1-8B | 45.19% | 8.35% | 82.02% | -73.67pp |
 | Salamandra-7b | 44.02% | 7.65% | 80.40% | -72.75pp |
+| Qwen3-4B-Base | 50.87% | 15.02% | 86.71% | -71.69pp |
 
 ### Aggregate Bias Scores
 
@@ -50,6 +52,7 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 | Llama-3.2-3B | 4.12% | 2.24% | 4.5% |
 | Llama-3.1-8B | 5.59% | 2.08% | 6.1% |
 | Salamandra-7b | 8.47% | 4.47% | 9.2% |
+| Qwen3-4B-Base | 12.87% | 3.47% | 15.1% |
 
 ![Bias Pattern Comparison](../../notebooks/results/figures/bias/bias_pattern_comparison_20251228_170656.png)
 *Overall bias pattern comparison showing ambiguous vs disambiguated bias scores across BBQ (English) and EsBBQ (Spanish) benchmarks.*
@@ -57,13 +60,13 @@ Baseline bias measurements for unpruned models using BBQ (English) and EsBBQ (Sp
 
 ### Top Bias Categories (Ambiguous Context)
 
-| Category | Salamandra-2b | Llama-1B | Llama-3B | Llama-3.1-8B | Salamandra-7b |
-|----------|---------------|----------|----------|--------------|---------------|
-| Physical Appearance | 9.90% | 10.15% | 17.89% | 21.32% | 36.93% |
-| Age | 2.72% | 7.50% | 16.30% | 16.30% | 22.93% |
-| Gender Identity | 4.37% | 1.55% | 10.86% | 11.85% | 11.57% |
+| Category | Salamandra-2b | Llama-1B | Llama-3B | Llama-3.1-8B | Salamandra-7b | Qwen3-4B-Base |
+|----------|---------------|----------|----------|--------------|---------------|---------------|
+| Physical Appearance | 9.90% | 10.15% | 17.89% | 21.32% | 36.93% | 44.80% |
+| Age | 2.72% | 7.50% | 16.30% | 16.30% | 22.93% | 40.00% |
+| Gender Identity | 4.37% | 1.55% | 10.86% | 11.85% | 11.57% | 19.11% |
 
-Gender Identity is not always third: in Llama-3.1-8B, Religion (13.00%) ranks above it, and in Salamandra-7b, SES (20.16%) and Nationality (12.27%) do.
+Gender Identity is not always third: in Llama-3.1-8B, Religion (13.00%) ranks above it, in Salamandra-7b, SES (20.16%) and Nationality (12.27%) do, and in Qwen3-4B-Base, SES (38.46%) does.
 
 ![Top Categories Heatmap](../../notebooks/results/figures/bias/top_categories_heatmap_20251228_170656.png)
 *Heatmap visualization of the top bias categories across models and benchmarks.*
@@ -81,6 +84,7 @@ Gender Identity is not always third: in Llama-3.1-8B, Religion (13.00%) ranks ab
 | Llama-3.2-3B | 52.2% | 14.8% | 70.0% | -55.2pp |
 | Llama-3.1-8B | 54.6% | 13.5% | 74.2% | -60.7pp |
 | Salamandra-7b | 52.6% | 8.8% | 73.4% | -64.6pp |
+| Qwen3-4B-Base | 64.1% | 12.0% | 88.8% | -76.8pp |
 
 ### Aggregate Bias Scores
 
@@ -91,14 +95,15 @@ Gender Identity is not always third: in Llama-3.1-8B, Religion (13.00%) ranks ab
 | Llama-3.2-3B | 5.3% | 2.3% | 6.2% |
 | Llama-3.1-8B | 7.6% | 0.5% | 8.8% |
 | Salamandra-7b | 8.4% | 6.3% | 9.1% |
+| Qwen3-4B-Base | 17.7% | 5.3% | 20.1% |
 
 ### Top Bias Categories (Ambiguous Context)
 
-| Category Rank | Salamandra-2b | Llama-1B | Llama-3B | Llama-3.1-8B | Salamandra-7b |
-|---------------|---------------|----------|----------|--------------|---------------|
-| **1st** | SES (4.35%) | Disability Status (2.91%) | Physical Appearance (10.37%) | Physical Appearance (18.20%) | Physical Appearance (18.54%) |
-| **2nd** | Nationality (4.17%) | SES (2.61%) | Gender (8.51%) | Nationality (17.26%) | SES (11.01%) |
-| **3rd** | Race/Ethnicity (2.69%) | Age (1.47%) | Spanish Region (6.48%) | Gender (10.31%) | Disability Status (9.16%) |
+| Category Rank | Salamandra-2b | Llama-1B | Llama-3B | Llama-3.1-8B | Salamandra-7b | Qwen3-4B-Base |
+|---------------|---------------|----------|----------|--------------|---------------|---------------|
+| **1st** | SES (4.35%) | Disability Status (2.91%) | Physical Appearance (10.37%) | Physical Appearance (18.20%) | Physical Appearance (18.54%) | Physical Appearance (30.87%) |
+| **2nd** | Nationality (4.17%) | SES (2.61%) | Gender (8.51%) | Nationality (17.26%) | SES (11.01%) | SES (25.65%) |
+| **3rd** | Race/Ethnicity (2.69%) | Age (1.47%) | Spanish Region (6.48%) | Gender (10.31%) | Disability Status (9.16%) | Disability Status (21.55%) |
 
 **Note:** "Spanish Region" is a category unique to EsBBQ that reflects localized social biases. Category-level values are those reported by lm-eval for each category.
 
@@ -115,18 +120,19 @@ These comparisons use ambiguous accuracy, S and the average of ambiguous and dis
 | Llama-3.2-3B | 7.5% | 14.8% | 4.5% | 6.2% | 40.5% | 42.4% |
 | Llama-3.1-8B | 8.4% | 13.5% | 6.1% | 8.8% | 45.2% | 43.8% |
 | Salamandra-7b | 7.7% | 8.8% | 9.2% | 9.1% | 44.0% | 41.1% |
+| Qwen3-4B-Base | 15.0% | 12.0% | 15.1% | 20.1% | 50.9% | 50.4% |
 
-- **Ambiguous accuracy** is higher in Spanish than in English for all five models, and the difference shrinks with model size (Salamandra-2b +16.7pp, Llama-3.2-3B +7.3pp, Salamandra-7b about +1pp). The cause has not been tested: the two tasks differ in the number and wording of the "unknown" candidates (10 in BBQ, 9 in EsBBQ) and in the translation.
-- **Balanced accuracy** is higher in Spanish for the three small models and lower for the two 7-8B models, so no overall "better in Spanish" statement holds across sizes.
-- **S** is similar in both languages for Salamandra and Llama-3.2-1B, and higher in Spanish for Llama-3.2-3B and Llama-3.1-8B. Within each family S grows with model size in both languages (Llama: 1.9 -> 4.5 -> 6.1% in English, 1.4 -> 6.2 -> 8.8% in Spanish; Salamandra: 2.2 -> 9.2% in English, 2.0 -> 9.1% in Spanish). This is an observation, not a causal claim.
+- **Ambiguous accuracy** is higher in Spanish than in English for five of the six models (Qwen3-4B-Base is the exception: 15.0% in English, 12.0% in Spanish), and among those five the difference shrinks with model size (Salamandra-2b +16.7pp, Llama-3.2-3B +7.3pp, Salamandra-7b about +1pp). The cause has not been tested: the two tasks differ in the number and wording of the "unknown" candidates (10 in BBQ, 9 in EsBBQ) and in the translation.
+- **Balanced accuracy** is higher in Spanish for the three small models and lower for the two 7-8B models and Qwen3-4B-Base (50.9% vs 50.4%), so no overall "better in Spanish" statement holds across sizes.
+- **S** is similar in both languages for Salamandra and Llama-3.2-1B, and higher in Spanish for Llama-3.2-3B and Llama-3.1-8B. Within each family S grows with model size in both languages (Llama: 1.9 -> 4.5 -> 6.1% in English, 1.4 -> 6.2 -> 8.8% in Spanish; Salamandra: 2.2 -> 9.2% in English, 2.0 -> 9.1% in Spanish). Across families S does not follow size: Qwen3-4B-Base (4B) has the highest S in both languages (15.1% and 20.1%), above the 7-8B models. These are observations, not causal claims.
 
 ![Gap Comparison](../../notebooks/results/figures/bias/gap_comparison_20251228_170656.png)
 *Amb-Disamb gap comparison showing bias localization across languages. Larger gaps indicate more concentrated bias patterns suitable for targeted pruning.*
 
 ### Category-Level Observations (ambiguous bias score)
 
-- **Physical Appearance** is the top ambiguous-bias category in both languages for Llama-3.2-3B, Llama-3.1-8B and Salamandra-7b (Llama-3.2-3B: BBQ 17.89%, EsBBQ 10.37%; Llama-3.1-8B: 21.32%, 18.20%; Salamandra-7b: 36.93%, 18.54%).
-- **Age** is high in English and lower in Spanish: Llama-3.2-3B 16.30% -> 5.96%, Llama-3.1-8B 16.30% -> 6.19%, Salamandra-7b 22.93% -> 6.50%.
+- **Physical Appearance** is the top ambiguous-bias category in both languages for Llama-3.2-3B, Llama-3.1-8B, Salamandra-7b and Qwen3-4B-Base (Llama-3.2-3B: BBQ 17.89%, EsBBQ 10.37%; Llama-3.1-8B: 21.32%, 18.20%; Salamandra-7b: 36.93%, 18.54%; Qwen3-4B-Base: 44.80%, 30.87%).
+- **Age** is high in English and lower in Spanish: Llama-3.2-3B 16.30% -> 5.96%, Llama-3.1-8B 16.30% -> 6.19%, Salamandra-7b 22.93% -> 6.50%, Qwen3-4B-Base 40.00% -> 19.81%.
 - **Gender / Gender Identity** grows with scale in the Llama family in both languages: BBQ 1.55% (1B) -> 10.86% (3B) -> 11.85% (8B); EsBBQ 0.27% -> 8.51% -> 10.31%.
 - **SES** has no monotonic trend in English (Llama 1B 3.70%, 3B 1.37%, 8B 4.98%) and grows in Spanish (2.61%, 5.43%, 5.87%).
 
@@ -145,10 +151,10 @@ Llama-3.2-3B-Instruct was evaluated with a different task, `bbq_instruct_mc` (`c
 ## Data Files
 
 **BBQ (English):**
-- `../base_models_bbq_results_latest.csv` and `../base_models_bbq_results_20261028_091856.json` (five base models, October 2026; stored one level up, in `results/`). The December 2025 run with the first three models is `../base_models_bbq_results_20251207_191101.json`.
+- `../base_models_bbq_results_latest.csv` and `../base_models_bbq_results_20261028_091856.json` (six base models, October 2026; stored one level up, in `results/`; `../base_models_bbq_results_20261029_155918.json` is the matching JSON). Earlier runs: `../base_models_bbq_results_20261028_091856.json` (five models) and `../base_models_bbq_results_20251207_191101.json` (first three models, December 2025).
 
 **EsBBQ (Spanish):**
-- `base_models_mbbq_results_latest.csv` and `base_models_mbbq_results_20261028_151839.json` (five base models, October 2026). The February 2026 run with three models is `base_models_mbbq_results_20260220_202938.json`.
+- `base_models_mbbq_results_latest.csv` and `base_models_mbbq_results_20261029_162057.json` (six base models, October 2026). Earlier runs: `base_models_mbbq_results_20261028_151839.json` (five models) and `base_models_mbbq_results_20260220_202938.json` (three models, February 2026).
 
 **BBQ with A/B/C options (instruct model):**
 - Not stored in the repository. The instruct-model numbers are reported in the table above only; the CSV is on Drive (`fair_pruning/results/instruct_models_bbq_mc_results_latest.csv`). This model is not used in the rest of the project.
