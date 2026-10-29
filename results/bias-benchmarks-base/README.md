@@ -145,12 +145,12 @@ Llama-3.2-3B-Instruct was evaluated with a different task, `bbq_instruct_mc` (`c
 ## Data Files
 
 **BBQ (English):**
-- `base_models_bbq_results_latest.csv` / `.json` (five base models; the first three also in `../base_models_bbq_results_20251207_191101.json`)
+- `../base_models_bbq_results_latest.csv` and `../base_models_bbq_results_20261028_091856.json` (five base models, October 2026; stored one level up, in `results/`). The December 2025 run with the first three models is `../base_models_bbq_results_20251207_191101.json`.
 
 **EsBBQ (Spanish):**
-- `base_models_mbbq_results_latest.csv` / `.json` (five base models)
+- `base_models_mbbq_results_latest.csv` and `base_models_mbbq_results_20261028_151839.json` (five base models, October 2026). The February 2026 run with three models is `base_models_mbbq_results_20260220_202938.json`.
 
 **BBQ with A/B/C options (instruct model):**
-- `instruct_models_bbq_mc_results_latest.csv`
+- Not stored in the repository. The instruct-model numbers are reported in the table above only; the CSV is on Drive (`fair_pruning/results/instruct_models_bbq_mc_results_latest.csv`). This model is not used in the rest of the project.
 
 Per-item model predictions (raw lm-eval JSON) are not stored in this repository because of their size; they are on Drive under `fair_pruning/checkpoints_bbq/results/lm_evals/`, `fair_pruning/checkpoints_mbbq/` and `fair_pruning/checkpoints_bbq_instruct/results/lm_evals/`.

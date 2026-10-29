@@ -13,7 +13,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 | Exp | What | Status | Models | Headline | Section |
 |---|---|---|---|---|---|
 | E0 | Last-layer checks on stored scores | Done | Llama-3.2-1B, 3B, Salamandra-2B | Last-layer share in top-1 %: 34–71 % raw, 12–31 % after per-layer normalisation | [E0](#e0--last-layer-checks) |
-| E1 | New models and baselines | In progress | Llama-3.1-8B, Salamandra-7B (+ Llama-3.2-3B-Instruct) | Baselines done in BBQ and EsBBQ; closing items open | [E1](#e1--new-models-and-baselines) |
+| E1 | New models and baselines | Done (commit pending) | Llama-3.1-8B, Salamandra-7B | Disambiguated accuracy above 60 % in BBQ and EsBBQ; both OptiPFair-compatible | [E1](#e1--new-models-and-baselines) |
 | E2 | Random and cross controls (pilot) | Pending | Llama-3.2-3B | Not started | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
 | E3 | Intervention and controls in new models | Pending | Llama-3.1-8B, Salamandra-7B | Blocked by E1 and E2 | [E3](#e3--intervention-and-controls-in-the-new-models) |
 | E4 | Capabilities | Pending | All with interventions | Missing configurations listed | [E4](#e4--capabilities) |
@@ -47,9 +47,9 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E1 — New models and baselines
 
-- **Status:** In progress. Baselines finished on 2026-10-28; closing items open.
-- **Goal:** add Llama-3.1-8B and Salamandra-7B, check that their baselines are clearly above chance, and decide on a third (instruct) model. Per-item logs are reused later for bootstrap (E5). Qwen and Gemma were discarded; the line stays with Llama and Salamandra.
-- **Design (as run):** BBQ (English) and EsBBQ (Spanish), 0-shot, full dataset, bfloat16, `batch_size=16`, `log_samples=True`. One extra model, Llama-3.2-3B-Instruct, evaluated only in English with a different task (`bbq_instruct_mc`: options A/B/C, chat template); its numbers are not comparable with the base-model ones. The plan's position-bias diagnostic (is the exact 50.0 % in disambiguated EsBBQ position bias?) has not been run as such; to decide whether it applies, since the default tasks score candidate texts, not letter positions.
+- **Status:** Done (2026-10-29). Baselines finished on 2026-10-28; the data files are copied to the repository and only the commit is pending; the figures are left for the writing phase.
+- **Goal:** add Llama-3.1-8B and Salamandra-7B, and check that their baselines are clearly above chance. An instruct model (Llama-3.2-3B-Instruct) was evaluated and discarded for P0 (2026-10-29). Per-item logs are reused later for bootstrap (E5). Qwen and Gemma were discarded; the line stays with Llama and Salamandra.
+- **Design (as run):** BBQ (English) and EsBBQ (Spanish), 0-shot, full dataset, bfloat16, `batch_size=16`, `log_samples=True`. Llama-3.2-3B-Instruct was also evaluated, in English only, with a different task (`bbq_instruct_mc`: options A/B/C, chat template); its numbers are not comparable with the base-model ones and it is not used in P0. The position-bias diagnostic of the plan (is the ~50 % disambiguated accuracy of Llama-3.2-1B and Salamandra-2B in EsBBQ position bias or chance?) is dropped (2026-10-29); it will be run only if a reviewer asks. It would need the per-item logs of those two models, which exist on Drive.
 - **Results** (item-weighted; reference for "above chance": about 50 % in disambiguated items is random choice between the two named answers):
 
 | Model | BBQ amb / disamb / S | EsBBQ amb / disamb / S |
@@ -59,19 +59,21 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 | Llama-3.2-3B | 7.5 / 73.5 / 4.5 | 14.8 / 70.0 / 6.2 |
 | Llama-3.1-8B | 8.4 / 82.0 / 6.1 | 13.5 / 74.2 / 8.8 |
 | Salamandra-7B | 7.7 / 80.4 / 9.2 | 8.8 / 73.4 / 9.1 |
-| Llama-3.2-3B-Instruct (A/B/C, not comparable) | 59.0 / 78.5 / 17.8 | not evaluated |
 
   - Low ambiguous accuracy in every model is an aversion to the "unknown" option, not an inability: disambiguated accuracy is high.
   - EsBBQ values are reconstructed from category-level results (about ±0.1 pp); exact values will come from the per-item logs.
-- **Files:** [results/bias-benchmarks-base/README.md](results/bias-benchmarks-base/README.md) (all tables) · [custom_tasks/bbq_instruct/README.md](custom_tasks/bbq_instruct/README.md) · [custom_tasks/esbbq/README.md](custom_tasks/esbbq/README.md) · Drive: `fair_pruning/checkpoints_bbq/`, `checkpoints_mbbq/`, `checkpoints_bbq_instruct/`, `results/`
+- **Instruct side note** (A/B/C format, not comparable with the table above): ambiguous accuracy 59.0 %, disambiguated 78.5 %, S 17.8 %; kept in the README only.
+- **Files:** [results/bias-benchmarks-base/README.md](results/bias-benchmarks-base/README.md) (all tables) · [custom_tasks/bbq_instruct/README.md](custom_tasks/bbq_instruct/README.md) · [custom_tasks/esbbq/README.md](custom_tasks/esbbq/README.md) · Drive: `fair_pruning/checkpoints_bbq/`, `checkpoints_mbbq/`, `checkpoints_bbq_instruct/`, `results/`. Per-item logs of the new models: `checkpoints_bbq/results/lm_evals/` (`meta_llama_llama_3.1_8b_bbq.json`, `bsc_lt_salamandra_7b_bbq.json`, about 700 MB each) and `checkpoints_mbbq/results/lm_evals/` (one `*_esbbq_<category>.json` per category and model; the Salamandra-7B and Llama-3.1-8B files were located by name and size, not opened)
 - **Notebooks:** [02_Evaluate_BBQ](notebooks/02_Evaluate_BBQ.ipynb) · [02_Evaluate_MBBQ](notebooks/02_Evaluate_MBBQ.ipynb) · [02_Evaluate_BBQ_Instruct](notebooks/02_Evaluate_BBQ_Instruct.ipynb). Each has an evaluation log (dates, versions, GPU) in its first cells.
 - **Open items:**
   - [x] Acceptance: both new models are well above chance (disambiguated accuracy above 60 % in BBQ and EsBBQ; decision of 2026-10-29). The threshold itself was not written in the plan (it says "clearly above chance"); record it here if a formal value is wanted.
-  - [ ] Decide whether to keep Llama-3.2-3B-Instruct (English only, A/B/C). If kept for E2, pin the date that the Llama 3.2 chat template writes in the system block (it uses the run date).
-  - [ ] Check GLU/OptiPFair compatibility of Llama-3.1-8B and Salamandra-7B (notebook 03).
-  - [ ] Repeat the Llama-3.2-3B BBQ baseline with the current configuration in `checkpoints_bbq_rerun` (per-item logs; it also serves as the noise control of E2).
-  - [ ] Bootstrap confidence intervals for the new baselines (see E5).
-  - [ ] Open one of the Llama-3.2-3B EsBBQ per-item JSONs (Drive, Feb 2026) and check whether it holds the 10 tasks or only its own category: the five files listed have exactly the same size (246,871,379 bytes), which suggests each one holds all tasks, but this is not verified.
+  - [x] GLU/OptiPFair compatibility (2026-10-29): both models report COMPATIBLE for pruning and for bias visualization (architecture `llama`, 32 layers, GLU structure; MLP expansion 350 % in Llama-3.1-8B and 269 % in Salamandra-7B).
+  - [x] Per-item logs of the new models located on Drive (paths above).
+  - [x] Instruct model discarded for P0.
+  - [x] Consolidated CSVs and JSONs of the five base models copied to the repository (2026-10-29): BBQ in `results/`, EsBBQ in `results/bias-benchmarks-base/`. The instruct CSV stays on Drive.
+  - [ ] Commit and push.
+  - Later (writing phase): the figures in `results/figures/` are from 2025-12-28 and show three models; [04_Graphics_Bias_BBQ](notebooks/04_Graphics_Bias_BBQ.ipynb) hard-codes the three models and reads old JSONs, so it needs a redesign, not just a rerun.
+  - Moved: the Llama-3.2-3B baseline repeat to E2; the bootstrap intervals and the check of the 3B EsBBQ per-item files to E5.
 
 ## E2 — Random and cross controls (pilot in Llama-3.2-3B)
 
@@ -98,7 +100,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   - Seeds for the random sets.
 - **Notebooks to reuse:** [06_zero_bias_neurons](notebooks/06_zero_bias_neurons.ipynb) (zeroing) · [07_EvalPrunedModels_Llama3B](notebooks/07_EvalPrunedModels_Llama3B.ipynb) and [07B](notebooks/07B_EvalPrunedModels_Llama3B.ipynb) (evaluation pattern). Neuron scores: `results/neuron_analysis/llama-3.2-3B/`.
 - **Open items:**
-  - [ ] Depends on the 3B baseline repeat (E1).
+  - [ ] Repeat the Llama-3.2-3B BBQ baseline with the current configuration in `checkpoints_bbq_rerun` (per-item logs; it is the noise control of this experiment).
   - [ ] Neuron indices of the published Religion·Top-20 run: [results/bias-benchmarks-zeroed/README.md](results/bias-benchmarks-zeroed/README.md) describes a `llama-3.2-1B_neuron_manifest.json`, but no manifest file is in the repository and none was found on Drive (searched by name). For the 3B, regenerate the set from `results/neuron_analysis/llama-3.2-3B/` with the same selection rule as the paper and save the manifest this time.
 
 ## E3 — Intervention and controls in the new models
@@ -135,10 +137,12 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 - **Goal:** confidence intervals for the bias changes, in Llama-3.2-3B and the new models.
 - **Design:** paired bootstrap over items (same items before and after the intervention, bias recomputed at each resample), from the per-item logs of E1–E3 with no extra evaluations. A table with the number of items per category and context. For capabilities, lm-eval's standard error.
 - **Per-item logs available today:**
-  - BBQ: found on Drive for Llama-3.1-8B (about 700 MB) and Llama-3.2-3B-Instruct; Salamandra-7B expected, not searched for. No per-item BBQ file found for Llama-1B, Salamandra-2B or Llama-3B (3B to be repeated in E1).
-  - EsBBQ: found on Drive for Llama-3.2-3B (Feb 2026), Llama-3.2-1B and Salamandra-2B (May 2026, one file per category) and Llama-3.1-8B (Oct 2026); Salamandra-7B was not searched for yet. Contents to verify (see E1).
+  - BBQ: found on Drive for Llama-3.1-8B and Salamandra-7B (about 700 MB each). No per-item BBQ file found for Llama-1B, Salamandra-2B or Llama-3B (3B to be repeated in E1).
+  - EsBBQ: found on Drive for Llama-3.2-3B (Feb 2026), Llama-3.2-1B and Salamandra-2B (May 2026, one file per category), and Llama-3.1-8B and Salamandra-7B (Oct 2026). Contents not yet verified.
   - Zeroed runs: not verified.
 - **Open items:**
+  - [ ] Open one of the Llama-3.2-3B EsBBQ per-item JSONs (Drive, Feb 2026) and check whether it holds the 10 tasks or only its own category: the five files listed have exactly the same size (246,871,379 bytes), which suggests each one holds all tasks, but this is not verified. Also open one Salamandra-7B and one Llama-3.1-8B file to confirm that per-item predictions are present.
+  - [ ] Bootstrap confidence intervals for the new-model baselines.
   - [ ] Design and discuss the bootstrap script before writing it (number of resamples, handling of the per-category aggregation).
   - [ ] Decide whether the old Llama-1B and Salamandra-2B results are repeated or presented as descriptive.
 
@@ -149,6 +153,6 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
-- 2026-10-29: file created.
+- 2026-10-29: E1 closed (both new models compatible with OptiPFair, logs located, Instruct discarded); file created.
 - 2026-10-28: E1 baselines finished for Llama-3.1-8B and Salamandra-7B (BBQ, EsBBQ) and Llama-3.2-3B-Instruct (A/B/C format); READMEs and evaluation logs updated.
 - 2026-10-27: E0 documented in `docs/`; Llama-3.1-8B BBQ baseline run.

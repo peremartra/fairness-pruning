@@ -25,7 +25,7 @@ These files are stored directly under `results/` (outside subfolders):
   - `base_models_results_20251206_175322.json`
 - Baseline BBQ aggregate exports:
   - `base_models_bbq_results_20251207_191101.json` (first three models, December 2025)
-  - `base_models_bbq_results_latest.csv` (five base models since 2026-10-28)
+  - `base_models_bbq_results_latest.csv` and `base_models_bbq_results_20261028_091856.json` (five base models, October 2026)
 - Baseline EsBBQ/model-specific JSON artifacts:
   - `esbbq_final_results_llama-3.2-1B.json`
   - `meta_llama_llama_3.2_1b.json`
@@ -34,7 +34,7 @@ These files are stored directly under `results/` (outside subfolders):
 
 Per-item model predictions (raw lm-eval JSON, hundreds of MB) are not stored in this repository; they are on Drive under `fair_pruning/checkpoints_bbq/results/lm_evals/`, `fair_pruning/checkpoints_mbbq/` and `fair_pruning/checkpoints_bbq_instruct/results/lm_evals/`.
 
-`bias-benchmarks-base/` also holds `base_models_mbbq_results_latest.csv/.json` (EsBBQ, five base models) and `instruct_models_bbq_mc_results_latest.csv` (instruct model, A/B/C format).
+`bias-benchmarks-base/` also holds `base_models_mbbq_results_latest.csv` and `base_models_mbbq_results_20261028_151839.json` (EsBBQ, five base models). The CSV of the instruct model (A/B/C format) is only on Drive.
 
 ## Subdirectory Documentation
 
