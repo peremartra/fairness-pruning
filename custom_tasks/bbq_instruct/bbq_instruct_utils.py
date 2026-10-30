@@ -9,6 +9,9 @@ Differences with lm-eval's default `bbq` task:
     With `apply_chat_template=True` the prompt is the user message and the
     letter is the first token of the assistant turn.
 
+  - `bbq_base_mc` (bbq_base_mc.yaml) uses the same task for base models: the
+    same prompt plus a final "Answer:" line, run without chat template.
+
 Same as lm-eval's default `bbq` task:
   - Dataset (oskarvanderwal/bbq, "All", test split) and document processing
     (`process_docs`, which marks the biased answers).
@@ -55,6 +58,15 @@ def doc_to_text(doc):
         f"B. {doc['ans1']}\n"
         f"C. {doc['ans2']}"
     )
+
+
+def doc_to_text_base(doc):
+    """Plain-text version of the prompt, for base models (no chat template).
+
+    Same text as `doc_to_text` plus an "Answer:" cue; the letter is then scored
+    as the continuation (" A", " B", " C").
+    """
+    return doc_to_text(doc) + "\nAnswer:"
 
 
 def doc_to_choice(doc):

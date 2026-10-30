@@ -1,0 +1,6 @@
+# Same task as bbq_instruct_mc (dataset, options A/B/C, metrics) but with a
+# plain-text prompt for base models: ends with "Answer:" and is meant to be
+# run WITHOUT a chat template (apply_chat_template=False).
+include: bbq_instruct_mc.yaml
+task: bbq_base_mc
+doc_to_text: !function bbq_instruct_utils.doc_to_text_base
