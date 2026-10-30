@@ -95,8 +95,9 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   - [x] Instruct question, design decided (2026-10-29): English BBQ only (EsBBQ in A/B/C is not done); destination an appendix or a short paragraph; base results are untouched and no intervention is run on instruct models. Pairs: Llama-3.2-3B base/Instruct and Salamandra-7B base/Instruct, all in A/B/C.
   - [x] Llama-3.2-3B base in A/B/C (2026-10-30), notebook `02_Evaluate_BBQ.ipynb` with `PROMPT_FORMAT = "abc"`; results in the table above.
   - [x] Salamandra-7B base in A/B/C (2026-10-30): result above; the model does not follow the format.
+  - [ ] Instruct models in the standard `bbq` format (decided 2026-10-30): Llama-3.2-3B-Instruct and Llama-3.1-8B-Instruct with the same task and prompt as the base models, plain text, no chat template, to isolate the effect of instruction tuning from the effect of the A/B/C format. `02_Evaluate_BBQ.ipynb` with `PROMPT_FORMAT = "standard_instruct"` (checkpoints `checkpoints_bbq_standard_instruct`, files `instruct_models_bbq_standard_results_*`); about 700,000 requests per model. A variant with the chat template is not planned.
   - [x] Llama-3.1-8B base and Instruct in A/B/C (2026-10-30), as second pair (a base that follows the format); results above. Not run: Salamandra-7B-Instruct (its base does not follow the format; would need a check that the Salamandra chat template is applied).
-  - [ ] Copy `base_models_bbq_abc_results_latest.csv` (and the JSON, with Llama-3.2-3B, Salamandra-7B and Llama-3.1-8B) and `instruct_models_bbq_mc_results_latest.csv` (with Llama-3.2-3B-Instruct and Llama-3.1-8B-Instruct) to `results/`.
+  - [x] A/B/C consolidated files copied to `results/` (2026-10-30): `base_models_bbq_abc_results_latest.csv` and `base_models_bbq_abc_results_20261030_102243.csv/json` (Llama-3.2-3B, Salamandra-7B, Llama-3.1-8B); `instruct_models_bbq_mc_results_latest.csv` and `instruct_models_bbq_mc_results_20261030_103101.csv/json` (Llama-3.2-3B-Instruct, Llama-3.1-8B-Instruct). The JSON files were regenerated from the CSVs on Drive (same byte size as the Drive originals).
   - [x] Consolidated CSVs and JSONs of the five base models copied to the repository (2026-10-29): BBQ in `results/`, EsBBQ in `results/bias-benchmarks-base/`. The instruct CSV stays on Drive.
   - [ ] Commit and push what is pending.
   - Later (writing phase): the figures in `results/figures/` are from 2025-12-28 and show three models; [04_Graphics_Bias_BBQ](notebooks/04_Graphics_Bias_BBQ.ipynb) hard-codes the three models and reads old JSONs, so it needs a redesign, not just a rerun.
@@ -180,6 +181,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
+- 2026-10-30: `02_Evaluate_BBQ.ipynb` gets `PROMPT_FORMAT = "standard_instruct"` to run instruct models in the standard `bbq` format (pending run).
 - 2026-10-30: Llama-3.1-8B base and Instruct evaluated in A/B/C: the format raises the base's ambiguous accuracy 8.35 → 38.28 % (it did not in the 3B); instruct tuning adds a further 43 pp.
 - 2026-10-30: Salamandra-7B base evaluated in A/B/C: it does not follow the format (disambiguated accuracy 80.4 → 52.7 %). No decision yet on further pair runs.
 - 2026-10-30: A/B/C pair study: task `bbq_base_mc` and `PROMPT_FORMAT` switch added; Llama-3.2-3B base evaluated in A/B/C (accuracy unchanged by the format, bias score ×2.8); Salamandra-7B base running.
