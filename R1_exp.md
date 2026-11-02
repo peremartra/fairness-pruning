@@ -1,6 +1,6 @@
 # R1 — Experiments tracker and run guide (P0: Fairness Pruning)
 
-Last updated: 2026-10-30
+Last updated: 2026-11-02
 
 Purpose: one place to see the status of each experiment (E0–E6) and to consult before launching the next one. Numbers are kept to the minimum needed to read the status; the full tables live in the linked files.
 
@@ -14,7 +14,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 |---|---|---|---|---|---|
 | E0 | Last-layer checks on stored scores | Done | Llama-3.2-1B, 3B, Salamandra-2B | Last-layer share in top-1 %: 34–71 % raw, 12–31 % after per-layer normalisation | [E0](#e0--last-layer-checks) |
 | E1 | New models and baselines | Done | Llama-3.1-8B, Salamandra-7B, Qwen3-4B-Base | Disambiguated accuracy above 60 % in BBQ and EsBBQ for the three; all OptiPFair-compatible; A/B/C base/instruct pair study: Llama-3.2-3B and Llama-3.1-8B pairs done; Salamandra-7B base does not follow the format | [E1](#e1--new-models-and-baselines) |
-| E2 | Random and cross controls (pilot) | Pending | Llama-3.2-3B | Not started | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
+| E2 | Random and cross controls (pilot) | In progress | Llama-3.2-3B | Design closed 2026-11-02; no run yet (Religion·Top-20 vs 10 random sets, full BBQ) | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
 | E3 | Intervention and controls in new models | Pending | Llama-3.1-8B, Salamandra-7B | Blocked by E1 and E2 | [E3](#e3--intervention-and-controls-in-the-new-models) |
 | E4 | Capabilities | Pending | All with interventions | Missing configurations listed | [E4](#e4--capabilities) |
 | E5 | Bootstrap statistics | Pending | Llama-3.2-3B + new models | Needs per-item logs (partly available) | [E5](#e5--statistics-bootstrap) |
@@ -116,31 +116,37 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E2 — Random and cross controls (pilot in Llama-3.2-3B)
 
-- **Status:** Pending.
-- **Goal:** test the strongest result of the paper (Religion·Top-20, ambiguous bias 6.00 % → 1.50 %) against random neurons.
+- **Status:** In progress (design closed 2026-11-02; no run yet). Step-by-step plan with gates: S0–S7 below.
+- **Goal:** test the strongest result of the paper (Religion·Top-20, ambiguous bias 6.00 % → 1.50 %) against random neurons of the same layers, with a measure that also checks for damage.
+- **Why this configuration:** scoping of the stored May 2026 runs (12 BBQ experiments in Llama-3.2-1B/3B and 16 EsBBQ in Llama-3.2-1B/Salamandra-2B), using the change in the magnitude of the bias score (|zeroed| − |baseline|) against the same change in the untouched categories. Religion·Top-20 in the 3B ranks first in both ambiguous (6.00 → 1.50) and disambiguated bias (3.84 → −1.67: −2.17 in magnitude, with a sign change). Salamandra-2B Religion·Top-40 (EsBBQ) also ranks first in both, but the model is at chance in disambiguated accuracy (~50 %), so its disambiguated bias is not interpretable. No run in the 1B is first in both measures. Caveat: the configuration was chosen after seeing the old-configuration results, so its effect may shrink on repetition.
 - **Design:**
-  - **Real set:** the Religion Top-20 neurons already used in the paper (indices to be recomputed or recovered, see open items).
-  - **Random control:** 10 sets with the same number of neurons per layer as the real set. Extend only if the result justifies it.
-  - **Noise control:** repeat the unpruned baseline with the same settings (this is the baseline repeat of E1) and compare it item by item with the first run.
-  - **Cross control:** 2×2 matrix, Religion neurons and Race neurons evaluated on the BBQ items of both categories.
-  - **Measures:** change in ambiguous and disambiguated bias, accuracy of the category, and WikiText as capability cost.
-- **Decision criterion (fixed before seeing results):** if the real effect is clearly outside the distribution of the random sets, move on to the new models (E3). If it falls inside, rethink the central claim.
+  - **Evaluation:** full BBQ, standard `bbq` task, current protocol (lm-eval 0.4.9.2, bfloat16, `batch_size=16`, 0-shot, `log_samples=True`). Scores: `en`, type `bias`.
+  - **Real sets:** Religion·Top-20 and Race·Top-20, regenerated with the paper's rule (global top-N of `results/neuron_analysis/llama-3.2-3B/en/<Category>_bias_scores.json`, keys `down_proj_input_layer_N`, descending score). Checked on the stored scores: Religion has 14/20 neurons in layer 27 (the last) and one each in layers 17, 19, 21, 23, 24 and 26; Race has 18/20 in layer 27 and one each in layers 23 and 24; no tie at the cutoff.
+  - **Random control:** 10 sets for Religion·Top-20 with fixed seeds 0–9 (10–19 reserved for an extension), `numpy.random.default_rng(seed)`; same number of neurons per layer as the real set, sampled without replacement from the 8192 neurons of each layer and excluding the real ones. Each manifest (layer → indices, seed, numpy version) is saved before evaluating.
+  - **Noise control:** repeat the unpruned baseline with the current configuration (`checkpoints_bbq_rerun`) and compare aggregates (global and per category) with the old baseline. There is no per-item log of the old 3B baseline, so an item-level comparison is only possible between two identical reruns (optional; decide after timing S1).
+  - **Cross control:** 2×2 matrix, Religion neurons and Race neurons evaluated on the items of both categories (it comes from the same full-BBQ runs). The May 2026 runs already contain this matrix for Top-20 in the old configuration (ambiguous bias: Religion neurons → Religion 1.50, Race 1.80; Race neurons → Religion 7.67, Race −1.16).
+  - **Primary measure:** change in the magnitude of the target category's disambiguated bias score (|zeroed| − |baseline|; negative = less bias). **Validity condition:** change in the target category's disambiguated accuracy (computed from the per-item logs). **Stability panel** (from the logs): flips against the baseline (correct → incorrect, incorrect → correct, towards/against the stereotype), rate of "unknown" answers, KL over the three options (needs the option loglikelihoods in the logs; to verify in S1), effect on the other categories, WikiText per set. **Secondary:** ambiguous bias (no weight in the decision).
+  - **Logs:** baseline rerun in `checkpoints_bbq_rerun`; all other sets in `checkpoints_e2/<set_id>` (about 700 MB of per-item logs per full BBQ run; estimate).
+- **Decision criterion (fixed on 2026-11-02, before any result in the current configuration; the May 2026 category-level numbers had already been seen):** the real set is "clearly outside" if (i) its primary change ranks first among the 11 values (real + 10 random) and lies at least 2 SD below the random mean, and (ii) its change in disambiguated accuracy is not worse than that of the worst random set. Both hold → move on to the new models (E3). (i) holds in rank but not in margin → extend to seeds 10–19. Otherwise (rank ≥ 2, or (ii) fails) → rethink the central claim; no extension. With 10 random sets the smallest empirical p is 1/11 (≈ 0.09).
 - **Scope:** it allows saying that the selected neurons have more effect than random neurons **of the same layers**. It does not show that the effect is demographic-specific: layer-matched random sets include last-layer scale effects (E0), so a magnitude-matched control and non-demographic control pairs would be needed.
-- **Run steps:**
-  1. Reproduce the real intervention under the current configuration and compare it with the published values. Existing results: [results/bias-benchmarks-zeroed/](results/bias-benchmarks-zeroed/) (`llama-3.2-3B_bbq_zeroed_results.*`).
-  2. Run the noise control (new checkpoint directory).
-  3. Generate the 10 random sets, record the seeds and save each set as a manifest (layer → neuron indices) before evaluating.
-  4. Evaluate each set on BBQ with per-item logs; compute category bias, category accuracy and WikiText.
-  5. Run the 2×2 cross matrix.
-  6. Apply the decision criterion and record the outcome here.
-- **Design questions to settle before writing code:**
-  - Full BBQ or only the target categories (cost versus comparability with the published numbers).
-  - The numerical rule for "clearly outside the random distribution" (for example rank among the 11 values), fixed in advance.
-  - Seeds for the random sets.
+- **Run steps (each with a gate; do not move on until it is met):**
+  - **S0.** Record the decisions here; file the scoping script. Gate: done.
+  - **S1.** Noise baseline of the 3B in `checkpoints_bbq_rerun` (`02_Evaluate_BBQ.ipynb`, `PROMPT_FORMAT = "standard_rerun"`, Llama-3.2-3B only). Gate: GPU, duration and versions recorded in the notebook log; per-item log opened (option loglikelihoods present; item counts per category).
+  - **S2.** Regenerate the manifests of Religion·Top-20 and Race·Top-20 with the paper's rule. First look for the original `llama-3.2-3B_neuron_manifest.json` in the `RESULTS_DIR` of notebook 07B on Drive. Gate: layer distribution as above.
+  - **S3.** Evaluate the two real interventions in the current configuration (full BBQ, per-item logs). Existing results for comparison: [results/bias-benchmarks-zeroed/](results/bias-benchmarks-zeroed/) (`llama-3.2-3B_bbq_zeroed_results.*`). Gate: the direction of the May effect is reproduced; if it disappears, stop and record it as a finding.
+  - **S4.** Generate and save the 10 random manifests (seeds 0–9) before evaluating. Gate: same per-layer counts as the real set and no overlap with it.
+  - **S5.** Evaluate the 10 random sets (full BBQ, per-item logs, WikiText). Gate: 10 complete runs.
+  - **S6.** Analysis with the fixed criterion and the stability panel (the script is discussed before it is written).
+  - **S7.** Record the outcome here: E3, extension to seeds 10–19, or rethink the claim.
+- **Data checks open:**
+  - Llama-3.2-1B BBQ `exp2` is named Top-20 but zeroes 5 neurons (the EsBBQ file calls the same experiment Top-5).
+  - Llama-3.2-3B baseline (`results/bias-benchmarks-base/meta_llama_llama_3.2_3b.json`): ambiguous and disambiguated Race_ethnicity bias scores are identical to 15 digits (0.013372093023255704).
+  - Paper, Table VIII: −5.51 pp is the signed change of the disambiguated bias of Religion (3.84 → −1.67); in magnitude it is −2.17.
 - **Notebooks to reuse:** [06_zero_bias_neurons](notebooks/06_zero_bias_neurons.ipynb) (zeroing) · [07_EvalPrunedModels_Llama3B](notebooks/07_EvalPrunedModels_Llama3B.ipynb) and [07B](notebooks/07B_EvalPrunedModels_Llama3B.ipynb) (evaluation pattern). Neuron scores: `results/neuron_analysis/llama-3.2-3B/`.
 - **Open items:**
   - [ ] Repeat the Llama-3.2-3B BBQ baseline with the current configuration in `checkpoints_bbq_rerun` (per-item logs; it is the noise control of this experiment).
   - [ ] Neuron indices of the published Religion·Top-20 run: [results/bias-benchmarks-zeroed/README.md](results/bias-benchmarks-zeroed/README.md) describes a `llama-3.2-1B_neuron_manifest.json`, but no manifest file is in the repository and none was found on Drive (searched by name). For the 3B, regenerate the set from `results/neuron_analysis/llama-3.2-3B/` with the same selection rule as the paper and save the manifest this time.
+  - [ ] After S1, decide whether to run a second identical baseline rerun to check item-level determinism (the old 3B baseline has no per-item log).
 
 ## E3 — Intervention and controls in the new models
 
@@ -192,6 +198,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
+- 2026-11-02: E2 design closed (Religion·Top-20 in Llama-3.2-3B, full BBQ, fixed seeds 0–9; primary measure = change in the magnitude of the disambiguated bias with disambiguated accuracy as validity condition; decision criterion fixed); no run yet.
 - 2026-11-02: E1 closed.
 - 2026-10-30: Llama-3.2-3B-Instruct and Llama-3.1-8B-Instruct evaluated in the standard `bbq` format: ambiguous accuracy stays at 8–11 %, disambiguated +8 to +10 pp, ambiguous bias higher; earlier wording that attributed the A/B/C gain to instruction tuning corrected.
 - 2026-10-30: Llama-3.1-8B base and Instruct evaluated in A/B/C: the format raises the base's ambiguous accuracy 8.35 → 38.28 % (it did not in the 3B); instruct tuning adds a further 43 pp.
