@@ -13,7 +13,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 | Exp | What | Status | Models | Headline | Section |
 |---|---|---|---|---|---|
 | E0 | Last-layer checks on stored scores | Done | Llama-3.2-1B, 3B, Salamandra-2B | Last-layer share in top-1 %: 34–71 % raw, 12–31 % after per-layer normalisation | [E0](#e0--last-layer-checks) |
-| E1 | New models and baselines | In progress | Llama-3.1-8B, Salamandra-7B, Qwen3-4B-Base | Disambiguated accuracy above 60 % in BBQ and EsBBQ for the three; all OptiPFair-compatible; A/B/C base/instruct pair study: Llama-3.2-3B and Llama-3.1-8B pairs done; Salamandra-7B base does not follow the format | [E1](#e1--new-models-and-baselines) |
+| E1 | New models and baselines | Done | Llama-3.1-8B, Salamandra-7B, Qwen3-4B-Base | Disambiguated accuracy above 60 % in BBQ and EsBBQ for the three; all OptiPFair-compatible; A/B/C base/instruct pair study: Llama-3.2-3B and Llama-3.1-8B pairs done; Salamandra-7B base does not follow the format | [E1](#e1--new-models-and-baselines) |
 | E2 | Random and cross controls (pilot) | Pending | Llama-3.2-3B | Not started | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
 | E3 | Intervention and controls in new models | Pending | Llama-3.1-8B, Salamandra-7B | Blocked by E1 and E2 | [E3](#e3--intervention-and-controls-in-the-new-models) |
 | E4 | Capabilities | Pending | All with interventions | Missing configurations listed | [E4](#e4--capabilities) |
@@ -47,7 +47,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E1 — New models and baselines
 
-- **Status:** In progress. Baselines of Llama-3.1-8B and Salamandra-7B finished on 2026-10-28 and Qwen3-4B-Base on 2026-10-29; data files copied to the repository (commit pending); the figures are left for the writing phase. A/B/C base/instruct pair study done on 2026-10-30 for Llama-3.2-3B and Llama-3.1-8B (plus Salamandra-7B base only); see open items.
+- **Status:** Done (closed by Pere, 2026-11-02; the verifications left in the open items are not blocking). Baselines of Llama-3.1-8B and Salamandra-7B finished on 2026-10-28 and Qwen3-4B-Base on 2026-10-29; data files copied to the repository (commit pending); the figures are left for the writing phase. A/B/C base/instruct pair study done on 2026-10-30 for Llama-3.2-3B and Llama-3.1-8B (plus Salamandra-7B base only); see open items.
 - **Goal:** add Llama-3.1-8B and Salamandra-7B, and check that their baselines are clearly above chance. An instruct model (Llama-3.2-3B-Instruct) was evaluated; whether to include one is open again (see open items). Per-item logs are reused later for bootstrap (E5). Gemma was discarded; Qwen3-4B-Base was added as a third family (standard dense GLU-MLP, architecture `qwen3`; the hybrid-attention Qwen3.5 would need changes to the extraction code and is left for later).
 - **Design (as run):** BBQ (English) and EsBBQ (Spanish), 0-shot, full dataset, bfloat16, `batch_size=16`, `log_samples=True`. Llama-3.2-3B-Instruct was also evaluated, in English only, with a different task (`bbq_instruct_mc`: options A/B/C, chat template); its numbers are not comparable with the base-model ones and it is a candidate for an appendix (see the pair study below). The position-bias diagnostic of the plan (is the ~50 % disambiguated accuracy of Llama-3.2-1B and Salamandra-2B in EsBBQ position bias or chance?) is dropped (2026-10-29); it will be run only if a reviewer asks. It would need the per-item logs of those two models, which exist on Drive.
 - **Results** (item-weighted; reference for "above chance": about 50 % in disambiguated items is random choice between the two named answers):
@@ -192,6 +192,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
+- 2026-11-02: E1 closed.
 - 2026-10-30: Llama-3.2-3B-Instruct and Llama-3.1-8B-Instruct evaluated in the standard `bbq` format: ambiguous accuracy stays at 8–11 %, disambiguated +8 to +10 pp, ambiguous bias higher; earlier wording that attributed the A/B/C gain to instruction tuning corrected.
 - 2026-10-30: Llama-3.1-8B base and Instruct evaluated in A/B/C: the format raises the base's ambiguous accuracy 8.35 → 38.28 % (it did not in the 3B); instruct tuning adds a further 43 pp.
 - 2026-10-30: Salamandra-7B base evaluated in A/B/C: it does not follow the format (disambiguated accuracy 80.4 → 52.7 %). No decision yet on further pair runs.
