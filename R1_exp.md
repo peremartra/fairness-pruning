@@ -1,8 +1,8 @@
 # R1 — Experiments tracker and run guide (P0: Fairness Pruning)
 
-Last updated: 2026-11-02
+Last updated: 2026-11-04
 
-Purpose: one place to see the status of each experiment (E0–E6) and to consult before launching the next one. Numbers are kept to the minimum needed to read the status; the full tables live in the linked files.
+Purpose: one place to see the status of each experiment (E0–E7) and to consult before launching the next one. Numbers are kept to the minimum needed to read the status; the full tables live in the linked files.
 
 How to maintain it: when something changes, (1) update the row in the Status table, (2) edit only the affected experiment section, (3) add a dated line to the Changelog at the bottom.
 
@@ -14,11 +14,12 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 |---|---|---|---|---|---|
 | E0 | Last-layer checks on stored scores | Done | Llama-3.2-1B, 3B, Salamandra-2B | Last-layer share in top-1 %: 34–71 % raw, 12–31 % after per-layer normalisation | [E0](#e0--last-layer-checks) |
 | E1 | New models and baselines | Done | Llama-3.1-8B, Salamandra-7B, Qwen3-4B-Base | Disambiguated accuracy above 60 % in BBQ and EsBBQ for the three; all OptiPFair-compatible; A/B/C base/instruct pair study: Llama-3.2-3B and Llama-3.1-8B pairs done; Salamandra-7B base does not follow the format | [E1](#e1--new-models-and-baselines) |
-| E2 | Random and cross controls (pilot) | In progress | Llama-3.2-3B | Design closed 2026-11-02; S1, S2/S4 and S3 (real sets, full BBQ + capabilities) done; Religion·Top-20 lowers Religion bias more than Race·Top-20 does, but both change 4–12 % of the answers in every category; two identical baseline runs are bit-for-bit equal, so those changes are an effect of the intervention and not run-to-run noise; S5 (10 random sets, seeds 0–9) done 2026-11-03; next: analysis (S6) | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
+| E2 | Random and cross controls (pilot) | Done | Llama-3.2-3B | Design closed 2026-11-02; S1, S2/S4 and S3 (real sets, full BBQ + capabilities) done; Religion·Top-20 lowers Religion bias more than Race·Top-20 does, but both change 4–12 % of the answers in every category; two identical baseline runs are bit-for-bit equal, so those changes are an effect of the intervention and not run-to-run noise; S5 (10 random sets, seeds 0–9) done 2026-11-03; S6 and S7 closed 2026-11-04: the 20 selected neurons change the Religion bias (3.84 → −1.33) and 11.1 % of the answers; 20 random neurons of the same layers give 2.84 to 4.17 and 1.1 to 1.7 %; no random set reaches the change of the selected neurons | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
 | E3 | Intervention and controls in new models | Pending | Llama-3.1-8B, Salamandra-7B | Blocked by E1 and E2 | [E3](#e3--intervention-and-controls-in-the-new-models) |
 | E4 | Capabilities | Pending | All with interventions | Missing configurations listed | [E4](#e4--capabilities) |
 | E5 | Bootstrap statistics | Pending | Llama-3.2-3B + new models | Needs per-item logs (partly available) | [E5](#e5--statistics-bootstrap) |
 | E6 | DPO pilot on selected neurons | Not planned for P0 | — | Outside P0 | [E6](#e6--dpo-pilot-on-selected-neurons) |
+| E7 | Full cycle in an Instruct model (appendix) | Pending | Llama-3.2-3B-Instruct | Design agreed 2026-11-04 (model, BBQ format, localisation prompts); not started | [E7](#e7--full-cycle-in-an-instruct-model-appendix) |
 
 ## Common protocol (applies to every run)
 
@@ -116,7 +117,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E2 — Random and cross controls (pilot in Llama-3.2-3B)
 
-- **Status:** In progress (design closed 2026-11-02; S1, S2, S3 and S4 done on 2026-11-02/03; second identical baseline rerun and S5 (10 random sets) done 2026-11-03; next: S6, analysis). Step-by-step plan with gates: S0–S7 below.
+- **Status:** Done (design closed 2026-11-02; S1–S4 done on 2026-11-02/03; second identical baseline rerun and S5 (10 random sets) done 2026-11-03; S6 and S7 closed 2026-11-04). Step-by-step plan: S0–S7 below.
 - **Goal:** test the strongest result of the paper (Religion·Top-20, ambiguous bias 6.00 % → 1.50 %) against random neurons of the same layers, with a measure that also checks for damage.
 - **What was run, and how the random neurons were chosen (recorded 2026-11-04):**
   - **Evaluations (Llama-3.2-3B, full BBQ = 58,492 items each):** 14 BBQ runs: the unpruned baseline twice (identical bit for bit), 2 real sets (Religion·Top-20, Race·Top-20) and 10 random sets. That makes 12 intervened models, each with 20 neurons set to zero. The capability battery (WikiText, MMLU 5-shot, ARC-Challenge, HellaSwag, HellaSwag-es) was run on 3 models (baseline and the 2 real sets); WikiText alone on the 10 random sets (13 models in total).
@@ -184,9 +185,22 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
     - **Changed answers in all categories:** random sets 0.26–4.19 % per category and seed (the next highest value after Physical appearance in seed 4, 4.19 %, is 2.60 %); real sets 4.05–12.48 %.
     - **Reading (descriptive; no analysis criterion applied yet):** the ten random sets keep the Religion ambiguous accuracy at the baseline value (3.67 %, identical in all); the real sets lower it to 2.00 %. SD is the sample SD of 10 sets. Seeds 0 and 1 (L4) have the two highest Religion changed-answer rates among the random sets (1.58 and 1.67 vs 1.08–1.33 in seeds 2–9), consistent with a small GPU effect on this measure; with n = 2 against 8 this is only an indication. Measures and criteria of the analysis: to be decided (see S6).
-  - **S6.** Analysis of all sets and stability panel. Measures and criteria to be defined with the results in view (author, 2026-11-03); the script is discussed before it is written.
+  - **S6.** Done 2026-11-04. Analysis of all sets with `analysis/e2/e2_analysis.py` (13 of 13 checks passed; output on Drive, `fair_pruning/results/e2/analysis/20261104_092942`). Measures and criteria were defined with the results in view (author, 2026-11-03); the analysis is descriptive: change against the baseline, % of changed answers, rank of the real set among the random ones.
     - **Presentation agreed 2026-11-03:** the main message is one question and one answer (do the 20 selected neurons change the Religion bias more than 20 random neurons of the same layers?). One main table with three rows (no intervention; 20 selected neurons; 20 random neurons of the same layers, range over the 10 draws) and the columns Religion disambiguated bias, change against the baseline and % of changed answers; the cost in capabilities goes in one sentence (WikiText). By-category table, capabilities table, Race·Top-20 and the 10 individual random sets go to the appendix (or are left out for lack of space). Ambiguous scores: descriptive only.
-  - **S7.** Record the outcome here and decide the next step (E3 or other).
+  - **S7.** Done 2026-11-04. **Outcome** (Religion, disambiguated bias, percentage points; unpruned 3.84):
+
+    | | Religion bias | Change | Changed answers |
+    |---|---|---|---|
+    | Unpruned | 3.84 | — | — |
+    | 20 selected neurons (Religion·Top-20) | −1.33 | −5.17 | 11.1 % |
+    | 20 random neurons of the same layers (10 sets) | 2.84 to 4.17 (mean 3.51 ± 0.50) | −1.00 to +0.33 | 1.1 to 1.7 % |
+
+    - None of the 10 random sets reaches the change of the selected neurons (rank 1 of 11).
+    - Race·Top-20 also changes the Religion bias (1.00, change −2.84; 7.4 % of the Religion answers changed): the two selected sets share 5 neurons.
+    - Cost in capabilities: WikiText perplexity 9.53 (unpruned), 9.79 (Religion·Top-20), 9.5322 to 9.5458 (random sets); MMLU, ARC-Challenge and HellaSwag only for the unpruned model and the two selected sets.
+    - Disambiguated accuracy: 79.00 (unpruned), 76.67 (selected), 78.17 to 79.50 (random).
+    - In the other categories the selected sets change 4.05 to 12.48 % of the answers and the random sets 0.26 to 4.19 %.
+    - **Next step:** E3 (replication in Llama-3.1-8B and Salamandra-7B); E7 (Instruct) goes after it.
 - **Random sets and number of runs in E2 (recorded 2026-11-04):**
   - **How the random sets were drawn:** one set per seed 0–9, each with its own `numpy.random.default_rng(seed)`. In every layer where Religion·Top-20 has neurons (17, 19, 21, 23, 24, 26 and 27, in ascending order) the set gets as many neurons as Religion·Top-20 has there (1, 1, 1, 1, 1, 1 and 14; 20 in total), drawn with `Generator.choice(..., replace=False)` from the 8192 neurons of that layer, excluding the 20 neurons of Religion·Top-20. The draw is uniform: scores and activations are not used. All sets were drawn and saved in the manifest (sha256 e633b604…c0de, recorded in every summary) before any evaluation, and all ten sets of the manifest were evaluated. No overlap with Religion·Top-20; maximum overlap between two random sets: 1 neuron. Seeds 10–19 (reserved) were not used. Only Religion-matched random sets exist: Race·Top-20 has no random counterpart.
   - **Evaluations done (one run per set; the evaluation is deterministic):** 14 full BBQ evaluations (58,492 items each): 2 of the unpruned baseline (identical, see S1), 2 real sets (Religion·Top-20, Race·Top-20) and 10 random sets; 12 of them with neurons zeroed. Capabilities: WikiText in the baseline, the 2 real sets and the 10 random sets (13 sets); MMLU, ARC-Challenge, HellaSwag and HellaSwag-es only in the baseline and the 2 real sets.
@@ -200,9 +214,10 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   - [x] (done 2026-11-02, S1; per-item log opened and validated) Repeat the Llama-3.2-3B BBQ baseline with the current configuration in `checkpoints_bbq_rerun` (per-item logs; it is the noise control of this experiment).
   - [x] (regenerated and saved 2026-11-02, S2; original not found) Neuron indices of the published Religion·Top-20 run: [results/bias-benchmarks-zeroed/README.md](results/bias-benchmarks-zeroed/README.md) describes a `llama-3.2-1B_neuron_manifest.json`, but no manifest file is in the repository and none was found on Drive (searched by name). For the 3B, regenerate the set from `results/neuron_analysis/llama-3.2-3B/` with the same selection rule as the paper and save the manifest this time.
   - [x] (done 2026-11-03) Second identical baseline rerun: bit-for-bit equal to the first one (0 of 58,492 items change; see S1). The items that change in S3 are an effect of the intervention.
-  - [ ] Decide how the 12 option loglikelihoods are collapsed to three options for the KL (proposal in `claude/BBQ_log_format.md`).
-  - [ ] Define the measures and criteria of the E2 analysis (S6) with the results of all sets in view; discuss the script before writing it.
-  - [ ] (future, author's idea 2026-11-03) Test with an Instruct model, which requires preparing the prompts first; ambiguous scores of the base models are not used as reference.
+  - [x] (done 2026-11-04) Measures and analysis of S6.
+  - [ ] Not part of S6: collapse of the 12 option loglikelihoods to three options for the KL (proposal in `claude/BBQ_log_format.md`) and per-item analysis (direction of the changes, intervals); only if a reviewer or E5 needs them.
+  - [x] The Instruct test is now E7.
+  - [ ] Magnitude-matched random control: left for a reviewer to request (author, 2026-11-04).
   - [ ] Colab environment: the first re-execution failed with `ImportError: GenerationMixin` after `pip install -r requirements.txt`; fixed on 2026-11-03 by changing the numpy line in `requirements.txt` (commits bfb30ac, 6b777af, ad70a34). Check that the change does not affect the other notebooks.
 
 ## E3 — Intervention and controls in the new models
@@ -216,8 +231,11 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   2. Select top-K neurons per category and save the manifests.
   3. Evaluate the real interventions, then the random and cross controls, as in E2.
 - **Open items:**
-  - [ ] Exact K values (take them from the pilot models; to define).
-  - Plan: same K values as the rest of the models; Salamandra-7B in English and Spanish (as decided 2026-10-29, to confirm when E3 starts).
+  - [x] **K decided (author, 2026-11-04): K = 5 and K = 20, with K = 20 as the main value.** They are the values the paper uses for Religion and Race in Llama-3.2-3B (Table II), so the new models are comparable with the pilot. Real sets: Religion and Race × K = 5 and 20 (4 sets per model); 10 random sets (same layer distribution as the real set) only for Religion·Top-20; one baseline per model. Same absolute K in all models.
+  - **Contingency (not part of the plan):** the same K is a smaller share of the neurons in the larger models (Llama-3.2-3B: 20 of 8192 × 28 neurons; Llama-3.1-8B: layer width to be verified in its config; Salamandra-7B: not checked). If K = 20 moves nothing in Llama-3.1-8B, K = 40 could be added for that model only.
+  - [ ] Salamandra-7B in English and Spanish with the same K (plan of 2026-10-29; to confirm when E3 starts, as it doubles the Salamandra runs).
+  - [ ] Layer width and number of layers of Llama-3.1-8B and Salamandra-7B (from their configs) to write the random-control draw.
+  - [ ] Which Categories exactly: Religion and Race are the default; confirm in the E3 design.
 
 ## E4 — Capabilities
 
@@ -253,8 +271,31 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 - **Status:** Not planned for P0.
 - **Idea (kept for P1 or a secondary paper):** train only the localised neurons with DPO, rest of the model frozen, on a synthetic dataset (no BBQ) of biased and unbiased responses; minimal pilot in one model, one category, K=20, compared with random neurons of the same layers; measure BBQ bias (trained and other categories), capabilities and abstention.
 
+## E7 — Full cycle in an Instruct model (appendix)
+
+- **Status:** Pending. Design agreed by the author on 2026-11-04; nothing run yet.
+- **Goal:** repeat the full E2 cycle (localisation, real interventions, random controls, capabilities) in an English Instruct model. It fills one appendix; the body of the paper stays based on base models. It answers the question of whether the base-model results carry over to the Instruct models.
+- **Why now:** in E1, Instruct models with A/B/C and chat template raise ambiguous accuracy by about 43–52 pp, whereas in the standard format they stay at 8–11 % (as the base models do). With A/B/C and chat template the ambiguous measures carry information, which is not the case for the base models.
+- **Decisions (author, 2026-11-04):**
+  1. Model: Llama-3.2-3B-Instruct (same family and size as the E2 pilot; only the training changes).
+  2. BBQ format: A/B/C with chat template.
+  3. Localisation prompts: contrastive pairs in chat format. Before the experiment, a small test with the chat-format prompt; if it works, the version without chat format is not tested.
+- **Design (proposal, to confirm):** same structure as E2: Religion·Top-20 and Race·Top-20 as real sets, 10 random sets (seeds 0–9) with the same layer distribution as the selected neurons, full BBQ, capabilities as in E2 (full battery for baseline and real sets, WikiText for random sets). Measures and table defined with the data in view, as in E2.
+- **Differences with E2 to resolve before running:**
+  - The A/B/C per-item log has 3 letters, not the 12 options of `lm-eval` `bbq`; the per-item recomputation and the analysis scripts need an A/B/C version (the log format has to be written down, as done in `claude/BBQ_log_format.md` for the standard format).
+  - The neurons selected in the Instruct model will differ from the base ones, so layers and counts per layer must be read from its own scores.
+- **Open items:**
+  - [ ] Define the small localisation test in chat format (what is checked and what counts as it working).
+  - [ ] K and categories (E2 used K=20 for Religion and Race; confirm).
+  - [ ] Instruct baseline: full BBQ in A/B/C with chat template, two identical runs, as in E2 S1.
+  - [ ] Cost: rough estimate of about 10 h of A100, not computed for the A/B/C format.
+  - [ ] Order: E3 first (it supports the body of the paper); E7 is the last experiment.
+
 ## Changelog
 
+- 2026-11-04: E3 K decided (K = 5 and 20, main K = 20; random controls only for Religion·Top-20).
+- 2026-11-04: E2 closed (S6 and S7): the 20 selected neurons change the Religion bias and 11.1 % of the answers; 20 random neurons of the same layers, 1.1 to 1.7 %; no random set reaches the change of the selected ones. Next: E3, then E7.
+- 2026-11-04: E7 added (full cycle in Llama-3.2-3B-Instruct as an appendix; A/B/C with chat template; localisation prompts in chat format after a small preliminary test). E6 stays outside P0.
 - 2026-11-04: `analysis/e2/e2_analysis.py` run on the 13 per-set summaries (output on Drive, `fair_pruning/results/e2/analysis/20261104_092942`; 13 of 13 checks passed; summaries equal to the consolidated CSV to 5e-11). Main table: unpruned Religion disambiguated bias 3.84; 20 selected neurons -1.33 (change -5.17, 11.1 % of answers changed); 20 random neurons 2.84 to 4.17 (change -1.00 to +0.33, 1.1 to 1.7 % changed). READMEs of `analysis/` and `analysis/e2/` written.
 - 2026-11-03: E2 S5 done (10 random Religion sets, seeds 0–9; table in S5). The decision criterion of 2026-11-02 is superseded by decision of the author; measures and criteria of the analysis to be defined with the data. The `env.gpu` field of the summaries of seeds 0 and 1 does not correspond to the GPU of their BBQ (L4).
 - 2026-11-03: E2 second identical baseline rerun done: bit-for-bit equal to the first one (0 of 58,492 items change), so the 4–12 % of changed answers in S3 is not run-to-run noise.
