@@ -15,7 +15,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 | E0 | Last-layer checks on stored scores | Done | Llama-3.2-1B, 3B, Salamandra-2B | Last-layer share in top-1 %: 34–71 % raw, 12–31 % after per-layer normalisation | [E0](#e0--last-layer-checks) |
 | E1 | New models and baselines | Done | Llama-3.1-8B, Salamandra-7B, Qwen3-4B-Base | Disambiguated accuracy above 60 % in BBQ and EsBBQ for the three; all OptiPFair-compatible; A/B/C base/instruct pair study: Llama-3.2-3B and Llama-3.1-8B pairs done; Salamandra-7B base does not follow the format | [E1](#e1--new-models-and-baselines) |
 | E2 | Random and cross controls (pilot) | Done | Llama-3.2-3B | Design closed 2026-11-02; S1, S2/S4 and S3 (real sets, full BBQ + capabilities) done; Religion·Top-20 lowers Religion bias more than Race·Top-20 does, but both change 4–12 % of the answers in every category; two identical baseline runs are bit-for-bit equal, so those changes are an effect of the intervention and not run-to-run noise; S5 (10 random sets, seeds 0–9) done 2026-11-03; S6 and S7 closed 2026-11-04: the 20 selected neurons change the Religion bias (3.84 → −1.33) and 11.1 % of the answers; 20 random neurons of the same layers give 2.84 to 4.17 and 1.1 to 1.7 %; no random set reaches the change of the selected neurons | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
-| E3 | Intervention and controls in new models | Pending | Llama-3.1-8B, Salamandra-7B | Blocked by E1 and E2 | [E3](#e3--intervention-and-controls-in-the-new-models) |
+| E3 | Intervention and controls in new models | Pending | Llama-3.1-8B, Salamandra-7B (EN + ES), Qwen3-4B-Base | Design being closed 2026-11-04: Religion, Race, Gender × K = 5, 20; 10 random sets for Religion·Top-20 | [E3](#e3--intervention-and-controls-in-the-new-models) |
 | E4 | Capabilities | Pending | All with interventions | Missing configurations listed | [E4](#e4--capabilities) |
 | E5 | Bootstrap statistics | Pending | Llama-3.2-3B + new models | Needs per-item logs (partly available) | [E5](#e5--statistics-bootstrap) |
 | E6 | DPO pilot on selected neurons | Not planned for P0 | — | Outside P0 | [E6](#e6--dpo-pilot-on-selected-neurons) |
@@ -222,20 +222,36 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E3 — Intervention and controls in the new models
 
-- **Status:** Pending. Depends on E1 (model choice) and E2 (whether the causal claim holds).
-- **Goal:** repeat the design validated in E2 in Llama-3.1-8B and Salamandra-7B.
-- **Design:** BiasScore localisation and zeroing of the top-K neurons, saving the exact neuron manifest. Reduced grid: 2 categories (for example Religion and Race) and 2 small values of K. Random controls (10 sets with the same layer distribution) only for the main K, plus the cross matrix between the two categories. Per-item logs are saved (they feed E4 and E5).
-- **Left for a second iteration:** the 5 full categories and the complete cross comparison, depending on compute.
-- **Run steps:**
-  1. Compute BiasScores for each new model ([03_neuron_bias_detection_en](notebooks/03_neuron_bias_detection_en.ipynb)); first pass the GLU compatibility check.
-  2. Select top-K neurons per category and save the manifests.
-  3. Evaluate the real interventions, then the random and cross controls, as in E2.
+- **Status:** Pending. Design being closed (2026-11-04); nothing run yet. E1 and E2 are done.
+- **Goal:** repeat the design validated in E2 in Llama-3.1-8B, Salamandra-7B and Qwen3-4B-Base (base models).
+- **Decisions (author, 2026-11-04):**
+  1. **Models:** Llama-3.1-8B, Salamandra-7B and Qwen3-4B-Base (Qwen added to E3 on 2026-11-04).
+  2. **Languages:** Llama-3.1-8B and Qwen3-4B-Base in English only (BBQ). Salamandra-7B in English (BBQ, neurons located with the English pairs) and in Spanish as a full independent replica: neurons located with the Spanish pairs (`oopere/fairness-pruning-pairs-es`) and evaluated on EsBBQ, with its own baseline, real sets and random sets (the route used for Salamandra-2B in the paper; not a cross-language transfer test).
+  3. **K = 5 and K = 20, main K = 20**, same absolute K in all models (the values of the paper for Religion and Race in Llama-3.2-3B). Layer widths are checked when each model is loaded; K is not changed.
+  4. **Categories:** Religion, Race and Gender. Real sets: 3 categories × K = 5 and 20 (6 sets per model and language). Random sets: 10 (seeds 0–9, same layer distribution as the real set) only for Religion·Top-20. Gender has no random sets: its results are descriptive; random sets for Gender·Top-20 may be added later if Gender moves.
+  5. **Capabilities inside the E3 runs:** full battery (WikiText, MMLU 5-shot, ARC-Challenge, HellaSwag, HellaSwag-es) for the baseline and the real sets; WikiText only for the random sets (switch as `CAPS_RANDOM` in E2).
+  6. **Notebook:** a new notebook based on `09_E2_Controls_Llama3B`, parametrised so that several K values and several categories can be configured. Unit of work = one set (model, language, category, K, real or random seed). The manifest (with sha256) is generated and saved before any evaluation. Each set writes its summary to Drive when it finishes; on restart the notebook skips the sets that already have one, so an interrupted run resumes where it stopped.
+  7. **BiasScores** for the 5 categories of notebook 03 (also feeds the pending E0 recomputation).
+  8. **Baselines reused from E1** (BBQ; EsBBQ for Salamandra-7B ES) with their per-item logs, after checking that their configuration matches the current protocol; capability baselines are run in E3.
+  9. **Order of the units:** Llama-3.1-8B EN, Qwen3-4B-Base EN, Salamandra-7B EN, Salamandra-7B ES.
+  10. **EsBBQ:** its per-item log format is documented (as `claude/BBQ_log_format.md`) as a gate before the Salamandra-7B ES evaluations.
+- **Per run unit (model × language):** 1 baseline + 6 real sets + 10 random sets = 17 BBQ (or EsBBQ) evaluations. Four units: Llama-3.1-8B EN, Qwen3-4B-Base EN, Salamandra-7B EN, Salamandra-7B ES.
+- **Rough cost (estimate, not measured):** full BBQ of a 7–8B model takes about 56 min on an A100-40GB, so about 16 h of A100 per 7–8B unit for BBQ alone; EsBBQ of Salamandra-7B about 28 min per run (A100-80GB). Not estimated: BiasScore computation, capability battery, Qwen timings.
+- **Scope:** as in E2, more effect than random neurons of the same layers; not demographic specificity.
+- **Run steps:** step plan with gates S0–S8 in `claude/E3_plan.md` (project documents), agreed 2026-11-04. S1–S3 (dimensions, BiasScores, manifests) for the four units first; S4–S6 (baseline check and capabilities, real sets, random sets) unit by unit; S7 analysis; S8 record.
+  1. Compute BiasScores for each model and language ([03_neuron_bias_detection_en](notebooks/03_neuron_bias_detection_en.ipynb); Spanish pairs for Salamandra-7B ES). Today `results/neuron_analysis/` only holds Llama-3.2-1B, Llama-3.2-3B and Salamandra-2B.
+  2. Select top-K neurons per category and save the manifests (real and random) before evaluating.
+  3. Evaluate baselines, real sets and random sets with the new notebook.
 - **Open items:**
-  - [x] **K decided (author, 2026-11-04): K = 5 and K = 20, with K = 20 as the main value.** They are the values the paper uses for Religion and Race in Llama-3.2-3B (Table II), so the new models are comparable with the pilot. Real sets: Religion and Race × K = 5 and 20 (4 sets per model); 10 random sets (same layer distribution as the real set) only for Religion·Top-20; one baseline per model. Same absolute K in all models.
-  - **Contingency (not part of the plan):** the same K is a smaller share of the neurons in the larger models (Llama-3.2-3B: 20 of 8192 × 28 neurons; Llama-3.1-8B: layer width to be verified in its config; Salamandra-7B: not checked). If K = 20 moves nothing in Llama-3.1-8B, K = 40 could be added for that model only.
-  - [ ] Salamandra-7B in English and Spanish with the same K (plan of 2026-10-29; to confirm when E3 starts, as it doubles the Salamandra runs).
-  - [ ] Layer width and number of layers of Llama-3.1-8B and Salamandra-7B (from their configs) to write the random-control draw.
-  - [ ] Which Categories exactly: Religion and Race are the default; confirm in the E3 design.
+  - [x] Step plan with gates: `claude/E3_plan.md` (2026-11-04).
+  - [x] S2 done 2026-11-04: BiasScores (5 categories) for the four units with `03_neuron_bias_detection_en` on Drive `fairness-pruning/results/<model>/fairness-pruning-pairs-<en|es>/` (20 files each; sizes consistent with 32 × 14336, 36 × 9728 and 32 × 11008; shapes checked by notebook 10 before the manifest). Qwen first failed with `Cannot copy out of meta tensor` (model partly offloaded, previous model still in GPU memory); rerun after restarting the session.
+  - [x] Notebook [10_E3_Controls_NewModels](notebooks/10_E3_Controls_NewModels.ipynb) written 2026-11-04 (English BBQ; EsBBQ notebook to follow). Based on 09, with three changes: the manifest is generated in the notebook once and never overwritten (generator checked: it reproduces the E2 manifest of Llama-3.2-3B exactly); neurons are zeroed in place and restored after each set instead of a deepcopy (checked on a small Llama: same weights as the deepcopy route, model restored bit for bit); the E1 baseline BBQ log is reused after a gate (full BBQ, 0-shot, no limit, same lm-eval version, per-item recomputation equal to lm-eval). Selected with `UNIT` and `PHASE` (`real` / `random`); resumable.
+  - [ ] Check that the category names of the prompt pairs (Religion, RaceEthnicity, Gender) match the BBQ and EsBBQ categories (Religion, Race_ethnicity, Gender_identity).
+  - [ ] S1 dimensions (config.json on Hugging Face, 2026-11-04; to confirm when each model is loaded): Salamandra-7B 32 layers × 11008 (hidden 4096, `llama`); Qwen3-4B-Base 36 × 9728 (hidden 2560, `qwen3`); Llama-3.1-8B 32 × 14336 (hidden 4096, `llama`), read from the `unsloth/Meta-Llama-3.1-8B` mirror because the official repository is gated. K = 20 is 0.0044 % of the MLP neurons of Llama-3.1-8B, 0.0057 % of Salamandra-7B and 0.0057 % of Qwen3-4B-Base (Llama-3.2-3B: 0.0087 %).
+  - [ ] Coverage of the prompt pairs vs BBQ/EsBBQ categories (S1, 2026-11-04; noted, not blocking): names match (Religion; RaceEthnicity → Race_ethnicity / RaceEthnicity; Gender → Gender_identity / Gender), content only partly. EN Gender pairs are binary (man/woman, male/female, boy/girl); ES Gender pairs are gendered roles (el/la estudiante, el médico/la médica...); RaceEthnicity pairs only white, Black, Asian; Religion EN 15 pairs vs ES 35 pairs with different groups. BBQ Gender_identity and Race_ethnicity probably include groups not in the pairs (to verify with `answer_info` of an E1 per-item log). Affects how Gender is read and the EN/ES comparison in Salamandra-7B.
+  - [x] Noise baseline (author, 2026-11-04): one baseline run per model and language, no second identical run (E2 showed bit-for-bit equality in Llama-3.2-3B).
+  - [x] GPU (author, 2026-11-04): A100.
+  - **Contingency (not part of the plan):** if K = 20 moves nothing in Llama-3.1-8B, K = 40 could be added for that model only.
 
 ## E4 — Capabilities
 
@@ -293,6 +309,10 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
+- 2026-11-04: E3 S2 done (BiasScores of the four units); notebook 10 written (English BBQ).
+- 2026-11-04: E3 plan S0–S8 agreed (`claude/E3_plan.md`); BiasScores for 5 categories; E1 baselines reused; unit order fixed; EsBBQ log format as a gate.
+- 2026-11-04: E3: A100; one baseline run per model and language (no noise rerun).
+- 2026-11-04: E3 design decisions: Qwen3-4B-Base added; Salamandra-7B also in Spanish as a full replica with Spanish-located neurons; Gender added (real sets only); capabilities inside E3; new resumable notebook based on 09.
 - 2026-11-04: E3 K decided (K = 5 and 20, main K = 20; random controls only for Religion·Top-20).
 - 2026-11-04: E2 closed (S6 and S7): the 20 selected neurons change the Religion bias and 11.1 % of the answers; 20 random neurons of the same layers, 1.1 to 1.7 %; no random set reaches the change of the selected ones. Next: E3, then E7.
 - 2026-11-04: E7 added (full cycle in Llama-3.2-3B-Instruct as an appendix; A/B/C with chat template; localisation prompts in chat format after a small preliminary test). E6 stays outside P0.
