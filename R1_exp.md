@@ -229,6 +229,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   2. **Languages:** Llama-3.1-8B and Qwen3-4B-Base in English only (BBQ). Salamandra-7B in English (BBQ, neurons located with the English pairs) and in Spanish as a full independent replica: neurons located with the Spanish pairs (`oopere/fairness-pruning-pairs-es`) and evaluated on EsBBQ, with its own baseline, real sets and random sets (the route used for Salamandra-2B in the paper; not a cross-language transfer test).
   3. **K = 5 and K = 20, main K = 20**, same absolute K in all models (the values of the paper for Religion and Race in Llama-3.2-3B). Layer widths are checked when each model is loaded; K is not changed.
   4. **Categories:** Religion, Race and Gender. Real sets: 3 categories × K = 5 and 20 (6 sets per model and language). Random sets: 10 (seeds 0–9, same layer distribution as the real set) only for Religion·Top-20. Gender has no random sets: its results are descriptive; random sets for Gender·Top-20 may be added later if Gender moves.
+     - Changed 2026-11-05 (author): 10 random sets also for Gender·Top-20 (seeds 0–9, same rule), because Gender·Top-20 and Top-5 change about 24 % of the Gender_identity answers in Llama-3.1-8B. Added to the existing manifest as a new version (`_v2`) that keeps every existing set unchanged.
   5. **Capabilities inside the E3 runs:** full battery (WikiText, MMLU 5-shot, ARC-Challenge, HellaSwag, HellaSwag-es) for the baseline and the real sets; WikiText only for the random sets (switch as `CAPS_RANDOM` in E2).
      - Changed 2026-11-05 (author): MMLU 5-shot only for the baseline and the real sets with K = 20 of each model, with `batch_size=4` (16 ran out of memory with Llama-3.1-8B on an A100-40GB). The real sets with K = 5 keep ARC-Challenge, HellaSwag, HellaSwag-es and WikiText.
   6. **Notebook:** a new notebook based on `09_E2_Controls_Llama3B`, parametrised so that several K values and several categories can be configured. Unit of work = one set (model, language, category, K, real or random seed). The manifest (with sha256) is generated and saved before any evaluation. Each set writes its summary to Drive when it finishes; on restart the notebook skips the sets that already have one, so an interrupted run resumes where it stopped.
@@ -311,6 +312,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
+- 2026-11-05: E3 random sets for Gender·Top-20 added.
 - 2026-11-05: E3 MMLU limited to baseline and K = 20 real sets, `batch_size=4`.
 - 2026-11-04: E3 Llama-3.1-8B EN phase `real` running; MMLU failed in every set, to be rerun with a smaller batch size.
 - 2026-11-04: E3 S2 done (BiasScores of the four units); notebook 10 written (English BBQ).
