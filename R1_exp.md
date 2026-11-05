@@ -230,6 +230,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   3. **K = 5 and K = 20, main K = 20**, same absolute K in all models (the values of the paper for Religion and Race in Llama-3.2-3B). Layer widths are checked when each model is loaded; K is not changed.
   4. **Categories:** Religion, Race and Gender. Real sets: 3 categories × K = 5 and 20 (6 sets per model and language). Random sets: 10 (seeds 0–9, same layer distribution as the real set) only for Religion·Top-20. Gender has no random sets: its results are descriptive; random sets for Gender·Top-20 may be added later if Gender moves.
   5. **Capabilities inside the E3 runs:** full battery (WikiText, MMLU 5-shot, ARC-Challenge, HellaSwag, HellaSwag-es) for the baseline and the real sets; WikiText only for the random sets (switch as `CAPS_RANDOM` in E2).
+     - Changed 2026-11-05 (author): MMLU 5-shot only for the baseline and the real sets with K = 20 of each model, with `batch_size=4` (16 ran out of memory with Llama-3.1-8B on an A100-40GB). The real sets with K = 5 keep ARC-Challenge, HellaSwag, HellaSwag-es and WikiText.
   6. **Notebook:** a new notebook based on `09_E2_Controls_Llama3B`, parametrised so that several K values and several categories can be configured. Unit of work = one set (model, language, category, K, real or random seed). The manifest (with sha256) is generated and saved before any evaluation. Each set writes its summary to Drive when it finishes; on restart the notebook skips the sets that already have one, so an interrupted run resumes where it stopped.
   7. **BiasScores** for the 5 categories of notebook 03 (also feeds the pending E0 recomputation).
   8. **Baselines reused from E1** (BBQ; EsBBQ for Salamandra-7B ES) with their per-item logs, after checking that their configuration matches the current protocol; capability baselines are run in E3.
@@ -250,6 +251,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   - [ ] S1 dimensions (config.json on Hugging Face, 2026-11-04; to confirm when each model is loaded): Salamandra-7B 32 layers × 11008 (hidden 4096, `llama`); Qwen3-4B-Base 36 × 9728 (hidden 2560, `qwen3`); Llama-3.1-8B 32 × 14336 (hidden 4096, `llama`), read from the `unsloth/Meta-Llama-3.1-8B` mirror because the official repository is gated. K = 20 is 0.0044 % of the MLP neurons of Llama-3.1-8B, 0.0057 % of Salamandra-7B and 0.0057 % of Qwen3-4B-Base (Llama-3.2-3B: 0.0087 %).
   - [ ] Coverage of the prompt pairs vs BBQ/EsBBQ categories (S1, 2026-11-04; noted, not blocking): names match (Religion; RaceEthnicity → Race_ethnicity / RaceEthnicity; Gender → Gender_identity / Gender), content only partly. EN Gender pairs are binary (man/woman, male/female, boy/girl); ES Gender pairs are gendered roles (el/la estudiante, el médico/la médica...); RaceEthnicity pairs only white, Black, Asian; Religion EN 15 pairs vs ES 35 pairs with different groups. BBQ Gender_identity and Race_ethnicity probably include groups not in the pairs (to verify with `answer_info` of an E1 per-item log). Affects how Gender is read and the EN/ES comparison in Salamandra-7B.
   - [x] Noise baseline (author, 2026-11-04): one baseline run per model and language, no second identical run (E2 showed bit-for-bit equality in Llama-3.2-3B).
+  - [ ] Llama-3.1-8B EN, phase `real` (started 2026-11-04 on an A100-SXM4-40GB): manifest generated; gate S4 passed (E1 log reused, 0 mismatches); baseline (capabilities), real_religion20, real_race20, real_gender20, real_religion5 and real_race5 done (BBQ + ARC, HellaSwag, HellaSwag-es, WikiText; about 85 min per set). The Colab session ended about 9 h 40 min after the start, during the BBQ of real_gender5 (95 %); nothing of real_gender5 was saved, it reruns from the start. **MMLU failed in every set: CUDA out of memory** (tried to allocate 11.32 GiB on the A100-40GB with 5-shot and `batch_size=16`). Plan (author, 2026-11-04): rerun MMLU only, with a smaller batch size, the same for all sets of the unit; the checkpoints rerun only the missing task.
   - [x] GPU (author, 2026-11-04): A100.
   - **Contingency (not part of the plan):** if K = 20 moves nothing in Llama-3.1-8B, K = 40 could be added for that model only.
 
@@ -309,6 +311,8 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
+- 2026-11-05: E3 MMLU limited to baseline and K = 20 real sets, `batch_size=4`.
+- 2026-11-04: E3 Llama-3.1-8B EN phase `real` running; MMLU failed in every set, to be rerun with a smaller batch size.
 - 2026-11-04: E3 S2 done (BiasScores of the four units); notebook 10 written (English BBQ).
 - 2026-11-04: E3 plan S0–S8 agreed (`claude/E3_plan.md`); BiasScores for 5 categories; E1 baselines reused; unit order fixed; EsBBQ log format as a gate.
 - 2026-11-04: E3: A100; one baseline run per model and language (no noise rerun).
