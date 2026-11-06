@@ -40,6 +40,44 @@ def _ll(r):
     return float(r)
 
 
+class _NonFiniteToNull:
+    """File wrapper for ijson: the lm-eval logs contain bare NaN / Infinity (valid for Python's json, not for ijson).
+    They are replaced by null; the chunk is cut after the last ',' or newline so no token is split."""
+    def __init__(self, f, size=1 << 22):
+        self.f, self.size, self.carry, self.out, self.eof = f, size, b"", b"", False
+
+    def _fill(self):
+        while not self.out and not self.eof:
+            chunk = self.f.read(self.size)
+            buf = self.carry + chunk
+            if not chunk:                       # end of file
+                self.eof, self.carry = True, b""
+                self.out = self._fix(buf)
+                return
+            cut = max(buf.rfind(b","), buf.rfind(b"\n"))
+            if cut < 0:
+                self.carry = buf
+                continue
+            self.carry = buf[cut + 1:]
+            self.out = self._fix(buf[:cut + 1])
+
+    def read(self, n=-1):
+        """Returns at most n bytes (ijson's C backend relies on it)."""
+        self._fill()
+        if n is None or n < 0:
+            data, self.out = self.out, b""
+            while not self.eof:
+                self._fill()
+                data, self.out = data + self.out, b""
+            return data
+        data, self.out = self.out[:n], self.out[n:]
+        return data
+
+    @staticmethod
+    def _fix(b):
+        return b.replace(b"-Infinity", b"null").replace(b"Infinity", b"null").replace(b"NaN", b"null")
+
+
 def iter_items(path):
     try:
         import ijson
@@ -48,7 +86,7 @@ def iter_items(path):
         yield from json.load(open(path, encoding="utf-8"))["samples"]["bbq"]
         return
     with open(path, "rb") as f:
-        yield from ijson.items(f, "samples.bbq.item")
+        yield from ijson.items(_NonFiniteToNull(f), "samples.bbq.item")
 
 
 def sha256(path):
