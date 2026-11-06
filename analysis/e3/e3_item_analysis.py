@@ -53,7 +53,8 @@ def load(items_dir):
     meta = json.load(open(items_dir / "sets.json", encoding="utf-8"))["sets"]
     tables = {}
     for sid, m in meta.items():
-        t = pd.read_csv(items_dir / m["table"]).set_index("doc_id").sort_index()
+        # keep_default_na=False: group labels such as "NA" / "None" must stay strings (otherwise NaN != NaN breaks the check)
+        t = pd.read_csv(items_dir / m["table"], keep_default_na=False, na_values=[""]).set_index("doc_id").sort_index()
         t["state"] = state(t)
         lls = t[["ll0", "ll1", "ll_unk"]].to_numpy()
         srt = np.sort(lls, axis=1)
