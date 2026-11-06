@@ -66,7 +66,9 @@ def load(items_dir):
     for sid, t in tables.items():
         assert t.index.equals(tables[base].index), f"{sid}: items differ from the baseline"
         cols = ["category", "context", "group0", "group1", "target"]
-        assert (t[cols] == tables[base][cols]).all().all(), f"{sid}: item metadata differs from the baseline"
+        eq = (t[cols].fillna("") == tables[base][cols].fillna(""))   # NaN-safe (empty labels are NaN)
+        bad = [c for c in cols if not eq[c].all()]
+        assert not bad, f"{sid}: item metadata differs from the baseline in {bad}; first rows: {list(eq.index[~eq[bad[0]]][:3])}"
     order = [base] + sorted([s for s in meta if meta[s]["kind"] == "real"], key=lambda s: (-int(meta[s]["k"] or 0), s)) \
         + sorted([s for s in meta if meta[s]["kind"] == "random"], key=lambda s: (s.rsplit("_seed", 1)[0], meta[s]["seed"]))
     return meta, tables, base, order
