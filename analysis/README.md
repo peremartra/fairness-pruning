@@ -6,6 +6,7 @@ They only read data that already exists: they never run a model, need no GPU and
 | Folder | Experiment | Status |
 |---|---|---|
 | [`e2/`](e2/) | E2: random and cross controls, Llama-3.2-3B | first run 2026-11-04 |
+| [`e3/`](e3/) | E3: per-item analysis of the interventions (first unit: Llama-3.1-8B EN) | written 2026-11-06, not run yet |
 
 ## Conventions
 
