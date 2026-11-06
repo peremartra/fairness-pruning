@@ -27,6 +27,7 @@ import pandas as pd
 
 CATS = ["Age", "Disability_status", "Gender_identity", "Nationality", "Physical_appearance", "Race_ethnicity",
         "Race_x_SES", "Race_x_gender", "Religion", "SES", "Sexual_orientation"]
+EMPTY_LABEL = "(empty label)"   # group label missing in answer_info
 STATES = ["S", "A", "U"]   # S = stereotyped person (in biased_answers), A = the other person, U = "unknown"
 
 
@@ -55,20 +56,26 @@ def load(items_dir):
     for sid, m in meta.items():
         # keep_default_na=False: group labels such as "NA" / "None" must stay strings (otherwise NaN != NaN breaks the check)
         t = pd.read_csv(items_dir / m["table"], keep_default_na=False, na_values=[""]).set_index("doc_id").sort_index()
+        for c in ("group0", "group1"):
+            t[c] = t[c].fillna(EMPTY_LABEL).astype(str)      # some items have an empty group label: keep them, visible
         t["state"] = state(t)
         lls = t[["ll0", "ll1", "ll_unk"]].to_numpy()
         srt = np.sort(lls, axis=1)
         t["margin"] = srt[:, -1] - srt[:, -2]
         tables[sid] = t
+    b0 = next(iter(tables.values()))
+    for c in ("group0", "group1"):
+        n_empty = b0.loc[b0[c] == EMPTY_LABEL, "category"].value_counts()
+        if len(n_empty):
+            print(f"note: items with empty {c}: " + ", ".join(f"{k}={v}" for k, v in n_empty.items()))
     base_ids = [s for s, m in meta.items() if m["kind"] == "baseline"]
     assert len(base_ids) == 1, f"expected one baseline, found {base_ids}"
     base = base_ids[0]
     for sid, t in tables.items():
         assert t.index.equals(tables[base].index), f"{sid}: items differ from the baseline"
         cols = ["category", "context", "group0", "group1", "target"]
-        eq = (t[cols].fillna("") == tables[base][cols].fillna(""))   # NaN-safe (empty labels are NaN)
-        bad = [c for c in cols if not eq[c].all()]
-        assert not bad, f"{sid}: item metadata differs from the baseline in {bad}; first rows: {list(eq.index[~eq[bad[0]]][:3])}"
+        bad = [c for c in cols if not (t[c] == tables[base][c]).all()]
+        assert not bad, f"{sid}: item metadata differs from the baseline in {bad}"
     order = [base] + sorted([s for s in meta if meta[s]["kind"] == "real"], key=lambda s: (-int(meta[s]["k"] or 0), s)) \
         + sorted([s for s in meta if meta[s]["kind"] == "random"], key=lambda s: (s.rsplit("_seed", 1)[0], meta[s]["seed"]))
     return meta, tables, base, order
