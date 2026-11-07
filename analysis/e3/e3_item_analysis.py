@@ -28,6 +28,7 @@ import pandas as pd
 CATS = ["Age", "Disability_status", "Gender_identity", "Nationality", "Physical_appearance", "Race_ethnicity",
         "Race_x_SES", "Race_x_gender", "Religion", "SES", "Sexual_orientation"]
 EMPTY_LABEL = "(empty label)"   # group label missing in answer_info
+NONRANDOM = ("real", "ablation")   # sets with chosen neurons; "ablation" = exploratory sets derived from real ones (notebook 10, PHASE=ablation)
 STATES = ["S", "A", "U"]   # S = stereotyped person (in biased_answers), A = the other person, U = "unknown"
 
 
@@ -77,6 +78,7 @@ def load(items_dir):
         bad = [c for c in cols if not (t[c] == tables[base][c]).all()]
         assert not bad, f"{sid}: item metadata differs from the baseline in {bad}"
     order = [base] + sorted([s for s in meta if meta[s]["kind"] == "real"], key=lambda s: (-int(meta[s]["k"] or 0), s)) \
+        + sorted([s for s in meta if meta[s]["kind"] == "ablation"]) \
         + sorted([s for s in meta if meta[s]["kind"] == "random"], key=lambda s: (s.rsplit("_seed", 1)[0], meta[s]["seed"]))
     return meta, tables, base, order
 
@@ -211,7 +213,7 @@ def family(sid):
 
 def with_random_range(df, value_cols, keys):
     """Real sets as rows plus min / mean / max over the random sets of each random family."""
-    real = df[df["kind"] == "real"].copy()
+    real = df[df["kind"].isin(NONRANDOM)].copy()
     rnd = df[df["kind"] == "random"].copy()
     rnd["family"] = rnd["set"].str.rsplit("_seed", n=1).str[0]
     agg = rnd.groupby(keys + ["family"])[value_cols].agg(["min", "mean", "max"])
@@ -256,7 +258,8 @@ def main():
     # report
     R = [f"# E3 per-item analysis — {json.load(open(items_dir / 'sets.json'))['unit']}", "",
          f"Generated {dt.datetime.now().isoformat(timespec='seconds')}. Baseline: `{base}`. "
-         f"Real sets: {sum(meta[s]['kind'] == 'real' for s in meta)}; random sets: {sum(meta[s]['kind'] == 'random' for s in meta)}. "
+         f"Real sets: {sum(meta[s]['kind'] == 'real' for s in meta)}; ablation sets: {sum(meta[s]['kind'] == 'ablation' for s in meta)}; "
+         f"random sets: {sum(meta[s]['kind'] == 'random' for s in meta)}. "
          "Descriptive only. Random families are summarised by min / mean / max.", ""]
     for cat in a.target_categories:
         R += [f"## {cat}", ""]
@@ -268,7 +271,7 @@ def main():
               md(real.set_index(["set", "context"])[["n_items"] + cols]), "", "Random sets:", "",
               md(rr.set_index(["family", "context"])), ""]
         g = grp_df[grp_df["category"] == cat]
-        piv = g[g["kind"] == "real"].pivot_table(index="group", columns="set", values="changed_pct")
+        piv = g[g["kind"].isin(NONRANDOM)].pivot_table(index="group", columns="set", values="changed_pct")
         gr = g[g["kind"] == "random"].copy()
         gr["family"] = gr["set"].str.rsplit("_seed", n=1).str[0]
         rng_ = gr.groupby(["group", "family"])["changed_pct"].agg(["min", "max"]).unstack("family")
@@ -277,7 +280,7 @@ def main():
         R += ["### 2. % changed answers by group mentioned in the item", "",
               md(pd.concat([n_items.rename("n_items"), piv, rng_], axis=1)), ""]
         oc = ov_cat[cat]
-        reals = [s for s in order if meta.get(s, {}).get("kind") == "real"]
+        reals = [s for s in order if meta.get(s, {}).get("kind") in NONRANDOM]
         rand = [s for s in order if meta.get(s, {}).get("kind") == "random"]
         tab = oc.loc[reals, reals].copy()
         if rand:
@@ -298,13 +301,13 @@ def main():
         R += ["### 4. Baseline loglikelihood margin (top − second of person0 / person1 / unknown)", "",
               md(mreal.set_index("set")[mcols], 3), "", "Random sets (min / mean / max):", "", md(mrr.set_index("family"), 3), ""]
         bc = bs_df[bs_df["category"] == cat]
-        breal = bc[bc["kind"] == "real"].set_index("set").drop(columns=["category"])
+        breal = bc[bc["kind"].isin(NONRANDOM)].set_index("set").drop(columns=["category"])
         _, brr = with_random_range(bc, ["disamb_bias_delta", "changed_pct"], [])
         R += [f"### 5. Bootstrap over items ({a.bootstrap} resamples, 95 % percentile interval)", "",
               md(breal), "", "Random sets (min / mean / max over seeds; the interval of each set is in `bootstrap.csv`):", "",
               md(brr.set_index("family")), ""]
     dm = dec_df.pivot_table(index="decile", columns="set", values="changed_pct")
-    dreal = dm[[c for c in order if c in dm.columns and meta[c]["kind"] == "real"]]
+    dreal = dm[[c for c in order if c in dm.columns and meta[c]["kind"] in NONRANDOM]]
     drnd = dec_df[dec_df["kind"] == "random"].copy()
     drnd["family"] = drnd["set"].map(family)
     drr = drnd.groupby(["decile", "family"])["changed_pct"].agg(["mean", "max"]).unstack("family")

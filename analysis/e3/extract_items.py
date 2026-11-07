@@ -190,7 +190,7 @@ def main():
         n, mism = extract(log, out_csv)
         meta["sets"][sid] = {
             "set": sid, "kind": sm["kind"], "category": sm.get("category"), "k": sm.get("k"),
-            "mimics": sm.get("mimics"), "seed": int(sid.rsplit("seed", 1)[1]) if "seed" in sid else None,
+            "mimics": sm.get("mimics"), "derived_from": sm.get("derived_from"), "seed": int(sid.rsplit("seed", 1)[1]) if "seed" in sid else None,
             "n_neurons": sm.get("n_neurons"), "neuron_indices": sm.get("neuron_indices"),
             "summary": str(sp), "source_log": str(log), "source_log_bytes": log.stat().st_size,
             "source_log_sha256": sha256(log), "table": out_csv.name, "n_items": n,
