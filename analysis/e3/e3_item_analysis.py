@@ -205,6 +205,10 @@ def md(df, nd=2):
     return df.to_markdown(floatfmt=f".{nd}f") if hasattr(df, "to_markdown") else df.round(nd).to_string()
 
 
+def family(sid):
+    return sid.rsplit("_seed", 1)[0]
+
+
 def with_random_range(df, value_cols, keys):
     """Real sets as rows plus min / mean / max over the random sets of each random family."""
     real = df[df["kind"] == "real"].copy()
@@ -277,21 +281,36 @@ def main():
         rand = [s for s in order if meta.get(s, {}).get("kind") == "random"]
         tab = oc.loc[reals, reals].copy()
         if rand:
-            tab["random_mean"] = oc.loc[reals, rand].mean(axis=1)
-            rr_pairs = [oc.loc[x, y] for i, x in enumerate(rand) for y in rand[i + 1:]]
-            R += [f"### 3. Jaccard of the changed items (random–random pairs: mean {np.nanmean(rr_pairs):.3f}, "
-                  f"max {np.nanmax(rr_pairs):.3f})", "", md(tab, 3), ""]
+            fams = sorted({family(s) for s in rand})
+            notes = []
+            for f in fams:
+                members = [s for s in rand if family(s) == f]
+                tab[f"{f}_mean"] = oc.loc[reals, members].mean(axis=1)
+                pairs = [oc.loc[x, y] for i, x in enumerate(members) for y in members[i + 1:]]
+                if pairs:
+                    notes.append(f"{f} random–random pairs: mean {np.nanmean(pairs):.3f}, max {np.nanmax(pairs):.3f}")
+            R += [f"### 3. Jaccard of the changed items ({'; '.join(notes)})", "", md(tab, 3), ""]
         else:
             R += ["### 3. Jaccard of the changed items", "", md(tab, 3), ""]
         mc = med_df[med_df["category"] == cat]
+        mcols = ["n_changed", "median_margin_changed", "median_margin_unchanged"]
+        mreal, mrr = with_random_range(mc, mcols, [])
         R += ["### 4. Baseline loglikelihood margin (top − second of person0 / person1 / unknown)", "",
-              md(mc.set_index("set")[["n_changed", "median_margin_changed", "median_margin_unchanged"]], 3), ""]
+              md(mreal.set_index("set")[mcols], 3), "", "Random sets (min / mean / max):", "", md(mrr.set_index("family"), 3), ""]
         bc = bs_df[bs_df["category"] == cat]
+        breal = bc[bc["kind"] == "real"].set_index("set").drop(columns=["category"])
+        _, brr = with_random_range(bc, ["disamb_bias_delta", "changed_pct"], [])
         R += [f"### 5. Bootstrap over items ({a.bootstrap} resamples, 95 % percentile interval)", "",
-              md(bc.set_index("set").drop(columns=["category"])), ""]
+              md(breal), "", "Random sets (min / mean / max over seeds; the interval of each set is in `bootstrap.csv`):", "",
+              md(brr.set_index("family")), ""]
     dm = dec_df.pivot_table(index="decile", columns="set", values="changed_pct")
+    dreal = dm[[c for c in order if c in dm.columns and meta[c]["kind"] == "real"]]
+    drnd = dec_df[dec_df["kind"] == "random"].copy()
+    drnd["family"] = drnd["set"].map(family)
+    drr = drnd.groupby(["decile", "family"])["changed_pct"].agg(["mean", "max"]).unstack("family")
+    drr.columns = [f"{f}_{s}" for s, f in drr.columns]
     R += ["## Changed answers by decile of the baseline margin (all categories; decile 1 = most undecided)", "",
-          md(dm[[c for c in order if c in dm.columns]]), ""]
+          md(pd.concat([dreal, drr], axis=1)), ""]
     (out / "report.md").write_text("\n".join(R), encoding="utf-8")
 
     json.dump({"direction": dir_df.to_dict("records"), "groups": grp_df.to_dict("records"),
