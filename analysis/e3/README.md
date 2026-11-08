@@ -38,6 +38,20 @@ python analysis/e3/e3_item_analysis.py --items-dir "<Drive>/fair_pruning/results
 Options: `--out-dir`, `--bootstrap` (default 1000), `--seed` (default 0), `--target-categories` (default Religion
 Race_ethnicity Gender_identity; they get their own sections in `report.md`; the CSV files cover all 11 categories).
 
+## Ablation sets
+
+Sets with `kind = "ablation"` (notebook 10, `PHASE = "ablation"`, Llama-3.1-8B EN: `abl_shared1`, `abl_race4`, `abl_religion4`) are extracted like the others (the per-set summary carries `derived_from`) and are listed after the real sets in every table, in the overlap matrices and in the bootstrap. Random sets stay summarised as min / mean / max. The header of `report.md` counts real, ablation and random sets. Step 2 also runs in Colab (CPU): `!python fairness-pruning/analysis/e3/e3_item_analysis.py --items-dir <Drive>/.../items` writes the report to `<unit>/analysis/` on Drive. Use a fresh clone of the repository: an older clone does not know the ablation sets and silently leaves them out (the line "N sets (baseline + M)" would show M without them).
+
+## L31 weight check (`l31_weight_check.py`)
+
+Not part of the two steps. Reads only `down_proj` of one layer (default L31 of Llama-3.1-8B; no forward pass, CPU is enough; the model is gated and the script downloads the safetensors shard that holds the tensor, about 5 GB) and the `*_bias_scores.json` of the three categories. For a list of neurons (default: the nine of the E3 ablation) it reports the L2 norm of the `down_proj` column and the percentile within the layer of that norm, of the BiasScore of each category, and of BiasScore × column norm (a proxy, not the effect). Output: `<out-dir>/<timestamp>_l31_weights/` (`report.md`, `neurons.csv`, `layer_summary.json`). Percentile = % of the layer's neurons with a strictly lower value.
+
+```python
+!python fairness-pruning/analysis/e3/l31_weight_check.py \
+  --scores-dir /content/drive/MyDrive/fairness-pruning/results/llama-3.1-8b/fairness-pruning-pairs-en \
+  --out-dir /content/drive/MyDrive/fair_pruning/results/e3/llama-3.1-8b_en/analysis
+```
+
 ## Per-item table (step 1)
 
 One row per BBQ item: `doc_id`, `category`, `context` (ambig / disambig), `polarity`, `question_index`, `example_id`,

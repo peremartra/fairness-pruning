@@ -40,6 +40,8 @@ Note: 02_esbbq_lm_eval_harness.ipynb is kept as a legacy/validation notebook and
 | 07B_EvalPrunedModels_Llama3B.ipynb | Zeroing experiment configs + fairness manifests + English BBQ + capability follow-up | checkpoints_bbq_zeroed/ + checkpoints_capabilities_zeroed/ + results/bias-benchmarks-zeroed/llama-3.2-3B_* (generation + BBQ + capabilities CSV/JSON + manifests) |
 | 08_EvalLlamaPrunedEsp.ipynb | Zeroing experiment configs + neuron manifests + Spanish EsBBQ | checkpoints_bbq_zeroed/ + results/bias-benchmarks-zeroed/llama-3.2-1B_esbbq_zeroed_results.csv/.json + ES manifest |
 | 08_EvalSalamandraPrunedEsp.ipynb | Zeroing experiment configs + neuron manifests + Spanish EsBBQ | checkpoints_bbq_zeroed/ + results/bias-benchmarks-zeroed/salamandra-2B_esbbq_zeroed_results.csv/.json + ES manifest |
+| 10_E3_Controls_NewModels.ipynb | BiasScore files of the unit (`fairness-pruning-pairs-en`) + E1 baseline BBQ log + `UNIT`, `PHASE` | fair_pruning/results/e3/<unit>/ (per-set summaries) + `<model>_E3_manifest[_vN].json` + per-item BBQ logs in checkpoints_e3/ (Drive only) |
+| 12_E3_ES_Zeroing_Salamandra7B.ipynb | Salamandra-7B BiasScore files (`fairness-pruning-pairs-es`) + E1 EsBBQ baseline logs (02_Evaluate_MBBQ run 3) + `EXP_ONLY` | fair_pruning/results/esbbq_zeroed_7b/ (manifest, generations, runs.jsonl, consolidated CSV/JSON) + per-item EsBBQ logs in checkpoints_esbbq_zeroed_7b/ (Drive only) |
 
 ## Notebook-by-notebook guide
 
@@ -292,6 +294,43 @@ Main outputs:
 - Checkpoints in /content/drive/MyDrive/fair_pruning/checkpoints_bbq_zeroed/
 - Consolidated files in results/bias-benchmarks-zeroed/salamandra-2B_esbbq_zeroed_results.csv and JSON
 - Spanish neuron manifest in results/bias-benchmarks-zeroed/
+
+### 10_E3_Controls_NewModels.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/10_E3_Controls_NewModels.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/10_E3_Controls_NewModels.ipynb)
+
+Purpose:
+Experiment E3 (see `R1_exp.md`): zeroes top-K BiasScore neurons (gate_proj row, up_proj row and down_proj column) in Llama-3.1-8B, Qwen3-4B-Base and Salamandra-7B (English BBQ) and compares them with random neurons of the same layers.
+
+What it does:
+- Based on notebook 09. The model is chosen with `UNIT` and the work with `PHASE`: `real` (baseline capabilities + real sets for Religion, Race and Gender at K = 5 and 20), `random` (random sets) or `ablation` (three exploratory sets, Llama-3.1-8B only; `ABLATION_ONLY` runs one of them per session so that the three can run in parallel).
+- The manifest (sets, neurons, sha256 of the score files) is written once and never overwritten; new sets create a new version (`_v2`, `_v3`, ...) that keeps every existing set unchanged. Random sets use `numpy.default_rng(seed)`, the same layer distribution as the real set and exclude the real neurons.
+- Neurons are zeroed in place and restored after each set. One set = one unit of work; a summary is written when it finishes and a restarted run skips the sets that already have one.
+- The E1 baseline BBQ log is reused after a gate. Capabilities: full battery for the baseline and the real sets (MMLU only for the baseline and K = 20), WikiText for the random sets, none for the ablation sets.
+- With several parallel sessions on the same unit, start the first one and wait until its manifest cell has finished before starting the others.
+
+Main outputs:
+- `fair_pruning/results/e3/<unit>/per_set/<set_id>_summary.json` and `fair_pruning/results/e3/<model>_E3_manifest[_vN].json`
+- Per-item BBQ logs in `fair_pruning/checkpoints_e3/results/lm_evals/` (Drive only), analysed with `analysis/e3/`
+
+### 12_E3_ES_Zeroing_Salamandra7B.ipynb
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/peremartra/fairness-pruning/blob/main/notebooks/12_E3_ES_Zeroing_Salamandra7B.ipynb)
+[![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/12_E3_ES_Zeroing_Salamandra7B.ipynb)
+
+Purpose:
+Experiment E3, Spanish unit: zeroes the Salamandra-2B experiment grid (Religion Top-1/5/40, Age Top-5/10/20, Gender Top-5/20) in Salamandra-7B, with neurons located with the Spanish prompt pairs, and evaluates EsBBQ.
+
+What it does:
+- Based on notebook 08_EvalSalamandraPrunedEsp.ipynb (same selection rule and generation prompts). Real sets only: no random or ablation sets, no capability benchmarks (decision of 2026-11-08).
+- The neuron manifest is written once and never overwritten; later sessions load it and check it against the score files.
+- Reuses the EsBBQ baseline of 02_Evaluate_MBBQ run 3 after checking that its 10 logs are present and complete; runs with `batch_size=16` and warns if the GPU or lm-eval version differ from the baseline.
+- `EXP_ONLY` runs one experiment per session; the consolidation cell reads all checkpoints from Drive.
+
+Main outputs:
+- `fair_pruning/results/esbbq_zeroed_7b/` (manifest, generations, `runs.jsonl`, `salamandra-7B_esbbq_zeroed_results.csv/.json`)
+- Per-item EsBBQ logs in `fair_pruning/checkpoints_esbbq_zeroed_7b/results/lm_evals/` (Drive only)
 
 ## Practical notes
 
