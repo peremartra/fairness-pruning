@@ -14,7 +14,10 @@ no thresholds, no verdicts. Each set (neurons zeroed) is compared item by item w
        esbbq_disamb_bias_delta change of the EsBBQ measure acc(pro-stereo) - acc(anti-stereo), in points (as lm-eval reports);
        esbbq_amb_bias_delta    change of the EsBBQ ambiguous measure (incorrect pro-stereo - incorrect anti-stereo) / ambiguous items, in points.
 Extra table (section 0): % of changed answers of every category for every set, so that the target category
-can be read against the others. This unit has no random control sets.
+can be read against the others. If sets.json holds random sets (kind "random", layer-matched to one real set; notebook 12,
+PHASE = "random"), section R compares that real set with its random sets: value of the real set, range and mean of the
+random sets, and rank of the real set among real + random by absolute value (1 = largest, ties against the real set).
+Same reading as E2.
 
 States: S = the answer is the pro-stereotype person (see extract_items_esbbq.py), A = the other person, U = "unknown".
 
@@ -299,6 +302,39 @@ def bootstrap(meta, tables, base, order, cats, n_boot, seed):
     return pd.DataFrame(rows)
 
 
+# ── R. real set vs its layer-matched random sets ────────────────────────────
+def random_section(meta, rnd, chg_df, bs_df):
+    """One table per real set with random counterparts. Values are changes against the baseline (bias in points,
+    changed answers in %). Rank = position of the real set among real + random sets by absolute value (1 = largest;
+    ties count against the real set)."""
+    R = ["## R. Selected neurons vs random neurons of the same layers", "",
+         "Value of the selected set, range and mean of its random sets, and rank of the selected set among selected + random "
+         "by absolute value (1 = largest; a tie with a random set counts against the selected set). Changes against the baseline. "
+         "Descriptive: no test (few random sets).", ""]
+    for real in sorted({meta[s]["matched_to"] for s in rnd}):
+        rs = [s for s in rnd if meta[s]["matched_to"] == real]
+        cat = meta[real]["category"]
+        chg = chg_df.set_index(["set", "category"])["changed_pct"]
+        bs = bs_df[bs_df["category"] == cat].set_index("set")
+        others = sorted({c for (_, c) in chg.index if c != cat})
+        measures = {
+            f"changed answers in {cat} (%)": lambda s: chg[(s, cat)],
+            "changed answers, mean of the other categories (%)": lambda s: float(np.mean([chg[(s, c)] for c in others])),
+            f"disamb_bias_delta in {cat}": lambda s: bs.loc[s, "disamb_bias_delta"],
+            f"esbbq_disamb_bias_delta in {cat}": lambda s: bs.loc[s, "esbbq_disamb_bias_delta"],
+            f"esbbq_amb_bias_delta in {cat}": lambda s: bs.loc[s, "esbbq_amb_bias_delta"],
+        }
+        rows = []
+        for name, f in measures.items():
+            v, r = f(real), np.array([f(s) for s in rs], dtype=float)
+            rank = "n/a" if np.isnan(v) or np.isnan(r).any() else f"{1 + int((np.abs(r) >= abs(v)).sum())} of {len(rs) + 1}"
+            rows.append({"measure": name, "selected": v, "random_min": r.min(), "random_max": r.max(),
+                         "random_mean": r.mean(), "rank_of_selected": rank})
+        R += [f"### `{real}` ({meta[real]['name']}) vs {len(rs)} random sets: " + ", ".join(f"`{s}`" for s in rs), "",
+              md(pd.DataFrame(rows).set_index("measure")), ""]
+    return R
+
+
 # ── report ──────────────────────────────────────────────────────────────────
 def md(df, nd=2):
     return df.to_markdown(floatfmt=f".{nd}f") if hasattr(df, "to_markdown") else df.round(nd).to_string()
@@ -349,13 +385,20 @@ def main():
     bs_df.to_csv(out / "bootstrap.csv", index=False)
 
     # report
-    reals = [s for s in order if s != base]
+    reals = [s for s in order if s != base]          # every intervened set (real and random), columns of the tables
+    n_real = sum(meta[s]["kind"] == "real" for s in reals)
+    rnd = [s for s in reals if meta[s]["kind"] == "random"]
+    rnd_note = (f"Random sets: {len(rnd)}, layer-matched to " + ", ".join(sorted({f'`{meta[s]["matched_to"]}`' for s in rnd}))
+                + "; the other real sets have no random counterpart. " if rnd else
+                "This unit has no random control sets, so no comparison with random neurons is possible. ")
     R = [f"# E3 per-item analysis — {json.load(open(items_dir / 'sets.json'))['unit']} (EsBBQ)", "",
-         f"Generated {dt.datetime.now().isoformat(timespec='seconds')}. Baseline: `{base}`. Real sets: {len(reals)}. "
-         "This unit has no random control sets, so no comparison with random neurons is possible. Descriptive only. "
+         f"Generated {dt.datetime.now().isoformat(timespec='seconds')}. Baseline: `{base}`. Real sets: {n_real}. "
+         + rnd_note + "Descriptive only. "
          "The sets of one category come from the same ranking of neurons, so the smaller ones are contained in the larger ones "
          "and a high Jaccard between them is expected.", "",
          "Sets: " + "; ".join(f"`{s}` = {meta[s]['name']} ({meta[s]['n_neurons']} neurons)" for s in reals), ""]
+    if rnd:
+        R += random_section(meta, rnd, chg_df, bs_df)
     R += ["## 0. % of changed answers in every category (answer differs from the baseline)", "",
           md(pd.concat([chg_df.drop_duplicates("category").set_index("category")["n_items"],
                         chg_df.pivot_table(index="category", columns="set", values="changed_pct")[reals]], axis=1)), ""]

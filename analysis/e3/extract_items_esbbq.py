@@ -2,7 +2,8 @@
 """
 E3 step 1 for EsBBQ (Spanish unit): compact per-item tables from the per-item lm-eval EsBBQ logs. Run ONCE per unit.
 
-Counterpart of extract_items.py (BBQ). For every set of the unit (baseline + the experiments of the neuron manifest)
+Counterpart of extract_items.py (BBQ). For every set of the unit (baseline + the experiments of the neuron manifest + the random sets of the random-control
+manifest, if there is one)
 it reads the ten per-category logs and writes one table `items/<set_id>.csv.gz` (27,320 rows) plus `items/sets.json`
 (set metadata, source logs with size and sha256, checks). Step 2 (`e3_item_analysis_esbbq.py`) reads only these files.
 
@@ -25,7 +26,7 @@ Checks per set (stored in sets.json, printed; "CHECK" if anything fails):
 
 Usage (Colab CPU runtime, Drive mounted; no extra packages):
     python analysis/e3/extract_items_esbbq.py --results-dir /content/drive/MyDrive/fair_pruning/results/esbbq_zeroed_7b
-Options: --manifest, --logs-dir, --baseline-dir, --baseline-prefix, --out, --sets, --tasks (subset, for tests), --overwrite.
+Options: --manifest, --random-manifest, --logs-dir, --baseline-dir, --baseline-prefix, --out, --sets, --tasks (subset, for tests), --overwrite.
 Defaults: logs-dir  = <fair_pruning>/checkpoints_esbbq_zeroed_7b/results/lm_evals
           baseline  = <fair_pruning>/checkpoints_mbbq/results/lm_evals  (prefix bsc_lt_salamandra_7b)
           out       = <results-dir>/items
@@ -225,6 +226,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--results-dir", required=True, help="fair_pruning/results/esbbq_zeroed_7b (holds the neuron manifest)")
     ap.add_argument("--manifest", help="default: <results-dir>/*_neuron_manifest_es.json")
+    ap.add_argument("--random-manifest", help="default: <results-dir>/*_random_manifest_es.json if it exists (notebook 12, PHASE = 'random')")
     ap.add_argument("--logs-dir", help="folder of the per-item EsBBQ logs of the zeroed sets")
     ap.add_argument("--baseline-dir", help="folder of the per-item EsBBQ baseline logs")
     ap.add_argument("--baseline-prefix", default="bsc_lt_salamandra_7b")
@@ -260,11 +262,27 @@ def main():
                         "n_neurons": e["total_neurons"], "neuron_indices": e["by_layer"],
                         "logs": {t: logs_dir / f"{safe_name(model_key + '__' + exp_id)}_{t}.json" for t in a.tasks}}
 
+    rpath = Path(a.random_manifest) if a.random_manifest else next(iter(sorted(res_dir.glob("*_random_manifest_es.json"))), None)
+    rmanifest = None
+    if rpath is not None:
+        if not rpath.exists():
+            sys.exit(f"random manifest not found: {rpath}")
+        rmanifest = json.load(open(rpath, encoding="utf-8"))
+        if rmanifest["matched_manifest_sha256"] != sha256(mpath):
+            sys.exit(f"{rpath.name} was drawn from another neuron manifest (sha256 differs from {mpath.name})")
+        for sid, e in rmanifest["sets"].items():
+            m = manifest["experiments"][e["matched_to"]]
+            sets[sid] = {"kind": "random", "name": e["name"], "category": "+".join(m["categories"]), "k": m["n_top"],
+                         "n_neurons": e["total_neurons"], "neuron_indices": e["by_layer"],
+                         "matched_to": e["matched_to"], "seed": e["seed"],
+                         "logs": {t: logs_dir / f"{safe_name(model_key + '__' + sid)}_{t}.json" for t in a.tasks}}
+
     sets_path = out / "sets.json"
     meta = json.load(open(sets_path)) if sets_path.exists() else {"sets": {}}
     meta["unit"] = f"{model_key}_{manifest['language']}"
     meta["benchmark"] = "esbbq"
     meta["manifest"] = {"path": str(mpath), "sha256": sha256(mpath)}
+    meta["random_manifest"] = {"path": str(rpath), "sha256": sha256(rpath)} if rmanifest else None
 
     for sid, st in sets.items():
         if a.sets and sid not in a.sets:
@@ -285,6 +303,7 @@ def main():
         meta["sets"][sid] = {
             "set": sid, "kind": st["kind"], "name": st["name"], "category": st["category"], "k": st["k"],
             "n_neurons": st["n_neurons"], "neuron_indices": st["neuron_indices"],
+            "matched_to": st.get("matched_to"), "seed": st.get("seed"),
             "source_logs": {t: {"path": str(p), "bytes": p.stat().st_size, "sha256": sha256(p)} for t, p in st["logs"].items()},
             "table": out_csv.name, "n_items": n, "tasks": list(a.tasks), "checks": per_task,
             "max_abs_diff_vs_lm_eval_aggregates": {t: max(v.values()) for t, v in agg_diff.items()},
