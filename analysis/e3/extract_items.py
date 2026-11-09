@@ -17,6 +17,16 @@ Usage (Colab CPU runtime, Drive mounted):
     python analysis/e3/extract_items.py --unit-dir /content/drive/MyDrive/fair_pruning/results/e3/llama-3.1-8b_en
 Options: --logs-dir (default <fair_pruning>/checkpoints_e3/results/lm_evals), --out (default <unit-dir>/items),
          --sets (only these set ids), --overwrite (recompute tables that already exist).
+
+E2 (Llama-3.2-3B, notebook 09): its per-set summaries lack the fields of notebook 10 (unit, language, category, k,
+baseline_bbq_log) and its logs are named <model>__<set_id>_bbq.json. Use
+    python analysis/e3/extract_items.py --unit-dir <fair_pruning>/results/e2 \
+        --logs-dir <fair_pruning>/checkpoints_e2/results/lm_evals --log-prefix llama_3.2_3b \
+        --baseline-log <fair_pruning>/checkpoints_bbq_rerun/results/lm_evals/meta_llama_llama_3.2_3b_bbq.json
+  --log-prefix   name of the logs is <log-prefix>__<set_id>_bbq.json (instead of <unit>_<language>__<set_id>_bbq.json)
+  --baseline-log baseline log when the baseline summary does not record one (or there is no baseline summary)
+Category and K missing from a summary are taken from the set id (real_religion20 -> Religion, 20); a random set
+"rand_<category>_seed<N>" is matched to the real set of that category with the largest K (recorded as `mimics`).
 """
 import argparse
 import csv
@@ -97,6 +107,23 @@ def sha256(path):
     return h.hexdigest()
 
 
+SET_CATEGORY = {"religion": "Religion", "race": "Race_ethnicity", "gender": "Gender_identity"}
+
+
+def set_category_k(sm):
+    """Category and K of a set: from the summary (notebook 10) or from the set id (notebook 09, E2)."""
+    if sm.get("category") is not None or sm.get("k") is not None:
+        return sm.get("category"), sm.get("k")
+    parts = sm["set"].split("_")
+    if sm["kind"] == "real" and len(parts) == 2:              # real_religion20
+        name = parts[1].rstrip("0123456789")
+        digits = parts[1][len(name):]
+        return SET_CATEGORY.get(name), int(digits) if digits else None
+    if sm["kind"] == "random" and len(parts) == 3:            # rand_religion_seed3
+        return SET_CATEGORY.get(parts[1]), None
+    return None, None
+
+
 def safe_name(s):
     """Same sanitisation as utils._save_raw_result (name of the per-item log)."""
     return s.replace("/", "_").replace("-", "_").lower()
@@ -154,6 +181,8 @@ def main():
     ap.add_argument("--out", help="output folder (default <unit-dir>/items)")
     ap.add_argument("--sets", nargs="*", help="only these set ids")
     ap.add_argument("--overwrite", action="store_true")
+    ap.add_argument("--log-prefix", help="logs named <log-prefix>__<set_id>_bbq.json (E2: llama_3.2_3b)")
+    ap.add_argument("--baseline-log", help="baseline BBQ log if the summaries do not record it (E2)")
     a = ap.parse_args()
 
     unit_dir = Path(a.unit_dir)
@@ -168,16 +197,28 @@ def main():
     sets_path = out / "sets.json"
     meta = json.load(open(sets_path)) if sets_path.exists() else {"sets": {}}
 
-    for sp in summaries:
-        sm = json.load(open(sp, encoding="utf-8"))
+    loaded = [(sp, json.load(open(sp, encoding="utf-8"))) for sp in summaries]
+    if a.baseline_log and not any(sm["kind"] == "baseline" for _, sm in loaded):
+        loaded.insert(0, (Path(a.baseline_log), {"set": "baseline", "kind": "baseline", "n_neurons": 0}))
+    reals = {}                                       # category -> (k, set id) of the real set with the largest K
+    for _, sm in loaded:
+        cat, k = set_category_k(sm)
+        if sm["kind"] == "real" and cat and (cat not in reals or (k or 0) > reals[cat][0]):
+            reals[cat] = (k or 0, sm["set"])
+
+    for sp, sm in loaded:
         sid = sm["set"]
         if a.sets and sid not in a.sets:
             continue
-        unit_key = f"{sm['unit']}_{sm['language']}"
+        unit_key = f"{sm['unit']}_{sm['language']}" if "unit" in sm else a.log_prefix
         if sm["kind"] == "baseline":
-            log = Path(sm["baseline_bbq_log"])       # E1 log reused (gate S4) or the one evaluated in notebook 10
+            log = Path(sm.get("baseline_bbq_log") or a.baseline_log or "")   # E1 log reused (gate S4), notebook 10, or --baseline-log
+        elif a.log_prefix:
+            log = logs_dir / f"{safe_name(a.log_prefix + '__' + sid)}_bbq.json"
         else:
             log = logs_dir / f"{safe_name(unit_key + '__' + sid)}_bbq.json"
+        cat, k = set_category_k(sm)
+        mimics = sm.get("mimics") or (reals.get(cat, (None, None))[1] if sm["kind"] == "random" else None)
         out_csv = out / f"{sid}.csv.gz"
         if out_csv.exists() and not a.overwrite and sid in meta["sets"]:
             print(f"[{sid}] already extracted — skipped")
@@ -189,15 +230,15 @@ def main():
         print(f"[{sid}] reading {log} ({log.stat().st_size / 1e6:.0f} MB)")
         n, mism = extract(log, out_csv)
         meta["sets"][sid] = {
-            "set": sid, "kind": sm["kind"], "category": sm.get("category"), "k": sm.get("k"),
-            "mimics": sm.get("mimics"), "derived_from": sm.get("derived_from"), "seed": int(sid.rsplit("seed", 1)[1]) if "seed" in sid else None,
+            "set": sid, "kind": sm["kind"], "category": cat, "k": k,
+            "mimics": mimics, "derived_from": sm.get("derived_from"), "seed": int(sid.rsplit("seed", 1)[1]) if "seed" in sid else None,
             "n_neurons": sm.get("n_neurons"), "neuron_indices": sm.get("neuron_indices"),
             "summary": str(sp), "source_log": str(log), "source_log_bytes": log.stat().st_size,
             "source_log_sha256": sha256(log), "table": out_csv.name, "n_items": n,
             "pred_mismatches_vs_lm_eval_acc": mism, "manifest_sha256": sm.get("manifest_sha256"),
             "summary_session_gpu": (sm.get("env") or {}).get("gpu"), "extracted_at": dt.datetime.now().isoformat(timespec="seconds"),
         }
-        meta["unit"] = unit_key
+        meta["unit"] = unit_key or meta.get("unit")
         meta["python"] = platform.python_version()
         json.dump(meta, open(sets_path, "w", encoding="utf-8"), indent=2)   # saved after every set: resumable
         flag = "" if (n == N_ITEMS and mism == 0) else "   ⚠️  CHECK"
