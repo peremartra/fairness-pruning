@@ -5,7 +5,7 @@ E3 step 2 for EsBBQ (Spanish unit, for example Salamandra-7B ES) from the compac
 Counterpart of e3_item_analysis.py (BBQ): same five questions, same tables, same report layout. Descriptive only:
 no thresholds, no verdicts. Each set (neurons zeroed) is compared item by item with the baseline (unmodified model).
   1. direction  - where do the changed answers go (towards the pro-stereotype person, the other person, "unknown")?
-  2. groups     - within a category, which groups (answer_info) carry the changes?
+  2. groups     - within a category, which groups (answer_info) and which topics (relevant_social_value) carry the changes?
   3. overlap    - do different sets change the same items (Jaccard of the changed items)?
   4. margin     - are the changed items those where the unpruned model was undecided (small loglikelihood margin)?
   5. bootstrap  - item bootstrap intervals for the % of changed answers and for the change in three bias measures:
@@ -72,6 +72,7 @@ def load(items_dir, allow_partial=False):
         t = pd.read_csv(items_dir / m["table"], keep_default_na=False, na_values=[""]).set_index("item_id").sort_index()
         for c in ("group0", "group1"):
             t[c] = t[c].fillna(EMPTY_LABEL).astype(str)      # some items have an empty group label: keep them, visible
+        t["relevant_social_value"] = t["relevant_social_value"].fillna(EMPTY_LABEL).astype(str)
         t["state"] = state(t)
         lls = t[["ll0", "ll1", "ll_unk"]].to_numpy()
         srt = np.sort(lls, axis=1)
@@ -87,7 +88,7 @@ def load(items_dir, allow_partial=False):
     base = base_ids[0]
     for sid, t in tables.items():
         assert t.index.equals(tables[base].index), f"{sid}: items differ from the baseline"
-        cols = ["category", "context", "question_type", "group0", "group1", "target"]
+        cols = ["category", "context", "question_type", "relevant_social_value", "group0", "group1", "target"]
         bad = [c for c in cols if not (t[c] == tables[base][c]).all()]
         assert not bad, f"{sid}: item metadata differs from the baseline in {bad}"
     order = [base] + [s for s in meta if s != base]       # order of the manifest (Religion, Age, Gender)
@@ -180,6 +181,23 @@ def groups(meta, tables, base, order, cats):
                     continue
                 ch = (tables[sid].loc[m_idx, "pred"] != b.loc[m_idx, "pred"])
                 rows.append({"set": sid, "kind": meta[sid]["kind"], "category": cat, "group": g,
+                             "n_items": len(m_idx), "changed": int(ch.sum()), "changed_pct": 100 * ch.mean()})
+    return pd.DataFrame(rows)
+
+
+def topics(meta, tables, base, order, cats):
+    """% of changed answers by relevant_social_value (topic of the item) within each category."""
+    b = tables[base]
+    rows = []
+    for cat in cats:
+        bc = b[b["category"] == cat]
+        for v in sorted(bc["relevant_social_value"].unique()):
+            m_idx = bc.index[bc["relevant_social_value"] == v]
+            for sid in order:
+                if sid == base:
+                    continue
+                ch = (tables[sid].loc[m_idx, "pred"] != b.loc[m_idx, "pred"])
+                rows.append({"set": sid, "kind": meta[sid]["kind"], "category": cat, "topic": v,
                              "n_items": len(m_idx), "changed": int(ch.sum()), "changed_pct": 100 * ch.mean()})
     return pd.DataFrame(rows)
 
@@ -312,6 +330,7 @@ def main():
     chg_df = changed_by_category(meta, tables, base, order, cats)
     dir_df, trans_df = direction(meta, tables, base, order, cats)
     grp_df = groups(meta, tables, base, order, cats)
+    top_df = topics(meta, tables, base, order, cats)
     ov_all = overlap(tables, base, order)
     ov_cat = {c: overlap(tables, base, order, c) for c in targets}
     med_df, dec_df = margin(meta, tables, base, order, cats)
@@ -321,6 +340,7 @@ def main():
     dir_df.to_csv(out / "direction.csv", index=False)
     trans_df.to_csv(out / "transitions.csv", index=False)
     grp_df.to_csv(out / "groups.csv", index=False)
+    top_df.to_csv(out / "topics.csv", index=False)
     ov_all.to_csv(out / "overlap_changed_items_all.csv")
     for c, m in ov_cat.items():
         m.to_csv(out / f"overlap_changed_items_{c}.csv")
@@ -349,7 +369,15 @@ def main():
         g = grp_df[grp_df["category"] == cat]
         piv = g.pivot_table(index="group", columns="set", values="changed_pct")[reals]
         n_items = g.drop_duplicates("group").set_index("group")["n_items"]
-        R += ["### 2. % changed answers by group mentioned in the item", "", md(pd.concat([n_items.rename("n_items"), piv], axis=1)), ""]
+        if len(piv) > 2:
+            R += ["### 2. % changed answers by group mentioned in the item", "", md(pd.concat([n_items.rename("n_items"), piv], axis=1)), ""]
+        else:
+            R += ["### 2. % changed answers by group mentioned in the item",
+                  "", f"Not shown: every item of this category mentions the same {len(piv)} groups ({', '.join(piv.index)}), so the rows are identical to the category total.", ""]
+        tp = top_df[top_df["category"] == cat]
+        tpiv = tp.pivot_table(index="topic", columns="set", values="changed_pct")[reals]
+        R += ["### 2b. % changed answers by topic of the item (relevant_social_value)", "",
+              md(pd.concat([tp.drop_duplicates("topic").set_index("topic")["n_items"].rename("n_items"), tpiv], axis=1)), ""]
         R += ["### 3. Jaccard of the changed items", "", md(ov_cat[cat], 3), ""]
         mc = med_df[med_df["category"] == cat]
         mcols = ["n_changed", "median_margin_changed", "median_margin_unchanged"]
@@ -362,7 +390,7 @@ def main():
     (out / "report.md").write_text("\n".join(R), encoding="utf-8")
 
     json.dump({"changed_by_category": chg_df.to_dict("records"), "direction": dir_df.to_dict("records"),
-               "groups": grp_df.to_dict("records"), "overlap_all": ov_all.to_dict(),
+               "groups": grp_df.to_dict("records"), "topics": top_df.to_dict("records"), "overlap_all": ov_all.to_dict(),
                "overlap_by_category": {c: m.to_dict() for c, m in ov_cat.items()},
                "margin_changed_vs_unchanged": med_df.to_dict("records"), "margin_deciles": dec_df.to_dict("records"),
                "bootstrap": bs_df.to_dict("records")}, open(out / "results_full.json", "w"), indent=1, default=float)

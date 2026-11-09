@@ -47,7 +47,7 @@ EXPECTED_N = {"esbbq_age": 4068, "esbbq_disabilitystatus": 2832, "esbbq_gender":
               "esbbq_nationality": 504, "esbbq_physicalappearance": 3528, "esbbq_raceethnicity": 3716,
               "esbbq_religion": 648, "esbbq_ses": 4204, "esbbq_spanishregion": 988}
 COLUMNS = ["item_id", "task", "doc_id", "category", "context", "polarity", "question_type", "instance_id", "template_id",
-           "subcategory", "stereotyped_groups", "text0", "text1", "group0", "group1", "biased0", "biased1", "rule_amb",
+           "subcategory", "relevant_social_value", "stereotyped_groups", "text0", "text1", "group0", "group1", "biased0", "biased1", "rule_amb",
            "target", "pred", "correct", "biased", "ll0", "ll1", "ll_unk", "acc_lm_eval"]
 AGG_TOL = 1e-9
 
@@ -148,6 +148,7 @@ def item_row(task, s, chk):
         "item_id": f"{task}:{s['doc_id']}", "task": task, "doc_id": s["doc_id"], "category": d["category"],
         "context": d["context_condition"], "polarity": d["question_polarity"], "question_type": d["question_type"],
         "instance_id": d.get("instance_id"), "template_id": d.get("template_id"), "subcategory": d.get("subcategory", ""),
+        "relevant_social_value": d.get("relevant_social_value", ""),
         "stereotyped_groups": stereo, "text0": d["ans0"], "text1": d["ans1"],
         "group0": group_of(d, 0), "group1": group_of(d, 1), "biased0": b0, "biased1": b1, "rule_amb": rule_amb,
         "target": target, "pred": pred, "correct": correct, "biased": biased,
