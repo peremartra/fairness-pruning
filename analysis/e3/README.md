@@ -3,7 +3,7 @@
 Per-item analysis of one E3 unit (model × language; first Llama-3.1-8B EN): which answers change when neurons are zeroed,
 in which direction, in which groups, whether different sets change the same items, and whether the changed items are
 those where the unpruned model was undecided. Experiment log: `R1_exp.md`, section E3. Descriptive only: no thresholds,
-no verdicts.
+no verdicts. The scripts below are for BBQ (English units); the Spanish unit (EsBBQ) has its own pair of scripts, described in the last section.
 
 ## Two steps
 
@@ -81,3 +81,34 @@ per-item accuracy, for the check). Mapping as in `claude/BBQ_log_format.md` and 
 - **Net towards the stereotype** = (A→S − S→A) / items of the category and context, in %. In disambiguated items its sign follows the change in disambiguated bias.
 - **Bootstrap**: items of the category are resampled with replacement (paired: the same items for the baseline and the set). Intervals reflect item sampling only, not run-to-run variation (runs are deterministic).
 - Loglikelihoods are stored by lm-eval in bfloat16 resolution, so small margins are discretised.
+
+## EsBBQ scripts (Spanish unit, Salamandra-7B ES)
+
+EsBBQ is scored differently from BBQ (11 options, `label` is the target, bias measures from `question_type` and `stereotyped_groups`; see `claude/EsBBQ_log_format.md`), so it has its own scripts. The BBQ scripts are not changed.
+
+| Step | Script | Where | Reads | Writes |
+|---|---|---|---|---|
+| 1 | `extract_items_esbbq.py` | Colab, CPU runtime, no extra packages | the neuron manifest of notebook 12, the baseline logs (`checkpoints_mbbq/results/lm_evals/bsc_lt_salamandra_7b_esbbq_<category>.json`) and the logs of the 8 experiments (`checkpoints_esbbq_zeroed_7b/results/lm_evals/salamandra_7b__<exp_id>_esbbq_<category>.json`), one file per category and set | `items/<set_id>.csv.gz` (27,320 rows each) and `items/sets.json`, in `fair_pruning/results/esbbq_zeroed_7b/` |
+| 2 | `e3_item_analysis_esbbq.py` | Colab CPU or laptop | the `items/` folder | `analysis/<timestamp>_items/` next to it |
+
+```python
+from google.colab import drive; drive.mount('/content/drive')
+!git clone -q https://github.com/peremartra/fairness-pruning.git
+!python fairness-pruning/analysis/e3/extract_items_esbbq.py --results-dir /content/drive/MyDrive/fair_pruning/results/esbbq_zeroed_7b
+!pip install -q tabulate
+!python fairness-pruning/analysis/e3/e3_item_analysis_esbbq.py --items-dir /content/drive/MyDrive/fair_pruning/results/esbbq_zeroed_7b/items
+```
+
+Use a fresh clone of the repository: an older clone silently runs older scripts. Step 1 is resumable (sets already extracted are skipped; `--overwrite` recomputes them, needed whenever the columns of the table change). Options of step 1: `--manifest`, `--logs-dir`, `--baseline-dir`, `--baseline-prefix`, `--out`, `--sets`, `--tasks` (subset, for tests). Options of step 2: `--out-dir`, `--bootstrap` (default 1000), `--seed` (default 0), `--target-categories` (default Religion Age Gender), `--allow-partial` (tests only).
+
+**Checks of step 1** (stored in `sets.json` under `checks` and `problems`; a set with problems prints "CHECK"): items per category; prediction equal to lm-eval's per-item `acc`; the per-item metric tuples recomputed equal the ones lm-eval stored; the aggregates recomputed equal the `results` of each log (tolerance 1e-9); `label` is 2 in ambiguous items and 0 or 1 in disambiguated ones; "unknown" is `ans2`; no non-finite loglikelihoods. Ambiguous items where the pro-stereotype rule marks both persons the same way are kept, flagged (`rule_amb`) and counted. Step 2 refuses tables that do not cover the ten tasks.
+
+**Per-item table.** Same columns as the BBQ table where they exist, with these differences: `item_id` (= task:`doc_id`; `doc_id` restarts in every category) replaces `doc_id` as the key; `question_type` (pro-stereo / anti-stereo / n/a), `relevant_social_value` (topic of the item) and `rule_amb` are added; `biased0`, `biased1` and `biased` mean "pro-stereotype person" according to `esbbq_utils` (not `biased_answers`); `ll_unk` is the maximum over the nine "unknown" phrasings.
+
+**Report.** Same five questions and the same layout as the BBQ report, with these differences:
+- Section 0 (new): % of changed answers of every category for every set. This unit has no random sets, so the categories that are not the target of a set are the only internal reference.
+- Section 2b (new): % of changed answers by `relevant_social_value` (also `topics.csv`). Section 2 (by group) is printed only when the category has more than two groups; Age and Gender have two in every item, so there it would repeat the category total.
+- Section 5 has three bias measures, each with its 95 % interval: `disamb_bias_delta` (the formula of the BBQ script, for comparison across units), `esbbq_disamb_bias_delta` (accuracy on pro-stereo minus accuracy on anti-stereo questions, as lm-eval reports it, in points) and `esbbq_amb_bias_delta` ((incorrect pro-stereo − incorrect anti-stereo) / ambiguous items, in points), plus the % of changed answers.
+- No random or ablation sets: every set is read against the baseline and, in section 0, against the other categories. The report says so. The sets of one category come from the same ranking of neurons (Top-1 ⊂ Top-5 ⊂ Top-40), so a high Jaccard between them is expected.
+
+**Reading limits.** Descriptive only. The bootstrap resamples items, not neurons or models. Small categories (Religion has 648 items in total) have few items per cell, so intervals are wide.
