@@ -37,6 +37,7 @@ import datetime as dt
 import gzip
 import hashlib
 import json
+import re
 import math
 import platform
 import sys
@@ -248,7 +249,11 @@ def main():
     if sorted(a.tasks) != sorted(TASKS):
         print(f"⚠️  only {len(a.tasks)} of 10 tasks (test mode): the tables do not cover the whole benchmark")
 
-    mpath = Path(a.manifest) if a.manifest else next(iter(sorted(res_dir.glob("*_neuron_manifest_es.json"))), None)
+    def _version(p):                                         # <key>_neuron_manifest_es.json = 1, ..._es_v<N>.json = N
+        m = re.search(r"_neuron_manifest_es(?:_v(\d+))?\.json$", p.name)
+        return int(m.group(1) or 1) if m else 0
+    found = sorted(res_dir.glob("*_neuron_manifest_es*.json"), key=_version)
+    mpath = Path(a.manifest) if a.manifest else (found[-1] if found else None)   # latest version (sets are only added)
     if mpath is None or not mpath.exists():
         sys.exit(f"neuron manifest not found in {res_dir}")
     manifest = json.load(open(mpath, encoding="utf-8"))
@@ -268,8 +273,13 @@ def main():
         if not rpath.exists():
             sys.exit(f"random manifest not found: {rpath}")
         rmanifest = json.load(open(rpath, encoding="utf-8"))
-        if rmanifest["matched_manifest_sha256"] != sha256(mpath):
-            sys.exit(f"{rpath.name} was drawn from another neuron manifest (sha256 differs from {mpath.name})")
+        drawn_from = res_dir / rmanifest["matched_manifest"]
+        if not drawn_from.exists() or sha256(drawn_from) != rmanifest["matched_manifest_sha256"]:
+            sys.exit(f"{rpath.name}: its neuron manifest {drawn_from.name} is missing or changed")
+        for e in rmanifest["sets"].values():
+            m_old = json.load(open(drawn_from, encoding="utf-8"))["experiments"][e["matched_to"]]["by_layer"]
+            if m_old != manifest["experiments"][e["matched_to"]]["by_layer"]:
+                sys.exit(f"{e['matched_to']} differs between {drawn_from.name} and {mpath.name}")
         for sid, e in rmanifest["sets"].items():
             m = manifest["experiments"][e["matched_to"]]
             sets[sid] = {"kind": "random", "name": e["name"], "category": "+".join(m["categories"]), "k": m["n_top"],

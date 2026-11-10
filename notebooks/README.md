@@ -320,7 +320,7 @@ Main outputs:
 [![View in NBViewer](https://img.shields.io/badge/NBViewer-Open-orange?logo=jupyter)](https://nbviewer.org/github/peremartra/fairness-pruning/blob/main/notebooks/10_E3_Controls_NewModels.ipynb)
 
 Purpose:
-Experiment E3 (see `R1_exp.md`): zeroes top-K BiasScore neurons (gate_proj row, up_proj row and down_proj column) in Llama-3.1-8B, Qwen3-4B-Base and Salamandra-7B (English BBQ) and compares them with random neurons of the same layers.
+Experiment E3 (see `R1_exp.md`): zeroes top-K BiasScore neurons (gate_proj row, up_proj row and down_proj column) in Llama-3.1-8B, Qwen3-4B-Base, Salamandra-7B and Llama-3.2-3B (English BBQ) and compares them with random neurons of the same layers.
 
 What it does:
 - Based on notebook 09. The model is chosen with `UNIT` and the work with `PHASE`: `real` (baseline capabilities + real sets for Religion, Race and Gender at K = 5 and 20), `random` (random sets) or `ablation` (three exploratory sets, Llama-3.1-8B only; `ABLATION_ONLY` runs one of them per session so that the three can run in parallel).
@@ -347,6 +347,7 @@ What it does:
 - The neuron manifest is written once and never overwritten; later sessions load it and check it against the score files.
 - Reuses the EsBBQ baseline of 02_Evaluate_MBBQ run 3 after checking that its 10 logs are present and complete; runs with `batch_size=16` and warns if the GPU or lm-eval version differ from the baseline.
 - `EXP_ONLY` runs one set per session; the consolidation cell reads all checkpoints (real and random) from Drive.
+- `UNIT` (2026-11-10): `salamandra-7b` (original grid plus Race·Top-5), `llama-3.1-8b` and `llama-3.2-3b` (grid of the paper: Gender, Race, Religion at K = 5). New sets create a new manifest version (`_v2`, ...) that keeps the saved sets unchanged. The Llama units need their Spanish BiasScores (notebook 03) and an EsBBQ baseline with the current settings first; random sets only for Salamandra-7B.
 
 Main outputs:
 - `fair_pruning/results/esbbq_zeroed_7b/` (manifest, generations, `runs.jsonl`, `salamandra-7B_esbbq_zeroed_results.csv/.json`)
