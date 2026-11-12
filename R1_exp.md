@@ -1,6 +1,6 @@
 # R1 — Experiments tracker and run guide (P0: Fairness Pruning)
 
-Last updated: 2026-11-04
+Last updated: 2026-11-12
 
 Purpose: one place to see the status of each experiment (E0–E7) and to consult before launching the next one. Numbers are kept to the minimum needed to read the status; the full tables live in the linked files.
 
@@ -15,8 +15,8 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 | E0 | Last-layer checks on stored scores | Done | Llama-3.2-1B, 3B, Salamandra-2B | Last-layer share in top-1 %: 34–71 % raw, 12–31 % after per-layer normalisation | [E0](#e0--last-layer-checks) |
 | E1 | New models and baselines | Done | Llama-3.1-8B, Salamandra-7B, Qwen3-4B-Base | Disambiguated accuracy above 60 % in BBQ and EsBBQ for the three; all OptiPFair-compatible; A/B/C base/instruct pair study: Llama-3.2-3B and Llama-3.1-8B pairs done; Salamandra-7B base does not follow the format | [E1](#e1--new-models-and-baselines) |
 | E2 | Random and cross controls (pilot) | Done | Llama-3.2-3B | Design closed 2026-11-02; S1, S2/S4 and S3 (real sets, full BBQ + capabilities) done; Religion·Top-20 lowers Religion bias more than Race·Top-20 does, but both change 4–12 % of the answers in every category; two identical baseline runs are bit-for-bit equal, so those changes are an effect of the intervention and not run-to-run noise; S5 (10 random sets, seeds 0–9) done 2026-11-03; S6 and S7 closed 2026-11-04: the 20 selected neurons change the Religion bias (3.84 → −1.33) and 11.1 % of the answers; 20 random neurons of the same layers give 2.84 to 4.17 and 1.1 to 1.7 %; no random set reaches the change of the selected neurons | [E2](#e2--random-and-cross-controls-pilot-in-llama-32-3b) |
-| E3 | Intervention and controls in new models | In progress | Llama-3.1-8B, Salamandra-7B (EN + ES), Qwen3-4B-Base | English units run and analysed per item (2026-11-07); exploratory ablation of L31·6950 in Llama-3.1-8B (2026-11-08); Salamandra-7B ES run and analysed per item (2026-11-09: Salamandra-2B grid, 8 real experiments, EsBBQ; no capabilities; descriptive); random control of Gender·Top-5 (5 sets, 2026-11-09): the selected neurons change 20.34 % of the Gender answers, 5 random neurons of L31 at most 1.78 % | [E3](#e3--intervention-and-controls-in-the-new-models) |
-| E4 | Capabilities | Pending | All with interventions | Missing configurations listed | [E4](#e4--capabilities) |
+| E3 | Intervention and controls in new models | Done (closed by the author 2026-11-12) | Llama-3.1-8B, Llama-3.2-3B, Salamandra-7B (EN + ES), Qwen3-4B-Base | English units run and analysed per item (2026-11-07); exploratory ablation of L31·6950 in Llama-3.1-8B (2026-11-08); Salamandra-7B ES run and analysed per item (2026-11-09: Salamandra-2B grid, 8 real experiments, EsBBQ; no capabilities; descriptive); random control of Gender·Top-5 (5 sets, 2026-11-09): the selected neurons change 20.34 % of the Gender answers, 5 random neurons of L31 at most 1.78 %; Llama-3.1-8B ES and Llama-3.2-3B ES (6 sets each, 2026-11-12): Gender·20 localises in both (about 2.6 times the mean change of the other categories, rank 1 of 10), Religion partly, Race not; K = 5 weak; GPU noise L4 vs A100 in the 8B ES baseline: 1.85 % of the items change | [E3](#e3--intervention-and-controls-in-the-new-models) |
+| E4 | Capabilities | Pending | Llama-3.1-8B, Qwen3-4B-Base (EN) | Design 2026-11-12 (`claude/E4_plan.md`): real Gender·20 against the baseline and one random set per model, full battery; baselines and real sets already measured; two random sets (one per model) to run | [E4](#e4--capabilities) |
 | E5 | Bootstrap statistics | Pending | Llama-3.2-3B + new models | Needs per-item logs (partly available) | [E5](#e5--statistics-bootstrap) |
 | E6 | DPO pilot on selected neurons | Not planned for P0 | — | Outside P0 | [E6](#e6--dpo-pilot-on-selected-neurons) |
 | E7 | Full cycle in an Instruct model (appendix) | Pending | Llama-3.2-3B-Instruct | Design agreed 2026-11-04 (model, BBQ format, localisation prompts); not started | [E7](#e7--full-cycle-in-an-instruct-model-appendix) |
@@ -222,7 +222,7 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E3 — Intervention and controls in the new models
 
-- **Status:** In progress (2026-11-08). The English units of the three models have been run (real and random sets, BBQ) and analysed per item; the exploratory ablation in Llama-3.1-8B is done. Salamandra-7B ES: scope decided 2026-11-08, notebook [12_E3_ES_Zeroing_Salamandra7B](notebooks/12_E3_ES_Zeroing_Salamandra7B.ipynb) run in one session (2026-11-08/09, 8 experiments) and analysed per item (2026-11-09). E1 and E2 are done.
+- **Status:** Done, closed by the author on 2026-11-12 (no more experiments). Status of 2026-11-08: the English units of the three models have been run (real and random sets, BBQ) and analysed per item; the exploratory ablation in Llama-3.1-8B is done. Salamandra-7B ES: scope decided 2026-11-08, notebook [12_E3_ES_Zeroing_Salamandra7B](notebooks/12_E3_ES_Zeroing_Salamandra7B.ipynb) run in one session (2026-11-08/09, 8 experiments) and analysed per item (2026-11-09). E1 and E2 are done.
 - **Goal:** repeat the design validated in E2 in Llama-3.1-8B, Salamandra-7B and Qwen3-4B-Base (base models).
 - **Decisions (author, 2026-11-04):**
   1. **Models:** Llama-3.1-8B, Salamandra-7B and Qwen3-4B-Base (Qwen added to E3 on 2026-11-04).
@@ -319,11 +319,27 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
   - **Checks done 2026-11-10:** Llama-3.1-8B EN capabilities complete (baseline with MMLU and `real_gender5` read; `capabilities_failed_tasks` empty; the K = 20 summaries have the size of the ones with MMLU). Llama-3.1-8B EsBBQ baseline: `02_Evaluate_MBBQ` run 2 (2026-10-28, per-item logs in `checkpoints_mbbq/results/lm_evals/meta_llama_llama_3.1_8b_esbbq_<category>.json`, L4). No Spanish BiasScores for Llama-3.1-8B on Drive. Spanish BiasScores of Llama-3.2-3B are from May 2026 (recomputed with the current notebook 03 for comparability).
   - **Code changes 2026-11-10 (author's permission):** notebook 10 gets the `llama-3.2-3b` unit (repository BiasScores, the ones E2 used; baseline = S1 rerun log); notebook 12 gets `UNIT` (Salamandra-7B, Llama-3.1-8B, Llama-3.2-3B), the K = 5 grid, versioned manifests and the restriction of `PHASE = "random"` to Salamandra-7B; `extract_items_esbbq.py` reads the latest manifest version and checks the random manifest against the manifest it was drawn from.
   - **Open:** MMLU is run only for the K = 20 sets (decision of 2026-11-05) while the main K is now 5; to be decided in E4.
+  - **K = 20 for the Llama ES units (author, 2026-11-11):** the Spanish units of Llama-3.1-8B and Llama-3.2-3B had K = 5 only; notebook 12 gets `GRID_K20` (exp13 Religion·20, exp11 Gender·20, exp14 Race·20; manifest `_v2`, v1 unchanged). Both units now have 6 sets (Religion, Gender, Race × K = 5, 20). Notebook 12 changes uncommitted.
+  - **Results, Llama ES units (per-item analysis 2026-11-12; disambiguated items only; descriptive).** Ratio = changed % of the target category / mean changed % of the other nine categories (rank among the ten). Reports on Drive: `esbbq_zeroed_llama8b/analysis/20261112_081632_items` and `esbbq_zeroed_llama3b/analysis/20261112_081707_items` (`changed_by_category.csv`, `direction.csv`, `report.md`).
+
+    | Set | Llama-3.1-8B ES | Llama-3.2-3B ES |
+    |---|---|---|
+    | Religion·5 | 1.79 (rank 2) | 2.54 (rank 1) |
+    | Gender·5 | 0.87 (rank 6) | 0.51 (rank 10) |
+    | Race·5 | 0.84 (rank 6) | 0.81 (rank 6) |
+    | Religion·20 | 1.87 (rank 1) | 1.63 (rank 2) |
+    | Gender·20 | 2.57 (rank 1) | 2.59 (rank 1) |
+    | Race·20 | 1.12 (rank 5) | 1.05 (rank 6) |
+
+    Gender·20 localises in both units (and in Salamandra-7B ES: Gender·5 4.17, Gender·20 3.04); Religion partly; Race does not; K = 5 does not localise in most of the new units. Net change towards the stereotype is about 0 except in Religion (net +4 to +6 % in exp13/exp14 and in the 3B exp11); direction is not a claim.
+  - **K3, GPU noise (2026-11-12; Llama-3.1-8B ES baseline rerun on an A100 against the L4 baseline of E1 run 2, per item):** 1.85 % of the items change (2.41 % ambiguous, 1.59 % disambiguated); disambiguated by target category: Religion 2.31 %, Gender 1.53 %, Race 1.09 %. The K = 5 sets of the 8B (target changed %: Religion 3.94, Gender 2.40, Race 2.37) are at the level of this floor and are not used as evidence; Gender·20 (10.8 %) is far above it. The 8B sets were compared with the L4 baseline; recomputing against the A100 baseline is optional (CPU only). Table: `checkpoints_mbbq_a100check/k3_gpu_noise_l4_vs_a100.csv`. GPU of the 3B ES baseline against its sets: not checked (the 3B ran on L4).
+  - **Close (author, 2026-11-12):** no more experiments in E3. Conclusion: the detected neurons affect more than random neurons (also at K = 5; to verify that the random control and the real sets ran on the same GPU before writing it for K = 5). Claim limited to magnitude where the random control exists; not a localisation claim. Weak localisation attributed to the construction of the contrastive prompt datasets (hypothesis of the author, not tested; limitation and future work; a more elaborate dataset could go in an appendix, evidence only if run). Weight of the Jaccard indices in the paper: decided later.
 - **Open items:**
   - [x] Salamandra-7B ES units decided (2026-11-08): Salamandra-2B grid (8 experiments), real sets only, no capabilities, qualitative generations kept, per-item analysis to be done; EsBBQ baseline of E1 (02_Evaluate_MBBQ run 3) reused. BiasScores ES already on Drive (S2, 2026-11-04).
   - [x] Notebook 12 run (8 EsBBQ experiments, 2026-11-08/09) and `analysis/e3/` adapted to EsBBQ (`extract_items_esbbq.py`, `e3_item_analysis_esbbq.py`); per-item analysis done 2026-11-09 (see Results).
     - Smoke test 2026-11-08 (`exp1`, `EVAL_LIMIT=50`, A100-SXM4-80GB, lm-eval 0.4.9.2): manifest, baseline check, generations, 10 tasks and consolidation ran; per-item log recomputed 50/50. Bug found and fixed in the notebook: `utils.py` names the per-item log after `config._name_or_path`, so every experiment wrote `bsc_lt_salamandra_7b_esbbq_<category>.json` and would overwrite the previous one; the notebook now sets `_name_or_path = salamandra-7B__<exp_id>` on the zeroed copy (as notebook 10 does) and asserts that the 10 logs exist. The same naming applies to notebook 08: for Salamandra-2B (and Llama-3.2-1B ES) only the per-item logs of the last experiment run can have survived in `checkpoints_bbq_zeroed/results/lm_evals/` (not checked).
-  - [ ] Decide which model is the main one of the paper (after the numbers are analysed).
+  - [ ] Decide which model is the main one of the paper (after the numbers are analysed). Proposed Llama-3.1-8B; Salamandra is not the main one (author).
+  - [ ] Decide the main K of the paper: K = 5 (author, 2026-11-10) is questioned by the data of 2026-11-12 (K = 5 does not localise in most new units; Gender·20 does).
   - [x] Random controls for K = 5: decided and done 2026-11-09 only for Salamandra-7B ES Gender·Top-5 (5 sets; see Results). No other K = 5 random controls.
   - [x] GPU (author, 2026-11-09): differences between A100 sessions (40 GB or 80 GB) are not considered. All E3 runs are on A100; on Colab the GPU, its load, state and driver differ between sessions anyway, so measuring the 40 vs 80 GB effect is not worth the cost. Analysis of the E3 capabilities: in E4.
   - [ ] At E3 close, clean up the intermediate entries of this section (including the `_smoke` folders of notebook 12 on Drive).
@@ -340,17 +356,19 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## E4 — Capabilities
 
-- **Status:** Pending.
-- **Goal:** check that the interventions do not degrade general capabilities, in every configuration the paper cites and in the new ones.
-- **Design:** the paper's battery (WikiText, MMLU, ARC-Challenge, HellaSwag, EN/ES). Random sets of E2/E3: WikiText only; the full battery only for the real configurations. Per-item (per-document in WikiText) predictions are saved so retention can be computed with bootstrap intervals instead of the mean of ratios.
-- **Missing today:**
-  - Religion·Top-20 in Llama-3.2-3B (the strongest result, with no capability evaluation).
-  - Salamandra.
-  - The E3 configurations in the new models, plus their capability baseline.
-  - K=40 stays out.
-- **Files and notebooks:** [02_Evaluate_Base_Capabilities](notebooks/02_Evaluate_Base_Capabilities.ipynb) (baselines) · [07B_EvalPrunedModels_Llama3B](notebooks/07B_EvalPrunedModels_Llama3B.ipynb) (zeroed) · [results/capabilities_zeroed/](results/capabilities_zeroed/)
+- **Status:** Pending (design discussed 2026-11-12; plan in `claude/E4_plan.md`, project documents).
+- **Goal:** measure the cost of the intervention in general capabilities (BBQ/EsBBQ accuracy changes are not a cost) and compare it with random neurons of the same layers; analysis of the capabilities measured in E2 and E3.
+- **Design (author, 2026-11-12):** battery of the paper (WikiText, MMLU, ARC-Challenge, HellaSwag, HellaSwag-es). Models: Llama-3.1-8B EN and Qwen3-4B-Base EN. Real Gender·20 against the baseline and against one random set of the same layers (one set per model, not several seeds), with the full battery also on the random set. Per-item (per-document in WikiText) predictions are saved so the change can be computed with bootstrap intervals instead of the mean of ratios. Proposed and not yet confirmed: seed 0 for the random set, ±1 pp equivalence margin, Spanish units out of E4.
+- **Exists today (inventory 2026-11-12, Drive):** baseline and real Gender·20 with the full battery and raw per-item logs in Llama-3.1-8B and Qwen3-4B-Base; random Gender·20 with WikiText only (seeds 0–4) in both. E2: capabilities of Religion·Top-20 and Race·Top-20 in Llama-3.2-3B measured (S3, 2026-11-03). E3 real sets with K = 20 have the full battery; K = 5 sets have no MMLU.
+- **Missing:** MMLU, ARC-Challenge, HellaSwag and HellaSwag-es with per-item logs for one random Gender·20 set (proposed seed 0) in each of the two models.
+- **Corrected 2026-11-12:** the previous list said that the Llama-3.1-8B capability baseline was not run and that Religion·Top-20 in Llama-3.2-3B had no capability evaluation; both exist (Llama-3.1-8B baseline on A100-80GB, completed 2026-11-05). K=40 stays out.
+- **Files and notebooks:** [02_Evaluate_Base_Capabilities](notebooks/02_Evaluate_Base_Capabilities.ipynb) (baselines) · [07B_EvalPrunedModels_Llama3B](notebooks/07B_EvalPrunedModels_Llama3B.ipynb) (zeroed) · [results/capabilities_zeroed/](results/capabilities_zeroed/) · notebook 10 (E3 capabilities, `CAPS_RANDOM`).
 - **Open items:**
-  - [ ] Capability baselines for Llama-3.1-8B and Salamandra-7B (not run yet).
+  - [ ] Confirm the proposals above (seed, margin, exclusion of tasks near chance, Spanish units out).
+  - [ ] Read notebook 10 (`CAPS_RANDOM`) to prepare the two random runs; changes are discussed before they are written.
+  - [ ] Complete the GPU inventory (summaries not read: Llama-3.1-8B real Gender·20, Qwen baseline, Qwen random seed 0).
+  - [ ] MMLU on the K = 5 sets: only if K = 5 is kept as main K.
+  - [ ] Consolidation of the capabilities of Llama-3.2-3B EN (R4) is stale.
 
 ## E5 — Statistics (bootstrap)
 
@@ -394,6 +412,9 @@ Status values: **Done** · **In progress** · **Pending** · **Not planned**
 
 ## Changelog
 
+- 2026-11-12: E4 design discussed (Llama-3.1-8B and Qwen3-4B-Base, real Gender·20 against the baseline and one random set, full battery, per-item bootstrap); inventory of the capability data on Drive; E4 section corrected (the Llama-3.1-8B baseline exists); `claude/E4_plan.md` created.
+- 2026-11-12: E3 closed by the author (no more experiments). Per-item analysis of the Llama-3.1-8B ES and Llama-3.2-3B ES units with 6 sets each (K = 5, 20): Gender·20 localises in both, Religion partly, Race not; K = 5 weak. K3 (8B ES, baseline L4 against A100): 1.85 % of the items change. Main K reopened.
+- 2026-11-11: E3 K = 20 added for the Llama ES units (notebook 12 `GRID_K20`, manifest `_v2`).
 - 2026-11-10: E3 decisions: main K = 5, no more random sets, Spanish units K = 5 with Gender, Race, Religion; runs planned for Salamandra-7B ES Race·5, Llama-3.1-8B ES, Llama-3.2-3B ES and EN; notebooks 10 and 12 and `extract_items_esbbq.py` adapted.
 - 2026-11-09: E3 open items: GPU differences between A100 sessions not considered (author); analysis of the E3 capabilities belongs to E4.
 - 2026-11-09: E3 random control of Salamandra-7B ES Gender·Top-5 (5 sets, seeds 0–4, L31; notebook 12 `PHASE = "random"`; section R of the per-item analysis): 20.34 % changed Gender answers vs 0.25–1.78 % for random sets; EN pattern reproduced.
