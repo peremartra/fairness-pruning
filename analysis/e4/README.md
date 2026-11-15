@@ -82,7 +82,7 @@ value is compared except in MMLU, where it is a macro average (see Definitions).
 - **Delta**: set A minus set B on the same items. Accuracy tasks in percentage points (pp). WikiText: relative change in % of word perplexity, `exp(-Σ loglik / Σ words)`, resampling documents.
 - **Paired bootstrap**: items (documents in WikiText) are resampled with replacement; the same indices are used for every set of a unit and task; B = 10,000 replicates; 95 % percentile interval; RNG seed `[seed, unit index, task index]`.
 - **Verdict** (accuracy tasks only; margin ±1 pp, fixed beforehand): `equivalent` = whole interval inside ±1; `worse` = upper end below −1; `better` = lower end above +1; otherwise `inconclusive`. Tasks with a baseline accuracy below 0.35 (chance + 10 pp, applied to the baseline only) are `excluded`; in the present data this concerns Llama-3.2-1B MMLU (about 32 %). WikiText has no verdict.
-- **MMLU micro / macro**: micro is item-weighted over 14,042 items (what lm-eval returns and what is analysed here); macro is the mean over the 57 subjects (what the `_cap.json` stores; it differs from micro by up to about 1 pp). Do not mix them in one table.
+- **MMLU micro / macro**: micro is item-weighted over 14,042 items (what lm-eval returns and what is analysed here); macro is the mean over the 57 subjects (what the `_cap.json` stores; it differs from micro by about 0.5 to 1.4 pp in the five units). Do not mix them in one table.
 - **Random control**: one random set, seed 0, same layers and K as the real set. With one seed the real-vs-random contrast has no between-seed variance.
 
 ## Limits
