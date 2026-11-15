@@ -1,0 +1,24 @@
+unit,set,task,gpu,batch_size,source
+llama_3.1_8b_en,baseline,*,A100-SXM4-80GB,unknown,E4_handoff.md §3 (env.gpu of the summary)
+llama_3.1_8b_en,baseline,mmlu,A100-SXM4-80GB,4,E4_handoff.md §3 (mmlu_batch_size recorded in the summary)
+llama_3.1_8b_en,real_gender20,*,A100-SXM4-80GB,unknown,E4_handoff.md §3 (env.gpu of the summary)
+llama_3.1_8b_en,real_gender20,mmlu,A100-SXM4-80GB,4,E4_handoff.md §3 (mmlu_batch_size recorded in the summary)
+llama_3.1_8b_en,rand_gender20_seed0,wikitext,A100-SXM4-40GB,unknown,E4_handoff.md §3
+llama_3.1_8b_en,rand_gender20_seed0,arc_challenge,L4,unknown,E4_handoff.md §3
+llama_3.1_8b_en,rand_gender20_seed0,hellaswag,L4,unknown,E4_handoff.md §3
+llama_3.1_8b_en,rand_gender20_seed0,hellaswag_es,L4,unknown,E4_handoff.md §3
+llama_3.1_8b_en,rand_gender20_seed0,mmlu,A100-SXM4-40GB,4,E4_handoff.md §4 (repeated on A100 after OOM on L4)
+qwen3_4b_base_en,baseline,*,A100-SXM4-40GB,unknown,E4_handoff.md §3
+qwen3_4b_base_en,baseline,mmlu,A100-SXM4-40GB,4,E4_handoff.md §3
+qwen3_4b_base_en,real_gender20,*,A100-SXM4-40GB,unknown,E4_handoff.md §3
+qwen3_4b_base_en,real_gender20,mmlu,A100-SXM4-40GB,4,E4_handoff.md §3
+qwen3_4b_base_en,rand_gender20_seed0,wikitext,A100-SXM4-40GB,unknown,E4_handoff.md §3
+qwen3_4b_base_en,rand_gender20_seed0,arc_challenge,L4,unknown,E4_handoff.md §3
+qwen3_4b_base_en,rand_gender20_seed0,hellaswag,L4,unknown,E4_handoff.md §3
+qwen3_4b_base_en,rand_gender20_seed0,hellaswag_es,L4,unknown,E4_handoff.md §3
+qwen3_4b_base_en,rand_gender20_seed0,mmlu,L4,4,E4_handoff.md §3 and §4
+salamandra_7b_en,rand_gender20_seed0,mmlu,A100-SXM4-40GB,4,Salamandra MMLU retry (agent report)
+salamandra_7b_en,rand_gender20_seed0,arc_challenge,L4,unknown,orchestrator prompt A (L4 plan)
+salamandra_7b_en,rand_gender20_seed0,hellaswag,L4,unknown,orchestrator prompt A (L4 plan)
+salamandra_7b_en,rand_gender20_seed0,hellaswag_es,L4,unknown,orchestrator prompt A (L4 plan)
+salamandra_7b_en,rand_gender20_seed0,wikitext,L4,unknown,orchestrator prompt A (L4 plan)

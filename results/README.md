@@ -15,6 +15,7 @@ Detailed metric interpretation is intentionally delegated to each subdirectory R
 | `generations/` | Baseline paired generations used as analysis input |
 | `neuron_analysis/` | Per-neuron bias/fairness scores for pruning candidate selection |
 | `figures/bias_path/` | Bias-path visualizations and summary CSVs |
+| `e4/` | E4: small table of the capability cost of the interventions (full outputs on Drive) |
 
 ## Top-Level Files In This Folder
 
