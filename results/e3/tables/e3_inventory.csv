@@ -1,0 +1,9 @@
+unit,model,language,benchmark,n_items_total,n_categories,n_real_sets,n_ablation_sets,n_random_sets,n_random_sensitivity_sets,k_values,target_categories_tested,has_per_item_analysis,analysis_dir,gpus_intervened,baseline_gpu
+llama-3.1-8b_en,Llama-3.1-8B,EN,BBQ,58492,11,6,3,15,0,"5, 20","Gender, Race, Religion",True,results/e3/llama-3.1-8b_en/analysis/20261108_144541_items,A100-SXM4-40GB; A100-SXM4-80GB,A100-SXM4-80GB
+salamandra-7b_en,Salamandra-7B,EN,BBQ,58492,11,6,0,10,0,"5, 20","Gender, Race, Religion",True,results/e3/salamandra-7b_en/analysis/20261107_153940_items,A100-SXM4-40GB,A100-SXM4-40GB
+qwen3-4b-base_en,Qwen3-4B-Base,EN,BBQ,58492,11,6,0,10,0,"5, 20","Gender, Race, Religion",True,results/e3/qwen3-4b-base_en/analysis/20261107_153055_items,A100-SXM4-40GB,A100-SXM4-40GB
+llama-3.2-3b_en,Llama-3.2-3B,EN,BBQ,58492,11,6,0,15,1,"5, 20","Gender, Race, Religion",True,results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random,A100-SXM4-40GB; A100-SXM4-80GB; L4,A100-SXM4-40GB
+llama-3.2-1b_en,Llama-3.2-1B,EN,BBQ,58492,11,6,0,0,0,"5, 20","Gender, Race, Religion",False,results/e3/llama-3.2-1b_en/per_set (summary-only),A100-SXM4-40GB,A100-SXM4-40GB
+salamandra-7b_es,Salamandra-7B,ES,EsBBQ,27320,10,9,0,5,0,"1, 5, 10, 20, 40","Age, Gender, RaceEthnicity, Religion",True,results/esbbq_zeroed_7b/analysis/20261111_095116_items,A100-SXM4-80GB,A100-SXM4-80GB (E1)
+llama-3.1-8b_es,Llama-3.1-8B,ES,EsBBQ,27320,10,6,0,0,0,"5, 20","Gender, RaceEthnicity, Religion",True,results/esbbq_zeroed_llama8b/analysis/20261112_081632_items,A100-SXM4-40GB; A100-SXM4-80GB,L4 (E1)
+llama-3.2-3b_es,Llama-3.2-3B,ES,EsBBQ,27320,10,6,0,0,0,"5, 20","Gender, RaceEthnicity, Religion",True,results/esbbq_zeroed_llama3b/analysis/20261112_081707_items,L4,L4 (rerun)

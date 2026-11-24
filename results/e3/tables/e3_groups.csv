@@ -1,0 +1,1645 @@
+unit,set,kind,category,group,n_items,changed,changed_pct
+llama-3.1-8b_en,real_gender20,real,Gender_identity,F,4616,1236,26.776429809358756
+llama-3.1-8b_en,real_race20,real,Gender_identity,F,4616,171,3.7045060658578857
+llama-3.1-8b_en,real_religion20,real,Gender_identity,F,4616,144,3.119584055459272
+llama-3.1-8b_en,real_gender5,real,Gender_identity,F,4616,1206,26.126516464471404
+llama-3.1-8b_en,real_race5,real,Gender_identity,F,4616,80,1.733102253032929
+llama-3.1-8b_en,real_religion5,real,Gender_identity,F,4616,93,2.01473136915078
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,F,4616,63,1.3648180242634316
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,F,4616,68,1.4731369150779896
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,F,4616,53,1.1481802426343155
+llama-3.1-8b_en,real_gender20,real,Gender_identity,M,4616,1236,26.776429809358756
+llama-3.1-8b_en,real_race20,real,Gender_identity,M,4616,171,3.7045060658578857
+llama-3.1-8b_en,real_religion20,real,Gender_identity,M,4616,144,3.119584055459272
+llama-3.1-8b_en,real_gender5,real,Gender_identity,M,4616,1206,26.126516464471404
+llama-3.1-8b_en,real_race5,real,Gender_identity,M,4616,80,1.733102253032929
+llama-3.1-8b_en,real_religion5,real,Gender_identity,M,4616,93,2.01473136915078
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,M,4616,63,1.3648180242634316
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,M,4616,68,1.4731369150779896
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,M,4616,53,1.1481802426343155
+llama-3.1-8b_en,real_gender20,real,Gender_identity,boy,40,3,7.5
+llama-3.1-8b_en,real_race20,real,Gender_identity,boy,40,4,10.0
+llama-3.1-8b_en,real_religion20,real,Gender_identity,boy,40,1,2.5
+llama-3.1-8b_en,real_gender5,real,Gender_identity,boy,40,2,5.0
+llama-3.1-8b_en,real_race5,real,Gender_identity,boy,40,1,2.5
+llama-3.1-8b_en,real_religion5,real,Gender_identity,boy,40,3,7.5
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,boy,40,2,5.0
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,boy,40,2,5.0
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,boy,40,0,0.0
+llama-3.1-8b_en,real_gender20,real,Gender_identity,girl,40,2,5.0
+llama-3.1-8b_en,real_race20,real,Gender_identity,girl,40,2,5.0
+llama-3.1-8b_en,real_religion20,real,Gender_identity,girl,40,2,5.0
+llama-3.1-8b_en,real_gender5,real,Gender_identity,girl,40,2,5.0
+llama-3.1-8b_en,real_race5,real,Gender_identity,girl,40,3,7.5
+llama-3.1-8b_en,real_religion5,real,Gender_identity,girl,40,2,5.0
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,girl,40,2,5.0
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,girl,40,3,7.5
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,girl,40,1,2.5
+llama-3.1-8b_en,real_gender20,real,Gender_identity,man,152,9,5.921052631578947
+llama-3.1-8b_en,real_race20,real,Gender_identity,man,152,18,11.842105263157894
+llama-3.1-8b_en,real_religion20,real,Gender_identity,man,152,13,8.552631578947368
+llama-3.1-8b_en,real_gender5,real,Gender_identity,man,152,4,2.631578947368421
+llama-3.1-8b_en,real_race5,real,Gender_identity,man,152,4,2.631578947368421
+llama-3.1-8b_en,real_religion5,real,Gender_identity,man,152,2,1.3157894736842104
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,man,152,5,3.289473684210526
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,man,152,5,3.289473684210526
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,man,152,1,0.6578947368421052
+llama-3.1-8b_en,real_gender20,real,Gender_identity,nonTrans,464,33,7.112068965517242
+llama-3.1-8b_en,real_race20,real,Gender_identity,nonTrans,464,7,1.5086206896551724
+llama-3.1-8b_en,real_religion20,real,Gender_identity,nonTrans,464,12,2.586206896551724
+llama-3.1-8b_en,real_gender5,real,Gender_identity,nonTrans,464,28,6.0344827586206895
+llama-3.1-8b_en,real_race5,real,Gender_identity,nonTrans,464,16,3.4482758620689653
+llama-3.1-8b_en,real_religion5,real,Gender_identity,nonTrans,464,2,0.4310344827586206
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,nonTrans,464,16,3.4482758620689653
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,nonTrans,464,2,0.4310344827586206
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,nonTrans,464,3,0.646551724137931
+llama-3.1-8b_en,real_gender20,real,Gender_identity,nonTrans_F,200,35,17.5
+llama-3.1-8b_en,real_race20,real,Gender_identity,nonTrans_F,200,3,1.5
+llama-3.1-8b_en,real_religion20,real,Gender_identity,nonTrans_F,200,1,0.5
+llama-3.1-8b_en,real_gender5,real,Gender_identity,nonTrans_F,200,35,17.5
+llama-3.1-8b_en,real_race5,real,Gender_identity,nonTrans_F,200,2,1.0
+llama-3.1-8b_en,real_religion5,real,Gender_identity,nonTrans_F,200,2,1.0
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,nonTrans_F,200,2,1.0
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,nonTrans_F,200,2,1.0
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,nonTrans_F,200,2,1.0
+llama-3.1-8b_en,real_gender20,real,Gender_identity,nonTrans_M,200,47,23.5
+llama-3.1-8b_en,real_race20,real,Gender_identity,nonTrans_M,200,7,3.5000000000000004
+llama-3.1-8b_en,real_religion20,real,Gender_identity,nonTrans_M,200,7,3.5000000000000004
+llama-3.1-8b_en,real_gender5,real,Gender_identity,nonTrans_M,200,49,24.5
+llama-3.1-8b_en,real_race5,real,Gender_identity,nonTrans_M,200,2,1.0
+llama-3.1-8b_en,real_religion5,real,Gender_identity,nonTrans_M,200,3,1.5
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,nonTrans_M,200,2,1.0
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,nonTrans_M,200,2,1.0
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,nonTrans_M,200,1,0.5
+llama-3.1-8b_en,real_gender20,real,Gender_identity,trans,464,33,7.112068965517242
+llama-3.1-8b_en,real_race20,real,Gender_identity,trans,464,7,1.5086206896551724
+llama-3.1-8b_en,real_religion20,real,Gender_identity,trans,464,12,2.586206896551724
+llama-3.1-8b_en,real_gender5,real,Gender_identity,trans,464,28,6.0344827586206895
+llama-3.1-8b_en,real_race5,real,Gender_identity,trans,464,16,3.4482758620689653
+llama-3.1-8b_en,real_religion5,real,Gender_identity,trans,464,2,0.4310344827586206
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,trans,464,16,3.4482758620689653
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,trans,464,2,0.4310344827586206
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,trans,464,3,0.646551724137931
+llama-3.1-8b_en,real_gender20,real,Gender_identity,trans_F,200,47,23.5
+llama-3.1-8b_en,real_race20,real,Gender_identity,trans_F,200,7,3.5000000000000004
+llama-3.1-8b_en,real_religion20,real,Gender_identity,trans_F,200,7,3.5000000000000004
+llama-3.1-8b_en,real_gender5,real,Gender_identity,trans_F,200,49,24.5
+llama-3.1-8b_en,real_race5,real,Gender_identity,trans_F,200,2,1.0
+llama-3.1-8b_en,real_religion5,real,Gender_identity,trans_F,200,3,1.5
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,trans_F,200,2,1.0
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,trans_F,200,2,1.0
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,trans_F,200,1,0.5
+llama-3.1-8b_en,real_gender20,real,Gender_identity,trans_M,200,35,17.5
+llama-3.1-8b_en,real_race20,real,Gender_identity,trans_M,200,3,1.5
+llama-3.1-8b_en,real_religion20,real,Gender_identity,trans_M,200,1,0.5
+llama-3.1-8b_en,real_gender5,real,Gender_identity,trans_M,200,35,17.5
+llama-3.1-8b_en,real_race5,real,Gender_identity,trans_M,200,2,1.0
+llama-3.1-8b_en,real_religion5,real,Gender_identity,trans_M,200,2,1.0
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,trans_M,200,2,1.0
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,trans_M,200,2,1.0
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,trans_M,200,2,1.0
+llama-3.1-8b_en,real_gender20,real,Gender_identity,woman,152,6,3.947368421052632
+llama-3.1-8b_en,real_race20,real,Gender_identity,woman,152,16,10.526315789473683
+llama-3.1-8b_en,real_religion20,real,Gender_identity,woman,152,12,7.894736842105263
+llama-3.1-8b_en,real_gender5,real,Gender_identity,woman,152,2,1.3157894736842104
+llama-3.1-8b_en,real_race5,real,Gender_identity,woman,152,2,1.3157894736842104
+llama-3.1-8b_en,real_religion5,real,Gender_identity,woman,152,3,1.973684210526316
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,woman,152,3,1.973684210526316
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,woman,152,4,2.631578947368421
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,woman,152,0,0.0
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,African,200,10,5.0
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,African,200,9,4.5
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,African,200,8,4.0
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,African,200,6,3.0
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,African,200,5,2.5
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,African,200,7,3.5000000000000004
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,African,200,5,2.5
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,African,200,6,3.0
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,African,200,5,2.5
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,African American,520,32,6.153846153846154
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,African American,520,22,4.230769230769231
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,African American,520,29,5.5769230769230775
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,African American,520,18,3.4615384615384617
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,African American,520,9,1.7307692307692308
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,African American,520,16,3.076923076923077
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,African American,520,12,2.307692307692308
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,African American,520,10,1.9230769230769231
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,African American,520,11,2.1153846153846154
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Arab,208,9,4.326923076923077
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Arab,208,10,4.807692307692308
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Arab,208,9,4.326923076923077
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Arab,208,4,1.9230769230769231
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Arab,208,9,4.326923076923077
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Arab,208,6,2.8846153846153846
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Arab,208,5,2.403846153846154
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Arab,208,4,1.9230769230769231
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Arab,208,7,3.3653846153846154
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Asian,312,22,7.051282051282051
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Asian,312,16,5.128205128205128
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Asian,312,18,5.769230769230769
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Asian,312,9,2.8846153846153846
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Asian,312,15,4.807692307692308
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Asian,312,9,2.8846153846153846
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Asian,312,14,4.487179487179487
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Asian,312,7,2.243589743589744
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Asian,312,18,5.769230769230769
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Black,520,22,4.230769230769231
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Black,520,17,3.2692307692307696
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Black,520,17,3.2692307692307696
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Black,520,12,2.307692307692308
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Black,520,9,1.7307692307692308
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Black,520,10,1.9230769230769231
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Black,520,8,1.5384615384615383
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Black,520,4,0.7692307692307693
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Black,520,10,1.9230769230769231
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Caucasian,128,5,3.90625
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Caucasian,128,3,2.34375
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Caucasian,128,5,3.90625
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Caucasian,128,3,2.34375
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Caucasian,128,1,0.78125
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Caucasian,128,5,3.90625
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Caucasian,128,1,0.78125
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Caucasian,128,4,3.125
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Caucasian,128,3,2.34375
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,European,184,15,8.152173913043478
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,European,184,19,10.326086956521738
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,European,184,21,11.41304347826087
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,European,184,8,4.3478260869565215
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,European,184,7,3.804347826086957
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,European,184,7,3.804347826086957
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,European,184,7,3.804347826086957
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,European,184,4,2.1739130434782608
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,European,184,6,3.260869565217391
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,F-Arab,1056,127,12.026515151515152
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,F-Arab,1056,78,7.386363636363637
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,F-Arab,1056,94,8.901515151515152
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,F-Arab,1056,111,10.511363636363637
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,F-Arab,1056,56,5.303030303030303
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,F-Arab,1056,61,5.776515151515151
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,F-Arab,1056,22,2.083333333333333
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,F-Arab,1056,30,2.840909090909091
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,F-Arab,1056,60,5.681818181818182
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,F-Asian,904,174,19.24778761061947
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,F-Asian,904,75,8.29646017699115
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,F-Asian,904,72,7.964601769911504
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,F-Asian,904,178,19.690265486725664
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,F-Asian,904,39,4.314159292035398
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,F-Asian,904,48,5.3097345132743365
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,F-Asian,904,20,2.2123893805309733
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,F-Asian,904,24,2.6548672566371683
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,F-Asian,904,39,4.314159292035398
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,F-Black,1904,248,13.025210084033615
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,F-Black,1904,154,8.088235294117647
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,F-Black,1904,174,9.138655462184872
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,F-Black,1904,253,13.28781512605042
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,F-Black,1904,114,5.987394957983193
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,F-Black,1904,121,6.355042016806722
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,F-Black,1904,43,2.258403361344538
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,F-Black,1904,52,2.73109243697479
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,F-Black,1904,108,5.6722689075630255
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,F-Latino,1112,130,11.690647482014388
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,F-Latino,1112,71,6.384892086330936
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,F-Latino,1112,84,7.553956834532374
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,F-Latino,1112,116,10.431654676258994
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,F-Latino,1112,47,4.226618705035971
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,F-Latino,1112,51,4.586330935251799
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,F-Latino,1112,21,1.8884892086330936
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,F-Latino,1112,23,2.068345323741007
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,F-Latino,1112,44,3.956834532374101
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,F-White,784,165,21.04591836734694
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,F-White,784,56,7.142857142857142
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,F-White,784,66,8.418367346938775
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,F-White,784,182,23.214285714285715
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,F-White,784,30,3.826530612244898
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,F-White,784,37,4.719387755102041
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,F-White,784,20,2.5510204081632653
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,F-White,784,25,3.188775510204082
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,F-White,784,29,3.698979591836735
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Hispanic,328,13,3.963414634146341
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Hispanic,328,33,10.0609756097561
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Hispanic,328,20,6.097560975609756
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Hispanic,328,13,3.963414634146341
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Hispanic,328,23,7.01219512195122
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Hispanic,328,20,6.097560975609756
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Hispanic,328,11,3.353658536585366
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Hispanic,328,11,3.353658536585366
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Hispanic,328,18,5.487804878048781
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Jewish,168,16,9.523809523809524
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Jewish,168,12,7.142857142857142
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Jewish,168,10,5.952380952380952
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Jewish,168,10,5.952380952380952
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Jewish,168,11,6.547619047619048
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Jewish,168,9,5.357142857142857
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Jewish,168,4,2.380952380952381
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Jewish,168,5,2.976190476190476
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Jewish,168,10,5.952380952380952
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Latino,304,9,2.960526315789473
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Latino,304,13,4.276315789473684
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Latino,304,16,5.263157894736842
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Latino,304,8,2.631578947368421
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Latino,304,14,4.605263157894736
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Latino,304,14,4.605263157894736
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Latino,304,8,2.631578947368421
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Latino,304,8,2.631578947368421
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Latino,304,9,2.960526315789473
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,M-Arab,824,75,9.101941747572816
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,M-Arab,824,138,16.74757281553398
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,M-Arab,824,177,21.48058252427184
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,M-Arab,824,57,6.917475728155339
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,M-Arab,824,146,17.718446601941746
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,M-Arab,824,139,16.868932038834952
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,M-Arab,824,16,1.9417475728155336
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,M-Arab,824,20,2.4271844660194173
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,M-Arab,824,143,17.354368932038835
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,M-Asian,848,60,7.075471698113208
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,M-Asian,848,72,8.49056603773585
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,M-Asian,848,84,9.90566037735849
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,M-Asian,848,66,7.783018867924528
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,M-Asian,848,75,8.84433962264151
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,M-Asian,848,68,8.018867924528301
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,M-Asian,848,13,1.5330188679245282
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,M-Asian,848,21,2.4764150943396226
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,M-Asian,848,69,8.13679245283019
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,M-Black,1032,63,6.104651162790697
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,M-Black,1032,88,8.527131782945736
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,M-Black,1032,111,10.755813953488373
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,M-Black,1032,70,6.782945736434108
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,M-Black,1032,77,7.461240310077518
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,M-Black,1032,77,7.461240310077518
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,M-Black,1032,22,2.131782945736434
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,M-Black,1032,27,2.616279069767442
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,M-Black,1032,75,7.267441860465117
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,M-Latino,936,90,9.615384615384617
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,M-Latino,936,82,8.76068376068376
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,M-Latino,936,108,11.538461538461538
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,M-Latino,936,72,7.6923076923076925
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,M-Latino,936,79,8.44017094017094
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,M-Latino,936,84,8.974358974358974
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,M-Latino,936,24,2.564102564102564
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,M-Latino,936,32,3.418803418803419
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,M-Latino,936,76,8.11965811965812
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,M-White,600,48,8.0
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,M-White,600,36,6.0
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,M-White,600,42,7.000000000000001
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,M-White,600,39,6.5
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,M-White,600,33,5.5
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,M-White,600,30,5.0
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,M-White,600,11,1.8333333333333333
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,M-White,600,10,1.6666666666666667
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,M-White,600,33,5.5
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Middle Eastern,224,9,4.017857142857143
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Middle Eastern,224,9,4.017857142857143
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Middle Eastern,224,12,5.357142857142857
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Middle Eastern,224,7,3.125
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Middle Eastern,224,11,4.910714285714286
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Middle Eastern,224,9,4.017857142857143
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Middle Eastern,224,5,2.232142857142857
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Middle Eastern,224,5,2.232142857142857
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Middle Eastern,224,10,4.464285714285714
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Native American,240,13,5.416666666666667
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Native American,240,6,2.5
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Native American,240,9,3.75
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Native American,240,8,3.333333333333333
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Native American,240,6,2.5
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Native American,240,7,2.9166666666666665
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Native American,240,6,2.5
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Native American,240,8,3.333333333333333
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Native American,240,7,2.9166666666666665
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,Roma,168,5,2.976190476190476
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,Roma,168,6,3.571428571428571
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,Roma,168,20,11.904761904761903
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,Roma,168,9,5.357142857142857
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,Roma,168,8,4.761904761904762
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,Roma,168,9,5.357142857142857
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,Roma,168,4,2.380952380952381
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,Roma,168,2,1.1904761904761905
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,Roma,168,7,4.166666666666666
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,South American,136,4,2.941176470588235
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,South American,136,7,5.147058823529411
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,South American,136,5,3.6764705882352944
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,South American,136,11,8.088235294117647
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,South American,136,4,2.941176470588235
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,South American,136,6,4.411764705882353
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,South American,136,6,4.411764705882353
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,South American,136,5,3.6764705882352944
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,South American,136,5,3.6764705882352944
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,White,120,4,3.333333333333333
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,White,120,6,5.0
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,White,120,3,2.5
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,White,120,6,5.0
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,White,120,2,1.6666666666666667
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,White,120,2,1.6666666666666667
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,White,120,2,1.6666666666666667
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,White,120,3,2.5
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,White,120,2,1.6666666666666667
+llama-3.1-8b_en,real_gender20,real,Religion,Atheist,288,13,4.513888888888888
+llama-3.1-8b_en,real_race20,real,Religion,Atheist,288,24,8.333333333333332
+llama-3.1-8b_en,real_religion20,real,Religion,Atheist,288,27,9.375
+llama-3.1-8b_en,real_gender5,real,Religion,Atheist,288,1,0.3472222222222222
+llama-3.1-8b_en,real_race5,real,Religion,Atheist,288,21,7.291666666666667
+llama-3.1-8b_en,real_religion5,real,Religion,Atheist,288,23,7.986111111111111
+llama-3.1-8b_en,abl_race4,ablation,Religion,Atheist,288,2,0.6944444444444444
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Atheist,288,19,6.597222222222222
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Atheist,288,20,6.944444444444445
+llama-3.1-8b_en,real_gender20,real,Religion,Buddhist,112,5,4.464285714285714
+llama-3.1-8b_en,real_race20,real,Religion,Buddhist,112,13,11.607142857142858
+llama-3.1-8b_en,real_religion20,real,Religion,Buddhist,112,11,9.821428571428571
+llama-3.1-8b_en,real_gender5,real,Religion,Buddhist,112,3,2.6785714285714284
+llama-3.1-8b_en,real_race5,real,Religion,Buddhist,112,13,11.607142857142858
+llama-3.1-8b_en,real_religion5,real,Religion,Buddhist,112,12,10.714285714285714
+llama-3.1-8b_en,abl_race4,ablation,Religion,Buddhist,112,0,0.0
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Buddhist,112,10,8.928571428571429
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Buddhist,112,11,9.821428571428571
+llama-3.1-8b_en,real_gender20,real,Religion,Catholic,264,10,3.787878787878788
+llama-3.1-8b_en,real_race20,real,Religion,Catholic,264,25,9.469696969696969
+llama-3.1-8b_en,real_religion20,real,Religion,Catholic,264,30,11.363636363636363
+llama-3.1-8b_en,real_gender5,real,Religion,Catholic,264,2,0.7575757575757576
+llama-3.1-8b_en,real_race5,real,Religion,Catholic,264,25,9.469696969696969
+llama-3.1-8b_en,real_religion5,real,Religion,Catholic,264,30,11.363636363636363
+llama-3.1-8b_en,abl_race4,ablation,Religion,Catholic,264,5,1.893939393939394
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Catholic,264,14,5.303030303030303
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Catholic,264,26,9.848484848484848
+llama-3.1-8b_en,real_gender20,real,Religion,Christian,312,12,3.8461538461538463
+llama-3.1-8b_en,real_race20,real,Religion,Christian,312,23,7.371794871794872
+llama-3.1-8b_en,real_religion20,real,Religion,Christian,312,33,10.576923076923077
+llama-3.1-8b_en,real_gender5,real,Religion,Christian,312,6,1.9230769230769231
+llama-3.1-8b_en,real_race5,real,Religion,Christian,312,19,6.089743589743589
+llama-3.1-8b_en,real_religion5,real,Religion,Christian,312,23,7.371794871794872
+llama-3.1-8b_en,abl_race4,ablation,Religion,Christian,312,8,2.564102564102564
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Christian,312,13,4.166666666666666
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Christian,312,19,6.089743589743589
+llama-3.1-8b_en,real_gender20,real,Religion,Hindu,264,12,4.545454545454546
+llama-3.1-8b_en,real_race20,real,Religion,Hindu,264,48,18.181818181818183
+llama-3.1-8b_en,real_religion20,real,Religion,Hindu,264,29,10.984848484848484
+llama-3.1-8b_en,real_gender5,real,Religion,Hindu,264,1,0.3787878787878788
+llama-3.1-8b_en,real_race5,real,Religion,Hindu,264,47,17.803030303030305
+llama-3.1-8b_en,real_religion5,real,Religion,Hindu,264,37,14.015151515151514
+llama-3.1-8b_en,abl_race4,ablation,Religion,Hindu,264,2,0.7575757575757576
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Hindu,264,14,5.303030303030303
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Hindu,264,45,17.045454545454543
+llama-3.1-8b_en,real_gender20,real,Religion,Jewish,280,11,3.928571428571429
+llama-3.1-8b_en,real_race20,real,Religion,Jewish,280,17,6.071428571428571
+llama-3.1-8b_en,real_religion20,real,Religion,Jewish,280,34,12.142857142857142
+llama-3.1-8b_en,real_gender5,real,Religion,Jewish,280,5,1.7857142857142856
+llama-3.1-8b_en,real_race5,real,Religion,Jewish,280,17,6.071428571428571
+llama-3.1-8b_en,real_religion5,real,Religion,Jewish,280,31,11.071428571428571
+llama-3.1-8b_en,abl_race4,ablation,Religion,Jewish,280,4,1.4285714285714286
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Jewish,280,19,6.785714285714286
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Jewish,280,17,6.071428571428571
+llama-3.1-8b_en,real_gender20,real,Religion,Mormon,264,15,5.681818181818182
+llama-3.1-8b_en,real_race20,real,Religion,Mormon,264,30,11.363636363636363
+llama-3.1-8b_en,real_religion20,real,Religion,Mormon,264,18,6.8181818181818175
+llama-3.1-8b_en,real_gender5,real,Religion,Mormon,264,5,1.893939393939394
+llama-3.1-8b_en,real_race5,real,Religion,Mormon,264,30,11.363636363636363
+llama-3.1-8b_en,real_religion5,real,Religion,Mormon,264,20,7.575757575757576
+llama-3.1-8b_en,abl_race4,ablation,Religion,Mormon,264,7,2.6515151515151514
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Mormon,264,21,7.954545454545454
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Mormon,264,27,10.227272727272728
+llama-3.1-8b_en,real_gender20,real,Religion,Muslim,328,15,4.573170731707317
+llama-3.1-8b_en,real_race20,real,Religion,Muslim,328,29,8.841463414634147
+llama-3.1-8b_en,real_religion20,real,Religion,Muslim,328,24,7.317073170731707
+llama-3.1-8b_en,real_gender5,real,Religion,Muslim,328,6,1.829268292682927
+llama-3.1-8b_en,real_race5,real,Religion,Muslim,328,32,9.75609756097561
+llama-3.1-8b_en,real_religion5,real,Religion,Muslim,328,22,6.707317073170732
+llama-3.1-8b_en,abl_race4,ablation,Religion,Muslim,328,5,1.524390243902439
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Muslim,328,21,6.402439024390244
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Muslim,328,28,8.536585365853659
+llama-3.1-8b_en,real_gender20,real,Religion,Protestant,144,3,2.083333333333333
+llama-3.1-8b_en,real_race20,real,Religion,Protestant,144,8,5.555555555555555
+llama-3.1-8b_en,real_religion20,real,Religion,Protestant,144,9,6.25
+llama-3.1-8b_en,real_gender5,real,Religion,Protestant,144,3,2.083333333333333
+llama-3.1-8b_en,real_race5,real,Religion,Protestant,144,6,4.166666666666666
+llama-3.1-8b_en,real_religion5,real,Religion,Protestant,144,10,6.944444444444445
+llama-3.1-8b_en,abl_race4,ablation,Religion,Protestant,144,1,0.6944444444444444
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Protestant,144,7,4.861111111111112
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Protestant,144,8,5.555555555555555
+llama-3.1-8b_en,real_gender20,real,Religion,Sikh,144,4,2.7777777777777777
+llama-3.1-8b_en,real_race20,real,Religion,Sikh,144,35,24.305555555555557
+llama-3.1-8b_en,real_religion20,real,Religion,Sikh,144,25,17.36111111111111
+llama-3.1-8b_en,real_gender5,real,Religion,Sikh,144,2,1.3888888888888888
+llama-3.1-8b_en,real_race5,real,Religion,Sikh,144,34,23.61111111111111
+llama-3.1-8b_en,real_religion5,real,Religion,Sikh,144,28,19.444444444444446
+llama-3.1-8b_en,abl_race4,ablation,Religion,Sikh,144,4,2.7777777777777777
+llama-3.1-8b_en,abl_religion4,ablation,Religion,Sikh,144,10,6.944444444444445
+llama-3.1-8b_en,abl_shared1,ablation,Religion,Sikh,144,31,21.52777777777778
+salamandra-7b_en,real_gender20,real,Gender_identity,F,4616,824,17.85095320623917
+salamandra-7b_en,real_race20,real,Gender_identity,F,4616,219,4.744367417677643
+salamandra-7b_en,real_religion20,real,Gender_identity,F,4616,200,4.332755632582322
+salamandra-7b_en,real_gender5,real,Gender_identity,F,4616,812,17.590987868284227
+salamandra-7b_en,real_race5,real,Gender_identity,F,4616,193,4.181109185441941
+salamandra-7b_en,real_religion5,real,Gender_identity,F,4616,103,2.231369150779896
+salamandra-7b_en,real_gender20,real,Gender_identity,M,4616,824,17.85095320623917
+salamandra-7b_en,real_race20,real,Gender_identity,M,4616,219,4.744367417677643
+salamandra-7b_en,real_religion20,real,Gender_identity,M,4616,200,4.332755632582322
+salamandra-7b_en,real_gender5,real,Gender_identity,M,4616,812,17.590987868284227
+salamandra-7b_en,real_race5,real,Gender_identity,M,4616,193,4.181109185441941
+salamandra-7b_en,real_religion5,real,Gender_identity,M,4616,103,2.231369150779896
+salamandra-7b_en,real_gender20,real,Gender_identity,boy,40,8,20.0
+salamandra-7b_en,real_race20,real,Gender_identity,boy,40,1,2.5
+salamandra-7b_en,real_religion20,real,Gender_identity,boy,40,2,5.0
+salamandra-7b_en,real_gender5,real,Gender_identity,boy,40,8,20.0
+salamandra-7b_en,real_race5,real,Gender_identity,boy,40,1,2.5
+salamandra-7b_en,real_religion5,real,Gender_identity,boy,40,1,2.5
+salamandra-7b_en,real_gender20,real,Gender_identity,girl,40,8,20.0
+salamandra-7b_en,real_race20,real,Gender_identity,girl,40,1,2.5
+salamandra-7b_en,real_religion20,real,Gender_identity,girl,40,2,5.0
+salamandra-7b_en,real_gender5,real,Gender_identity,girl,40,8,20.0
+salamandra-7b_en,real_race5,real,Gender_identity,girl,40,1,2.5
+salamandra-7b_en,real_religion5,real,Gender_identity,girl,40,3,7.5
+salamandra-7b_en,real_gender20,real,Gender_identity,man,152,32,21.052631578947366
+salamandra-7b_en,real_race20,real,Gender_identity,man,152,3,1.973684210526316
+salamandra-7b_en,real_religion20,real,Gender_identity,man,152,3,1.973684210526316
+salamandra-7b_en,real_gender5,real,Gender_identity,man,152,32,21.052631578947366
+salamandra-7b_en,real_race5,real,Gender_identity,man,152,4,2.631578947368421
+salamandra-7b_en,real_religion5,real,Gender_identity,man,152,7,4.605263157894736
+salamandra-7b_en,real_gender20,real,Gender_identity,nonTrans,464,9,1.9396551724137927
+salamandra-7b_en,real_race20,real,Gender_identity,nonTrans,464,7,1.5086206896551724
+salamandra-7b_en,real_religion20,real,Gender_identity,nonTrans,464,13,2.8017241379310347
+salamandra-7b_en,real_gender5,real,Gender_identity,nonTrans,464,7,1.5086206896551724
+salamandra-7b_en,real_race5,real,Gender_identity,nonTrans,464,8,1.7241379310344829
+salamandra-7b_en,real_religion5,real,Gender_identity,nonTrans,464,7,1.5086206896551724
+salamandra-7b_en,real_gender20,real,Gender_identity,nonTrans_F,200,26,13.0
+salamandra-7b_en,real_race20,real,Gender_identity,nonTrans_F,200,7,3.5000000000000004
+salamandra-7b_en,real_religion20,real,Gender_identity,nonTrans_F,200,9,4.5
+salamandra-7b_en,real_gender5,real,Gender_identity,nonTrans_F,200,26,13.0
+salamandra-7b_en,real_race5,real,Gender_identity,nonTrans_F,200,6,3.0
+salamandra-7b_en,real_religion5,real,Gender_identity,nonTrans_F,200,5,2.5
+salamandra-7b_en,real_gender20,real,Gender_identity,nonTrans_M,200,28,14.000000000000002
+salamandra-7b_en,real_race20,real,Gender_identity,nonTrans_M,200,8,4.0
+salamandra-7b_en,real_religion20,real,Gender_identity,nonTrans_M,200,7,3.5000000000000004
+salamandra-7b_en,real_gender5,real,Gender_identity,nonTrans_M,200,27,13.5
+salamandra-7b_en,real_race5,real,Gender_identity,nonTrans_M,200,5,2.5
+salamandra-7b_en,real_religion5,real,Gender_identity,nonTrans_M,200,4,2.0
+salamandra-7b_en,real_gender20,real,Gender_identity,trans,464,9,1.9396551724137927
+salamandra-7b_en,real_race20,real,Gender_identity,trans,464,7,1.5086206896551724
+salamandra-7b_en,real_religion20,real,Gender_identity,trans,464,13,2.8017241379310347
+salamandra-7b_en,real_gender5,real,Gender_identity,trans,464,7,1.5086206896551724
+salamandra-7b_en,real_race5,real,Gender_identity,trans,464,8,1.7241379310344829
+salamandra-7b_en,real_religion5,real,Gender_identity,trans,464,7,1.5086206896551724
+salamandra-7b_en,real_gender20,real,Gender_identity,trans_F,200,28,14.000000000000002
+salamandra-7b_en,real_race20,real,Gender_identity,trans_F,200,8,4.0
+salamandra-7b_en,real_religion20,real,Gender_identity,trans_F,200,7,3.5000000000000004
+salamandra-7b_en,real_gender5,real,Gender_identity,trans_F,200,27,13.5
+salamandra-7b_en,real_race5,real,Gender_identity,trans_F,200,5,2.5
+salamandra-7b_en,real_religion5,real,Gender_identity,trans_F,200,4,2.0
+salamandra-7b_en,real_gender20,real,Gender_identity,trans_M,200,26,13.0
+salamandra-7b_en,real_race20,real,Gender_identity,trans_M,200,7,3.5000000000000004
+salamandra-7b_en,real_religion20,real,Gender_identity,trans_M,200,9,4.5
+salamandra-7b_en,real_gender5,real,Gender_identity,trans_M,200,26,13.0
+salamandra-7b_en,real_race5,real,Gender_identity,trans_M,200,6,3.0
+salamandra-7b_en,real_religion5,real,Gender_identity,trans_M,200,5,2.5
+salamandra-7b_en,real_gender20,real,Gender_identity,woman,152,34,22.36842105263158
+salamandra-7b_en,real_race20,real,Gender_identity,woman,152,1,0.6578947368421052
+salamandra-7b_en,real_religion20,real,Gender_identity,woman,152,1,0.6578947368421052
+salamandra-7b_en,real_gender5,real,Gender_identity,woman,152,34,22.36842105263158
+salamandra-7b_en,real_race5,real,Gender_identity,woman,152,2,1.3157894736842104
+salamandra-7b_en,real_religion5,real,Gender_identity,woman,152,7,4.605263157894736
+salamandra-7b_en,real_gender20,real,Race_ethnicity,African,200,7,3.5000000000000004
+salamandra-7b_en,real_race20,real,Race_ethnicity,African,200,22,11.0
+salamandra-7b_en,real_religion20,real,Race_ethnicity,African,200,20,10.0
+salamandra-7b_en,real_gender5,real,Race_ethnicity,African,200,5,2.5
+salamandra-7b_en,real_race5,real,Race_ethnicity,African,200,7,3.5000000000000004
+salamandra-7b_en,real_religion5,real,Race_ethnicity,African,200,11,5.5
+salamandra-7b_en,real_gender20,real,Race_ethnicity,African American,520,25,4.807692307692308
+salamandra-7b_en,real_race20,real,Race_ethnicity,African American,520,34,6.538461538461539
+salamandra-7b_en,real_religion20,real,Race_ethnicity,African American,520,38,7.307692307692308
+salamandra-7b_en,real_gender5,real,Race_ethnicity,African American,520,7,1.3461538461538465
+salamandra-7b_en,real_race5,real,Race_ethnicity,African American,520,15,2.8846153846153846
+salamandra-7b_en,real_religion5,real,Race_ethnicity,African American,520,29,5.5769230769230775
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Arab,208,17,8.173076923076923
+salamandra-7b_en,real_race20,real,Race_ethnicity,Arab,208,20,9.615384615384617
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Arab,208,56,26.923076923076923
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Arab,208,5,2.403846153846154
+salamandra-7b_en,real_race5,real,Race_ethnicity,Arab,208,7,3.3653846153846154
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Arab,208,50,24.03846153846154
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Asian,312,11,3.525641025641025
+salamandra-7b_en,real_race20,real,Race_ethnicity,Asian,312,41,13.141025641025642
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Asian,312,27,8.653846153846153
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Asian,312,6,1.9230769230769231
+salamandra-7b_en,real_race5,real,Race_ethnicity,Asian,312,6,1.9230769230769231
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Asian,312,19,6.089743589743589
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Black,520,26,5.0
+salamandra-7b_en,real_race20,real,Race_ethnicity,Black,520,36,6.923076923076923
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Black,520,47,9.038461538461538
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Black,520,19,3.653846153846154
+salamandra-7b_en,real_race5,real,Race_ethnicity,Black,520,16,3.076923076923077
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Black,520,34,6.538461538461539
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Caucasian,128,8,6.25
+salamandra-7b_en,real_race20,real,Race_ethnicity,Caucasian,128,9,7.03125
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Caucasian,128,10,7.8125
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Caucasian,128,1,0.78125
+salamandra-7b_en,real_race5,real,Race_ethnicity,Caucasian,128,4,3.125
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Caucasian,128,10,7.8125
+salamandra-7b_en,real_gender20,real,Race_ethnicity,European,184,9,4.891304347826087
+salamandra-7b_en,real_race20,real,Race_ethnicity,European,184,17,9.239130434782608
+salamandra-7b_en,real_religion20,real,Race_ethnicity,European,184,15,8.152173913043478
+salamandra-7b_en,real_gender5,real,Race_ethnicity,European,184,2,1.0869565217391304
+salamandra-7b_en,real_race5,real,Race_ethnicity,European,184,5,2.717391304347826
+salamandra-7b_en,real_religion5,real,Race_ethnicity,European,184,6,3.260869565217391
+salamandra-7b_en,real_gender20,real,Race_ethnicity,F-Arab,1056,73,6.912878787878787
+salamandra-7b_en,real_race20,real,Race_ethnicity,F-Arab,1056,64,6.0606060606060606
+salamandra-7b_en,real_religion20,real,Race_ethnicity,F-Arab,1056,142,13.446969696969695
+salamandra-7b_en,real_gender5,real,Race_ethnicity,F-Arab,1056,51,4.829545454545454
+salamandra-7b_en,real_race5,real,Race_ethnicity,F-Arab,1056,50,4.734848484848484
+salamandra-7b_en,real_religion5,real,Race_ethnicity,F-Arab,1056,79,7.481060606060606
+salamandra-7b_en,real_gender20,real,Race_ethnicity,F-Asian,904,84,9.29203539823009
+salamandra-7b_en,real_race20,real,Race_ethnicity,F-Asian,904,74,8.185840707964601
+salamandra-7b_en,real_religion20,real,Race_ethnicity,F-Asian,904,50,5.530973451327434
+salamandra-7b_en,real_gender5,real,Race_ethnicity,F-Asian,904,71,7.853982300884955
+salamandra-7b_en,real_race5,real,Race_ethnicity,F-Asian,904,53,5.86283185840708
+salamandra-7b_en,real_religion5,real,Race_ethnicity,F-Asian,904,26,2.8761061946902653
+salamandra-7b_en,real_gender20,real,Race_ethnicity,F-Black,1904,179,9.40126050420168
+salamandra-7b_en,real_race20,real,Race_ethnicity,F-Black,1904,176,9.243697478991598
+salamandra-7b_en,real_religion20,real,Race_ethnicity,F-Black,1904,168,8.823529411764707
+salamandra-7b_en,real_gender5,real,Race_ethnicity,F-Black,1904,148,7.773109243697479
+salamandra-7b_en,real_race5,real,Race_ethnicity,F-Black,1904,130,6.827731092436975
+salamandra-7b_en,real_religion5,real,Race_ethnicity,F-Black,1904,69,3.623949579831933
+salamandra-7b_en,real_gender20,real,Race_ethnicity,F-Latino,1112,81,7.284172661870504
+salamandra-7b_en,real_race20,real,Race_ethnicity,F-Latino,1112,82,7.374100719424461
+salamandra-7b_en,real_religion20,real,Race_ethnicity,F-Latino,1112,95,8.543165467625899
+salamandra-7b_en,real_gender5,real,Race_ethnicity,F-Latino,1112,70,6.294964028776978
+salamandra-7b_en,real_race5,real,Race_ethnicity,F-Latino,1112,54,4.856115107913669
+salamandra-7b_en,real_religion5,real,Race_ethnicity,F-Latino,1112,52,4.676258992805756
+salamandra-7b_en,real_gender20,real,Race_ethnicity,F-White,784,97,12.372448979591836
+salamandra-7b_en,real_race20,real,Race_ethnicity,F-White,784,100,12.755102040816327
+salamandra-7b_en,real_religion20,real,Race_ethnicity,F-White,784,47,5.994897959183673
+salamandra-7b_en,real_gender5,real,Race_ethnicity,F-White,784,86,10.96938775510204
+salamandra-7b_en,real_race5,real,Race_ethnicity,F-White,784,93,11.862244897959185
+salamandra-7b_en,real_religion5,real,Race_ethnicity,F-White,784,14,1.7857142857142856
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Hispanic,328,41,12.5
+salamandra-7b_en,real_race20,real,Race_ethnicity,Hispanic,328,16,4.878048780487805
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Hispanic,328,26,7.926829268292683
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Hispanic,328,5,1.524390243902439
+salamandra-7b_en,real_race5,real,Race_ethnicity,Hispanic,328,7,2.1341463414634148
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Hispanic,328,27,8.231707317073171
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Jewish,168,8,4.761904761904762
+salamandra-7b_en,real_race20,real,Race_ethnicity,Jewish,168,13,7.738095238095238
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Jewish,168,8,4.761904761904762
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Jewish,168,0,0.0
+salamandra-7b_en,real_race5,real,Race_ethnicity,Jewish,168,4,2.380952380952381
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Jewish,168,6,3.571428571428571
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Latino,304,10,3.289473684210526
+salamandra-7b_en,real_race20,real,Race_ethnicity,Latino,304,15,4.934210526315789
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Latino,304,22,7.236842105263158
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Latino,304,5,1.644736842105263
+salamandra-7b_en,real_race5,real,Race_ethnicity,Latino,304,8,2.631578947368421
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Latino,304,9,2.960526315789473
+salamandra-7b_en,real_gender20,real,Race_ethnicity,M-Arab,824,32,3.883495145631068
+salamandra-7b_en,real_race20,real,Race_ethnicity,M-Arab,824,52,6.310679611650485
+salamandra-7b_en,real_religion20,real,Race_ethnicity,M-Arab,824,153,18.567961165048544
+salamandra-7b_en,real_gender5,real,Race_ethnicity,M-Arab,824,8,0.9708737864077668
+salamandra-7b_en,real_race5,real,Race_ethnicity,M-Arab,824,40,4.854368932038835
+salamandra-7b_en,real_religion5,real,Race_ethnicity,M-Arab,824,131,15.898058252427186
+salamandra-7b_en,real_gender20,real,Race_ethnicity,M-Asian,848,21,2.4764150943396226
+salamandra-7b_en,real_race20,real,Race_ethnicity,M-Asian,848,48,5.660377358490567
+salamandra-7b_en,real_religion20,real,Race_ethnicity,M-Asian,848,67,7.900943396226415
+salamandra-7b_en,real_gender5,real,Race_ethnicity,M-Asian,848,5,0.589622641509434
+salamandra-7b_en,real_race5,real,Race_ethnicity,M-Asian,848,50,5.89622641509434
+salamandra-7b_en,real_religion5,real,Race_ethnicity,M-Asian,848,54,6.367924528301887
+salamandra-7b_en,real_gender20,real,Race_ethnicity,M-Black,1032,23,2.228682170542636
+salamandra-7b_en,real_race20,real,Race_ethnicity,M-Black,1032,56,5.426356589147287
+salamandra-7b_en,real_religion20,real,Race_ethnicity,M-Black,1032,54,5.232558139534884
+salamandra-7b_en,real_gender5,real,Race_ethnicity,M-Black,1032,6,0.5813953488372093
+salamandra-7b_en,real_race5,real,Race_ethnicity,M-Black,1032,44,4.263565891472868
+salamandra-7b_en,real_religion5,real,Race_ethnicity,M-Black,1032,45,4.3604651162790695
+salamandra-7b_en,real_gender20,real,Race_ethnicity,M-Latino,936,38,4.05982905982906
+salamandra-7b_en,real_race20,real,Race_ethnicity,M-Latino,936,74,7.905982905982905
+salamandra-7b_en,real_religion20,real,Race_ethnicity,M-Latino,936,65,6.944444444444445
+salamandra-7b_en,real_gender5,real,Race_ethnicity,M-Latino,936,8,0.8547008547008548
+salamandra-7b_en,real_race5,real,Race_ethnicity,M-Latino,936,52,5.555555555555555
+salamandra-7b_en,real_religion5,real,Race_ethnicity,M-Latino,936,58,6.196581196581197
+salamandra-7b_en,real_gender20,real,Race_ethnicity,M-White,600,20,3.333333333333333
+salamandra-7b_en,real_race20,real,Race_ethnicity,M-White,600,32,5.333333333333334
+salamandra-7b_en,real_religion20,real,Race_ethnicity,M-White,600,33,5.5
+salamandra-7b_en,real_gender5,real,Race_ethnicity,M-White,600,7,1.1666666666666667
+salamandra-7b_en,real_race5,real,Race_ethnicity,M-White,600,34,5.666666666666666
+salamandra-7b_en,real_religion5,real,Race_ethnicity,M-White,600,30,5.0
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Middle Eastern,224,12,5.357142857142857
+salamandra-7b_en,real_race20,real,Race_ethnicity,Middle Eastern,224,15,6.696428571428571
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Middle Eastern,224,32,14.285714285714285
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Middle Eastern,224,5,2.232142857142857
+salamandra-7b_en,real_race5,real,Race_ethnicity,Middle Eastern,224,7,3.125
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Middle Eastern,224,37,16.517857142857142
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Native American,240,14,5.833333333333333
+salamandra-7b_en,real_race20,real,Race_ethnicity,Native American,240,17,7.083333333333333
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Native American,240,27,11.25
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Native American,240,9,3.75
+salamandra-7b_en,real_race5,real,Race_ethnicity,Native American,240,5,2.083333333333333
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Native American,240,16,6.666666666666667
+salamandra-7b_en,real_gender20,real,Race_ethnicity,Roma,168,6,3.571428571428571
+salamandra-7b_en,real_race20,real,Race_ethnicity,Roma,168,6,3.571428571428571
+salamandra-7b_en,real_religion20,real,Race_ethnicity,Roma,168,11,6.547619047619048
+salamandra-7b_en,real_gender5,real,Race_ethnicity,Roma,168,2,1.1904761904761905
+salamandra-7b_en,real_race5,real,Race_ethnicity,Roma,168,4,2.380952380952381
+salamandra-7b_en,real_religion5,real,Race_ethnicity,Roma,168,9,5.357142857142857
+salamandra-7b_en,real_gender20,real,Race_ethnicity,South American,136,8,5.88235294117647
+salamandra-7b_en,real_race20,real,Race_ethnicity,South American,136,10,7.352941176470589
+salamandra-7b_en,real_religion20,real,Race_ethnicity,South American,136,10,7.352941176470589
+salamandra-7b_en,real_gender5,real,Race_ethnicity,South American,136,1,0.7352941176470588
+salamandra-7b_en,real_race5,real,Race_ethnicity,South American,136,2,1.4705882352941175
+salamandra-7b_en,real_religion5,real,Race_ethnicity,South American,136,3,2.2058823529411766
+salamandra-7b_en,real_gender20,real,Race_ethnicity,White,120,6,5.0
+salamandra-7b_en,real_race20,real,Race_ethnicity,White,120,9,7.5
+salamandra-7b_en,real_religion20,real,Race_ethnicity,White,120,7,5.833333333333333
+salamandra-7b_en,real_gender5,real,Race_ethnicity,White,120,4,3.333333333333333
+salamandra-7b_en,real_race5,real,Race_ethnicity,White,120,5,4.166666666666666
+salamandra-7b_en,real_religion5,real,Race_ethnicity,White,120,6,5.0
+salamandra-7b_en,real_gender20,real,Religion,Atheist,288,12,4.166666666666666
+salamandra-7b_en,real_race20,real,Religion,Atheist,288,7,2.430555555555556
+salamandra-7b_en,real_religion20,real,Religion,Atheist,288,29,10.069444444444445
+salamandra-7b_en,real_gender5,real,Religion,Atheist,288,7,2.430555555555556
+salamandra-7b_en,real_race5,real,Religion,Atheist,288,7,2.430555555555556
+salamandra-7b_en,real_religion5,real,Religion,Atheist,288,17,5.902777777777778
+salamandra-7b_en,real_gender20,real,Religion,Buddhist,112,3,2.6785714285714284
+salamandra-7b_en,real_race20,real,Religion,Buddhist,112,10,8.928571428571429
+salamandra-7b_en,real_religion20,real,Religion,Buddhist,112,13,11.607142857142858
+salamandra-7b_en,real_gender5,real,Religion,Buddhist,112,3,2.6785714285714284
+salamandra-7b_en,real_race5,real,Religion,Buddhist,112,1,0.8928571428571428
+salamandra-7b_en,real_religion5,real,Religion,Buddhist,112,4,3.571428571428571
+salamandra-7b_en,real_gender20,real,Religion,Catholic,264,10,3.787878787878788
+salamandra-7b_en,real_race20,real,Religion,Catholic,264,15,5.681818181818182
+salamandra-7b_en,real_religion20,real,Religion,Catholic,264,23,8.712121212121213
+salamandra-7b_en,real_gender5,real,Religion,Catholic,264,3,1.1363636363636365
+salamandra-7b_en,real_race5,real,Religion,Catholic,264,8,3.0303030303030303
+salamandra-7b_en,real_religion5,real,Religion,Catholic,264,17,6.4393939393939394
+salamandra-7b_en,real_gender20,real,Religion,Christian,312,17,5.448717948717949
+salamandra-7b_en,real_race20,real,Religion,Christian,312,9,2.8846153846153846
+salamandra-7b_en,real_religion20,real,Religion,Christian,312,25,8.012820512820513
+salamandra-7b_en,real_gender5,real,Religion,Christian,312,1,0.3205128205128205
+salamandra-7b_en,real_race5,real,Religion,Christian,312,9,2.8846153846153846
+salamandra-7b_en,real_religion5,real,Religion,Christian,312,19,6.089743589743589
+salamandra-7b_en,real_gender20,real,Religion,Hindu,264,16,6.0606060606060606
+salamandra-7b_en,real_race20,real,Religion,Hindu,264,15,5.681818181818182
+salamandra-7b_en,real_religion20,real,Religion,Hindu,264,42,15.909090909090908
+salamandra-7b_en,real_gender5,real,Religion,Hindu,264,0,0.0
+salamandra-7b_en,real_race5,real,Religion,Hindu,264,5,1.893939393939394
+salamandra-7b_en,real_religion5,real,Religion,Hindu,264,19,7.196969696969697
+salamandra-7b_en,real_gender20,real,Religion,Jewish,280,11,3.928571428571429
+salamandra-7b_en,real_race20,real,Religion,Jewish,280,11,3.928571428571429
+salamandra-7b_en,real_religion20,real,Religion,Jewish,280,39,13.928571428571429
+salamandra-7b_en,real_gender5,real,Religion,Jewish,280,6,2.142857142857143
+salamandra-7b_en,real_race5,real,Religion,Jewish,280,7,2.5
+salamandra-7b_en,real_religion5,real,Religion,Jewish,280,21,7.5
+salamandra-7b_en,real_gender20,real,Religion,Mormon,264,13,4.924242424242424
+salamandra-7b_en,real_race20,real,Religion,Mormon,264,16,6.0606060606060606
+salamandra-7b_en,real_religion20,real,Religion,Mormon,264,34,12.87878787878788
+salamandra-7b_en,real_gender5,real,Religion,Mormon,264,2,0.7575757575757576
+salamandra-7b_en,real_race5,real,Religion,Mormon,264,10,3.787878787878788
+salamandra-7b_en,real_religion5,real,Religion,Mormon,264,24,9.090909090909092
+salamandra-7b_en,real_gender20,real,Religion,Muslim,328,11,3.353658536585366
+salamandra-7b_en,real_race20,real,Religion,Muslim,328,13,3.963414634146341
+salamandra-7b_en,real_religion20,real,Religion,Muslim,328,85,25.914634146341463
+salamandra-7b_en,real_gender5,real,Religion,Muslim,328,5,1.524390243902439
+salamandra-7b_en,real_race5,real,Religion,Muslim,328,6,1.829268292682927
+salamandra-7b_en,real_religion5,real,Religion,Muslim,328,78,23.78048780487805
+salamandra-7b_en,real_gender20,real,Religion,Protestant,144,4,2.7777777777777777
+salamandra-7b_en,real_race20,real,Religion,Protestant,144,8,5.555555555555555
+salamandra-7b_en,real_religion20,real,Religion,Protestant,144,14,9.722222222222223
+salamandra-7b_en,real_gender5,real,Religion,Protestant,144,2,1.3888888888888888
+salamandra-7b_en,real_race5,real,Religion,Protestant,144,4,2.7777777777777777
+salamandra-7b_en,real_religion5,real,Religion,Protestant,144,11,7.638888888888889
+salamandra-7b_en,real_gender20,real,Religion,Sikh,144,3,2.083333333333333
+salamandra-7b_en,real_race20,real,Religion,Sikh,144,8,5.555555555555555
+salamandra-7b_en,real_religion20,real,Religion,Sikh,144,22,15.27777777777778
+salamandra-7b_en,real_gender5,real,Religion,Sikh,144,3,2.083333333333333
+salamandra-7b_en,real_race5,real,Religion,Sikh,144,3,2.083333333333333
+salamandra-7b_en,real_religion5,real,Religion,Sikh,144,16,11.11111111111111
+qwen3-4b-base_en,real_gender20,real,Gender_identity,F,4616,329,7.127383015597919
+qwen3-4b-base_en,real_race20,real,Gender_identity,F,4616,265,5.740901213171577
+qwen3-4b-base_en,real_religion20,real,Gender_identity,F,4616,307,6.650779896013864
+qwen3-4b-base_en,real_gender5,real,Gender_identity,F,4616,207,4.484402079722704
+qwen3-4b-base_en,real_race5,real,Gender_identity,F,4616,122,2.6429809358752165
+qwen3-4b-base_en,real_religion5,real,Gender_identity,F,4616,205,4.44107452339688
+qwen3-4b-base_en,real_gender20,real,Gender_identity,M,4616,329,7.127383015597919
+qwen3-4b-base_en,real_race20,real,Gender_identity,M,4616,265,5.740901213171577
+qwen3-4b-base_en,real_religion20,real,Gender_identity,M,4616,307,6.650779896013864
+qwen3-4b-base_en,real_gender5,real,Gender_identity,M,4616,207,4.484402079722704
+qwen3-4b-base_en,real_race5,real,Gender_identity,M,4616,122,2.6429809358752165
+qwen3-4b-base_en,real_religion5,real,Gender_identity,M,4616,205,4.44107452339688
+qwen3-4b-base_en,real_gender20,real,Gender_identity,boy,40,4,10.0
+qwen3-4b-base_en,real_race20,real,Gender_identity,boy,40,1,2.5
+qwen3-4b-base_en,real_religion20,real,Gender_identity,boy,40,1,2.5
+qwen3-4b-base_en,real_gender5,real,Gender_identity,boy,40,1,2.5
+qwen3-4b-base_en,real_race5,real,Gender_identity,boy,40,2,5.0
+qwen3-4b-base_en,real_religion5,real,Gender_identity,boy,40,2,5.0
+qwen3-4b-base_en,real_gender20,real,Gender_identity,girl,40,2,5.0
+qwen3-4b-base_en,real_race20,real,Gender_identity,girl,40,1,2.5
+qwen3-4b-base_en,real_religion20,real,Gender_identity,girl,40,1,2.5
+qwen3-4b-base_en,real_gender5,real,Gender_identity,girl,40,1,2.5
+qwen3-4b-base_en,real_race5,real,Gender_identity,girl,40,3,7.5
+qwen3-4b-base_en,real_religion5,real,Gender_identity,girl,40,2,5.0
+qwen3-4b-base_en,real_gender20,real,Gender_identity,man,152,15,9.86842105263158
+qwen3-4b-base_en,real_race20,real,Gender_identity,man,152,15,9.86842105263158
+qwen3-4b-base_en,real_religion20,real,Gender_identity,man,152,14,9.210526315789473
+qwen3-4b-base_en,real_gender5,real,Gender_identity,man,152,0,0.0
+qwen3-4b-base_en,real_race5,real,Gender_identity,man,152,1,0.6578947368421052
+qwen3-4b-base_en,real_religion5,real,Gender_identity,man,152,6,3.947368421052632
+qwen3-4b-base_en,real_gender20,real,Gender_identity,nonTrans,464,37,7.974137931034483
+qwen3-4b-base_en,real_race20,real,Gender_identity,nonTrans,464,37,7.974137931034483
+qwen3-4b-base_en,real_religion20,real,Gender_identity,nonTrans,464,38,8.189655172413794
+qwen3-4b-base_en,real_gender5,real,Gender_identity,nonTrans,464,24,5.172413793103448
+qwen3-4b-base_en,real_race5,real,Gender_identity,nonTrans,464,7,1.5086206896551724
+qwen3-4b-base_en,real_religion5,real,Gender_identity,nonTrans,464,16,3.4482758620689653
+qwen3-4b-base_en,real_gender20,real,Gender_identity,nonTrans_F,200,2,1.0
+qwen3-4b-base_en,real_race20,real,Gender_identity,nonTrans_F,200,3,1.5
+qwen3-4b-base_en,real_religion20,real,Gender_identity,nonTrans_F,200,9,4.5
+qwen3-4b-base_en,real_gender5,real,Gender_identity,nonTrans_F,200,4,2.0
+qwen3-4b-base_en,real_race5,real,Gender_identity,nonTrans_F,200,4,2.0
+qwen3-4b-base_en,real_religion5,real,Gender_identity,nonTrans_F,200,2,1.0
+qwen3-4b-base_en,real_gender20,real,Gender_identity,nonTrans_M,200,11,5.5
+qwen3-4b-base_en,real_race20,real,Gender_identity,nonTrans_M,200,10,5.0
+qwen3-4b-base_en,real_religion20,real,Gender_identity,nonTrans_M,200,15,7.5
+qwen3-4b-base_en,real_gender5,real,Gender_identity,nonTrans_M,200,9,4.5
+qwen3-4b-base_en,real_race5,real,Gender_identity,nonTrans_M,200,7,3.5000000000000004
+qwen3-4b-base_en,real_religion5,real,Gender_identity,nonTrans_M,200,7,3.5000000000000004
+qwen3-4b-base_en,real_gender20,real,Gender_identity,trans,464,37,7.974137931034483
+qwen3-4b-base_en,real_race20,real,Gender_identity,trans,464,37,7.974137931034483
+qwen3-4b-base_en,real_religion20,real,Gender_identity,trans,464,38,8.189655172413794
+qwen3-4b-base_en,real_gender5,real,Gender_identity,trans,464,24,5.172413793103448
+qwen3-4b-base_en,real_race5,real,Gender_identity,trans,464,7,1.5086206896551724
+qwen3-4b-base_en,real_religion5,real,Gender_identity,trans,464,16,3.4482758620689653
+qwen3-4b-base_en,real_gender20,real,Gender_identity,trans_F,200,11,5.5
+qwen3-4b-base_en,real_race20,real,Gender_identity,trans_F,200,10,5.0
+qwen3-4b-base_en,real_religion20,real,Gender_identity,trans_F,200,15,7.5
+qwen3-4b-base_en,real_gender5,real,Gender_identity,trans_F,200,9,4.5
+qwen3-4b-base_en,real_race5,real,Gender_identity,trans_F,200,7,3.5000000000000004
+qwen3-4b-base_en,real_religion5,real,Gender_identity,trans_F,200,7,3.5000000000000004
+qwen3-4b-base_en,real_gender20,real,Gender_identity,trans_M,200,2,1.0
+qwen3-4b-base_en,real_race20,real,Gender_identity,trans_M,200,3,1.5
+qwen3-4b-base_en,real_religion20,real,Gender_identity,trans_M,200,9,4.5
+qwen3-4b-base_en,real_gender5,real,Gender_identity,trans_M,200,4,2.0
+qwen3-4b-base_en,real_race5,real,Gender_identity,trans_M,200,4,2.0
+qwen3-4b-base_en,real_religion5,real,Gender_identity,trans_M,200,2,1.0
+qwen3-4b-base_en,real_gender20,real,Gender_identity,woman,152,15,9.86842105263158
+qwen3-4b-base_en,real_race20,real,Gender_identity,woman,152,15,9.86842105263158
+qwen3-4b-base_en,real_religion20,real,Gender_identity,woman,152,14,9.210526315789473
+qwen3-4b-base_en,real_gender5,real,Gender_identity,woman,152,0,0.0
+qwen3-4b-base_en,real_race5,real,Gender_identity,woman,152,2,1.3157894736842104
+qwen3-4b-base_en,real_religion5,real,Gender_identity,woman,152,6,3.947368421052632
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,African,200,7,3.5000000000000004
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,African,200,11,5.5
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,African,200,8,4.0
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,African,200,11,5.5
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,African,200,5,2.5
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,African,200,5,2.5
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,African American,520,18,3.4615384615384617
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,African American,520,19,3.653846153846154
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,African American,520,16,3.076923076923077
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,African American,520,22,4.230769230769231
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,African American,520,8,1.5384615384615383
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,African American,520,12,2.307692307692308
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Arab,208,7,3.3653846153846154
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Arab,208,9,4.326923076923077
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Arab,208,8,3.8461538461538463
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Arab,208,10,4.807692307692308
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Arab,208,3,1.4423076923076923
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Arab,208,6,2.8846153846153846
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Asian,312,10,3.205128205128205
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Asian,312,11,3.525641025641025
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Asian,312,9,2.8846153846153846
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Asian,312,9,2.8846153846153846
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Asian,312,4,1.282051282051282
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Asian,312,9,2.8846153846153846
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Black,520,13,2.5
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Black,520,15,2.8846153846153846
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Black,520,13,2.5
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Black,520,14,2.6923076923076925
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Black,520,9,1.7307692307692308
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Black,520,10,1.9230769230769231
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Caucasian,128,15,11.71875
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Caucasian,128,8,6.25
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Caucasian,128,11,8.59375
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Caucasian,128,8,6.25
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Caucasian,128,1,0.78125
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Caucasian,128,7,5.46875
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,European,184,10,5.434782608695652
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,European,184,11,5.978260869565218
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,European,184,9,4.891304347826087
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,European,184,11,5.978260869565218
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,European,184,8,4.3478260869565215
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,European,184,9,4.891304347826087
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,F-Arab,1056,86,8.143939393939394
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,F-Arab,1056,66,6.25
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,F-Arab,1056,99,9.375
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,F-Arab,1056,68,6.4393939393939394
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,F-Arab,1056,40,3.787878787878788
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,F-Arab,1056,44,4.166666666666666
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,F-Asian,904,55,6.084070796460177
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,F-Asian,904,44,4.867256637168142
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,F-Asian,904,61,6.7477876106194685
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,F-Asian,904,42,4.646017699115045
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,F-Asian,904,33,3.650442477876106
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,F-Asian,904,33,3.650442477876106
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,F-Black,1904,124,6.512605042016808
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,F-Black,1904,101,5.304621848739496
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,F-Black,1904,159,8.350840336134453
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,F-Black,1904,97,5.09453781512605
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,F-Black,1904,48,2.5210084033613445
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,F-Black,1904,61,3.2037815126050417
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,F-Latino,1112,61,5.485611510791367
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,F-Latino,1112,56,5.035971223021583
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,F-Latino,1112,81,7.284172661870504
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,F-Latino,1112,55,4.946043165467626
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,F-Latino,1112,34,3.0575539568345325
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,F-Latino,1112,42,3.776978417266187
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,F-White,784,54,6.887755102040815
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,F-White,784,51,6.505102040816327
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,F-White,784,58,7.397959183673469
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,F-White,784,50,6.377551020408164
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,F-White,784,15,1.913265306122449
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,F-White,784,22,2.806122448979592
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Hispanic,328,18,5.487804878048781
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Hispanic,328,17,5.182926829268292
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Hispanic,328,19,5.7926829268292686
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Hispanic,328,14,4.2682926829268295
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Hispanic,328,6,1.829268292682927
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Hispanic,328,5,1.524390243902439
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Jewish,168,5,2.976190476190476
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Jewish,168,6,3.571428571428571
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Jewish,168,6,3.571428571428571
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Jewish,168,6,3.571428571428571
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Jewish,168,1,0.5952380952380952
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Jewish,168,3,1.7857142857142856
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Latino,304,20,6.578947368421052
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Latino,304,16,5.263157894736842
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Latino,304,21,6.907894736842106
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Latino,304,20,6.578947368421052
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Latino,304,14,4.605263157894736
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Latino,304,16,5.263157894736842
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,M-Arab,824,59,7.160194174757281
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,M-Arab,824,47,5.703883495145631
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,M-Arab,824,63,7.6456310679611645
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,M-Arab,824,47,5.703883495145631
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,M-Arab,824,36,4.368932038834951
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,M-Arab,824,47,5.703883495145631
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,M-Asian,848,60,7.075471698113208
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,M-Asian,848,63,7.429245283018868
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,M-Asian,848,63,7.429245283018868
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,M-Asian,848,57,6.721698113207547
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,M-Asian,848,27,3.1839622641509435
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,M-Asian,848,41,4.834905660377359
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,M-Black,1032,60,5.813953488372093
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,M-Black,1032,59,5.717054263565891
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,M-Black,1032,60,5.813953488372093
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,M-Black,1032,52,5.038759689922481
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,M-Black,1032,33,3.1976744186046515
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,M-Black,1032,35,3.391472868217054
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,M-Latino,936,65,6.944444444444445
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,M-Latino,936,57,6.089743589743589
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,M-Latino,936,63,6.730769230769231
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,M-Latino,936,55,5.876068376068376
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,M-Latino,936,32,3.418803418803419
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,M-Latino,936,45,4.807692307692308
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,M-White,600,30,5.0
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,M-White,600,32,5.333333333333334
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,M-White,600,29,4.833333333333333
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,M-White,600,31,5.166666666666667
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,M-White,600,12,2.0
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,M-White,600,28,4.666666666666667
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Middle Eastern,224,8,3.571428571428571
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Middle Eastern,224,12,5.357142857142857
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Middle Eastern,224,6,2.6785714285714284
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Middle Eastern,224,13,5.803571428571429
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Middle Eastern,224,9,4.017857142857143
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Middle Eastern,224,12,5.357142857142857
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Native American,240,7,2.9166666666666665
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Native American,240,10,4.166666666666666
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Native American,240,10,4.166666666666666
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Native American,240,7,2.9166666666666665
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Native American,240,8,3.333333333333333
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Native American,240,6,2.5
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,Roma,168,9,5.357142857142857
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,Roma,168,5,2.976190476190476
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,Roma,168,8,4.761904761904762
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,Roma,168,6,3.571428571428571
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,Roma,168,2,1.1904761904761905
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,Roma,168,5,2.976190476190476
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,South American,136,12,8.823529411764707
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,South American,136,11,8.088235294117647
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,South American,136,12,8.823529411764707
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,South American,136,11,8.088235294117647
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,South American,136,8,5.88235294117647
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,South American,136,8,5.88235294117647
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,White,120,3,2.5
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,White,120,5,4.166666666666666
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,White,120,4,3.333333333333333
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,White,120,6,5.0
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,White,120,2,1.6666666666666667
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,White,120,5,4.166666666666666
+qwen3-4b-base_en,real_gender20,real,Religion,Atheist,288,16,5.555555555555555
+qwen3-4b-base_en,real_race20,real,Religion,Atheist,288,15,5.208333333333334
+qwen3-4b-base_en,real_religion20,real,Religion,Atheist,288,18,6.25
+qwen3-4b-base_en,real_gender5,real,Religion,Atheist,288,19,6.597222222222222
+qwen3-4b-base_en,real_race5,real,Religion,Atheist,288,7,2.430555555555556
+qwen3-4b-base_en,real_religion5,real,Religion,Atheist,288,12,4.166666666666666
+qwen3-4b-base_en,real_gender20,real,Religion,Buddhist,112,6,5.357142857142857
+qwen3-4b-base_en,real_race20,real,Religion,Buddhist,112,5,4.464285714285714
+qwen3-4b-base_en,real_religion20,real,Religion,Buddhist,112,4,3.571428571428571
+qwen3-4b-base_en,real_gender5,real,Religion,Buddhist,112,4,3.571428571428571
+qwen3-4b-base_en,real_race5,real,Religion,Buddhist,112,4,3.571428571428571
+qwen3-4b-base_en,real_religion5,real,Religion,Buddhist,112,7,6.25
+qwen3-4b-base_en,real_gender20,real,Religion,Catholic,264,17,6.4393939393939394
+qwen3-4b-base_en,real_race20,real,Religion,Catholic,264,16,6.0606060606060606
+qwen3-4b-base_en,real_religion20,real,Religion,Catholic,264,19,7.196969696969697
+qwen3-4b-base_en,real_gender5,real,Religion,Catholic,264,13,4.924242424242424
+qwen3-4b-base_en,real_race5,real,Religion,Catholic,264,11,4.166666666666666
+qwen3-4b-base_en,real_religion5,real,Religion,Catholic,264,15,5.681818181818182
+qwen3-4b-base_en,real_gender20,real,Religion,Christian,312,17,5.448717948717949
+qwen3-4b-base_en,real_race20,real,Religion,Christian,312,27,8.653846153846153
+qwen3-4b-base_en,real_religion20,real,Religion,Christian,312,21,6.730769230769231
+qwen3-4b-base_en,real_gender5,real,Religion,Christian,312,15,4.807692307692308
+qwen3-4b-base_en,real_race5,real,Religion,Christian,312,5,1.6025641025641024
+qwen3-4b-base_en,real_religion5,real,Religion,Christian,312,12,3.8461538461538463
+qwen3-4b-base_en,real_gender20,real,Religion,Hindu,264,19,7.196969696969697
+qwen3-4b-base_en,real_race20,real,Religion,Hindu,264,21,7.954545454545454
+qwen3-4b-base_en,real_religion20,real,Religion,Hindu,264,20,7.575757575757576
+qwen3-4b-base_en,real_gender5,real,Religion,Hindu,264,18,6.8181818181818175
+qwen3-4b-base_en,real_race5,real,Religion,Hindu,264,16,6.0606060606060606
+qwen3-4b-base_en,real_religion5,real,Religion,Hindu,264,18,6.8181818181818175
+qwen3-4b-base_en,real_gender20,real,Religion,Jewish,280,16,5.714285714285714
+qwen3-4b-base_en,real_race20,real,Religion,Jewish,280,17,6.071428571428571
+qwen3-4b-base_en,real_religion20,real,Religion,Jewish,280,16,5.714285714285714
+qwen3-4b-base_en,real_gender5,real,Religion,Jewish,280,14,5.0
+qwen3-4b-base_en,real_race5,real,Religion,Jewish,280,3,1.0714285714285714
+qwen3-4b-base_en,real_religion5,real,Religion,Jewish,280,9,3.214285714285714
+qwen3-4b-base_en,real_gender20,real,Religion,Mormon,264,21,7.954545454545454
+qwen3-4b-base_en,real_race20,real,Religion,Mormon,264,22,8.333333333333332
+qwen3-4b-base_en,real_religion20,real,Religion,Mormon,264,25,9.469696969696969
+qwen3-4b-base_en,real_gender5,real,Religion,Mormon,264,16,6.0606060606060606
+qwen3-4b-base_en,real_race5,real,Religion,Mormon,264,10,3.787878787878788
+qwen3-4b-base_en,real_religion5,real,Religion,Mormon,264,7,2.6515151515151514
+qwen3-4b-base_en,real_gender20,real,Religion,Muslim,328,22,6.707317073170732
+qwen3-4b-base_en,real_race20,real,Religion,Muslim,328,20,6.097560975609756
+qwen3-4b-base_en,real_religion20,real,Religion,Muslim,328,24,7.317073170731707
+qwen3-4b-base_en,real_gender5,real,Religion,Muslim,328,17,5.182926829268292
+qwen3-4b-base_en,real_race5,real,Religion,Muslim,328,6,1.829268292682927
+qwen3-4b-base_en,real_religion5,real,Religion,Muslim,328,10,3.048780487804878
+qwen3-4b-base_en,real_gender20,real,Religion,Protestant,144,3,2.083333333333333
+qwen3-4b-base_en,real_race20,real,Religion,Protestant,144,4,2.7777777777777777
+qwen3-4b-base_en,real_religion20,real,Religion,Protestant,144,3,2.083333333333333
+qwen3-4b-base_en,real_gender5,real,Religion,Protestant,144,5,3.4722222222222223
+qwen3-4b-base_en,real_race5,real,Religion,Protestant,144,1,0.6944444444444444
+qwen3-4b-base_en,real_religion5,real,Religion,Protestant,144,2,1.3888888888888888
+qwen3-4b-base_en,real_gender20,real,Religion,Sikh,144,7,4.861111111111112
+qwen3-4b-base_en,real_race20,real,Religion,Sikh,144,11,7.638888888888889
+qwen3-4b-base_en,real_religion20,real,Religion,Sikh,144,8,5.555555555555555
+qwen3-4b-base_en,real_gender5,real,Religion,Sikh,144,7,4.861111111111112
+qwen3-4b-base_en,real_race5,real,Religion,Sikh,144,5,3.4722222222222223
+qwen3-4b-base_en,real_religion5,real,Religion,Sikh,144,6,4.166666666666666
+llama-3.2-3b_en,real_gender20,real,Gender_identity,F,4616,434,9.40207972270364
+llama-3.2-3b_en,real_race20,real,Gender_identity,F,4616,378,8.188908145580589
+llama-3.2-3b_en,real_religion20,real,Gender_identity,F,4616,403,8.730502599653379
+llama-3.2-3b_en,real_gender5,real,Gender_identity,F,4616,61,1.3214904679376085
+llama-3.2-3b_en,real_race5,real,Gender_identity,F,4616,138,2.9896013864818025
+llama-3.2-3b_en,real_religion5,real,Gender_identity,F,4616,449,9.727036395147314
+llama-3.2-3b_en,real_gender20,real,Gender_identity,M,4616,434,9.40207972270364
+llama-3.2-3b_en,real_race20,real,Gender_identity,M,4616,378,8.188908145580589
+llama-3.2-3b_en,real_religion20,real,Gender_identity,M,4616,403,8.730502599653379
+llama-3.2-3b_en,real_gender5,real,Gender_identity,M,4616,61,1.3214904679376085
+llama-3.2-3b_en,real_race5,real,Gender_identity,M,4616,138,2.9896013864818025
+llama-3.2-3b_en,real_religion5,real,Gender_identity,M,4616,449,9.727036395147314
+llama-3.2-3b_en,real_gender20,real,Gender_identity,boy,40,2,5.0
+llama-3.2-3b_en,real_race20,real,Gender_identity,boy,40,1,2.5
+llama-3.2-3b_en,real_religion20,real,Gender_identity,boy,40,2,5.0
+llama-3.2-3b_en,real_gender5,real,Gender_identity,boy,40,0,0.0
+llama-3.2-3b_en,real_race5,real,Gender_identity,boy,40,1,2.5
+llama-3.2-3b_en,real_religion5,real,Gender_identity,boy,40,2,5.0
+llama-3.2-3b_en,real_gender20,real,Gender_identity,girl,40,3,7.5
+llama-3.2-3b_en,real_race20,real,Gender_identity,girl,40,2,5.0
+llama-3.2-3b_en,real_religion20,real,Gender_identity,girl,40,4,10.0
+llama-3.2-3b_en,real_gender5,real,Gender_identity,girl,40,0,0.0
+llama-3.2-3b_en,real_race5,real,Gender_identity,girl,40,1,2.5
+llama-3.2-3b_en,real_religion5,real,Gender_identity,girl,40,3,7.5
+llama-3.2-3b_en,real_gender20,real,Gender_identity,man,152,6,3.947368421052632
+llama-3.2-3b_en,real_race20,real,Gender_identity,man,152,10,6.578947368421052
+llama-3.2-3b_en,real_religion20,real,Gender_identity,man,152,13,8.552631578947368
+llama-3.2-3b_en,real_gender5,real,Gender_identity,man,152,1,0.6578947368421052
+llama-3.2-3b_en,real_race5,real,Gender_identity,man,152,3,1.973684210526316
+llama-3.2-3b_en,real_religion5,real,Gender_identity,man,152,13,8.552631578947368
+llama-3.2-3b_en,real_gender20,real,Gender_identity,nonTrans,464,21,4.525862068965517
+llama-3.2-3b_en,real_race20,real,Gender_identity,nonTrans,464,19,4.094827586206897
+llama-3.2-3b_en,real_religion20,real,Gender_identity,nonTrans,464,72,15.517241379310343
+llama-3.2-3b_en,real_gender5,real,Gender_identity,nonTrans,464,8,1.7241379310344829
+llama-3.2-3b_en,real_race5,real,Gender_identity,nonTrans,464,17,3.6637931034482754
+llama-3.2-3b_en,real_religion5,real,Gender_identity,nonTrans,464,33,7.112068965517242
+llama-3.2-3b_en,real_gender20,real,Gender_identity,nonTrans_F,200,20,10.0
+llama-3.2-3b_en,real_race20,real,Gender_identity,nonTrans_F,200,15,7.5
+llama-3.2-3b_en,real_religion20,real,Gender_identity,nonTrans_F,200,18,9.0
+llama-3.2-3b_en,real_gender5,real,Gender_identity,nonTrans_F,200,2,1.0
+llama-3.2-3b_en,real_race5,real,Gender_identity,nonTrans_F,200,5,2.5
+llama-3.2-3b_en,real_religion5,real,Gender_identity,nonTrans_F,200,19,9.5
+llama-3.2-3b_en,real_gender20,real,Gender_identity,nonTrans_M,200,21,10.5
+llama-3.2-3b_en,real_race20,real,Gender_identity,nonTrans_M,200,17,8.5
+llama-3.2-3b_en,real_religion20,real,Gender_identity,nonTrans_M,200,30,15.0
+llama-3.2-3b_en,real_gender5,real,Gender_identity,nonTrans_M,200,3,1.5
+llama-3.2-3b_en,real_race5,real,Gender_identity,nonTrans_M,200,5,2.5
+llama-3.2-3b_en,real_religion5,real,Gender_identity,nonTrans_M,200,29,14.499999999999998
+llama-3.2-3b_en,real_gender20,real,Gender_identity,trans,464,21,4.525862068965517
+llama-3.2-3b_en,real_race20,real,Gender_identity,trans,464,19,4.094827586206897
+llama-3.2-3b_en,real_religion20,real,Gender_identity,trans,464,72,15.517241379310343
+llama-3.2-3b_en,real_gender5,real,Gender_identity,trans,464,8,1.7241379310344829
+llama-3.2-3b_en,real_race5,real,Gender_identity,trans,464,17,3.6637931034482754
+llama-3.2-3b_en,real_religion5,real,Gender_identity,trans,464,33,7.112068965517242
+llama-3.2-3b_en,real_gender20,real,Gender_identity,trans_F,200,21,10.5
+llama-3.2-3b_en,real_race20,real,Gender_identity,trans_F,200,17,8.5
+llama-3.2-3b_en,real_religion20,real,Gender_identity,trans_F,200,30,15.0
+llama-3.2-3b_en,real_gender5,real,Gender_identity,trans_F,200,3,1.5
+llama-3.2-3b_en,real_race5,real,Gender_identity,trans_F,200,5,2.5
+llama-3.2-3b_en,real_religion5,real,Gender_identity,trans_F,200,29,14.499999999999998
+llama-3.2-3b_en,real_gender20,real,Gender_identity,trans_M,200,20,10.0
+llama-3.2-3b_en,real_race20,real,Gender_identity,trans_M,200,15,7.5
+llama-3.2-3b_en,real_religion20,real,Gender_identity,trans_M,200,18,9.0
+llama-3.2-3b_en,real_gender5,real,Gender_identity,trans_M,200,2,1.0
+llama-3.2-3b_en,real_race5,real,Gender_identity,trans_M,200,5,2.5
+llama-3.2-3b_en,real_religion5,real,Gender_identity,trans_M,200,19,9.5
+llama-3.2-3b_en,real_gender20,real,Gender_identity,woman,152,5,3.289473684210526
+llama-3.2-3b_en,real_race20,real,Gender_identity,woman,152,9,5.921052631578947
+llama-3.2-3b_en,real_religion20,real,Gender_identity,woman,152,11,7.236842105263158
+llama-3.2-3b_en,real_gender5,real,Gender_identity,woman,152,1,0.6578947368421052
+llama-3.2-3b_en,real_race5,real,Gender_identity,woman,152,3,1.973684210526316
+llama-3.2-3b_en,real_religion5,real,Gender_identity,woman,152,12,7.894736842105263
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,African,200,10,5.0
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,African,200,29,14.499999999999998
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,African,200,16,8.0
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,African,200,5,2.5
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,African,200,11,5.5
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,African,200,17,8.5
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,African American,520,21,4.038461538461538
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,African American,520,68,13.076923076923078
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,African American,520,49,9.423076923076923
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,African American,520,5,0.9615384615384616
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,African American,520,21,4.038461538461538
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,African American,520,35,6.730769230769231
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Arab,208,2,0.9615384615384616
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Arab,208,19,9.134615384615383
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Arab,208,19,9.134615384615383
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Arab,208,2,0.9615384615384616
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Arab,208,14,6.730769230769231
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Arab,208,10,4.807692307692308
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Asian,312,14,4.487179487179487
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Asian,312,61,19.55128205128205
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Asian,312,25,8.012820512820513
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Asian,312,5,1.6025641025641024
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Asian,312,77,24.679487179487182
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Asian,312,11,3.525641025641025
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Black,520,22,4.230769230769231
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Black,520,73,14.038461538461538
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Black,520,63,12.115384615384617
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Black,520,9,1.7307692307692308
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Black,520,35,6.730769230769231
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Black,520,55,10.576923076923077
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Caucasian,128,11,8.59375
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Caucasian,128,10,7.8125
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Caucasian,128,13,10.15625
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Caucasian,128,1,0.78125
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Caucasian,128,1,0.78125
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Caucasian,128,13,10.15625
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,European,184,5,2.717391304347826
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,European,184,32,17.391304347826086
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,European,184,18,9.782608695652174
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,European,184,4,2.1739130434782608
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,European,184,17,9.239130434782608
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,European,184,12,6.521739130434782
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,F-Arab,1056,51,4.829545454545454
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,F-Arab,1056,154,14.583333333333334
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,F-Arab,1056,127,12.026515151515152
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,F-Arab,1056,26,2.462121212121212
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,F-Arab,1056,39,3.6931818181818175
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,F-Arab,1056,137,12.973484848484848
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,F-Asian,904,60,6.637168141592921
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,F-Asian,904,106,11.72566371681416
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,F-Asian,904,95,10.508849557522124
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,F-Asian,904,10,1.106194690265487
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,F-Asian,904,34,3.761061946902655
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,F-Asian,904,84,9.29203539823009
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,F-Black,1904,100,5.2521008403361344
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,F-Black,1904,245,12.867647058823527
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,F-Black,1904,180,9.453781512605042
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,F-Black,1904,24,1.2605042016806722
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,F-Black,1904,89,4.67436974789916
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,F-Black,1904,191,10.031512605042018
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,F-Latino,1112,48,4.316546762589928
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,F-Latino,1112,143,12.859712230215829
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,F-Latino,1112,89,8.003597122302159
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,F-Latino,1112,18,1.618705035971223
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,F-Latino,1112,34,3.0575539568345325
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,F-Latino,1112,101,9.08273381294964
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,F-White,784,43,5.48469387755102
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,F-White,784,74,9.43877551020408
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,F-White,784,61,7.780612244897959
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,F-White,784,10,1.2755102040816326
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,F-White,784,36,4.591836734693878
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,F-White,784,59,7.525510204081633
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Hispanic,328,26,7.926829268292683
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Hispanic,328,32,9.75609756097561
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Hispanic,328,55,16.76829268292683
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Hispanic,328,9,2.7439024390243905
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Hispanic,328,27,8.231707317073171
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Hispanic,328,27,8.231707317073171
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Jewish,168,5,2.976190476190476
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Jewish,168,12,7.142857142857142
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Jewish,168,18,10.714285714285714
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Jewish,168,1,0.5952380952380952
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Jewish,168,9,5.357142857142857
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Jewish,168,15,8.928571428571429
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Latino,304,11,3.618421052631579
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Latino,304,27,8.881578947368421
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Latino,304,22,7.236842105263158
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Latino,304,4,1.3157894736842104
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Latino,304,18,5.921052631578947
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Latino,304,11,3.618421052631579
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,M-Arab,824,16,1.9417475728155336
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,M-Arab,824,97,11.771844660194176
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,M-Arab,824,153,18.567961165048544
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,M-Arab,824,10,1.2135922330097086
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,M-Arab,824,23,2.7912621359223304
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,M-Arab,824,86,10.436893203883496
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,M-Asian,848,14,1.650943396226415
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,M-Asian,848,114,13.443396226415096
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,M-Asian,848,83,9.787735849056604
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,M-Asian,848,5,0.589622641509434
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,M-Asian,848,22,2.5943396226415096
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,M-Asian,848,84,9.90566037735849
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,M-Black,1032,14,1.3565891472868217
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,M-Black,1032,115,11.14341085271318
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,M-Black,1032,104,10.07751937984496
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,M-Black,1032,6,0.5813953488372093
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,M-Black,1032,36,3.488372093023256
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,M-Black,1032,94,9.108527131782946
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,M-Latino,936,26,2.7777777777777777
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,M-Latino,936,98,10.47008547008547
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,M-Latino,936,101,10.790598290598291
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,M-Latino,936,13,1.3888888888888888
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,M-Latino,936,30,3.205128205128205
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,M-Latino,936,73,7.799145299145299
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,M-White,600,20,3.333333333333333
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,M-White,600,62,10.333333333333334
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,M-White,600,55,9.166666666666666
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,M-White,600,6,1.0
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,M-White,600,21,3.5000000000000004
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,M-White,600,43,7.166666666666667
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Middle Eastern,224,10,4.464285714285714
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Middle Eastern,224,22,9.821428571428571
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Middle Eastern,224,26,11.607142857142858
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Middle Eastern,224,6,2.6785714285714284
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Middle Eastern,224,15,6.696428571428571
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Middle Eastern,224,24,10.714285714285714
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Native American,240,9,3.75
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Native American,240,42,17.5
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Native American,240,32,13.333333333333334
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Native American,240,3,1.25
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Native American,240,23,9.583333333333334
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Native American,240,35,14.583333333333334
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,Roma,168,6,3.571428571428571
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,Roma,168,14,8.333333333333332
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,Roma,168,17,10.11904761904762
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,Roma,168,3,1.7857142857142856
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,Roma,168,9,5.357142857142857
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,Roma,168,16,9.523809523809524
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,South American,136,13,9.558823529411764
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,South American,136,36,26.47058823529412
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,South American,136,36,26.47058823529412
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,South American,136,2,1.4705882352941175
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,South American,136,10,7.352941176470589
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,South American,136,25,18.38235294117647
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,White,120,7,5.833333333333333
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,White,120,29,24.166666666666668
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,White,120,23,19.166666666666668
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,White,120,5,4.166666666666666
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,White,120,7,5.833333333333333
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,White,120,8,6.666666666666667
+llama-3.2-3b_en,real_gender20,real,Religion,Atheist,288,7,2.430555555555556
+llama-3.2-3b_en,real_race20,real,Religion,Atheist,288,16,5.555555555555555
+llama-3.2-3b_en,real_religion20,real,Religion,Atheist,288,20,6.944444444444445
+llama-3.2-3b_en,real_gender5,real,Religion,Atheist,288,2,0.6944444444444444
+llama-3.2-3b_en,real_race5,real,Religion,Atheist,288,13,4.513888888888888
+llama-3.2-3b_en,real_religion5,real,Religion,Atheist,288,20,6.944444444444445
+llama-3.2-3b_en,real_gender20,real,Religion,Buddhist,112,0,0.0
+llama-3.2-3b_en,real_race20,real,Religion,Buddhist,112,10,8.928571428571429
+llama-3.2-3b_en,real_religion20,real,Religion,Buddhist,112,9,8.035714285714286
+llama-3.2-3b_en,real_gender5,real,Religion,Buddhist,112,1,0.8928571428571428
+llama-3.2-3b_en,real_race5,real,Religion,Buddhist,112,13,11.607142857142858
+llama-3.2-3b_en,real_religion5,real,Religion,Buddhist,112,3,2.6785714285714284
+llama-3.2-3b_en,real_gender20,real,Religion,Catholic,264,3,1.1363636363636365
+llama-3.2-3b_en,real_race20,real,Religion,Catholic,264,18,6.8181818181818175
+llama-3.2-3b_en,real_religion20,real,Religion,Catholic,264,18,6.8181818181818175
+llama-3.2-3b_en,real_gender5,real,Religion,Catholic,264,2,0.7575757575757576
+llama-3.2-3b_en,real_race5,real,Religion,Catholic,264,14,5.303030303030303
+llama-3.2-3b_en,real_religion5,real,Religion,Catholic,264,8,3.0303030303030303
+llama-3.2-3b_en,real_gender20,real,Religion,Christian,312,7,2.243589743589744
+llama-3.2-3b_en,real_race20,real,Religion,Christian,312,29,9.294871794871796
+llama-3.2-3b_en,real_religion20,real,Religion,Christian,312,41,13.141025641025642
+llama-3.2-3b_en,real_gender5,real,Religion,Christian,312,3,0.9615384615384616
+llama-3.2-3b_en,real_race5,real,Religion,Christian,312,9,2.8846153846153846
+llama-3.2-3b_en,real_religion5,real,Religion,Christian,312,18,5.769230769230769
+llama-3.2-3b_en,real_gender20,real,Religion,Hindu,264,5,1.893939393939394
+llama-3.2-3b_en,real_race20,real,Religion,Hindu,264,25,9.469696969696969
+llama-3.2-3b_en,real_religion20,real,Religion,Hindu,264,35,13.257575757575758
+llama-3.2-3b_en,real_gender5,real,Religion,Hindu,264,7,2.6515151515151514
+llama-3.2-3b_en,real_race5,real,Religion,Hindu,264,36,13.636363636363637
+llama-3.2-3b_en,real_religion5,real,Religion,Hindu,264,18,6.8181818181818175
+llama-3.2-3b_en,real_gender20,real,Religion,Jewish,280,6,2.142857142857143
+llama-3.2-3b_en,real_race20,real,Religion,Jewish,280,25,8.928571428571429
+llama-3.2-3b_en,real_religion20,real,Religion,Jewish,280,31,11.071428571428571
+llama-3.2-3b_en,real_gender5,real,Religion,Jewish,280,1,0.3571428571428571
+llama-3.2-3b_en,real_race5,real,Religion,Jewish,280,19,6.785714285714286
+llama-3.2-3b_en,real_religion5,real,Religion,Jewish,280,13,4.642857142857143
+llama-3.2-3b_en,real_gender20,real,Religion,Mormon,264,4,1.5151515151515151
+llama-3.2-3b_en,real_race20,real,Religion,Mormon,264,9,3.4090909090909087
+llama-3.2-3b_en,real_religion20,real,Religion,Mormon,264,27,10.227272727272728
+llama-3.2-3b_en,real_gender5,real,Religion,Mormon,264,2,0.7575757575757576
+llama-3.2-3b_en,real_race5,real,Religion,Mormon,264,11,4.166666666666666
+llama-3.2-3b_en,real_religion5,real,Religion,Mormon,264,12,4.545454545454546
+llama-3.2-3b_en,real_gender20,real,Religion,Muslim,328,10,3.048780487804878
+llama-3.2-3b_en,real_race20,real,Religion,Muslim,328,24,7.317073170731707
+llama-3.2-3b_en,real_religion20,real,Religion,Muslim,328,56,17.073170731707318
+llama-3.2-3b_en,real_gender5,real,Religion,Muslim,328,7,2.1341463414634148
+llama-3.2-3b_en,real_race5,real,Religion,Muslim,328,17,5.182926829268292
+llama-3.2-3b_en,real_religion5,real,Religion,Muslim,328,22,6.707317073170732
+llama-3.2-3b_en,real_gender20,real,Religion,Protestant,144,5,3.4722222222222223
+llama-3.2-3b_en,real_race20,real,Religion,Protestant,144,8,5.555555555555555
+llama-3.2-3b_en,real_religion20,real,Religion,Protestant,144,12,8.333333333333332
+llama-3.2-3b_en,real_gender5,real,Religion,Protestant,144,1,0.6944444444444444
+llama-3.2-3b_en,real_race5,real,Religion,Protestant,144,2,1.3888888888888888
+llama-3.2-3b_en,real_religion5,real,Religion,Protestant,144,8,5.555555555555555
+llama-3.2-3b_en,real_gender20,real,Religion,Sikh,144,5,3.4722222222222223
+llama-3.2-3b_en,real_race20,real,Religion,Sikh,144,14,9.722222222222223
+llama-3.2-3b_en,real_religion20,real,Religion,Sikh,144,17,11.805555555555555
+llama-3.2-3b_en,real_gender5,real,Religion,Sikh,144,0,0.0
+llama-3.2-3b_en,real_race5,real,Religion,Sikh,144,12,8.333333333333332
+llama-3.2-3b_en,real_religion5,real,Religion,Sikh,144,6,4.166666666666666
+salamandra-7b_es,exp1,real,Age,nonOld,4068,108,2.6548672566371683
+salamandra-7b_es,exp2,real,Age,nonOld,4068,192,4.71976401179941
+salamandra-7b_es,exp5,real,Age,nonOld,4068,307,7.546705998033431
+salamandra-7b_es,exp7,real,Age,nonOld,4068,207,5.08849557522124
+salamandra-7b_es,exp8,real,Age,nonOld,4068,212,5.2114060963618485
+salamandra-7b_es,exp9,real,Age,nonOld,4068,214,5.260570304818092
+salamandra-7b_es,exp10,real,Age,nonOld,4068,351,8.628318584070795
+salamandra-7b_es,exp11,real,Age,nonOld,4068,409,10.054080629301868
+salamandra-7b_es,exp12,real,Age,nonOld,4068,108,2.6548672566371683
+salamandra-7b_es,exp1,real,Age,old,4068,108,2.6548672566371683
+salamandra-7b_es,exp2,real,Age,old,4068,192,4.71976401179941
+salamandra-7b_es,exp5,real,Age,old,4068,307,7.546705998033431
+salamandra-7b_es,exp7,real,Age,old,4068,207,5.08849557522124
+salamandra-7b_es,exp8,real,Age,old,4068,212,5.2114060963618485
+salamandra-7b_es,exp9,real,Age,old,4068,214,5.260570304818092
+salamandra-7b_es,exp10,real,Age,old,4068,351,8.628318584070795
+salamandra-7b_es,exp11,real,Age,old,4068,409,10.054080629301868
+salamandra-7b_es,exp12,real,Age,old,4068,108,2.6548672566371683
+salamandra-7b_es,exp1,real,Gender,f,4832,84,1.73841059602649
+salamandra-7b_es,exp2,real,Gender,f,4832,85,1.7591059602649006
+salamandra-7b_es,exp5,real,Gender,f,4832,216,4.470198675496689
+salamandra-7b_es,exp7,real,Gender,f,4832,80,1.6556291390728477
+salamandra-7b_es,exp8,real,Gender,f,4832,121,2.504139072847682
+salamandra-7b_es,exp9,real,Gender,f,4832,191,3.952814569536424
+salamandra-7b_es,exp10,real,Gender,f,4832,983,20.343543046357617
+salamandra-7b_es,exp11,real,Gender,f,4832,947,19.598509933774835
+salamandra-7b_es,exp12,real,Gender,f,4832,51,1.0554635761589404
+salamandra-7b_es,exp1,real,Gender,m,4832,84,1.73841059602649
+salamandra-7b_es,exp2,real,Gender,m,4832,85,1.7591059602649006
+salamandra-7b_es,exp5,real,Gender,m,4832,216,4.470198675496689
+salamandra-7b_es,exp7,real,Gender,m,4832,80,1.6556291390728477
+salamandra-7b_es,exp8,real,Gender,m,4832,121,2.504139072847682
+salamandra-7b_es,exp9,real,Gender,m,4832,191,3.952814569536424
+salamandra-7b_es,exp10,real,Gender,m,4832,983,20.343543046357617
+salamandra-7b_es,exp11,real,Gender,m,4832,947,19.598509933774835
+salamandra-7b_es,exp12,real,Gender,m,4832,51,1.0554635761589404
+salamandra-7b_es,exp1,real,RaceEthnicity,africano,124,1,0.8064516129032258
+salamandra-7b_es,exp2,real,RaceEthnicity,africano,124,4,3.225806451612903
+salamandra-7b_es,exp5,real,RaceEthnicity,africano,124,24,19.35483870967742
+salamandra-7b_es,exp7,real,RaceEthnicity,africano,124,0,0.0
+salamandra-7b_es,exp8,real,RaceEthnicity,africano,124,1,0.8064516129032258
+salamandra-7b_es,exp9,real,RaceEthnicity,africano,124,3,2.419354838709677
+salamandra-7b_es,exp10,real,RaceEthnicity,africano,124,5,4.032258064516129
+salamandra-7b_es,exp11,real,RaceEthnicity,africano,124,3,2.419354838709677
+salamandra-7b_es,exp12,real,RaceEthnicity,africano,124,2,1.6129032258064515
+salamandra-7b_es,exp1,real,RaceEthnicity,asiático,264,10,3.787878787878788
+salamandra-7b_es,exp2,real,RaceEthnicity,asiático,264,11,4.166666666666666
+salamandra-7b_es,exp5,real,RaceEthnicity,asiático,264,27,10.227272727272728
+salamandra-7b_es,exp7,real,RaceEthnicity,asiático,264,11,4.166666666666666
+salamandra-7b_es,exp8,real,RaceEthnicity,asiático,264,7,2.6515151515151514
+salamandra-7b_es,exp9,real,RaceEthnicity,asiático,264,23,8.712121212121213
+salamandra-7b_es,exp10,real,RaceEthnicity,asiático,264,19,7.196969696969697
+salamandra-7b_es,exp11,real,RaceEthnicity,asiático,264,24,9.090909090909092
+salamandra-7b_es,exp12,real,RaceEthnicity,asiático,264,6,2.272727272727273
+salamandra-7b_es,exp1,real,RaceEthnicity,blanco,3716,44,1.1840688912809472
+salamandra-7b_es,exp2,real,RaceEthnicity,blanco,3716,99,2.6641550053821312
+salamandra-7b_es,exp5,real,RaceEthnicity,blanco,3716,518,13.939720129171151
+salamandra-7b_es,exp7,real,RaceEthnicity,blanco,3716,90,2.4219590958019377
+salamandra-7b_es,exp8,real,RaceEthnicity,blanco,3716,85,2.28740581270183
+salamandra-7b_es,exp9,real,RaceEthnicity,blanco,3716,218,5.866523143164693
+salamandra-7b_es,exp10,real,RaceEthnicity,blanco,3716,210,5.651237890204521
+salamandra-7b_es,exp11,real,RaceEthnicity,blanco,3716,220,5.920344456404736
+salamandra-7b_es,exp12,real,RaceEthnicity,blanco,3716,69,1.8568353067814851
+salamandra-7b_es,exp1,real,RaceEthnicity,de Europa del Este,396,7,1.7676767676767675
+salamandra-7b_es,exp2,real,RaceEthnicity,de Europa del Este,396,15,3.787878787878788
+salamandra-7b_es,exp5,real,RaceEthnicity,de Europa del Este,396,58,14.646464646464649
+salamandra-7b_es,exp7,real,RaceEthnicity,de Europa del Este,396,5,1.2626262626262623
+salamandra-7b_es,exp8,real,RaceEthnicity,de Europa del Este,396,16,4.040404040404041
+salamandra-7b_es,exp9,real,RaceEthnicity,de Europa del Este,396,26,6.565656565656567
+salamandra-7b_es,exp10,real,RaceEthnicity,de Europa del Este,396,37,9.343434343434344
+salamandra-7b_es,exp11,real,RaceEthnicity,de Europa del Este,396,44,11.11111111111111
+salamandra-7b_es,exp12,real,RaceEthnicity,de Europa del Este,396,10,2.525252525252525
+salamandra-7b_es,exp1,real,RaceEthnicity,gitano,372,3,0.8064516129032258
+salamandra-7b_es,exp2,real,RaceEthnicity,gitano,372,9,2.419354838709677
+salamandra-7b_es,exp5,real,RaceEthnicity,gitano,372,56,15.053763440860216
+salamandra-7b_es,exp7,real,RaceEthnicity,gitano,372,7,1.881720430107527
+salamandra-7b_es,exp8,real,RaceEthnicity,gitano,372,11,2.956989247311828
+salamandra-7b_es,exp9,real,RaceEthnicity,gitano,372,15,4.032258064516129
+salamandra-7b_es,exp10,real,RaceEthnicity,gitano,372,25,6.720430107526881
+salamandra-7b_es,exp11,real,RaceEthnicity,gitano,372,27,7.258064516129033
+salamandra-7b_es,exp12,real,RaceEthnicity,gitano,372,7,1.881720430107527
+salamandra-7b_es,exp1,real,RaceEthnicity,indio,264,4,1.5151515151515151
+salamandra-7b_es,exp2,real,RaceEthnicity,indio,264,12,4.545454545454546
+salamandra-7b_es,exp5,real,RaceEthnicity,indio,264,38,14.393939393939394
+salamandra-7b_es,exp7,real,RaceEthnicity,indio,264,4,1.5151515151515151
+salamandra-7b_es,exp8,real,RaceEthnicity,indio,264,3,1.1363636363636365
+salamandra-7b_es,exp9,real,RaceEthnicity,indio,264,24,9.090909090909092
+salamandra-7b_es,exp10,real,RaceEthnicity,indio,264,17,6.4393939393939394
+salamandra-7b_es,exp11,real,RaceEthnicity,indio,264,20,7.575757575757576
+salamandra-7b_es,exp12,real,RaceEthnicity,indio,264,11,4.166666666666666
+salamandra-7b_es,exp1,real,RaceEthnicity,latino,672,3,0.4464285714285714
+salamandra-7b_es,exp2,real,RaceEthnicity,latino,672,10,1.488095238095238
+salamandra-7b_es,exp5,real,RaceEthnicity,latino,672,43,6.398809523809524
+salamandra-7b_es,exp7,real,RaceEthnicity,latino,672,11,1.636904761904762
+salamandra-7b_es,exp8,real,RaceEthnicity,latino,672,5,0.744047619047619
+salamandra-7b_es,exp9,real,RaceEthnicity,latino,672,14,2.083333333333333
+salamandra-7b_es,exp10,real,RaceEthnicity,latino,672,17,2.5297619047619047
+salamandra-7b_es,exp11,real,RaceEthnicity,latino,672,14,2.083333333333333
+salamandra-7b_es,exp12,real,RaceEthnicity,latino,672,5,0.744047619047619
+salamandra-7b_es,exp1,real,RaceEthnicity,negro,748,11,1.4705882352941175
+salamandra-7b_es,exp2,real,RaceEthnicity,negro,748,27,3.6096256684491976
+salamandra-7b_es,exp5,real,RaceEthnicity,negro,748,72,9.62566844919786
+salamandra-7b_es,exp7,real,RaceEthnicity,negro,748,23,3.074866310160428
+salamandra-7b_es,exp8,real,RaceEthnicity,negro,748,20,2.6737967914438503
+salamandra-7b_es,exp9,real,RaceEthnicity,negro,748,40,5.347593582887701
+salamandra-7b_es,exp10,real,RaceEthnicity,negro,748,58,7.754010695187167
+salamandra-7b_es,exp11,real,RaceEthnicity,negro,748,58,7.754010695187167
+salamandra-7b_es,exp12,real,RaceEthnicity,negro,748,18,2.406417112299465
+salamandra-7b_es,exp1,real,RaceEthnicity,árabe,876,5,0.5707762557077625
+salamandra-7b_es,exp2,real,RaceEthnicity,árabe,876,11,1.2557077625570776
+salamandra-7b_es,exp5,real,RaceEthnicity,árabe,876,200,22.831050228310502
+salamandra-7b_es,exp7,real,RaceEthnicity,árabe,876,29,3.3105022831050226
+salamandra-7b_es,exp8,real,RaceEthnicity,árabe,876,22,2.5114155251141552
+salamandra-7b_es,exp9,real,RaceEthnicity,árabe,876,73,8.333333333333332
+salamandra-7b_es,exp10,real,RaceEthnicity,árabe,876,32,3.65296803652968
+salamandra-7b_es,exp11,real,RaceEthnicity,árabe,876,30,3.4246575342465757
+salamandra-7b_es,exp12,real,RaceEthnicity,árabe,876,10,1.141552511415525
+salamandra-7b_es,exp1,real,Religion,ateo,216,0,0.0
+salamandra-7b_es,exp2,real,Religion,ateo,216,4,1.851851851851852
+salamandra-7b_es,exp5,real,Religion,ateo,216,15,6.944444444444445
+salamandra-7b_es,exp7,real,Religion,ateo,216,19,8.796296296296296
+salamandra-7b_es,exp8,real,Religion,ateo,216,33,15.27777777777778
+salamandra-7b_es,exp9,real,Religion,ateo,216,42,19.444444444444446
+salamandra-7b_es,exp10,real,Religion,ateo,216,16,7.4074074074074066
+salamandra-7b_es,exp11,real,Religion,ateo,216,20,9.25925925925926
+salamandra-7b_es,exp12,real,Religion,ateo,216,4,1.851851851851852
+salamandra-7b_es,exp1,real,Religion,católico,408,6,1.4705882352941175
+salamandra-7b_es,exp2,real,Religion,católico,408,16,3.92156862745098
+salamandra-7b_es,exp5,real,Religion,católico,408,52,12.745098039215684
+salamandra-7b_es,exp7,real,Religion,católico,408,19,4.65686274509804
+salamandra-7b_es,exp8,real,Religion,católico,408,24,5.88235294117647
+salamandra-7b_es,exp9,real,Religion,católico,408,25,6.127450980392156
+salamandra-7b_es,exp10,real,Religion,católico,408,16,3.92156862745098
+salamandra-7b_es,exp11,real,Religion,católico,408,34,8.333333333333332
+salamandra-7b_es,exp12,real,Religion,católico,408,12,2.941176470588235
+salamandra-7b_es,exp1,real,Religion,judío,48,2,4.166666666666666
+salamandra-7b_es,exp2,real,Religion,judío,48,3,6.25
+salamandra-7b_es,exp5,real,Religion,judío,48,7,14.583333333333334
+salamandra-7b_es,exp7,real,Religion,judío,48,4,8.333333333333332
+salamandra-7b_es,exp8,real,Religion,judío,48,5,10.416666666666668
+salamandra-7b_es,exp9,real,Religion,judío,48,5,10.416666666666668
+salamandra-7b_es,exp10,real,Religion,judío,48,2,4.166666666666666
+salamandra-7b_es,exp11,real,Religion,judío,48,5,10.416666666666668
+salamandra-7b_es,exp12,real,Religion,judío,48,4,8.333333333333332
+salamandra-7b_es,exp1,real,Religion,musulmán,144,2,1.3888888888888888
+salamandra-7b_es,exp2,real,Religion,musulmán,144,5,3.4722222222222223
+salamandra-7b_es,exp5,real,Religion,musulmán,144,41,28.47222222222222
+salamandra-7b_es,exp7,real,Religion,musulmán,144,7,4.861111111111112
+salamandra-7b_es,exp8,real,Religion,musulmán,144,9,6.25
+salamandra-7b_es,exp9,real,Religion,musulmán,144,5,3.4722222222222223
+salamandra-7b_es,exp10,real,Religion,musulmán,144,1,0.6944444444444444
+salamandra-7b_es,exp11,real,Religion,musulmán,144,10,6.944444444444445
+salamandra-7b_es,exp12,real,Religion,musulmán,144,5,3.4722222222222223
+salamandra-7b_es,exp1,real,Religion,no creyente,216,5,2.314814814814815
+salamandra-7b_es,exp2,real,Religion,no creyente,216,10,4.62962962962963
+salamandra-7b_es,exp5,real,Religion,no creyente,216,15,6.944444444444445
+salamandra-7b_es,exp7,real,Religion,no creyente,216,6,2.7777777777777777
+salamandra-7b_es,exp8,real,Religion,no creyente,216,14,6.481481481481481
+salamandra-7b_es,exp9,real,Religion,no creyente,216,14,6.481481481481481
+salamandra-7b_es,exp10,real,Religion,no creyente,216,10,4.62962962962963
+salamandra-7b_es,exp11,real,Religion,no creyente,216,21,9.722222222222223
+salamandra-7b_es,exp12,real,Religion,no creyente,216,4,1.851851851851852
+salamandra-7b_es,exp1,real,Religion,testigo de Jehová,264,3,1.1363636363636365
+salamandra-7b_es,exp2,real,Religion,testigo de Jehová,264,6,2.272727272727273
+salamandra-7b_es,exp5,real,Religion,testigo de Jehová,264,26,9.848484848484848
+salamandra-7b_es,exp7,real,Religion,testigo de Jehová,264,21,7.954545454545454
+salamandra-7b_es,exp8,real,Religion,testigo de Jehová,264,41,15.530303030303031
+salamandra-7b_es,exp9,real,Religion,testigo de Jehová,264,41,15.530303030303031
+salamandra-7b_es,exp10,real,Religion,testigo de Jehová,264,17,6.4393939393939394
+salamandra-7b_es,exp11,real,Religion,testigo de Jehová,264,26,9.848484848484848
+salamandra-7b_es,exp12,real,Religion,testigo de Jehová,264,5,1.893939393939394
+llama-3.1-8b_es,exp2,real,Gender,f,4832,100,2.06953642384106
+llama-3.1-8b_es,exp10,real,Gender,f,4832,138,2.8559602649006623
+llama-3.1-8b_es,exp12,real,Gender,f,4832,230,4.759933774834437
+llama-3.1-8b_es,exp13,real,Gender,f,4832,220,4.5529801324503305
+llama-3.1-8b_es,exp11,real,Gender,f,4832,635,13.14155629139073
+llama-3.1-8b_es,exp14,real,Gender,f,4832,267,5.525662251655629
+llama-3.1-8b_es,exp2,real,Gender,m,4832,100,2.06953642384106
+llama-3.1-8b_es,exp10,real,Gender,m,4832,138,2.8559602649006623
+llama-3.1-8b_es,exp12,real,Gender,m,4832,230,4.759933774834437
+llama-3.1-8b_es,exp13,real,Gender,m,4832,220,4.5529801324503305
+llama-3.1-8b_es,exp11,real,Gender,m,4832,635,13.14155629139073
+llama-3.1-8b_es,exp14,real,Gender,m,4832,267,5.525662251655629
+llama-3.1-8b_es,exp2,real,RaceEthnicity,africano,124,5,4.032258064516129
+llama-3.1-8b_es,exp10,real,RaceEthnicity,africano,124,4,3.225806451612903
+llama-3.1-8b_es,exp12,real,RaceEthnicity,africano,124,4,3.225806451612903
+llama-3.1-8b_es,exp13,real,RaceEthnicity,africano,124,10,8.064516129032258
+llama-3.1-8b_es,exp11,real,RaceEthnicity,africano,124,3,2.419354838709677
+llama-3.1-8b_es,exp14,real,RaceEthnicity,africano,124,8,6.451612903225806
+llama-3.1-8b_es,exp2,real,RaceEthnicity,asiático,264,18,6.8181818181818175
+llama-3.1-8b_es,exp10,real,RaceEthnicity,asiático,264,12,4.545454545454546
+llama-3.1-8b_es,exp12,real,RaceEthnicity,asiático,264,11,4.166666666666666
+llama-3.1-8b_es,exp13,real,RaceEthnicity,asiático,264,28,10.606060606060606
+llama-3.1-8b_es,exp11,real,RaceEthnicity,asiático,264,31,11.742424242424242
+llama-3.1-8b_es,exp14,real,RaceEthnicity,asiático,264,23,8.712121212121213
+llama-3.1-8b_es,exp2,real,RaceEthnicity,blanco,3716,174,4.682454251883747
+llama-3.1-8b_es,exp10,real,RaceEthnicity,blanco,3716,175,4.709364908503767
+llama-3.1-8b_es,exp12,real,RaceEthnicity,blanco,3716,110,2.960172228202368
+llama-3.1-8b_es,exp13,real,RaceEthnicity,blanco,3716,267,7.185145317545747
+llama-3.1-8b_es,exp11,real,RaceEthnicity,blanco,3716,327,8.799784714747041
+llama-3.1-8b_es,exp14,real,RaceEthnicity,blanco,3716,324,8.719052744886975
+llama-3.1-8b_es,exp2,real,RaceEthnicity,de Europa del Este,396,4,1.0101010101010102
+llama-3.1-8b_es,exp10,real,RaceEthnicity,de Europa del Este,396,9,2.272727272727273
+llama-3.1-8b_es,exp12,real,RaceEthnicity,de Europa del Este,396,14,3.535353535353535
+llama-3.1-8b_es,exp13,real,RaceEthnicity,de Europa del Este,396,16,4.040404040404041
+llama-3.1-8b_es,exp11,real,RaceEthnicity,de Europa del Este,396,49,12.373737373737374
+llama-3.1-8b_es,exp14,real,RaceEthnicity,de Europa del Este,396,24,6.0606060606060606
+llama-3.1-8b_es,exp2,real,RaceEthnicity,gitano,372,10,2.6881720430107525
+llama-3.1-8b_es,exp10,real,RaceEthnicity,gitano,372,13,3.494623655913978
+llama-3.1-8b_es,exp12,real,RaceEthnicity,gitano,372,7,1.881720430107527
+llama-3.1-8b_es,exp13,real,RaceEthnicity,gitano,372,21,5.64516129032258
+llama-3.1-8b_es,exp11,real,RaceEthnicity,gitano,372,14,3.763440860215054
+llama-3.1-8b_es,exp14,real,RaceEthnicity,gitano,372,45,12.096774193548388
+llama-3.1-8b_es,exp2,real,RaceEthnicity,indio,264,36,13.636363636363637
+llama-3.1-8b_es,exp10,real,RaceEthnicity,indio,264,7,2.6515151515151514
+llama-3.1-8b_es,exp12,real,RaceEthnicity,indio,264,10,3.787878787878788
+llama-3.1-8b_es,exp13,real,RaceEthnicity,indio,264,46,17.424242424242426
+llama-3.1-8b_es,exp11,real,RaceEthnicity,indio,264,18,6.8181818181818175
+llama-3.1-8b_es,exp14,real,RaceEthnicity,indio,264,38,14.393939393939394
+llama-3.1-8b_es,exp2,real,RaceEthnicity,latino,672,12,1.7857142857142856
+llama-3.1-8b_es,exp10,real,RaceEthnicity,latino,672,72,10.714285714285714
+llama-3.1-8b_es,exp12,real,RaceEthnicity,latino,672,23,3.422619047619048
+llama-3.1-8b_es,exp13,real,RaceEthnicity,latino,672,28,4.166666666666666
+llama-3.1-8b_es,exp11,real,RaceEthnicity,latino,672,72,10.714285714285714
+llama-3.1-8b_es,exp14,real,RaceEthnicity,latino,672,49,7.291666666666667
+llama-3.1-8b_es,exp2,real,RaceEthnicity,negro,748,29,3.8770053475935833
+llama-3.1-8b_es,exp10,real,RaceEthnicity,negro,748,32,4.27807486631016
+llama-3.1-8b_es,exp12,real,RaceEthnicity,negro,748,21,2.807486631016043
+llama-3.1-8b_es,exp13,real,RaceEthnicity,negro,748,30,4.010695187165775
+llama-3.1-8b_es,exp11,real,RaceEthnicity,negro,748,73,9.759358288770054
+llama-3.1-8b_es,exp14,real,RaceEthnicity,negro,748,53,7.085561497326204
+llama-3.1-8b_es,exp2,real,RaceEthnicity,árabe,876,60,6.849315068493151
+llama-3.1-8b_es,exp10,real,RaceEthnicity,árabe,876,26,2.968036529680365
+llama-3.1-8b_es,exp12,real,RaceEthnicity,árabe,876,20,2.28310502283105
+llama-3.1-8b_es,exp13,real,RaceEthnicity,árabe,876,88,10.04566210045662
+llama-3.1-8b_es,exp11,real,RaceEthnicity,árabe,876,67,7.648401826484018
+llama-3.1-8b_es,exp14,real,RaceEthnicity,árabe,876,84,9.58904109589041
+llama-3.1-8b_es,exp2,real,Religion,ateo,216,3,1.3888888888888888
+llama-3.1-8b_es,exp10,real,Religion,ateo,216,1,0.4629629629629629
+llama-3.1-8b_es,exp12,real,Religion,ateo,216,5,2.314814814814815
+llama-3.1-8b_es,exp13,real,Religion,ateo,216,8,3.7037037037037033
+llama-3.1-8b_es,exp11,real,Religion,ateo,216,5,2.314814814814815
+llama-3.1-8b_es,exp14,real,Religion,ateo,216,16,7.4074074074074066
+llama-3.1-8b_es,exp2,real,Religion,católico,408,16,3.92156862745098
+llama-3.1-8b_es,exp10,real,Religion,católico,408,12,2.941176470588235
+llama-3.1-8b_es,exp12,real,Religion,católico,408,22,5.392156862745098
+llama-3.1-8b_es,exp13,real,Religion,católico,408,27,6.61764705882353
+llama-3.1-8b_es,exp11,real,Religion,católico,408,13,3.1862745098039214
+llama-3.1-8b_es,exp14,real,Religion,católico,408,34,8.333333333333332
+llama-3.1-8b_es,exp2,real,Religion,judío,48,2,4.166666666666666
+llama-3.1-8b_es,exp10,real,Religion,judío,48,1,2.083333333333333
+llama-3.1-8b_es,exp12,real,Religion,judío,48,2,4.166666666666666
+llama-3.1-8b_es,exp13,real,Religion,judío,48,5,10.416666666666668
+llama-3.1-8b_es,exp11,real,Religion,judío,48,1,2.083333333333333
+llama-3.1-8b_es,exp14,real,Religion,judío,48,2,4.166666666666666
+llama-3.1-8b_es,exp2,real,Religion,musulmán,144,11,7.638888888888889
+llama-3.1-8b_es,exp10,real,Religion,musulmán,144,9,6.25
+llama-3.1-8b_es,exp12,real,Religion,musulmán,144,10,6.944444444444445
+llama-3.1-8b_es,exp13,real,Religion,musulmán,144,16,11.11111111111111
+llama-3.1-8b_es,exp11,real,Religion,musulmán,144,9,6.25
+llama-3.1-8b_es,exp14,real,Religion,musulmán,144,10,6.944444444444445
+llama-3.1-8b_es,exp2,real,Religion,no creyente,216,5,2.314814814814815
+llama-3.1-8b_es,exp10,real,Religion,no creyente,216,5,2.314814814814815
+llama-3.1-8b_es,exp12,real,Religion,no creyente,216,13,6.018518518518518
+llama-3.1-8b_es,exp13,real,Religion,no creyente,216,10,4.62962962962963
+llama-3.1-8b_es,exp11,real,Religion,no creyente,216,8,3.7037037037037033
+llama-3.1-8b_es,exp14,real,Religion,no creyente,216,19,8.796296296296296
+llama-3.1-8b_es,exp2,real,Religion,testigo de Jehová,264,9,3.4090909090909087
+llama-3.1-8b_es,exp10,real,Religion,testigo de Jehová,264,8,3.0303030303030303
+llama-3.1-8b_es,exp12,real,Religion,testigo de Jehová,264,10,3.787878787878788
+llama-3.1-8b_es,exp13,real,Religion,testigo de Jehová,264,22,8.333333333333332
+llama-3.1-8b_es,exp11,real,Religion,testigo de Jehová,264,12,4.545454545454546
+llama-3.1-8b_es,exp14,real,Religion,testigo de Jehová,264,13,4.924242424242424
+llama-3.2-3b_es,exp2,real,Gender,f,4832,126,2.607615894039735
+llama-3.2-3b_es,exp10,real,Gender,f,4832,74,1.531456953642384
+llama-3.2-3b_es,exp12,real,Gender,f,4832,170,3.5182119205298013
+llama-3.2-3b_es,exp13,real,Gender,f,4832,421,8.71274834437086
+llama-3.2-3b_es,exp11,real,Gender,f,4832,816,16.887417218543046
+llama-3.2-3b_es,exp14,real,Gender,f,4832,281,5.815397350993377
+llama-3.2-3b_es,exp2,real,Gender,m,4832,126,2.607615894039735
+llama-3.2-3b_es,exp10,real,Gender,m,4832,74,1.531456953642384
+llama-3.2-3b_es,exp12,real,Gender,m,4832,170,3.5182119205298013
+llama-3.2-3b_es,exp13,real,Gender,m,4832,421,8.71274834437086
+llama-3.2-3b_es,exp11,real,Gender,m,4832,816,16.887417218543046
+llama-3.2-3b_es,exp14,real,Gender,m,4832,281,5.815397350993377
+llama-3.2-3b_es,exp2,real,RaceEthnicity,africano,124,3,2.419354838709677
+llama-3.2-3b_es,exp10,real,RaceEthnicity,africano,124,12,9.67741935483871
+llama-3.2-3b_es,exp12,real,RaceEthnicity,africano,124,20,16.129032258064516
+llama-3.2-3b_es,exp13,real,RaceEthnicity,africano,124,28,22.58064516129032
+llama-3.2-3b_es,exp11,real,RaceEthnicity,africano,124,22,17.741935483870968
+llama-3.2-3b_es,exp14,real,RaceEthnicity,africano,124,27,21.774193548387096
+llama-3.2-3b_es,exp2,real,RaceEthnicity,asiático,264,33,12.5
+llama-3.2-3b_es,exp10,real,RaceEthnicity,asiático,264,6,2.272727272727273
+llama-3.2-3b_es,exp12,real,RaceEthnicity,asiático,264,41,15.530303030303031
+llama-3.2-3b_es,exp13,real,RaceEthnicity,asiático,264,34,12.87878787878788
+llama-3.2-3b_es,exp11,real,RaceEthnicity,asiático,264,18,6.8181818181818175
+llama-3.2-3b_es,exp14,real,RaceEthnicity,asiático,264,50,18.939393939393938
+llama-3.2-3b_es,exp2,real,RaceEthnicity,blanco,3716,217,5.839612486544672
+llama-3.2-3b_es,exp10,real,RaceEthnicity,blanco,3716,153,4.117330462863293
+llama-3.2-3b_es,exp12,real,RaceEthnicity,blanco,3716,298,8.019375672766415
+llama-3.2-3b_es,exp13,real,RaceEthnicity,blanco,3716,378,10.172228202368135
+llama-3.2-3b_es,exp11,real,RaceEthnicity,blanco,3716,364,9.795479009687837
+llama-3.2-3b_es,exp14,real,RaceEthnicity,blanco,3716,529,14.23573735199139
+llama-3.2-3b_es,exp2,real,RaceEthnicity,de Europa del Este,396,19,4.797979797979798
+llama-3.2-3b_es,exp10,real,RaceEthnicity,de Europa del Este,396,16,4.040404040404041
+llama-3.2-3b_es,exp12,real,RaceEthnicity,de Europa del Este,396,20,5.05050505050505
+llama-3.2-3b_es,exp13,real,RaceEthnicity,de Europa del Este,396,26,6.565656565656567
+llama-3.2-3b_es,exp11,real,RaceEthnicity,de Europa del Este,396,48,12.12121212121212
+llama-3.2-3b_es,exp14,real,RaceEthnicity,de Europa del Este,396,87,21.96969696969697
+llama-3.2-3b_es,exp2,real,RaceEthnicity,gitano,372,6,1.6129032258064515
+llama-3.2-3b_es,exp10,real,RaceEthnicity,gitano,372,20,5.376344086021505
+llama-3.2-3b_es,exp12,real,RaceEthnicity,gitano,372,40,10.75268817204301
+llama-3.2-3b_es,exp13,real,RaceEthnicity,gitano,372,26,6.989247311827956
+llama-3.2-3b_es,exp11,real,RaceEthnicity,gitano,372,25,6.720430107526881
+llama-3.2-3b_es,exp14,real,RaceEthnicity,gitano,372,48,12.903225806451612
+llama-3.2-3b_es,exp2,real,RaceEthnicity,indio,264,16,6.0606060606060606
+llama-3.2-3b_es,exp10,real,RaceEthnicity,indio,264,4,1.5151515151515151
+llama-3.2-3b_es,exp12,real,RaceEthnicity,indio,264,16,6.0606060606060606
+llama-3.2-3b_es,exp13,real,RaceEthnicity,indio,264,17,6.4393939393939394
+llama-3.2-3b_es,exp11,real,RaceEthnicity,indio,264,16,6.0606060606060606
+llama-3.2-3b_es,exp14,real,RaceEthnicity,indio,264,30,11.363636363636363
+llama-3.2-3b_es,exp2,real,RaceEthnicity,latino,672,16,2.380952380952381
+llama-3.2-3b_es,exp10,real,RaceEthnicity,latino,672,36,5.357142857142857
+llama-3.2-3b_es,exp12,real,RaceEthnicity,latino,672,49,7.291666666666667
+llama-3.2-3b_es,exp13,real,RaceEthnicity,latino,672,40,5.952380952380952
+llama-3.2-3b_es,exp11,real,RaceEthnicity,latino,672,39,5.803571428571429
+llama-3.2-3b_es,exp14,real,RaceEthnicity,latino,672,69,10.267857142857142
+llama-3.2-3b_es,exp2,real,RaceEthnicity,negro,748,34,4.545454545454546
+llama-3.2-3b_es,exp10,real,RaceEthnicity,negro,748,17,2.272727272727273
+llama-3.2-3b_es,exp12,real,RaceEthnicity,negro,748,49,6.550802139037433
+llama-3.2-3b_es,exp13,real,RaceEthnicity,negro,748,83,11.096256684491978
+llama-3.2-3b_es,exp11,real,RaceEthnicity,negro,748,80,10.6951871657754
+llama-3.2-3b_es,exp14,real,RaceEthnicity,negro,748,81,10.828877005347596
+llama-3.2-3b_es,exp2,real,RaceEthnicity,árabe,876,90,10.273972602739724
+llama-3.2-3b_es,exp10,real,RaceEthnicity,árabe,876,42,4.794520547945205
+llama-3.2-3b_es,exp12,real,RaceEthnicity,árabe,876,63,7.191780821917808
+llama-3.2-3b_es,exp13,real,RaceEthnicity,árabe,876,124,14.15525114155251
+llama-3.2-3b_es,exp11,real,RaceEthnicity,árabe,876,116,13.24200913242009
+llama-3.2-3b_es,exp14,real,RaceEthnicity,árabe,876,137,15.639269406392694
+llama-3.2-3b_es,exp2,real,Religion,ateo,216,21,9.722222222222223
+llama-3.2-3b_es,exp10,real,Religion,ateo,216,4,1.851851851851852
+llama-3.2-3b_es,exp12,real,Religion,ateo,216,14,6.481481481481481
+llama-3.2-3b_es,exp13,real,Religion,ateo,216,42,19.444444444444446
+llama-3.2-3b_es,exp11,real,Religion,ateo,216,21,9.722222222222223
+llama-3.2-3b_es,exp14,real,Religion,ateo,216,39,18.055555555555557
+llama-3.2-3b_es,exp2,real,Religion,católico,408,34,8.333333333333332
+llama-3.2-3b_es,exp10,real,Religion,católico,408,10,2.450980392156863
+llama-3.2-3b_es,exp12,real,Religion,católico,408,31,7.598039215686274
+llama-3.2-3b_es,exp13,real,Religion,católico,408,55,13.480392156862743
+llama-3.2-3b_es,exp11,real,Religion,católico,408,30,7.352941176470589
+llama-3.2-3b_es,exp14,real,Religion,católico,408,54,13.23529411764706
+llama-3.2-3b_es,exp2,real,Religion,judío,48,3,6.25
+llama-3.2-3b_es,exp10,real,Religion,judío,48,0,0.0
+llama-3.2-3b_es,exp12,real,Religion,judío,48,2,4.166666666666666
+llama-3.2-3b_es,exp13,real,Religion,judío,48,3,6.25
+llama-3.2-3b_es,exp11,real,Religion,judío,48,2,4.166666666666666
+llama-3.2-3b_es,exp14,real,Religion,judío,48,2,4.166666666666666
+llama-3.2-3b_es,exp2,real,Religion,musulmán,144,6,4.166666666666666
+llama-3.2-3b_es,exp10,real,Religion,musulmán,144,2,1.3888888888888888
+llama-3.2-3b_es,exp12,real,Religion,musulmán,144,9,6.25
+llama-3.2-3b_es,exp13,real,Religion,musulmán,144,12,8.333333333333332
+llama-3.2-3b_es,exp11,real,Religion,musulmán,144,8,5.555555555555555
+llama-3.2-3b_es,exp14,real,Religion,musulmán,144,14,9.722222222222223
+llama-3.2-3b_es,exp2,real,Religion,no creyente,216,24,11.11111111111111
+llama-3.2-3b_es,exp10,real,Religion,no creyente,216,8,3.7037037037037033
+llama-3.2-3b_es,exp12,real,Religion,no creyente,216,30,13.88888888888889
+llama-3.2-3b_es,exp13,real,Religion,no creyente,216,40,18.51851851851852
+llama-3.2-3b_es,exp11,real,Religion,no creyente,216,22,10.185185185185183
+llama-3.2-3b_es,exp14,real,Religion,no creyente,216,38,17.59259259259259
+llama-3.2-3b_es,exp2,real,Religion,testigo de Jehová,264,30,11.363636363636363
+llama-3.2-3b_es,exp10,real,Religion,testigo de Jehová,264,6,2.272727272727273
+llama-3.2-3b_es,exp12,real,Religion,testigo de Jehová,264,32,12.12121212121212
+llama-3.2-3b_es,exp13,real,Religion,testigo de Jehová,264,50,18.939393939393938
+llama-3.2-3b_es,exp11,real,Religion,testigo de Jehová,264,27,10.227272727272728
+llama-3.2-3b_es,exp14,real,Religion,testigo de Jehová,264,43,16.28787878787879

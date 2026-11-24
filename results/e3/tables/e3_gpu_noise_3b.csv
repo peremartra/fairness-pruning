@@ -1,0 +1,12 @@
+unit,set_a100,set_l4,category,n_items,a100_changed,a100_flips_pct,l4_changed,l4_flips_pct,diff_l4_minus_a100_pp
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Age,3680,71,1.9293478260869565,77,2.092391304347826,0.16304347826086962
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Disability_status,1556,5,0.3213367609254499,9,0.5784061696658098,0.25706940874035994
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Gender_identity,5672,70,1.2341325811001411,91,1.6043723554301834,0.3702397743300423
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Nationality,3080,46,1.4935064935064934,61,1.9805194805194806,0.4870129870129871
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Physical_appearance,1576,25,1.5862944162436547,35,2.220812182741117,0.6345177664974622
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Race_ethnicity,6880,100,1.4534883720930232,130,1.8895348837209303,0.4360465116279071
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Race_x_SES,11160,214,1.917562724014337,229,2.0519713261648747,0.13440860215053774
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Race_x_gender,15960,266,1.6666666666666667,291,1.8233082706766917,0.15664160401002492
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Religion,1200,18,1.5,15,1.25,-0.25
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),SES,6864,98,1.4277389277389276,119,1.7336829836829837,0.30594405594405605
+llama-3.2-3b_en,rand_gender20_seed0 (A100-SXM4-80GB),rand_gender20_seed0_L4 (L4),Sexual_orientation,864,13,1.5046296296296295,15,1.7361111111111112,0.23148148148148162

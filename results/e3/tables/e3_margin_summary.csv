@@ -1,0 +1,239 @@
+unit,set,kind,category,n_changed,median_margin_changed,median_margin_unchanged
+llama-3.1-8b_en,real_gender20,real,Gender_identity,1361.0,0.4375,1.185546875
+llama-3.1-8b_en,real_gender20,real,Race_ethnicity,684.0,0.25,1.111328125
+llama-3.1-8b_en,real_gender20,real,Religion,50.0,0.15625,1.48046875
+llama-3.1-8b_en,real_gender20,real,ALL,5291.0,0.25,1.25
+llama-3.1-8b_en,real_race20,real,Gender_identity,208.0,0.0625,0.9453125
+llama-3.1-8b_en,real_race20,real,Race_ethnicity,519.0,0.171875,1.09375
+llama-3.1-8b_en,real_race20,real,Religion,126.0,0.375,1.5625
+llama-3.1-8b_en,real_race20,real,ALL,3399.0,0.140625,1.21875
+llama-3.1-8b_en,real_religion20,real,Gender_identity,178.0,0.0625,0.94140625
+llama-3.1-8b_en,real_religion20,real,Race_ethnicity,607.0,0.203125,1.109375
+llama-3.1-8b_en,real_religion20,real,Religion,120.0,0.3671875,1.5625
+llama-3.1-8b_en,real_religion20,real,ALL,4027.0,0.171875,1.234375
+llama-3.1-8b_en,real_gender5,real,Gender_identity,1323.0,0.4375,1.1796875
+llama-3.1-8b_en,real_gender5,real,Race_ethnicity,638.0,0.248046875,1.1015625
+llama-3.1-8b_en,real_gender5,real,Religion,17.0,0.03125,1.4375
+llama-3.1-8b_en,real_gender5,real,ALL,4598.0,0.25,1.25
+llama-3.1-8b_en,real_race5,real,Gender_identity,105.0,0.0625,0.9375
+llama-3.1-8b_en,real_race5,real,Race_ethnicity,415.0,0.15625,1.078125
+llama-3.1-8b_en,real_race5,real,Religion,122.0,0.3671875,1.5625
+llama-3.1-8b_en,real_race5,real,ALL,2375.0,0.125,1.1875
+llama-3.1-8b_en,real_religion5,real,Gender_identity,105.0,0.0625,0.9375
+llama-3.1-8b_en,real_religion5,real,Race_ethnicity,426.0,0.15625,1.078125
+llama-3.1-8b_en,real_religion5,real,Religion,118.0,0.3203125,1.5625
+llama-3.1-8b_en,real_religion5,real,ALL,2487.0,0.125,1.1875
+llama-3.1-8b_en,abl_race4,ablation,Gender_identity,89.0,0.0625,0.9375
+llama-3.1-8b_en,abl_race4,ablation,Race_ethnicity,155.0,0.046875,1.0234375
+llama-3.1-8b_en,abl_race4,ablation,Religion,19.0,0.0625,1.4375
+llama-3.1-8b_en,abl_race4,ablation,ALL,1148.0,0.0625,1.1484375
+llama-3.1-8b_en,abl_religion4,ablation,Gender_identity,81.0,0.0625,0.9375
+llama-3.1-8b_en,abl_religion4,ablation,Race_ethnicity,175.0,0.0625,1.03125
+llama-3.1-8b_en,abl_religion4,ablation,Religion,74.0,0.1875,1.5
+llama-3.1-8b_en,abl_religion4,ablation,ALL,1434.0,0.0625,1.15625
+llama-3.1-8b_en,abl_shared1,ablation,Gender_identity,60.0,0.05078125,0.93359375
+llama-3.1-8b_en,abl_shared1,ablation,Race_ethnicity,402.0,0.16796875,1.078125
+llama-3.1-8b_en,abl_shared1,ablation,Religion,116.0,0.34375,1.5625
+llama-3.1-8b_en,abl_shared1,ablation,ALL,2051.0,0.125,1.1796875
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,ALL,694.2,0.0375,1.1328125
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,Gender_identity,53.0,0.0265625,0.93203125
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,Race_ethnicity,94.8,0.034765625,1.009375
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,Religion,15.0,0.05,1.4296875
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,ALL,840.6,0.05078125,1.1376953125
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,Gender_identity,66.3,0.0515625,0.93359375
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,Race_ethnicity,108.4,0.040625,1.0103515625
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,Religion,16.4,0.06015625,1.426953125
+salamandra-7b_en,real_gender20,real,Gender_identity,928.0,0.375,1.7421875
+salamandra-7b_en,real_gender20,real,Race_ethnicity,428.0,0.203125,1.638671875
+salamandra-7b_en,real_gender20,real,Religion,50.0,0.17578125,1.375
+salamandra-7b_en,real_gender20,real,ALL,3860.0,0.25,1.75
+salamandra-7b_en,real_race20,real,Gender_identity,244.0,0.125,1.3828125
+salamandra-7b_en,real_race20,real,Race_ethnicity,519.0,0.25,1.67578125
+salamandra-7b_en,real_race20,real,Religion,56.0,0.17578125,1.38671875
+salamandra-7b_en,real_race20,real,ALL,3131.0,0.1875,1.71875
+salamandra-7b_en,real_religion20,real,Gender_identity,233.0,0.125,1.3828125
+salamandra-7b_en,real_religion20,real,Race_ethnicity,615.0,0.3125,1.703125
+salamandra-7b_en,real_religion20,real,Religion,163.0,0.5,1.53125
+salamandra-7b_en,real_religion20,real,ALL,3866.0,0.25,1.74609375
+salamandra-7b_en,real_gender5,real,Gender_identity,913.0,0.375,1.671875
+salamandra-7b_en,real_gender5,real,Race_ethnicity,268.0,0.255859375,1.59375
+salamandra-7b_en,real_gender5,real,Religion,16.0,0.078125,1.3125
+salamandra-7b_en,real_gender5,real,ALL,2953.0,0.25,1.703125
+salamandra-7b_en,real_race5,real,Gender_identity,216.0,0.125,1.37890625
+salamandra-7b_en,real_race5,real,Race_ethnicity,351.0,0.15625,1.6171875
+salamandra-7b_en,real_race5,real,Religion,30.0,0.0859375,1.33203125
+salamandra-7b_en,real_race5,real,ALL,2255.0,0.1328125,1.671875
+salamandra-7b_en,real_religion5,real,Gender_identity,128.0,0.107421875,1.375
+salamandra-7b_en,real_religion5,real,Race_ethnicity,415.0,0.25,1.6328125
+salamandra-7b_en,real_religion5,real,Religion,113.0,0.484375,1.46875
+salamandra-7b_en,real_religion5,real,ALL,2471.0,0.1875,1.6875
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,ALL,641.8,0.059375,1.61953125
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,Gender_identity,52.8,0.03203125,1.375
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,Race_ethnicity,72.4,0.04375,1.519140625
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,Religion,16.2,0.0671875,1.3125
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,ALL,693.0,0.0640625,1.62109375
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,Gender_identity,56.4,0.028125,1.375
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,Race_ethnicity,80.6,0.05078125,1.5216796875
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,Religion,14.8,0.05625,1.3125
+qwen3-4b-base_en,real_gender20,real,Gender_identity,397.0,0.25,2.12890625
+qwen3-4b-base_en,real_gender20,real,Race_ethnicity,408.0,0.3359375,2.875
+qwen3-4b-base_en,real_gender20,real,Religion,72.0,0.2890625,2.6875
+qwen3-4b-base_en,real_gender20,real,ALL,4353.0,0.34375,2.7421875
+qwen3-4b-base_en,real_race20,real,Gender_identity,331.0,0.25,2.123046875
+qwen3-4b-base_en,real_race20,real,Race_ethnicity,371.0,0.3125,2.859375
+qwen3-4b-base_en,real_race20,real,Religion,79.0,0.28125,2.6875
+qwen3-4b-base_en,real_race20,real,ALL,3695.0,0.28125,2.671875
+qwen3-4b-base_en,real_religion20,real,Gender_identity,384.0,0.25,2.126953125
+qwen3-4b-base_en,real_religion20,real,Race_ethnicity,448.0,0.3671875,2.8935546875
+qwen3-4b-base_en,real_religion20,real,Religion,79.0,0.3515625,2.6875
+qwen3-4b-base_en,real_religion20,real,ALL,4746.0,0.375,2.75
+qwen3-4b-base_en,real_gender5,real,Gender_identity,245.0,0.125,2.0859375
+qwen3-4b-base_en,real_gender5,real,Race_ethnicity,361.0,0.28125,2.859375
+qwen3-4b-base_en,real_gender5,real,Religion,64.0,0.2265625,2.65625
+qwen3-4b-base_en,real_gender5,real,ALL,3132.0,0.25,2.62890625
+qwen3-4b-base_en,real_race5,real,Gender_identity,144.0,0.125,1.99951171875
+qwen3-4b-base_en,real_race5,real,Race_ethnicity,199.0,0.14453125,2.7578125
+qwen3-4b-base_en,real_race5,real,Religion,34.0,0.1640625,2.59375
+qwen3-4b-base_en,real_race5,real,ALL,2123.0,0.15625,2.5625
+qwen3-4b-base_en,real_religion5,real,Gender_identity,238.0,0.125,2.07421875
+qwen3-4b-base_en,real_religion5,real,Race_ethnicity,258.0,0.185546875,2.7958984375
+qwen3-4b-base_en,real_religion5,real,Religion,49.0,0.125,2.625
+qwen3-4b-base_en,real_religion5,real,ALL,2560.0,0.1875,2.609375
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,ALL,510.4,0.06484375,2.475
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,Gender_identity,43.2,0.121875,1.9044921875
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,Race_ethnicity,50.8,0.0578125,2.67001953125
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,Religion,15.4,0.021875,2.5625
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,ALL,380.4,0.065625,2.45263671875
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,Gender_identity,26.0,0.125,1.88125
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,Race_ethnicity,35.4,0.112109375,2.66015625
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,Religion,11.2,0.03046875,2.55
+llama-3.2-3b_en,real_gender20,real,Gender_identity,504.0,0.125,0.875
+llama-3.2-3b_en,real_gender20,real,Race_ethnicity,282.0,0.109375,0.96875
+llama-3.2-3b_en,real_gender20,real,Religion,26.0,0.09375,1.25
+llama-3.2-3b_en,real_gender20,real,ALL,2912.0,0.125,1.046875
+llama-3.2-3b_en,real_race20,real,Gender_identity,440.0,0.125,0.875
+llama-3.2-3b_en,real_race20,real,Race_ethnicity,857.0,0.25390625,1.078125
+llama-3.2-3b_en,real_race20,real,Religion,89.0,0.2421875,1.34375
+llama-3.2-3b_en,real_race20,real,ALL,5857.0,0.24609375,1.125
+llama-3.2-3b_en,real_religion20,real,Gender_identity,538.0,0.125,0.875
+llama-3.2-3b_en,real_religion20,real,Race_ethnicity,740.0,0.2265625,1.060546875
+llama-3.2-3b_en,real_religion20,real,Religion,133.0,0.3125,1.375
+llama-3.2-3b_en,real_religion20,real,ALL,6261.0,0.25,1.125
+llama-3.2-3b_en,real_gender5,real,Gender_identity,75.0,0.12109375,0.75390625
+llama-3.2-3b_en,real_gender5,real,Race_ethnicity,96.0,0.046875,0.9375
+llama-3.2-3b_en,real_gender5,real,Religion,13.0,0.03125,1.234375
+llama-3.2-3b_en,real_gender5,real,ALL,887.0,0.0625,1.0
+llama-3.2-3b_en,real_race5,real,Gender_identity,169.0,0.125,0.8203125
+llama-3.2-3b_en,real_race5,real,Race_ethnicity,329.0,0.09375,0.984375
+llama-3.2-3b_en,real_race5,real,Religion,73.0,0.21875,1.3203125
+llama-3.2-3b_en,real_race5,real,ALL,2417.0,0.1171875,1.03125
+llama-3.2-3b_en,real_religion5,real,Gender_identity,545.0,0.125,0.875
+llama-3.2-3b_en,real_religion5,real,Race_ethnicity,633.0,0.203125,1.0390625
+llama-3.2-3b_en,real_religion5,real,Religion,64.0,0.1796875,1.3125
+llama-3.2-3b_en,real_religion5,real,ALL,5075.0,0.1875,1.109375
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,ALL,994.6,0.0609375,1.0
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,Gender_identity,82.6,0.07890625,0.75390625
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,Race_ethnicity,123.4,0.05,0.93984375
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,Religion,16.4,0.05,1.240625
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,ALL,986.5,0.0609375,1.0
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,Gender_identity,87.6,0.0857421875,0.75546875
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,Race_ethnicity,120.3,0.0505859375,0.939453125
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,Religion,15.5,0.03671875,1.2390625
+salamandra-7b_es,exp1,real,Age,108.0,0.03515625,0.9375
+salamandra-7b_es,exp1,real,Gender,84.0,0.0703125,1.0625
+salamandra-7b_es,exp1,real,RaceEthnicity,44.0,0.05078125,1.265625
+salamandra-7b_es,exp1,real,Religion,9.0,0.109375,1.015625
+salamandra-7b_es,exp1,real,ALL,460.0,0.0625,1.125
+salamandra-7b_es,exp2,real,Age,192.0,0.09375,0.96875
+salamandra-7b_es,exp2,real,Gender,85.0,0.125,1.0625
+salamandra-7b_es,exp2,real,RaceEthnicity,99.0,0.03125,1.3125
+salamandra-7b_es,exp2,real,Religion,22.0,0.125,1.0625
+salamandra-7b_es,exp2,real,ALL,775.0,0.09375,1.125
+salamandra-7b_es,exp5,real,Age,307.0,0.15625,0.99609375
+salamandra-7b_es,exp5,real,Gender,216.0,0.125,1.125
+salamandra-7b_es,exp5,real,RaceEthnicity,518.0,0.265625,1.515625
+salamandra-7b_es,exp5,real,Religion,78.0,0.25,1.125
+salamandra-7b_es,exp5,real,ALL,1857.0,0.15625,1.1875
+salamandra-7b_es,exp7,real,Age,207.0,0.0625,0.96875
+salamandra-7b_es,exp7,real,Gender,80.0,0.078125,1.0625
+salamandra-7b_es,exp7,real,RaceEthnicity,90.0,0.0625,1.3125
+salamandra-7b_es,exp7,real,Religion,38.0,0.125,1.109375
+salamandra-7b_es,exp7,real,ALL,862.0,0.09375,1.125
+salamandra-7b_es,exp8,real,Age,212.0,0.09375,0.96875
+salamandra-7b_es,exp8,real,Gender,121.0,0.125,1.078125
+salamandra-7b_es,exp8,real,RaceEthnicity,85.0,0.09375,1.3046875
+salamandra-7b_es,exp8,real,Religion,63.0,0.21875,1.125
+salamandra-7b_es,exp8,real,ALL,1071.0,0.125,1.1328125
+salamandra-7b_es,exp9,real,Age,214.0,0.109375,0.96875
+salamandra-7b_es,exp9,real,Gender,191.0,0.125,1.12109375
+salamandra-7b_es,exp9,real,RaceEthnicity,218.0,0.1328125,1.375
+salamandra-7b_es,exp9,real,Religion,66.0,0.25,1.13671875
+salamandra-7b_es,exp9,real,ALL,1527.0,0.125,1.1640625
+salamandra-7b_es,exp10,real,Age,351.0,0.21875,1.0
+salamandra-7b_es,exp10,real,Gender,983.0,0.375,1.375
+salamandra-7b_es,exp10,real,RaceEthnicity,210.0,0.2421875,1.375
+salamandra-7b_es,exp10,real,Religion,31.0,0.125,1.09375
+salamandra-7b_es,exp10,real,ALL,2048.0,0.25,1.2109375
+salamandra-7b_es,exp11,real,Age,409.0,0.21875,1.0
+salamandra-7b_es,exp11,real,Gender,947.0,0.375,1.37109375
+salamandra-7b_es,exp11,real,RaceEthnicity,220.0,0.21484375,1.375
+salamandra-7b_es,exp11,real,Religion,58.0,0.203125,1.125
+salamandra-7b_es,exp11,real,ALL,2334.0,0.25,1.234375
+salamandra-7b_es,exp12,real,Age,108.0,0.03515625,0.9375
+salamandra-7b_es,exp12,real,Gender,51.0,0.03125,1.0390625
+salamandra-7b_es,exp12,real,RaceEthnicity,69.0,0.0234375,1.28125
+salamandra-7b_es,exp12,real,Religion,17.0,0.078125,1.0390625
+salamandra-7b_es,exp12,real,ALL,484.0,0.0625,1.125
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,ALL,226.0,0.04375,1.11796875
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,Age,65.2,0.015625,0.91015625
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,Gender,30.0,0.046875,1.01875
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,RaceEthnicity,24.0,0.06171875,1.259375
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,Religion,2.8,0.0890625,1.0
+llama-3.1-8b_es,exp2,real,Gender,100.0,0.0,0.8740234375
+llama-3.1-8b_es,exp2,real,RaceEthnicity,174.0,0.125,0.9453125
+llama-3.1-8b_es,exp2,real,Religion,23.0,0.078125,1.0625
+llama-3.1-8b_es,exp2,real,ALL,732.0,0.0625,1.0
+llama-3.1-8b_es,exp10,real,Gender,138.0,0.0625,0.875
+llama-3.1-8b_es,exp10,real,RaceEthnicity,175.0,0.125,0.9375
+llama-3.1-8b_es,exp10,real,Religion,18.0,0.07421875,1.0625
+llama-3.1-8b_es,exp10,real,ALL,914.0,0.09375,1.0
+llama-3.1-8b_es,exp12,real,Gender,230.0,0.12109375,0.875
+llama-3.1-8b_es,exp12,real,RaceEthnicity,110.0,0.076171875,0.921875
+llama-3.1-8b_es,exp12,real,Religion,31.0,0.109375,1.09375
+llama-3.1-8b_es,exp12,real,ALL,895.0,0.078125,1.0
+llama-3.1-8b_es,exp13,real,Gender,220.0,0.125,0.875
+llama-3.1-8b_es,exp13,real,RaceEthnicity,267.0,0.125,0.9921875
+llama-3.1-8b_es,exp13,real,Religion,44.0,0.125,1.109375
+llama-3.1-8b_es,exp13,real,ALL,1368.0,0.125,1.00390625
+llama-3.1-8b_es,exp11,real,Gender,635.0,0.12890625,0.99609375
+llama-3.1-8b_es,exp11,real,RaceEthnicity,327.0,0.1875,1.0
+llama-3.1-8b_es,exp11,real,Religion,24.0,0.07421875,1.0625
+llama-3.1-8b_es,exp11,real,ALL,1876.0,0.125,1.03125
+llama-3.1-8b_es,exp14,real,Gender,267.0,0.125,0.875
+llama-3.1-8b_es,exp14,real,RaceEthnicity,324.0,0.138671875,1.0
+llama-3.1-8b_es,exp14,real,Religion,47.0,0.125,1.109375
+llama-3.1-8b_es,exp14,real,ALL,2419.0,0.15625,1.0625
+llama-3.2-3b_es,exp2,real,Gender,126.0,0.0625,0.875
+llama-3.2-3b_es,exp2,real,RaceEthnicity,217.0,0.125,0.8671875
+llama-3.2-3b_es,exp2,real,Religion,59.0,0.125,1.0
+llama-3.2-3b_es,exp2,real,ALL,1070.0,0.125,1.078125
+llama-3.2-3b_es,exp10,real,Gender,74.0,0.1015625,0.87109375
+llama-3.2-3b_es,exp10,real,RaceEthnicity,153.0,0.1328125,0.85546875
+llama-3.2-3b_es,exp10,real,Religion,15.0,0.03125,0.9375
+llama-3.2-3b_es,exp10,real,ALL,684.0,0.09375,1.0546875
+llama-3.2-3b_es,exp12,real,Gender,170.0,0.125,0.875
+llama-3.2-3b_es,exp12,real,RaceEthnicity,298.0,0.125,0.875
+llama-3.2-3b_es,exp12,real,Religion,59.0,0.140625,1.0
+llama-3.2-3b_es,exp12,real,ALL,2376.0,0.25,1.125
+llama-3.2-3b_es,exp13,real,Gender,421.0,0.1875,0.8828125
+llama-3.2-3b_es,exp13,real,RaceEthnicity,378.0,0.13671875,0.87890625
+llama-3.2-3b_es,exp13,real,Religion,101.0,0.25,1.109375
+llama-3.2-3b_es,exp13,real,ALL,3055.0,0.25,1.15625
+llama-3.2-3b_es,exp11,real,Gender,816.0,0.25,1.0
+llama-3.2-3b_es,exp11,real,RaceEthnicity,364.0,0.2421875,0.875
+llama-3.2-3b_es,exp11,real,Religion,55.0,0.125,1.0
+llama-3.2-3b_es,exp11,real,ALL,2337.0,0.21875,1.125
+llama-3.2-3b_es,exp14,real,Gender,281.0,0.125,0.875
+llama-3.2-3b_es,exp14,real,RaceEthnicity,529.0,0.26171875,0.8984375
+llama-3.2-3b_es,exp14,real,Religion,95.0,0.25,1.09375
+llama-3.2-3b_es,exp14,real,ALL,3307.0,0.3125,1.15625

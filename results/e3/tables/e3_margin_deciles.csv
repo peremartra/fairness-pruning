@@ -1,0 +1,571 @@
+unit,set,kind,decile,margin_min,margin_max,n_items,changed_pct
+llama-3.1-8b_en,real_gender20,real,1,0.0,0.1875,5850,37.282051282051285
+llama-3.1-8b_en,real_gender20,real,2,0.1875,0.375,5849,21.28568986151479
+llama-3.1-8b_en,real_gender20,real,3,0.375,0.609375,5849,12.566250641135236
+llama-3.1-8b_en,real_gender20,real,4,0.609375,0.84375,5849,9.557189263121902
+llama-3.1-8b_en,real_gender20,real,5,0.84375,1.125,5849,5.795862540605231
+llama-3.1-8b_en,real_gender20,real,6,1.125,1.484375,5849,2.8893828004787143
+llama-3.1-8b_en,real_gender20,real,7,1.484375,1.953125,5849,1.0429133185159856
+llama-3.1-8b_en,real_gender20,real,8,1.953125,2.640625,5849,0.034193879295606
+llama-3.1-8b_en,real_gender20,real,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,real_gender20,real,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,real_race20,real,1,0.0,0.1875,5850,33.52136752136752
+llama-3.1-8b_en,real_race20,real,2,0.1875,0.375,5849,14.703368097110618
+llama-3.1-8b_en,real_race20,real,3,0.375,0.609375,5849,5.812959480253035
+llama-3.1-8b_en,real_race20,real,4,0.609375,0.84375,5849,2.444862369635836
+llama-3.1-8b_en,real_race20,real,5,0.84375,1.125,5849,1.162591896050607
+llama-3.1-8b_en,real_race20,real,6,1.125,1.484375,5849,0.427423491195076
+llama-3.1-8b_en,real_race20,real,7,1.484375,1.953125,5849,0.034193879295606
+llama-3.1-8b_en,real_race20,real,8,1.953125,2.640625,5849,0.0
+llama-3.1-8b_en,real_race20,real,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,real_race20,real,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,real_religion20,real,1,0.0,0.1875,5850,36.39316239316239
+llama-3.1-8b_en,real_religion20,real,2,0.1875,0.375,5849,17.473072320054712
+llama-3.1-8b_en,real_religion20,real,3,0.375,0.609375,5849,8.394597367071293
+llama-3.1-8b_en,real_religion20,real,4,0.609375,0.84375,5849,3.6587450846298513
+llama-3.1-8b_en,real_religion20,real,5,0.84375,1.125,5849,1.863566421610532
+llama-3.1-8b_en,real_religion20,real,6,1.125,1.484375,5849,0.9061378013335613
+llama-3.1-8b_en,real_religion20,real,7,1.484375,1.953125,5849,0.1538724568302274
+llama-3.1-8b_en,real_religion20,real,8,1.953125,2.640625,5849,0.0
+llama-3.1-8b_en,real_religion20,real,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,real_religion20,real,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,real_gender5,real,1,0.0,0.1875,5850,32.18803418803419
+llama-3.1-8b_en,real_gender5,real,2,0.1875,0.375,5849,16.823388613438194
+llama-3.1-8b_en,real_gender5,real,3,0.375,0.609375,5849,11.130107710719782
+llama-3.1-8b_en,real_gender5,real,4,0.609375,0.84375,5849,8.719439220379552
+llama-3.1-8b_en,real_gender5,real,5,0.84375,1.125,5849,5.710377842366216
+llama-3.1-8b_en,real_gender5,real,6,1.125,1.484375,5849,3.094546076252351
+llama-3.1-8b_en,real_gender5,real,7,1.484375,1.953125,5849,0.9061378013335613
+llama-3.1-8b_en,real_gender5,real,8,1.953125,2.640625,5849,0.034193879295606
+llama-3.1-8b_en,real_gender5,real,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,real_gender5,real,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,real_race5,real,1,0.0,0.1875,5850,24.752136752136757
+llama-3.1-8b_en,real_race5,real,2,0.1875,0.375,5849,8.804923918618568
+llama-3.1-8b_en,real_race5,real,3,0.375,0.609375,5849,3.983586937938109
+llama-3.1-8b_en,real_race5,real,4,0.609375,0.84375,5849,1.7609847837237136
+llama-3.1-8b_en,real_race5,real,5,0.84375,1.125,5849,0.9232347409813644
+llama-3.1-8b_en,real_race5,real,6,1.125,1.484375,5849,0.3419387929560608
+llama-3.1-8b_en,real_race5,real,7,1.484375,1.953125,5849,0.034193879295606
+llama-3.1-8b_en,real_race5,real,8,1.953125,2.640625,5849,0.0
+llama-3.1-8b_en,real_race5,real,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,real_race5,real,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,real_religion5,real,1,0.0,0.1875,5850,26.64957264957265
+llama-3.1-8b_en,real_religion5,real,2,0.1875,0.375,5849,9.522995383826297
+llama-3.1-8b_en,real_religion5,real,3,0.375,0.609375,5849,3.7271328432210633
+llama-3.1-8b_en,real_religion5,real,4,0.609375,0.84375,5849,1.607112326893486
+llama-3.1-8b_en,real_religion5,real,5,0.84375,1.125,5849,0.803556163446743
+llama-3.1-8b_en,real_religion5,real,6,1.125,1.484375,5849,0.2051632757736365
+llama-3.1-8b_en,real_religion5,real,7,1.484375,1.953125,5849,0.0
+llama-3.1-8b_en,real_religion5,real,8,1.953125,2.640625,5849,0.0
+llama-3.1-8b_en,real_religion5,real,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,real_religion5,real,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,abl_race4,ablation,1,0.0,0.1875,5850,18.683760683760685
+llama-3.1-8b_en,abl_race4,ablation,2,0.1875,0.375,5849,0.8890408616857584
+llama-3.1-8b_en,abl_race4,ablation,3,0.375,0.609375,5849,0.0512908189434091
+llama-3.1-8b_en,abl_race4,ablation,4,0.609375,0.84375,5849,0.0
+llama-3.1-8b_en,abl_race4,ablation,5,0.84375,1.125,5849,0.0
+llama-3.1-8b_en,abl_race4,ablation,6,1.125,1.484375,5849,0.0
+llama-3.1-8b_en,abl_race4,ablation,7,1.484375,1.953125,5849,0.0
+llama-3.1-8b_en,abl_race4,ablation,8,1.953125,2.640625,5849,0.0
+llama-3.1-8b_en,abl_race4,ablation,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,abl_race4,ablation,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,abl_religion4,ablation,1,0.0,0.1875,5850,21.743589743589745
+llama-3.1-8b_en,abl_religion4,ablation,2,0.1875,0.375,5849,2.393571550692426
+llama-3.1-8b_en,abl_religion4,ablation,3,0.375,0.609375,5849,0.3077449136604548
+llama-3.1-8b_en,abl_religion4,ablation,4,0.609375,0.84375,5849,0.0683877585912121
+llama-3.1-8b_en,abl_religion4,ablation,5,0.84375,1.125,5849,0.0
+llama-3.1-8b_en,abl_religion4,ablation,6,1.125,1.484375,5849,0.0
+llama-3.1-8b_en,abl_religion4,ablation,7,1.484375,1.953125,5849,0.0
+llama-3.1-8b_en,abl_religion4,ablation,8,1.953125,2.640625,5849,0.0
+llama-3.1-8b_en,abl_religion4,ablation,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,abl_religion4,ablation,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,abl_shared1,ablation,1,0.0,0.1875,5850,20.99145299145299
+llama-3.1-8b_en,abl_shared1,ablation,2,0.1875,0.375,5849,7.881689177637203
+llama-3.1-8b_en,abl_shared1,ablation,3,0.375,0.609375,5849,3.504872627799624
+llama-3.1-8b_en,abl_shared1,ablation,4,0.609375,0.84375,5849,1.6584031458368953
+llama-3.1-8b_en,abl_shared1,ablation,5,0.84375,1.125,5849,0.803556163446743
+llama-3.1-8b_en,abl_shared1,ablation,6,1.125,1.484375,5849,0.2051632757736365
+llama-3.1-8b_en,abl_shared1,ablation,7,1.484375,1.953125,5849,0.017096939647803
+llama-3.1-8b_en,abl_shared1,ablation,8,1.953125,2.640625,5849,0.0
+llama-3.1-8b_en,abl_shared1,ablation,9,2.640625,3.8046875,5849,0.0
+llama-3.1-8b_en,abl_shared1,ablation,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,1,0.0,0.1875,5850,11.582905982905983
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,2,0.1875,0.375,5849,0.15387245683022735
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,3,0.375,0.609375,5849,0.0444520430842879
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,4,0.609375,0.84375,5849,0.03419387929560608
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,5,0.84375,1.125,5849,0.02051632757736364
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,6,1.125,1.484375,5849,0.01709693964780304
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,7,1.484375,1.953125,5849,0.0034193879295606002
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,8,1.953125,2.640625,5849,0.0034193879295606002
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,9,2.640625,3.8046875,5849,0.0068387758591212005
+llama-3.1-8b_en,rand_gender20 (mean n=5),random_family_mean,10,3.8046875,13.9375,5850,0.0
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,1,0.0,0.1875,5850,13.321367521367524
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,2,0.1875,0.375,5849,0.4958112497862882
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,3,0.375,0.609375,5849,0.23935715506924266
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,4,0.609375,0.84375,5849,0.14190459907676525
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,5,0.84375,1.125,5849,0.0837750042742349
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,6,1.125,1.484375,5849,0.059839288767310636
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,7,1.484375,1.953125,5849,0.02222602154214394
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,8,1.953125,2.640625,5849,0.0017096939647803001
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,9,2.640625,3.8046875,5849,0.0034193879295606002
+llama-3.1-8b_en,rand_religion20 (mean n=10),random_family_mean,10,3.8046875,13.9375,5850,0.0
+salamandra-7b_en,real_gender20,real,1,0.0,0.25,5850,34.73504273504274
+salamandra-7b_en,real_gender20,real,2,0.25,0.53125,5849,18.36211318174047
+salamandra-7b_en,real_gender20,real,3,0.53125,0.84375,5849,9.505898444178492
+salamandra-7b_en,real_gender20,real,4,0.84375,1.18359375,5849,2.923576679774321
+salamandra-7b_en,real_gender20,real,5,1.1875,1.59375,5849,0.4445204308428792
+salamandra-7b_en,real_gender20,real,6,1.59375,2.109375,5849,0.017096939647803
+salamandra-7b_en,real_gender20,real,7,2.109375,2.8046875,5849,0.0
+salamandra-7b_en,real_gender20,real,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,real_gender20,real,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,real_gender20,real,10,5.4453125,13.46875,5850,0.0
+salamandra-7b_en,real_race20,real,1,0.0,0.25,5850,32.9059829059829
+salamandra-7b_en,real_race20,real,2,0.25,0.53125,5849,13.267225166695162
+salamandra-7b_en,real_race20,real,3,0.53125,0.84375,5849,5.317148230466747
+salamandra-7b_en,real_race20,real,4,0.84375,1.18359375,5849,1.7438878440759105
+salamandra-7b_en,real_race20,real,5,1.1875,1.59375,5849,0.2564540947170456
+salamandra-7b_en,real_race20,real,6,1.59375,2.109375,5849,0.034193879295606
+salamandra-7b_en,real_race20,real,7,2.109375,2.8046875,5849,0.0
+salamandra-7b_en,real_race20,real,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,real_race20,real,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,real_race20,real,10,5.4453125,13.46875,5850,0.0
+salamandra-7b_en,real_religion20,real,1,0.0,0.25,5850,34.8034188034188
+salamandra-7b_en,real_religion20,real,2,0.25,0.53125,5849,15.43853650196615
+salamandra-7b_en,real_religion20,real,3,0.53125,0.84375,5849,7.385877927850915
+salamandra-7b_en,real_religion20,real,4,0.84375,1.18359375,5849,4.171653274063942
+salamandra-7b_en,real_religion20,real,5,1.1875,1.59375,5849,2.6500256454094715
+salamandra-7b_en,real_religion20,real,6,1.59375,2.109375,5849,1.3164643528808342
+salamandra-7b_en,real_religion20,real,7,2.109375,2.8046875,5849,0.3248418533082578
+salamandra-7b_en,real_religion20,real,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,real_religion20,real,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,real_religion20,real,10,5.4453125,13.46875,5850,0.0
+salamandra-7b_en,real_gender5,real,1,0.0,0.25,5850,26.23931623931624
+salamandra-7b_en,real_gender5,real,2,0.25,0.53125,5849,14.070781330141903
+salamandra-7b_en,real_gender5,real,3,0.53125,0.84375,5849,8.326209608480083
+salamandra-7b_en,real_gender5,real,4,0.84375,1.18359375,5849,1.8464694819627288
+salamandra-7b_en,real_gender5,real,5,1.1875,1.59375,5849,0.0
+salamandra-7b_en,real_gender5,real,6,1.59375,2.109375,5849,0.0
+salamandra-7b_en,real_gender5,real,7,2.109375,2.8046875,5849,0.0
+salamandra-7b_en,real_gender5,real,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,real_gender5,real,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,real_gender5,real,10,5.4453125,13.46875,5850,0.0
+salamandra-7b_en,real_race5,real,1,0.0,0.25,5850,26.581196581196583
+salamandra-7b_en,real_race5,real,2,0.25,0.53125,5849,8.223627970593265
+salamandra-7b_en,real_race5,real,3,0.53125,0.84375,5849,3.1800307744913656
+salamandra-7b_en,real_race5,real,4,0.84375,1.18359375,5849,0.5129081894340912
+salamandra-7b_en,real_race5,real,5,1.1875,1.59375,5849,0.0512908189434091
+salamandra-7b_en,real_race5,real,6,1.59375,2.109375,5849,0.0
+salamandra-7b_en,real_race5,real,7,2.109375,2.8046875,5849,0.0
+salamandra-7b_en,real_race5,real,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,real_race5,real,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,real_race5,real,10,5.4453125,13.46875,5850,0.0
+salamandra-7b_en,real_religion5,real,1,0.0,0.25,5850,25.23076923076923
+salamandra-7b_en,real_religion5,real,2,0.25,0.53125,5849,7.061036074542656
+salamandra-7b_en,real_religion5,real,3,0.53125,0.84375,5849,4.616173704906822
+salamandra-7b_en,real_religion5,real,4,0.84375,1.18359375,5849,3.1800307744913656
+salamandra-7b_en,real_religion5,real,5,1.1875,1.59375,5849,1.6584031458368953
+salamandra-7b_en,real_religion5,real,6,1.59375,2.109375,5849,0.4616173704906822
+salamandra-7b_en,real_religion5,real,7,2.109375,2.8046875,5849,0.034193879295606
+salamandra-7b_en,real_religion5,real,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,real_religion5,real,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,real_religion5,real,10,5.4453125,13.46875,5850,0.0
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,1,0.0,0.25,5850,10.841025641025642
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,2,0.25,0.53125,5849,0.10942041374593943
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,3,0.53125,0.84375,5849,0.01367755171824242
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,4,0.84375,1.18359375,5849,0.0068387758591212005
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,5,1.1875,1.59375,5849,0.0
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,6,1.59375,2.109375,5849,0.0
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,7,2.109375,2.8046875,5849,0.0
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,rand_gender20 (mean n=5),random_family_mean,10,5.4453125,13.46875,5850,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,1,0.0,0.25,5850,11.57948717948718
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,2,0.25,0.53125,5849,0.26671225850572744
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,3,0.53125,0.84375,5849,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,4,0.84375,1.18359375,5849,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,5,1.1875,1.59375,5849,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,6,1.59375,2.109375,5849,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,7,2.109375,2.8046875,5849,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,8,2.80859375,3.859375,5849,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,9,3.859375,5.4453125,5849,0.0
+salamandra-7b_en,rand_religion20 (mean n=5),random_family_mean,10,5.4453125,13.46875,5850,0.0
+qwen3-4b-base_en,real_gender20,real,1,0.0,0.375,5850,41.008547008547005
+qwen3-4b-base_en,real_gender20,real,2,0.375,0.7734375,5849,21.40536843904941
+qwen3-4b-base_en,real_gender20,real,3,0.7734375,1.248046875,5849,8.890408616857583
+qwen3-4b-base_en,real_gender20,real,4,1.248046875,1.75,5849,2.5132501282270474
+qwen3-4b-base_en,real_gender20,real,5,1.75,2.421875,5849,0.4787143101384851
+qwen3-4b-base_en,real_gender20,real,6,2.421875,3.28125,5849,0.1196785775346212
+qwen3-4b-base_en,real_gender20,real,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,real_gender20,real,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,real_gender20,real,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,real_gender20,real,10,7.36328125,17.6875,5850,0.0
+qwen3-4b-base_en,real_race20,real,1,0.0,0.375,5850,38.11965811965812
+qwen3-4b-base_en,real_race20,real,2,0.375,0.7734375,5849,18.08856214737562
+qwen3-4b-base_en,real_race20,real,3,0.7734375,1.248046875,5849,5.778765600957429
+qwen3-4b-base_en,real_race20,real,4,1.248046875,1.75,5849,0.9916224995725764
+qwen3-4b-base_en,real_race20,real,5,1.75,2.421875,5849,0.1367755171824243
+qwen3-4b-base_en,real_race20,real,6,2.421875,3.28125,5849,0.0512908189434091
+qwen3-4b-base_en,real_race20,real,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,real_race20,real,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,real_race20,real,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,real_race20,real,10,7.36328125,17.6875,5850,0.0
+qwen3-4b-base_en,real_religion20,real,1,0.0,0.375,5850,41.93162393162393
+qwen3-4b-base_en,real_religion20,real,2,0.375,0.7734375,5849,23.78184305009404
+qwen3-4b-base_en,real_religion20,real,3,0.7734375,1.248046875,5849,10.805265857411523
+qwen3-4b-base_en,real_religion20,real,4,1.248046875,1.75,5849,3.6587450846298513
+qwen3-4b-base_en,real_religion20,real,5,1.75,2.421875,5849,0.8206531030945461
+qwen3-4b-base_en,real_religion20,real,6,2.421875,3.28125,5849,0.1367755171824243
+qwen3-4b-base_en,real_religion20,real,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,real_religion20,real,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,real_religion20,real,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,real_religion20,real,10,7.36328125,17.6875,5850,0.0
+qwen3-4b-base_en,real_gender5,real,1,0.0,0.375,5850,35.48717948717949
+qwen3-4b-base_en,real_gender5,real,2,0.375,0.7734375,5849,13.386903744229784
+qwen3-4b-base_en,real_gender5,real,3,0.7734375,1.248046875,5849,4.240041032655155
+qwen3-4b-base_en,real_gender5,real,4,1.248046875,1.75,5849,0.3419387929560608
+qwen3-4b-base_en,real_gender5,real,5,1.75,2.421875,5849,0.0854846982390152
+qwen3-4b-base_en,real_gender5,real,6,2.421875,3.28125,5849,0.0
+qwen3-4b-base_en,real_gender5,real,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,real_gender5,real,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,real_gender5,real,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,real_gender5,real,10,7.36328125,17.6875,5850,0.0
+qwen3-4b-base_en,real_race5,real,1,0.0,0.375,5850,28.752136752136757
+qwen3-4b-base_en,real_race5,real,2,0.375,0.7734375,5849,5.471020687296973
+qwen3-4b-base_en,real_race5,real,3,0.7734375,1.248046875,5849,1.931954180201744
+qwen3-4b-base_en,real_race5,real,4,1.248046875,1.75,5849,0.1367755171824243
+qwen3-4b-base_en,real_race5,real,5,1.75,2.421875,5849,0.0
+qwen3-4b-base_en,real_race5,real,6,2.421875,3.28125,5849,0.0
+qwen3-4b-base_en,real_race5,real,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,real_race5,real,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,real_race5,real,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,real_race5,real,10,7.36328125,17.6875,5850,0.0
+qwen3-4b-base_en,real_religion5,real,1,0.0,0.375,5850,32.73504273504273
+qwen3-4b-base_en,real_religion5,real,2,0.375,0.7734375,5849,8.30911266883228
+qwen3-4b-base_en,real_religion5,real,3,0.7734375,1.248046875,5849,2.342280731749017
+qwen3-4b-base_en,real_religion5,real,4,1.248046875,1.75,5849,0.3761326722516669
+qwen3-4b-base_en,real_religion5,real,5,1.75,2.421875,5849,0.0
+qwen3-4b-base_en,real_religion5,real,6,2.421875,3.28125,5849,0.0
+qwen3-4b-base_en,real_religion5,real,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,real_religion5,real,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,real_religion5,real,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,real_religion5,real,10,7.36328125,17.6875,5850,0.0
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,1,0.0,0.375,5850,8.601709401709403
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,2,0.375,0.7734375,5849,0.0547102068729697
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,3,0.7734375,1.248046875,5849,0.06838775859121216
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,4,1.248046875,1.75,5849,0.0
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,5,1.75,2.421875,5849,0.0
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,6,2.421875,3.28125,5849,0.0
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,rand_gender20 (mean n=5),random_family_mean,10,7.36328125,17.6875,5850,0.0
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,1,0.0,0.375,5850,6.003418803418803
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,2,0.375,0.7734375,5849,0.23593776713968198
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,3,0.7734375,1.248046875,5849,0.11967857753462127
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,4,1.248046875,1.75,5849,0.08890408616857584
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,5,1.75,2.421875,5849,0.054710206872969736
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,6,2.421875,3.28125,5849,0.0
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,7,3.28125,4.390625,5849,0.0
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,8,4.390625,5.671875,5849,0.0
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,9,5.671875,7.36328125,5849,0.0
+qwen3-4b-base_en,rand_religion20 (mean n=5),random_family_mean,10,7.36328125,17.6875,5850,0.0
+llama-3.2-3b_en,real_gender20,real,1,0.0,0.171875,5850,32.56410256410256
+llama-3.2-3b_en,real_gender20,real,2,0.171875,0.3671875,5849,12.343990425713796
+llama-3.2-3b_en,real_gender20,real,3,0.3671875,0.53125,5849,3.795520601812276
+llama-3.2-3b_en,real_gender20,real,4,0.53125,0.75,5849,0.8890408616857584
+llama-3.2-3b_en,real_gender20,real,5,0.75,0.9921875,5849,0.1538724568302274
+llama-3.2-3b_en,real_gender20,real,6,0.9921875,1.26171875,5849,0.034193879295606
+llama-3.2-3b_en,real_gender20,real,7,1.26171875,1.65234375,5849,0.0
+llama-3.2-3b_en,real_gender20,real,8,1.65234375,2.265625,5849,0.0
+llama-3.2-3b_en,real_gender20,real,9,2.265625,3.49853515625,5849,0.0
+llama-3.2-3b_en,real_gender20,real,10,3.49951171875,14.25,5850,0.0
+llama-3.2-3b_en,real_race20,real,1,0.0,0.171875,5850,40.41025641025641
+llama-3.2-3b_en,real_race20,real,2,0.171875,0.3671875,5849,26.637031971277143
+llama-3.2-3b_en,real_race20,real,3,0.3671875,0.53125,5849,15.43853650196615
+llama-3.2-3b_en,real_race20,real,4,0.53125,0.75,5849,9.454607625235084
+llama-3.2-3b_en,real_race20,real,5,0.75,0.9921875,5849,5.214566592579929
+llama-3.2-3b_en,real_race20,real,6,0.9921875,1.26171875,5849,2.085826637031971
+llama-3.2-3b_en,real_race20,real,7,1.26171875,1.65234375,5849,0.6838775859121217
+llama-3.2-3b_en,real_race20,real,8,1.65234375,2.265625,5849,0.1880663361258334
+llama-3.2-3b_en,real_race20,real,9,2.265625,3.49853515625,5849,0.017096939647803
+llama-3.2-3b_en,real_race20,real,10,3.49951171875,14.25,5850,0.0
+llama-3.2-3b_en,real_religion20,real,1,0.0,0.171875,5850,41.48717948717949
+llama-3.2-3b_en,real_religion20,real,2,0.171875,0.3671875,5849,28.261241237818428
+llama-3.2-3b_en,real_religion20,real,3,0.3671875,0.53125,5849,16.80629167379039
+llama-3.2-3b_en,real_religion20,real,4,0.53125,0.75,5849,10.258163788681824
+llama-3.2-3b_en,real_religion20,real,5,0.75,0.9921875,5849,5.573602325183792
+llama-3.2-3b_en,real_religion20,real,6,0.9921875,1.26171875,5849,3.265515472730381
+llama-3.2-3b_en,real_religion20,real,7,1.26171875,1.65234375,5849,1.0942041374593947
+llama-3.2-3b_en,real_religion20,real,8,1.65234375,2.265625,5849,0.2735510343648487
+llama-3.2-3b_en,real_religion20,real,9,2.265625,3.49853515625,5849,0.017096939647803
+llama-3.2-3b_en,real_religion20,real,10,3.49951171875,14.25,5850,0.0
+llama-3.2-3b_en,real_gender5,real,1,0.0,0.171875,5850,14.341880341880342
+llama-3.2-3b_en,real_gender5,real,2,0.171875,0.3671875,5849,0.7351684048555309
+llama-3.2-3b_en,real_gender5,real,3,0.3671875,0.53125,5849,0.034193879295606
+llama-3.2-3b_en,real_gender5,real,4,0.53125,0.75,5849,0.0
+llama-3.2-3b_en,real_gender5,real,5,0.75,0.9921875,5849,0.0
+llama-3.2-3b_en,real_gender5,real,6,0.9921875,1.26171875,5849,0.0512908189434091
+llama-3.2-3b_en,real_gender5,real,7,1.26171875,1.65234375,5849,0.0
+llama-3.2-3b_en,real_gender5,real,8,1.65234375,2.265625,5849,0.0
+llama-3.2-3b_en,real_gender5,real,9,2.265625,3.49853515625,5849,0.0
+llama-3.2-3b_en,real_gender5,real,10,3.49951171875,14.25,5850,0.0
+llama-3.2-3b_en,real_race5,real,1,0.0,0.171875,5850,29.1965811965812
+llama-3.2-3b_en,real_race5,real,2,0.171875,0.3671875,5849,8.548469823901522
+llama-3.2-3b_en,real_race5,real,3,0.3671875,0.53125,5849,2.1884082749187894
+llama-3.2-3b_en,real_race5,real,4,0.53125,0.75,5849,1.162591896050607
+llama-3.2-3b_en,real_race5,real,5,0.75,0.9921875,5849,0.2222602154214396
+llama-3.2-3b_en,real_race5,real,6,0.9921875,1.26171875,5849,0.0
+llama-3.2-3b_en,real_race5,real,7,1.26171875,1.65234375,5849,0.0
+llama-3.2-3b_en,real_race5,real,8,1.65234375,2.265625,5849,0.0
+llama-3.2-3b_en,real_race5,real,9,2.265625,3.49853515625,5849,0.0
+llama-3.2-3b_en,real_race5,real,10,3.49951171875,14.25,5850,0.0
+llama-3.2-3b_en,real_religion5,real,1,0.0,0.171875,5850,40.05128205128205
+llama-3.2-3b_en,real_religion5,real,2,0.171875,0.3671875,5849,24.48281757565396
+llama-3.2-3b_en,real_religion5,real,3,0.3671875,0.53125,5849,12.155924089587964
+llama-3.2-3b_en,real_religion5,real,4,0.53125,0.75,5849,5.795862540605231
+llama-3.2-3b_en,real_religion5,real,5,0.75,0.9921875,5849,3.060352196956745
+llama-3.2-3b_en,real_religion5,real,6,0.9921875,1.26171875,5849,1.0942041374593947
+llama-3.2-3b_en,real_religion5,real,7,1.26171875,1.65234375,5849,0.1196785775346212
+llama-3.2-3b_en,real_religion5,real,8,1.65234375,2.265625,5849,0.0
+llama-3.2-3b_en,real_religion5,real,9,2.265625,3.49853515625,5849,0.0
+llama-3.2-3b_en,real_religion5,real,10,3.49951171875,14.25,5850,0.0
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,1,0.0,0.171875,5850,15.911111111111111
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,2,0.171875,0.3671875,5849,0.943751068558728
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,3,0.3671875,0.53125,5849,0.06838775859121216
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,4,0.53125,0.75,5849,0.04445204308428792
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,5,0.75,0.9921875,5849,0.02735510343648486
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,6,0.9921875,1.26171875,5849,0.0034193879295606002
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,7,1.26171875,1.65234375,5849,0.0034193879295606002
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,8,1.65234375,2.265625,5849,0.0
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,9,2.265625,3.49853515625,5849,0.0
+llama-3.2-3b_en,rand_gender20 (mean n=5),random_family_mean,10,3.49951171875,14.25,5850,0.0
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,1,0.0,0.171875,5850,15.880341880341879
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,2,0.171875,0.3671875,5849,0.9163959651222431
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,3,0.3671875,0.53125,5849,0.05641990083775002
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,4,0.53125,0.75,5849,0.0068387758591212005
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,5,0.75,0.9921875,5849,0.0034193879295606002
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,6,0.9921875,1.26171875,5849,0.0
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,7,1.26171875,1.65234375,5849,0.0
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,8,1.65234375,2.265625,5849,0.0
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,9,2.265625,3.49853515625,5849,0.0
+llama-3.2-3b_en,rand_religion20 (mean n=10),random_family_mean,10,3.49951171875,14.25,5850,0.0
+salamandra-7b_es,exp1,real,1,0.0,0.21875,2732,15.95900439238653
+salamandra-7b_es,exp1,real,2,0.21875,0.375,2732,0.8784773060029283
+salamandra-7b_es,exp1,real,3,0.375,0.625,2732,0.0
+salamandra-7b_es,exp1,real,4,0.625,0.84375,2732,0.0
+salamandra-7b_es,exp1,real,5,0.84375,1.1015625,2732,0.0
+salamandra-7b_es,exp1,real,6,1.1015625,1.3828125,2732,0.0
+salamandra-7b_es,exp1,real,7,1.3828125,1.75390625,2732,0.0
+salamandra-7b_es,exp1,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp1,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp1,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp2,real,1,0.0,0.21875,2732,24.85358711566618
+salamandra-7b_es,exp2,real,2,0.21875,0.375,2732,3.14787701317716
+salamandra-7b_es,exp2,real,3,0.375,0.625,2732,0.2928257686676427
+salamandra-7b_es,exp2,real,4,0.625,0.84375,2732,0.0732064421669106
+salamandra-7b_es,exp2,real,5,0.84375,1.1015625,2732,0.0
+salamandra-7b_es,exp2,real,6,1.1015625,1.3828125,2732,0.0
+salamandra-7b_es,exp2,real,7,1.3828125,1.75390625,2732,0.0
+salamandra-7b_es,exp2,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp2,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp2,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp5,real,1,0.0,0.21875,2732,38.0307467057101
+salamandra-7b_es,exp5,real,2,0.21875,0.375,2732,14.714494875549049
+salamandra-7b_es,exp5,real,3,0.375,0.625,2732,6.405563689604684
+salamandra-7b_es,exp5,real,4,0.625,0.84375,2732,4.172767203513909
+salamandra-7b_es,exp5,real,5,0.84375,1.1015625,2732,2.5988286969253296
+salamandra-7b_es,exp5,real,6,1.1015625,1.3828125,2732,1.390922401171303
+salamandra-7b_es,exp5,real,7,1.3828125,1.75390625,2732,0.5856515373352855
+salamandra-7b_es,exp5,real,8,1.75390625,2.25,2732,0.0732064421669106
+salamandra-7b_es,exp5,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp5,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp7,real,1,0.0,0.21875,2732,26.720351390922403
+salamandra-7b_es,exp7,real,2,0.21875,0.375,2732,4.392386530014641
+salamandra-7b_es,exp7,real,3,0.375,0.625,2732,0.3660322108345534
+salamandra-7b_es,exp7,real,4,0.625,0.84375,2732,0.0732064421669106
+salamandra-7b_es,exp7,real,5,0.84375,1.1015625,2732,0.0
+salamandra-7b_es,exp7,real,6,1.1015625,1.3828125,2732,0.0
+salamandra-7b_es,exp7,real,7,1.3828125,1.75390625,2732,0.0
+salamandra-7b_es,exp7,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp7,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp7,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp8,real,1,0.0,0.21875,2732,29.136163982430453
+salamandra-7b_es,exp8,real,2,0.21875,0.375,2732,8.125915080527086
+salamandra-7b_es,exp8,real,3,0.375,0.625,2732,1.4641288433382138
+salamandra-7b_es,exp8,real,4,0.625,0.84375,2732,0.2562225475841874
+salamandra-7b_es,exp8,real,5,0.84375,1.1015625,2732,0.1464128843338213
+salamandra-7b_es,exp8,real,6,1.1015625,1.3828125,2732,0.0732064421669106
+salamandra-7b_es,exp8,real,7,1.3828125,1.75390625,2732,0.0
+salamandra-7b_es,exp8,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp8,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp8,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp9,real,1,0.0,0.21875,2732,34.626647144948755
+salamandra-7b_es,exp9,real,2,0.21875,0.375,2732,14.751098096632504
+salamandra-7b_es,exp9,real,3,0.375,0.625,2732,4.758418740849195
+salamandra-7b_es,exp9,real,4,0.625,0.84375,2732,1.4275256222547583
+salamandra-7b_es,exp9,real,5,0.84375,1.1015625,2732,0.2562225475841874
+salamandra-7b_es,exp9,real,6,1.1015625,1.3828125,2732,0.0732064421669106
+salamandra-7b_es,exp9,real,7,1.3828125,1.75390625,2732,0.0
+salamandra-7b_es,exp9,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp9,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp9,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp10,real,1,0.0,0.21875,2732,32.210834553440705
+salamandra-7b_es,exp10,real,2,0.21875,0.375,2732,18.15519765739385
+salamandra-7b_es,exp10,real,3,0.375,0.625,2732,10.834553440702782
+salamandra-7b_es,exp10,real,4,0.625,0.84375,2732,9.004392386530014
+salamandra-7b_es,exp10,real,5,0.84375,1.1015625,2732,3.7701317715959006
+salamandra-7b_es,exp10,real,6,1.1015625,1.3828125,2732,0.951683748169839
+salamandra-7b_es,exp10,real,7,1.3828125,1.75390625,2732,0.0366032210834553
+salamandra-7b_es,exp10,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp10,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp10,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp11,real,1,0.0,0.21875,2732,37.15226939970717
+salamandra-7b_es,exp11,real,2,0.21875,0.375,2732,21.88872620790629
+salamandra-7b_es,exp11,real,3,0.375,0.625,2732,12.518301610541728
+salamandra-7b_es,exp11,real,4,0.625,0.84375,2732,9.150805270863836
+salamandra-7b_es,exp11,real,5,0.84375,1.1015625,2732,3.4407027818448026
+salamandra-7b_es,exp11,real,6,1.1015625,1.3828125,2732,0.951683748169839
+salamandra-7b_es,exp11,real,7,1.3828125,1.75390625,2732,0.3294289897510981
+salamandra-7b_es,exp11,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp11,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp11,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,exp12,real,1,0.0,0.21875,2732,16.874084919472914
+salamandra-7b_es,exp12,real,2,0.21875,0.375,2732,0.8418740849194729
+salamandra-7b_es,exp12,real,3,0.375,0.625,2732,0.0
+salamandra-7b_es,exp12,real,4,0.625,0.84375,2732,0.0
+salamandra-7b_es,exp12,real,5,0.84375,1.1015625,2732,0.0
+salamandra-7b_es,exp12,real,6,1.1015625,1.3828125,2732,0.0
+salamandra-7b_es,exp12,real,7,1.3828125,1.75390625,2732,0.0
+salamandra-7b_es,exp12,real,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,exp12,real,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,exp12,real,10,3.03125,14.96875,2732,0.0
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,1,0.0,0.21875,2732,7.452415812591508
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,2,0.21875,0.375,2732,0.7540263543191801
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,3,0.375,0.625,2732,0.04392386530014638
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,4,0.625,0.84375,2732,0.021961932650073183
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,5,0.84375,1.1015625,2732,0.0
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,6,1.1015625,1.3828125,2732,0.0
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,7,1.3828125,1.75390625,2732,0.0
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,8,1.75390625,2.25,2732,0.0
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,9,2.25,3.03125,2732,0.0
+salamandra-7b_es,rand_exp10 (mean n=5),random_family_mean,10,3.03125,14.96875,2732,0.0
+llama-3.1-8b_es,exp2,real,1,0.0,0.140625,2732,22.58418740849195
+llama-3.1-8b_es,exp2,real,2,0.140625,0.34375,2732,2.708638360175696
+llama-3.1-8b_es,exp2,real,3,0.34375,0.5,2732,0.9150805270863837
+llama-3.1-8b_es,exp2,real,4,0.5,0.75,2732,0.4392386530014641
+llama-3.1-8b_es,exp2,real,5,0.75,0.96875,2732,0.109809663250366
+llama-3.1-8b_es,exp2,real,6,0.96875,1.234375,2732,0.0366032210834553
+llama-3.1-8b_es,exp2,real,7,1.234375,1.515625,2732,0.0
+llama-3.1-8b_es,exp2,real,8,1.515625,1.97265625,2732,0.0
+llama-3.1-8b_es,exp2,real,9,1.9765625,2.75,2732,0.0
+llama-3.1-8b_es,exp2,real,10,2.75,16.1875,2732,0.0
+llama-3.1-8b_es,exp10,real,1,0.0,0.140625,2732,25.6588579795022
+llama-3.1-8b_es,exp10,real,2,0.140625,0.34375,2732,5.014641288433382
+llama-3.1-8b_es,exp10,real,3,0.34375,0.5,2732,1.5373352855051243
+llama-3.1-8b_es,exp10,real,4,0.5,0.75,2732,0.3294289897510981
+llama-3.1-8b_es,exp10,real,5,0.75,0.96875,2732,0.2928257686676427
+llama-3.1-8b_es,exp10,real,6,0.96875,1.234375,2732,0.4392386530014641
+llama-3.1-8b_es,exp10,real,7,1.234375,1.515625,2732,0.109809663250366
+llama-3.1-8b_es,exp10,real,8,1.515625,1.97265625,2732,0.0732064421669106
+llama-3.1-8b_es,exp10,real,9,1.9765625,2.75,2732,0.0
+llama-3.1-8b_es,exp10,real,10,2.75,16.1875,2732,0.0
+llama-3.1-8b_es,exp12,real,1,0.0,0.140625,2732,27.52562225475842
+llama-3.1-8b_es,exp12,real,2,0.140625,0.34375,2732,5.087847730600293
+llama-3.1-8b_es,exp12,real,3,0.34375,0.5,2732,0.1464128843338213
+llama-3.1-8b_es,exp12,real,4,0.5,0.75,2732,0.0
+llama-3.1-8b_es,exp12,real,5,0.75,0.96875,2732,0.0
+llama-3.1-8b_es,exp12,real,6,0.96875,1.234375,2732,0.0
+llama-3.1-8b_es,exp12,real,7,1.234375,1.515625,2732,0.0
+llama-3.1-8b_es,exp12,real,8,1.515625,1.97265625,2732,0.0
+llama-3.1-8b_es,exp12,real,9,1.9765625,2.75,2732,0.0
+llama-3.1-8b_es,exp12,real,10,2.75,16.1875,2732,0.0
+llama-3.1-8b_es,exp13,real,1,0.0,0.140625,2732,33.41874084919473
+llama-3.1-8b_es,exp13,real,2,0.140625,0.34375,2732,11.6398243045388
+llama-3.1-8b_es,exp13,real,3,0.34375,0.5,2732,3.4407027818448026
+llama-3.1-8b_es,exp13,real,4,0.5,0.75,2732,0.9882869692532944
+llama-3.1-8b_es,exp13,real,5,0.75,0.96875,2732,0.5124450951683748
+llama-3.1-8b_es,exp13,real,6,0.96875,1.234375,2732,0.0732064421669106
+llama-3.1-8b_es,exp13,real,7,1.234375,1.515625,2732,0.0
+llama-3.1-8b_es,exp13,real,8,1.515625,1.97265625,2732,0.0
+llama-3.1-8b_es,exp13,real,9,1.9765625,2.75,2732,0.0
+llama-3.1-8b_es,exp13,real,10,2.75,16.1875,2732,0.0
+llama-3.1-8b_es,exp11,real,1,0.0,0.140625,2732,38.65300146412884
+llama-3.1-8b_es,exp11,real,2,0.140625,0.34375,2732,17.240117130307468
+llama-3.1-8b_es,exp11,real,3,0.34375,0.5,2732,7.942898975109809
+llama-3.1-8b_es,exp11,real,4,0.5,0.75,2732,3.2576866764275256
+llama-3.1-8b_es,exp11,real,5,0.75,0.96875,2732,0.9150805270863837
+llama-3.1-8b_es,exp11,real,6,0.96875,1.234375,2732,0.5490483162518301
+llama-3.1-8b_es,exp11,real,7,1.234375,1.515625,2732,0.0732064421669106
+llama-3.1-8b_es,exp11,real,8,1.515625,1.97265625,2732,0.0366032210834553
+llama-3.1-8b_es,exp11,real,9,1.9765625,2.75,2732,0.0
+llama-3.1-8b_es,exp11,real,10,2.75,16.1875,2732,0.0
+llama-3.1-8b_es,exp14,real,1,0.0,0.140625,2732,40.4099560761347
+llama-3.1-8b_es,exp14,real,2,0.140625,0.34375,2732,25.43923865300146
+llama-3.1-8b_es,exp14,real,3,0.34375,0.5,2732,12.11566617862372
+llama-3.1-8b_es,exp14,real,4,0.5,0.75,2732,6.771595900439238
+llama-3.1-8b_es,exp14,real,5,0.75,0.96875,2732,1.7935578330893118
+llama-3.1-8b_es,exp14,real,6,0.96875,1.234375,2732,0.951683748169839
+llama-3.1-8b_es,exp14,real,7,1.234375,1.515625,2732,0.6954612005856515
+llama-3.1-8b_es,exp14,real,8,1.515625,1.97265625,2732,0.3660322108345534
+llama-3.1-8b_es,exp14,real,9,1.9765625,2.75,2732,0.0
+llama-3.1-8b_es,exp14,real,10,2.75,16.1875,2732,0.0
+llama-3.2-3b_es,exp2,real,1,0.0,0.171875,2732,28.513909224011712
+llama-3.2-3b_es,exp2,real,2,0.171875,0.375,2732,8.162518301610541
+llama-3.2-3b_es,exp2,real,3,0.375,0.5625,2732,1.6471449487554906
+llama-3.2-3b_es,exp2,real,4,0.5625,0.765625,2732,0.5856515373352855
+llama-3.2-3b_es,exp2,real,5,0.765625,1.0078125,2732,0.2562225475841874
+llama-3.2-3b_es,exp2,real,6,1.0078125,1.296875,2732,0.0
+llama-3.2-3b_es,exp2,real,7,1.296875,1.640625,2732,0.0
+llama-3.2-3b_es,exp2,real,8,1.640625,2.125,2732,0.0
+llama-3.2-3b_es,exp2,real,9,2.125,2.875,2732,0.0
+llama-3.2-3b_es,exp2,real,10,2.875,16.125,2732,0.0
+llama-3.2-3b_es,exp10,real,1,0.0,0.171875,2732,19.87554904831625
+llama-3.2-3b_es,exp10,real,2,0.171875,0.375,2732,3.6969253294289897
+llama-3.2-3b_es,exp10,real,3,0.375,0.5625,2732,1.171303074670571
+llama-3.2-3b_es,exp10,real,4,0.5625,0.765625,2732,0.1830161054172767
+llama-3.2-3b_es,exp10,real,5,0.765625,1.0078125,2732,0.109809663250366
+llama-3.2-3b_es,exp10,real,6,1.0078125,1.296875,2732,0.0
+llama-3.2-3b_es,exp10,real,7,1.296875,1.640625,2732,0.0
+llama-3.2-3b_es,exp10,real,8,1.640625,2.125,2732,0.0
+llama-3.2-3b_es,exp10,real,9,2.125,2.875,2732,0.0
+llama-3.2-3b_es,exp10,real,10,2.875,16.125,2732,0.0
+llama-3.2-3b_es,exp12,real,1,0.0,0.171875,2732,36.9692532942899
+llama-3.2-3b_es,exp12,real,2,0.171875,0.375,2732,18.997071742313324
+llama-3.2-3b_es,exp12,real,3,0.375,0.5625,2732,12.920937042459736
+llama-3.2-3b_es,exp12,real,4,0.5625,0.765625,2732,8.49194729136164
+llama-3.2-3b_es,exp12,real,5,0.765625,1.0078125,2732,5.563689604685212
+llama-3.2-3b_es,exp12,real,6,1.0078125,1.296875,2732,2.745241581259151
+llama-3.2-3b_es,exp12,real,7,1.296875,1.640625,2732,1.171303074670571
+llama-3.2-3b_es,exp12,real,8,1.640625,2.125,2732,0.109809663250366
+llama-3.2-3b_es,exp12,real,9,2.125,2.875,2732,0.0
+llama-3.2-3b_es,exp12,real,10,2.875,16.125,2732,0.0
+llama-3.2-3b_es,exp13,real,1,0.0,0.171875,2732,42.64275256222548
+llama-3.2-3b_es,exp13,real,2,0.171875,0.375,2732,29.53879941434846
+llama-3.2-3b_es,exp13,real,3,0.375,0.5625,2732,16.800878477306004
+llama-3.2-3b_es,exp13,real,4,0.5625,0.765625,2732,10.761346998535872
+llama-3.2-3b_es,exp13,real,5,0.765625,1.0078125,2732,6.844802342606149
+llama-3.2-3b_es,exp13,real,6,1.0078125,1.296875,2732,3.587115666178624
+llama-3.2-3b_es,exp13,real,7,1.296875,1.640625,2732,1.500732064421669
+llama-3.2-3b_es,exp13,real,8,1.640625,2.125,2732,0.1464128843338213
+llama-3.2-3b_es,exp13,real,9,2.125,2.875,2732,0.0
+llama-3.2-3b_es,exp13,real,10,2.875,16.125,2732,0.0
+llama-3.2-3b_es,exp11,real,1,0.0,0.171875,2732,39.0190336749634
+llama-3.2-3b_es,exp11,real,2,0.171875,0.375,2732,23.352855051244507
+llama-3.2-3b_es,exp11,real,3,0.375,0.5625,2732,14.055636896046853
+llama-3.2-3b_es,exp11,real,4,0.5625,0.765625,2732,5.89311859443631
+llama-3.2-3b_es,exp11,real,5,0.765625,1.0078125,2732,1.903367496339678
+llama-3.2-3b_es,exp11,real,6,1.0078125,1.296875,2732,0.6588579795021963
+llama-3.2-3b_es,exp11,real,7,1.296875,1.640625,2732,0.219619326500732
+llama-3.2-3b_es,exp11,real,8,1.640625,2.125,2732,0.2928257686676427
+llama-3.2-3b_es,exp11,real,9,2.125,2.875,2732,0.0732064421669106
+llama-3.2-3b_es,exp11,real,10,2.875,16.125,2732,0.0732064421669106
+llama-3.2-3b_es,exp14,real,1,0.0,0.171875,2732,40.81259150805271
+llama-3.2-3b_es,exp14,real,2,0.171875,0.375,2732,26.83016105417277
+llama-3.2-3b_es,exp14,real,3,0.375,0.5625,2732,19.25329428989751
+llama-3.2-3b_es,exp14,real,4,0.5625,0.765625,2732,12.408491947291362
+llama-3.2-3b_es,exp14,real,5,0.765625,1.0078125,2732,10.431918008784772
+llama-3.2-3b_es,exp14,real,6,1.0078125,1.296875,2732,6.771595900439238
+llama-3.2-3b_es,exp14,real,7,1.296875,1.640625,2732,3.184480234260615
+llama-3.2-3b_es,exp14,real,8,1.640625,2.125,2732,1.3177159590043923
+llama-3.2-3b_es,exp14,real,9,2.125,2.875,2732,0.0366032210834553
+llama-3.2-3b_es,exp14,real,10,2.875,16.125,2732,0.0

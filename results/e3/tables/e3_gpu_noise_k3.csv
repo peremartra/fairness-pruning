@@ -1,0 +1,12 @@
+category,task,ambig_n,ambig_changed,ambig_changed_pct,disambig_n,disambig_changed,disambig_changed_pct,total_n,total_changed,total_changed_pct,raw11_changed,raw11_changed_pct
+Age,esbbq_age,1292,43,3.3282,2776,61,2.1974,4068,104,2.5565,109,2.6794
+DisabilityStatus,esbbq_disabilitystatus,928,22,2.3707,1904,30,1.5756,2832,52,1.8362,53,1.8715
+Gender,esbbq_gender,1504,24,1.5957,3328,51,1.5325,4832,75,1.5522,76,1.5728
+LGBTQIA,esbbq_lgbtqia,576,15,2.6042,1424,38,2.6685,2000,53,2.65,59,2.95
+Nationality,esbbq_nationality,168,5,2.9762,336,7,2.0833,504,12,2.381,13,2.5794
+PhysicalAppearance,esbbq_physicalappearance,1176,27,2.2959,2352,34,1.4456,3528,61,1.729,74,2.0975
+RaceEthnicity,esbbq_raceethnicity,1228,27,2.1987,2488,27,1.0852,3716,54,1.4532,55,1.4801
+Religion,esbbq_religion,216,3,1.3889,432,10,2.3148,648,13,2.0062,14,2.1605
+SES,esbbq_ses,1380,29,2.1014,2824,30,1.0623,4204,59,1.4034,66,1.5699
+SpanishRegion,esbbq_spanishregion,324,17,5.2469,664,6,0.9036,988,23,2.3279,23,2.3279
+TOTAL,all_10_tasks,8792,212,2.4113,18528,294,1.5868,27320,506,1.8521,542,1.9839
