@@ -1,0 +1,217 @@
+unit,set,task,gpu,batch_size,source,log_date,lm_eval_version
+llama_3.1_8b_en,baseline,wikitext,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793804369.512507,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed0,wikitext,A100-SXM4-40GB,1,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793963331.3537574,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed1,wikitext,unknown,unknown,,1793967303.3927398,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed2,wikitext,unknown,unknown,,1793977929.684612,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed3,wikitext,unknown,unknown,,1793981821.335251,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed4,wikitext,unknown,unknown,,1793985717.867815,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed0,wikitext,unknown,unknown,,1793885663.0534234,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed1,wikitext,unknown,unknown,,1793889568.666758,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed2,wikitext,unknown,unknown,,1793893474.5031378,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed3,wikitext,unknown,unknown,,1793897385.6894114,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed4,wikitext,unknown,unknown,,1793901312.421462,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed5,wikitext,unknown,unknown,,1793905234.0646455,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed6,wikitext,unknown,unknown,,1793909140.0330153,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed7,wikitext,unknown,unknown,,1793913046.490438,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed8,wikitext,unknown,unknown,,1793916950.479591,0.4.9.2
+llama_3.1_8b_en,rand_religion20_seed9,wikitext,unknown,unknown,,1793920854.4937246,0.4.9.2
+llama_3.1_8b_en,real_gender20,wikitext,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793819736.353109,0.4.9.2
+llama_3.1_8b_en,real_gender5,wikitext,unknown,unknown,,1793877532.831612,0.4.9.2
+llama_3.1_8b_en,real_race20,wikitext,unknown,unknown,,1793814612.1155853,0.4.9.2
+llama_3.1_8b_en,real_race5,wikitext,unknown,unknown,,1793829984.8772132,0.4.9.2
+llama_3.1_8b_en,real_religion20,wikitext,unknown,unknown,,1793809494.9942434,0.4.9.2
+llama_3.1_8b_en,real_religion5,wikitext,unknown,unknown,,1793824867.6672015,0.4.9.2
+llama_3.1_8b_en,baseline,arc_challenge,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793803575.1733987,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed0,arc_challenge,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794480267.0719967,0.4.9.2
+llama_3.1_8b_en,real_gender20,arc_challenge,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793818961.226698,0.4.9.2
+llama_3.1_8b_en,real_gender5,arc_challenge,unknown,unknown,,1793876729.2716057,0.4.9.2
+llama_3.1_8b_en,real_race20,arc_challenge,unknown,unknown,,1793813838.2286446,0.4.9.2
+llama_3.1_8b_en,real_race5,arc_challenge,unknown,unknown,,1793829209.5490246,0.4.9.2
+llama_3.1_8b_en,real_religion20,arc_challenge,unknown,unknown,,1793808719.691167,0.4.9.2
+llama_3.1_8b_en,real_religion5,arc_challenge,unknown,unknown,,1793824091.1824315,0.4.9.2
+llama_3.1_8b_en,baseline,hellaswag,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793803612.1761827,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed0,hellaswag,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794480345.9086187,0.4.9.2
+llama_3.1_8b_en,real_gender20,hellaswag,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793818992.0640953,0.4.9.2
+llama_3.1_8b_en,real_gender5,hellaswag,unknown,unknown,,1793876767.0483935,0.4.9.2
+llama_3.1_8b_en,real_race20,hellaswag,unknown,unknown,,1793813869.0453267,0.4.9.2
+llama_3.1_8b_en,real_race5,hellaswag,unknown,unknown,,1793829240.296402,0.4.9.2
+llama_3.1_8b_en,real_religion20,hellaswag,unknown,unknown,,1793808750.8692887,0.4.9.2
+llama_3.1_8b_en,real_religion5,hellaswag,unknown,unknown,,1793824121.9647193,0.4.9.2
+llama_3.1_8b_en,baseline,hellaswag_es,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793803960.9403605,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed0,hellaswag_es,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794481499.268383,0.4.9.2
+llama_3.1_8b_en,real_gender20,hellaswag_es,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793819331.723338,0.4.9.2
+llama_3.1_8b_en,real_gender5,hellaswag_es,unknown,unknown,,1793877120.9172902,0.4.9.2
+llama_3.1_8b_en,real_race20,hellaswag_es,unknown,unknown,,1793814207.1675622,0.4.9.2
+llama_3.1_8b_en,real_race5,hellaswag_es,unknown,unknown,,1793829579.7950516,0.4.9.2
+llama_3.1_8b_en,real_religion20,hellaswag_es,unknown,unknown,,1793809090.0060294,0.4.9.2
+llama_3.1_8b_en,real_religion5,hellaswag_es,unknown,unknown,,1793824460.9005032,0.4.9.2
+llama_3.1_8b_en,baseline,mmlu,A100-SXM4-80GB,4,E4_handoff.md §3 (mmlu_batch_size recorded in the summary),1793867514.1835775,0.4.9.2
+llama_3.1_8b_en,rand_gender20_seed0,mmlu,A100-SXM4-40GB,4,E4_handoff.md §4 (repeated on A100 after OOM on L4),1794504621.4932003,0.4.9.2
+llama_3.1_8b_en,real_gender20,mmlu,A100-SXM4-80GB,4,E4_handoff.md §3 (mmlu_batch_size recorded in the summary),1793871487.034078,0.4.9.2
+llama_3.1_8b_en,real_race20,mmlu,unknown,unknown,,1793870213.5107791,0.4.9.2
+llama_3.1_8b_en,real_religion20,mmlu,unknown,unknown,,1793868940.0026426,0.4.9.2
+qwen3_4b_base_en,baseline,wikitext,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793960888.4333668,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed0,wikitext,A100-SXM4-40GB,1,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794009151.8717523,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed1,wikitext,unknown,unknown,,1794012374.797409,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed2,wikitext,unknown,unknown,,1794015602.6926444,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed3,wikitext,unknown,unknown,,1794018836.478968,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed4,wikitext,unknown,unknown,,1794022075.793852,0.4.9.2
+qwen3_4b_base_en,rand_religion20_seed0,wikitext,unknown,unknown,,1793993053.9227936,0.4.9.2
+qwen3_4b_base_en,rand_religion20_seed1,wikitext,unknown,unknown,,1793996268.0466087,0.4.9.2
+qwen3_4b_base_en,rand_religion20_seed2,wikitext,unknown,unknown,,1793999485.7461333,0.4.9.2
+qwen3_4b_base_en,rand_religion20_seed3,wikitext,unknown,unknown,,1794002703.7552507,0.4.9.2
+qwen3_4b_base_en,rand_religion20_seed4,wikitext,unknown,unknown,,1794005926.1134548,0.4.9.2
+qwen3_4b_base_en,real_gender20,wikitext,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793978103.8718755,0.4.9.2
+qwen3_4b_base_en,real_gender5,wikitext,unknown,unknown,,1793989691.8161478,0.4.9.2
+qwen3_4b_base_en,real_race20,wikitext,unknown,unknown,,1793970772.7584229,0.4.9.2
+qwen3_4b_base_en,real_race5,wikitext,unknown,unknown,,1793985843.68257,0.4.9.2
+qwen3_4b_base_en,real_religion20,wikitext,unknown,unknown,,1793965846.0111217,0.4.9.2
+qwen3_4b_base_en,real_religion5,wikitext,unknown,unknown,,1793981996.4199684,0.4.9.2
+qwen3_4b_base_en,baseline,arc_challenge,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793959167.9008205,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed0,arc_challenge,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794479869.385187,0.4.9.2
+qwen3_4b_base_en,real_gender20,arc_challenge,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793974076.084653,0.4.9.2
+qwen3_4b_base_en,real_gender5,arc_challenge,unknown,unknown,,1793989080.4777348,0.4.9.2
+qwen3_4b_base_en,real_race20,arc_challenge,unknown,unknown,,1793969138.475686,0.4.9.2
+qwen3_4b_base_en,real_race5,arc_challenge,unknown,unknown,,1793985233.5358398,0.4.9.2
+qwen3_4b_base_en,real_religion20,arc_challenge,unknown,unknown,,1793964210.0856435,0.4.9.2
+qwen3_4b_base_en,real_religion5,arc_challenge,unknown,unknown,,1793981361.6519303,0.4.9.2
+qwen3_4b_base_en,baseline,hellaswag,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793959201.1685953,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed0,hellaswag,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794479922.5270321,0.4.9.2
+qwen3_4b_base_en,real_gender20,hellaswag,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793974107.152502,0.4.9.2
+qwen3_4b_base_en,real_gender5,hellaswag,unknown,unknown,,1793989111.4397597,0.4.9.2
+qwen3_4b_base_en,real_race20,hellaswag,unknown,unknown,,1793969169.5182958,0.4.9.2
+qwen3_4b_base_en,real_race5,hellaswag,unknown,unknown,,1793985264.43268,0.4.9.2
+qwen3_4b_base_en,real_religion20,hellaswag,unknown,unknown,,1793964240.9026425,0.4.9.2
+qwen3_4b_base_en,real_religion5,hellaswag,unknown,unknown,,1793981398.6942587,0.4.9.2
+qwen3_4b_base_en,baseline,hellaswag_es,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793959478.7120416,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed0,hellaswag_es,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794480662.0396025,0.4.9.2
+qwen3_4b_base_en,real_gender20,hellaswag_es,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1793974378.870922,0.4.9.2
+qwen3_4b_base_en,real_gender5,hellaswag_es,unknown,unknown,,1793989383.1653285,0.4.9.2
+qwen3_4b_base_en,real_race20,hellaswag_es,unknown,unknown,,1793969441.36993,0.4.9.2
+qwen3_4b_base_en,real_race5,hellaswag_es,unknown,unknown,,1793985535.203173,0.4.9.2
+qwen3_4b_base_en,real_religion20,hellaswag_es,unknown,unknown,,1793964511.7941048,0.4.9.2
+qwen3_4b_base_en,real_religion5,hellaswag_es,unknown,unknown,,1793981683.5236962,0.4.9.2
+qwen3_4b_base_en,baseline,mmlu,A100-SXM4-40GB,4,E4_handoff.md §3,1793959790.8244858,0.4.9.2
+qwen3_4b_base_en,rand_gender20_seed0,mmlu,L4,4,E4_handoff.md §3 and §4,1794481575.1385338,0.4.9.2
+qwen3_4b_base_en,real_gender20,mmlu,A100-SXM4-40GB,4,E4_handoff.md §3,1793976871.6969573,0.4.9.2
+qwen3_4b_base_en,real_race20,mmlu,unknown,unknown,,1793969749.3998115,0.4.9.2
+qwen3_4b_base_en,real_religion20,mmlu,unknown,unknown,,1793964820.2043362,0.4.9.2
+salamandra_7b_en,baseline,wikitext,A100-SXM4-40GB,1,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793961164.696169,0.4.9.2
+salamandra_7b_en,rand_gender20_seed0,wikitext,L4,1,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794024399.6631625,0.4.9.2
+salamandra_7b_en,rand_gender20_seed1,wikitext,unknown,unknown,,1794028282.0655427,0.4.9.2
+salamandra_7b_en,rand_gender20_seed2,wikitext,unknown,unknown,,1794035240.7025306,0.4.9.2
+salamandra_7b_en,rand_gender20_seed3,wikitext,unknown,unknown,,1794039093.6777031,0.4.9.2
+salamandra_7b_en,rand_gender20_seed4,wikitext,unknown,unknown,,1794042943.66233,0.4.9.2
+salamandra_7b_en,rand_religion20_seed0,wikitext,unknown,unknown,,1794000033.2917573,0.4.9.2
+salamandra_7b_en,rand_religion20_seed1,wikitext,unknown,unknown,,1794003864.096057,0.4.9.2
+salamandra_7b_en,rand_religion20_seed2,wikitext,unknown,unknown,,1794007696.789589,0.4.9.2
+salamandra_7b_en,rand_religion20_seed3,wikitext,unknown,unknown,,1794011534.2295318,0.4.9.2
+salamandra_7b_en,rand_religion20_seed4,wikitext,unknown,unknown,,1794015372.3507955,0.4.9.2
+salamandra_7b_en,real_gender20,wikitext,A100-SXM4-40GB,1,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793982397.8123717,0.4.9.2
+salamandra_7b_en,real_gender5,wikitext,unknown,unknown,,1793996032.9956427,0.4.9.2
+salamandra_7b_en,real_race20,wikitext,unknown,unknown,,1793972574.459609,0.4.9.2
+salamandra_7b_en,real_race5,wikitext,unknown,unknown,,1793991493.5366793,0.4.9.2
+salamandra_7b_en,real_religion20,wikitext,unknown,unknown,,1793966868.7387896,0.4.9.2
+salamandra_7b_en,real_religion5,wikitext,unknown,unknown,,1793986950.4096594,0.4.9.2
+salamandra_7b_en,baseline,arc_challenge,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793959254.5411656,0.4.9.2
+salamandra_7b_en,rand_gender20_seed0,arc_challenge,L4,16,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794570122.64237,0.4.9.2
+salamandra_7b_en,real_gender20,arc_challenge,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793980438.1993408,0.4.9.2
+salamandra_7b_en,real_gender5,arc_challenge,unknown,unknown,,1793995340.7125163,0.4.9.2
+salamandra_7b_en,real_race20,arc_challenge,unknown,unknown,,1793970723.1582859,0.4.9.2
+salamandra_7b_en,real_race5,arc_challenge,unknown,unknown,,1793990802.1334825,0.4.9.2
+salamandra_7b_en,real_religion20,arc_challenge,unknown,unknown,,1793965016.0023794,0.4.9.2
+salamandra_7b_en,real_religion5,arc_challenge,unknown,unknown,,1793986258.6740756,0.4.9.2
+salamandra_7b_en,baseline,hellaswag,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793959285.9946978,0.4.9.2
+salamandra_7b_en,rand_gender20_seed0,hellaswag,L4,16,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794570202.0225654,0.4.9.2
+salamandra_7b_en,real_gender20,hellaswag,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793980470.2203238,0.4.9.2
+salamandra_7b_en,real_gender5,hellaswag,unknown,unknown,,1793995370.8869846,0.4.9.2
+salamandra_7b_en,real_race20,hellaswag,unknown,unknown,,1793970753.4885824,0.4.9.2
+salamandra_7b_en,real_race5,hellaswag,unknown,unknown,,1793990832.288541,0.4.9.2
+salamandra_7b_en,real_religion20,hellaswag,unknown,unknown,,1793965046.494801,0.4.9.2
+salamandra_7b_en,real_religion5,hellaswag,unknown,unknown,,1793986288.8818023,0.4.9.2
+salamandra_7b_en,baseline,hellaswag_es,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793959622.2270231,0.4.9.2
+salamandra_7b_en,rand_gender20_seed0,hellaswag_es,L4,16,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15",1794571330.0063987,0.4.9.2
+salamandra_7b_en,real_gender20,hellaswag_es,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793980811.239307,0.4.9.2
+salamandra_7b_en,real_gender5,hellaswag_es,unknown,unknown,,1793995703.8788667,0.4.9.2
+salamandra_7b_en,real_race20,hellaswag_es,unknown,unknown,,1793971084.7789574,0.4.9.2
+salamandra_7b_en,real_race5,hellaswag_es,unknown,unknown,,1793991165.1405995,0.4.9.2
+salamandra_7b_en,real_religion20,hellaswag_es,unknown,unknown,,1793965377.3901622,0.4.9.2
+salamandra_7b_en,real_religion5,hellaswag_es,unknown,unknown,,1793986621.7378995,0.4.9.2
+salamandra_7b_en,baseline,mmlu,A100-SXM4-40GB,4,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793959949.8439445,0.4.9.2
+salamandra_7b_en,rand_gender20_seed0,mmlu,A100-SXM4-40GB,4,Salamandra MMLU retry (agent report),1794590145.5273142,0.4.9.2
+salamandra_7b_en,real_gender20,mmlu,A100-SXM4-40GB,4,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1793981142.2747443,0.4.9.2
+salamandra_7b_en,real_race20,mmlu,unknown,unknown,,1793971412.6955733,0.4.9.2
+salamandra_7b_en,real_religion20,mmlu,unknown,unknown,,1793965705.2398648,0.4.9.2
+llama_3.2_3b_en,baseline,wikitext,A100-SXM4-80GB,1,"per-set summary env.gpu and wikitext_batch_size=1 (lm_eval 0.4.9.2, 2026-11-10); verified in wikitext log pretty_env_info",1794303091.864208,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed0,wikitext,A100-SXM4-80GB,1,"T2 rerun (2026-11-23, lm_eval 0.4.9.2, wikitext_batch_size=1, NVIDIA A100-SXM4-80GB); L4 preserved as *_L4.json",1795460492.129108,0.4.9.2
+llama_3.2_3b_en,real_gender20,wikitext,A100-SXM4-80GB,1,"per-set summary env.gpu and wikitext_batch_size=1 (lm_eval 0.4.9.2, 2026-11-10); verified in wikitext log",1794314300.225547,0.4.9.2
+llama_3.2_3b_en,real_gender5,wikitext,A100-SXM4-80GB,1,"per-set summary env.gpu and wikitext_batch_size=1 (lm_eval 0.4.9.2, 2026-11-10); verified in wikitext log",1794322966.6340067,0.4.9.2
+llama_3.2_3b_en,real_race20,wikitext,A100-SXM4-80GB,1,"per-set summary env.gpu and wikitext_batch_size=1 (lm_eval 0.4.9.2, 2026-11-10); verified in wikitext log",1794310566.2640758,0.4.9.2
+llama_3.2_3b_en,real_race5,wikitext,A100-SXM4-80GB,1,"per-set summary env.gpu and wikitext_batch_size=1 (lm_eval 0.4.9.2, 2026-11-10); verified in wikitext log",1794320073.6304388,0.4.9.2
+llama_3.2_3b_en,real_religion20,wikitext,A100-SXM4-80GB,1,"per-set summary env.gpu and wikitext_batch_size=1 (lm_eval 0.4.9.2, 2026-11-10); verified in wikitext log",1794306839.899903,0.4.9.2
+llama_3.2_3b_en,real_religion5,wikitext,A100-SXM4-80GB,1,"per-set summary env.gpu and wikitext_batch_size=1 (lm_eval 0.4.9.2, 2026-11-10); verified in wikitext log",1794317184.4925213,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed1,wikitext,A100-SXM4-80GB,1,"T1 run (2026-11-23, lm_eval 0.4.9.2, wikitext_batch_size=1, NVIDIA A100-SXM4-80GB)",1795449254.8214154,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed2,wikitext,A100-SXM4-80GB,1,"T1 run (2026-11-23, lm_eval 0.4.9.2, wikitext_batch_size=1, NVIDIA A100-SXM4-80GB)",1795451649.9670336,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed3,wikitext,A100-SXM4-80GB,1,"T1 run (2026-11-23, lm_eval 0.4.9.2, wikitext_batch_size=1, NVIDIA A100-SXM4-80GB)",1795454043.0521276,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed4,wikitext,A100-SXM4-80GB,1,"T1 run (2026-11-23, lm_eval 0.4.9.2, wikitext_batch_size=1, NVIDIA A100-SXM4-80GB)",1795456433.6244535,0.4.9.2
+llama_3.2_3b_en,baseline,arc_challenge,A100-SXM4-80GB,16,"per-set summary env.gpu (lm_eval 0.4.9.2, saved 2026-11-10) + verified in cap logs (arc_challenge/wikitext); NOTE: env.gpu reflects capabilities session, NOT bbq (see bbq row)",1794301588.0624058,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed0,arc_challenge,A100-SXM4-80GB,16,"T2 rerun (2026-11-23, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-13 L4 run (preserved as *_L4.json)",1795458966.4341402,0.4.9.2
+llama_3.2_3b_en,real_gender20,arc_challenge,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in bbq/arc_challenge/wikitext logs",1794312985.0885696,0.4.9.2
+llama_3.2_3b_en,real_gender5,arc_challenge,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794322501.435431,0.4.9.2
+llama_3.2_3b_en,real_race20,arc_challenge,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in arc_challenge/wikitext logs",1794309263.1831717,0.4.9.2
+llama_3.2_3b_en,real_race5,arc_challenge,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794319608.0408666,0.4.9.2
+llama_3.2_3b_en,real_religion20,arc_challenge,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in bbq/arc_challenge/wikitext logs",1794305535.642528,0.4.9.2
+llama_3.2_3b_en,real_religion5,arc_challenge,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794316721.1754296,0.4.9.2
+llama_3.2_3b_en,baseline,hellaswag,A100-SXM4-80GB,16,"per-set summary env.gpu (lm_eval 0.4.9.2, saved 2026-11-10) + verified in cap logs (arc_challenge/wikitext); NOTE: env.gpu reflects capabilities session, NOT bbq (see bbq row)",1794301618.2482924,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed0,hellaswag,A100-SXM4-80GB,16,"T2 rerun (2026-11-23, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-13 L4 run (preserved as *_L4.json)",1795458997.190629,0.4.9.2
+llama_3.2_3b_en,real_gender20,hellaswag,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in bbq/arc_challenge/wikitext logs",1794313010.9289565,0.4.9.2
+llama_3.2_3b_en,real_gender5,hellaswag,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794322526.9239016,0.4.9.2
+llama_3.2_3b_en,real_race20,hellaswag,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in arc_challenge/wikitext logs",1794309288.7308245,0.4.9.2
+llama_3.2_3b_en,real_race5,hellaswag,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794319633.5624409,0.4.9.2
+llama_3.2_3b_en,real_religion20,hellaswag,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in bbq/arc_challenge/wikitext logs",1794305561.6978729,0.4.9.2
+llama_3.2_3b_en,real_religion5,hellaswag,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794316746.7498758,0.4.9.2
+llama_3.2_3b_en,baseline,hellaswag_es,A100-SXM4-80GB,16,"per-set summary env.gpu (lm_eval 0.4.9.2, saved 2026-11-10) + verified in cap logs (arc_challenge/wikitext); NOTE: env.gpu reflects capabilities session, NOT bbq (see bbq row)",1794301832.5553043,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed0,hellaswag_es,A100-SXM4-80GB,16,"T2 rerun (2026-11-23, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-13 L4 run (preserved as *_L4.json)",1795459215.7533312,0.4.9.2
+llama_3.2_3b_en,real_gender20,hellaswag_es,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in bbq/arc_challenge/wikitext logs",1794313217.7799816,0.4.9.2
+llama_3.2_3b_en,real_gender5,hellaswag_es,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794322733.2866168,0.4.9.2
+llama_3.2_3b_en,real_race20,hellaswag_es,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in arc_challenge/wikitext logs",1794309495.732026,0.4.9.2
+llama_3.2_3b_en,real_race5,hellaswag_es,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794319840.1239293,0.4.9.2
+llama_3.2_3b_en,real_religion20,hellaswag_es,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10); verified in bbq/arc_challenge/wikitext logs",1794305768.2660918,0.4.9.2
+llama_3.2_3b_en,real_religion5,hellaswag_es,A100-SXM4-80GB,16,"per-set summary env.gpu and batch_size=16 (lm_eval 0.4.9.2, 2026-11-10; no MMLU per MMLU_KS=[20]); verified in arc_challenge/wikitext logs",1794316952.2368731,0.4.9.2
+llama_3.2_3b_en,baseline,mmlu,A100-SXM4-80GB,4,"per-set summary env.gpu and mmlu_batch_size=4 (lm_eval 0.4.9.2, 2026-11-10)",1794302067.1971343,0.4.9.2
+llama_3.2_3b_en,rand_gender20_seed0,mmlu,A100-SXM4-80GB,4,"T2 rerun (2026-11-23, lm_eval 0.4.9.2, mmlu_batch_size=4, NVIDIA A100-SXM4-80GB); L4 preserved as *_L4.json",1795459455.175549,0.4.9.2
+llama_3.2_3b_en,real_gender20,mmlu,A100-SXM4-80GB,4,"per-set summary env.gpu and mmlu_batch_size=4 (lm_eval 0.4.9.2, 2026-11-10)",1794313452.295378,0.4.9.2
+llama_3.2_3b_en,real_race20,mmlu,A100-SXM4-80GB,4,"per-set summary env.gpu and mmlu_batch_size=4 (lm_eval 0.4.9.2, 2026-11-10)",1794309728.753078,0.4.9.2
+llama_3.2_3b_en,real_religion20,mmlu,A100-SXM4-80GB,4,"per-set summary env.gpu and mmlu_batch_size=4 (lm_eval 0.4.9.2, 2026-11-10)",1794306001.4564342,0.4.9.2
+llama_3.2_1b_en,baseline,wikitext,A100-SXM4-40GB,1,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794572306.9182336,0.4.9.2
+llama_3.2_1b_en,real_gender20,wikitext,A100-SXM4-40GB,1,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794579657.1248755,0.4.9.2
+llama_3.2_1b_en,real_gender5,wikitext,unknown,unknown,,1794585277.7230425,0.4.9.2
+llama_3.2_1b_en,real_race20,wikitext,unknown,unknown,,1794577207.7816322,0.4.9.2
+llama_3.2_1b_en,real_race5,wikitext,unknown,unknown,,1794583405.6789813,0.4.9.2
+llama_3.2_1b_en,real_religion20,wikitext,unknown,unknown,,1794574764.7175655,0.4.9.2
+llama_3.2_1b_en,real_religion5,wikitext,unknown,unknown,,1794581534.6428607,0.4.9.2
+llama_3.2_1b_en,baseline,arc_challenge,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794571386.090612,0.4.9.2
+llama_3.2_1b_en,real_gender20,arc_challenge,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794578798.620678,0.4.9.2
+llama_3.2_1b_en,real_gender5,arc_challenge,unknown,unknown,,1794584988.6583903,0.4.9.2
+llama_3.2_1b_en,real_race20,arc_challenge,unknown,unknown,,1794576351.8422472,0.4.9.2
+llama_3.2_1b_en,real_race5,arc_challenge,unknown,unknown,,1794583113.6395288,0.4.9.2
+llama_3.2_1b_en,real_religion20,arc_challenge,unknown,unknown,,1794573906.9176524,0.4.9.2
+llama_3.2_1b_en,real_religion5,arc_challenge,unknown,unknown,,1794581242.4493997,0.4.9.2
+llama_3.2_1b_en,baseline,hellaswag,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794571407.096735,0.4.9.2
+llama_3.2_1b_en,real_gender20,hellaswag,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794578817.7690334,0.4.9.2
+llama_3.2_1b_en,real_gender5,hellaswag,unknown,unknown,,1794585007.8260765,0.4.9.2
+llama_3.2_1b_en,real_race20,hellaswag,unknown,unknown,,1794576370.973391,0.4.9.2
+llama_3.2_1b_en,real_race5,hellaswag,unknown,unknown,,1794583132.8052053,0.4.9.2
+llama_3.2_1b_en,real_religion20,hellaswag,unknown,unknown,,1794573926.176582,0.4.9.2
+llama_3.2_1b_en,real_religion5,hellaswag,unknown,unknown,,1794581261.746121,0.4.9.2
+llama_3.2_1b_en,baseline,hellaswag_es,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794571548.4693344,0.4.9.2
+llama_3.2_1b_en,real_gender20,hellaswag_es,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794578948.0569363,0.4.9.2
+llama_3.2_1b_en,real_gender5,hellaswag_es,unknown,unknown,,1794585138.2152157,0.4.9.2
+llama_3.2_1b_en,real_race20,hellaswag_es,unknown,unknown,,1794576501.1800241,0.4.9.2
+llama_3.2_1b_en,real_race5,hellaswag_es,unknown,unknown,,1794583263.9271333,0.4.9.2
+llama_3.2_1b_en,real_religion20,hellaswag_es,unknown,unknown,,1794574056.0776887,0.4.9.2
+llama_3.2_1b_en,real_religion5,hellaswag_es,unknown,unknown,,1794581393.9914944,0.4.9.2
+llama_3.2_1b_en,baseline,mmlu,A100-SXM4-40GB,4,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794571689.7088268,0.4.9.2
+llama_3.2_1b_en,real_gender20,mmlu,A100-SXM4-40GB,4,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15",1794579088.229329,0.4.9.2
+llama_3.2_1b_en,real_race20,mmlu,unknown,unknown,,1794576640.7388723,0.4.9.2
+llama_3.2_1b_en,real_religion20,mmlu,unknown,unknown,,1794574195.4649663,0.4.9.2

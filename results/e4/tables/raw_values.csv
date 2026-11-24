@@ -1,0 +1,217 @@
+unit,set,kind,category,k,task,metric,value,n
+llama_3.1_8b_en,baseline,baseline,,0,wikitext,word_perplexity,7.544208955845432,62
+llama_3.1_8b_en,rand_gender20_seed0,random,Gender_identity,20,wikitext,word_perplexity,7.549712778555599,62
+llama_3.1_8b_en,rand_gender20_seed1,random,Gender_identity,20,wikitext,word_perplexity,7.555220616539545,62
+llama_3.1_8b_en,rand_gender20_seed2,random,Gender_identity,20,wikitext,word_perplexity,7.55396848244674,62
+llama_3.1_8b_en,rand_gender20_seed3,random,Gender_identity,20,wikitext,word_perplexity,7.544208955845432,62
+llama_3.1_8b_en,rand_gender20_seed4,random,Gender_identity,20,wikitext,word_perplexity,7.549212265160086,62
+llama_3.1_8b_en,rand_religion20_seed0,random,Religion,20,wikitext,word_perplexity,7.56198572800793,62
+llama_3.1_8b_en,rand_religion20_seed1,random,Religion,20,wikitext,word_perplexity,7.5529669245866735,62
+llama_3.1_8b_en,rand_religion20_seed2,random,Religion,20,wikitext,word_perplexity,7.557725507414978,62
+llama_3.1_8b_en,rand_religion20_seed3,random,Religion,20,wikitext,word_perplexity,7.558727696284828,62
+llama_3.1_8b_en,rand_religion20_seed4,random,Religion,20,wikitext,word_perplexity,7.5452093523588974,62
+llama_3.1_8b_en,rand_religion20_seed5,random,Religion,20,wikitext,word_perplexity,7.54846155728216,62
+llama_3.1_8b_en,rand_religion20_seed6,random,Religion,20,wikitext,word_perplexity,7.54946251770997,62
+llama_3.1_8b_en,rand_religion20_seed7,random,Religion,20,wikitext,word_perplexity,7.554218892662806,62
+llama_3.1_8b_en,rand_religion20_seed8,random,Religion,20,wikitext,word_perplexity,7.554344100883687,62
+llama_3.1_8b_en,rand_religion20_seed9,random,Religion,20,wikitext,word_perplexity,7.551715164000433,62
+llama_3.1_8b_en,real_gender20,real,Gender_identity,20,wikitext,word_perplexity,7.598704006846772,62
+llama_3.1_8b_en,real_gender5,real,Gender_identity,5,wikitext,word_perplexity,7.56298848180246,62
+llama_3.1_8b_en,real_race20,real,Race_ethnicity,20,wikitext,word_perplexity,7.613927033635199,62
+llama_3.1_8b_en,real_race5,real,Race_ethnicity,5,wikitext,word_perplexity,7.554218892662806,62
+llama_3.1_8b_en,real_religion20,real,Religion,20,wikitext,word_perplexity,7.592881305735862,62
+llama_3.1_8b_en,real_religion5,real,Religion,5,wikitext,word_perplexity,7.560356536645881,62
+llama_3.1_8b_en,baseline,baseline,,0,arc_challenge,acc_norm,54.60750853242321,1172
+llama_3.1_8b_en,rand_gender20_seed0,random,Gender_identity,20,arc_challenge,acc_norm,54.863481228668945,1172
+llama_3.1_8b_en,real_gender20,real,Gender_identity,20,arc_challenge,acc_norm,55.11945392491467,1172
+llama_3.1_8b_en,real_gender5,real,Gender_identity,5,arc_challenge,acc_norm,54.26621160409556,1172
+llama_3.1_8b_en,real_race20,real,Race_ethnicity,20,arc_challenge,acc_norm,55.631399317406135,1172
+llama_3.1_8b_en,real_race5,real,Race_ethnicity,5,arc_challenge,acc_norm,54.94880546075085,1172
+llama_3.1_8b_en,real_religion20,real,Religion,20,arc_challenge,acc_norm,55.11945392491467,1172
+llama_3.1_8b_en,real_religion5,real,Religion,5,arc_challenge,acc_norm,55.034129692832764,1172
+llama_3.1_8b_en,baseline,baseline,,0,hellaswag,acc_norm,79.29695279824736,10042
+llama_3.1_8b_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag,acc_norm,79.34674367655845,10042
+llama_3.1_8b_en,real_gender20,real,Gender_identity,20,hellaswag,acc_norm,79.35670185222067,10042
+llama_3.1_8b_en,real_gender5,real,Gender_identity,5,hellaswag,acc_norm,79.27703644692292,10042
+llama_3.1_8b_en,real_race20,real,Race_ethnicity,20,hellaswag,acc_norm,79.32682732523402,10042
+llama_3.1_8b_en,real_race5,real,Race_ethnicity,5,hellaswag,acc_norm,79.35670185222067,10042
+llama_3.1_8b_en,real_religion20,real,Religion,20,hellaswag,acc_norm,79.27703644692292,10042
+llama_3.1_8b_en,real_religion5,real,Religion,5,hellaswag,acc_norm,79.29695279824736,10042
+llama_3.1_8b_en,baseline,baseline,,0,hellaswag_es,acc_norm,66.8764668231278,9374
+llama_3.1_8b_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag_es,acc_norm,66.73778536377213,9374
+llama_3.1_8b_en,real_gender20,real,Gender_identity,20,hellaswag_es,acc_norm,66.73778536377213,9374
+llama_3.1_8b_en,real_gender5,real,Gender_identity,5,hellaswag_es,acc_norm,66.8764668231278,9374
+llama_3.1_8b_en,real_race20,real,Race_ethnicity,20,hellaswag_es,acc_norm,66.74845316833795,9374
+llama_3.1_8b_en,real_race5,real,Race_ethnicity,5,hellaswag_es,acc_norm,66.86579901856197,9374
+llama_3.1_8b_en,real_religion20,real,Religion,20,hellaswag_es,acc_norm,66.75912097290377,9374
+llama_3.1_8b_en,real_religion5,real,Religion,5,hellaswag_es,acc_norm,66.83379560486452,9374
+llama_3.1_8b_en,baseline,baseline,,0,mmlu,acc (micro),65.28272325879504,14042
+llama_3.1_8b_en,rand_gender20_seed0,random,Gender_identity,20,mmlu,acc (micro),65.5390969947301,14042
+llama_3.1_8b_en,real_gender20,real,Gender_identity,20,mmlu,acc (micro),65.33969520011395,14042
+llama_3.1_8b_en,real_race20,real,Race_ethnicity,20,mmlu,acc (micro),65.32545221478422,14042
+llama_3.1_8b_en,real_religion20,real,Religion,20,mmlu,acc (micro),65.50348953140578,14042
+qwen3_4b_base_en,baseline,baseline,,0,wikitext,word_perplexity,10.373565366064375,62
+qwen3_4b_base_en,rand_gender20_seed0,random,Gender_identity,20,wikitext,word_perplexity,10.393529169275883,62
+qwen3_4b_base_en,rand_gender20_seed1,random,Gender_identity,20,wikitext,word_perplexity,10.379907457236703,62
+qwen3_4b_base_en,rand_gender20_seed2,random,Gender_identity,20,wikitext,word_perplexity,10.417998343704276,62
+qwen3_4b_base_en,rand_gender20_seed3,random,Gender_identity,20,wikitext,word_perplexity,10.381821595136744,62
+qwen3_4b_base_en,rand_gender20_seed4,random,Gender_identity,20,wikitext,word_perplexity,10.389739980668903,62
+qwen3_4b_base_en,rand_religion20_seed0,random,Religion,20,wikitext,word_perplexity,10.375435342504547,62
+qwen3_4b_base_en,rand_religion20_seed1,random,Religion,20,wikitext,word_perplexity,10.376467197934884,62
+qwen3_4b_base_en,rand_religion20_seed2,random,Religion,20,wikitext,word_perplexity,10.37560731128366,62
+qwen3_4b_base_en,rand_religion20_seed3,random,Religion,20,wikitext,word_perplexity,10.379219314140549,62
+qwen3_4b_base_en,rand_religion20_seed4,random,Religion,20,wikitext,word_perplexity,10.38524211339953,62
+qwen3_4b_base_en,real_gender20,real,Gender_identity,20,wikitext,word_perplexity,11.030532642727657,62
+qwen3_4b_base_en,real_gender5,real,Gender_identity,5,wikitext,word_perplexity,10.759965508772728,62
+qwen3_4b_base_en,real_race20,real,Race_ethnicity,20,wikitext,word_perplexity,10.765027117362523,62
+qwen3_4b_base_en,real_race5,real,Race_ethnicity,5,wikitext,word_perplexity,10.569793783120154,62
+qwen3_4b_base_en,real_religion20,real,Religion,20,wikitext,word_perplexity,11.149503289979224,62
+qwen3_4b_base_en,real_religion5,real,Religion,5,wikitext,word_perplexity,10.578995194861387,62
+qwen3_4b_base_en,baseline,baseline,,0,arc_challenge,acc_norm,51.02389078498294,1172
+qwen3_4b_base_en,rand_gender20_seed0,random,Gender_identity,20,arc_challenge,acc_norm,51.5358361774744,1172
+qwen3_4b_base_en,real_gender20,real,Gender_identity,20,arc_challenge,acc_norm,51.877133105802045,1172
+qwen3_4b_base_en,real_gender5,real,Gender_identity,5,arc_challenge,acc_norm,51.62116040955631,1172
+qwen3_4b_base_en,real_race20,real,Race_ethnicity,20,arc_challenge,acc_norm,52.218430034129696,1172
+qwen3_4b_base_en,real_race5,real,Race_ethnicity,5,arc_challenge,acc_norm,52.04778156996587,1172
+qwen3_4b_base_en,real_religion20,real,Religion,20,arc_challenge,acc_norm,51.19453924914675,1172
+qwen3_4b_base_en,real_religion5,real,Religion,5,arc_challenge,acc_norm,51.877133105802045,1172
+qwen3_4b_base_en,baseline,baseline,,0,hellaswag,acc_norm,73.69049990041823,10042
+qwen3_4b_base_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag,acc_norm,73.80003983270265,10042
+qwen3_4b_base_en,real_gender20,real,Gender_identity,20,hellaswag,acc_norm,73.04321848237403,10042
+qwen3_4b_base_en,real_gender5,real,Gender_identity,5,hellaswag,acc_norm,73.32204740091616,10042
+qwen3_4b_base_en,real_race20,real,Race_ethnicity,20,hellaswag,acc_norm,73.09300936068513,10042
+qwen3_4b_base_en,real_race5,real,Race_ethnicity,5,hellaswag,acc_norm,73.65066719776937,10042
+qwen3_4b_base_en,real_religion20,real,Religion,20,hellaswag,acc_norm,72.96355307707628,10042
+qwen3_4b_base_en,real_religion5,real,Religion,5,hellaswag,acc_norm,73.41167098187611,10042
+qwen3_4b_base_en,baseline,baseline,,0,hellaswag_es,acc_norm,62.118625986771924,9374
+qwen3_4b_base_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag_es,acc_norm,62.22530403243013,9374
+qwen3_4b_base_en,real_gender20,real,Gender_identity,20,hellaswag_es,acc_norm,62.13996159590356,9374
+qwen3_4b_base_en,real_gender5,real,Gender_identity,5,hellaswag_es,acc_norm,62.22530403243013,9374
+qwen3_4b_base_en,real_race20,real,Race_ethnicity,20,hellaswag_es,acc_norm,62.065286963942825,9374
+qwen3_4b_base_en,real_race5,real,Race_ethnicity,5,hellaswag_es,acc_norm,62.01194794111372,9374
+qwen3_4b_base_en,real_religion20,real,Religion,20,hellaswag_es,acc_norm,62.13996159590356,9374
+qwen3_4b_base_en,real_religion5,real,Religion,5,hellaswag_es,acc_norm,62.257307446127584,9374
+qwen3_4b_base_en,baseline,baseline,,0,mmlu,acc (micro),73.0878792194844,14042
+qwen3_4b_base_en,rand_gender20_seed0,random,Gender_identity,20,mmlu,acc (micro),73.09500071214927,14042
+qwen3_4b_base_en,real_gender20,real,Gender_identity,20,mmlu,acc (micro),72.71756160091155,14042
+qwen3_4b_base_en,real_race20,real,Race_ethnicity,20,mmlu,acc (micro),72.83862697621421,14042
+qwen3_4b_base_en,real_religion20,real,Religion,20,mmlu,acc (micro),72.76741204956559,14042
+salamandra_7b_en,baseline,baseline,,0,wikitext,word_perplexity,6.220235818700552,62
+salamandra_7b_en,rand_gender20_seed0,random,Gender_identity,20,wikitext,word_perplexity,6.220699773039019,62
+salamandra_7b_en,rand_gender20_seed1,random,Gender_identity,20,wikitext,word_perplexity,6.222246537442821,62
+salamandra_7b_en,rand_gender20_seed2,random,Gender_identity,20,wikitext,word_perplexity,6.222659072901195,62
+salamandra_7b_en,rand_gender20_seed3,random,Gender_identity,20,wikitext,word_perplexity,6.233833705520085,62
+salamandra_7b_en,rand_gender20_seed4,random,Gender_identity,20,wikitext,word_perplexity,6.222504368899191,62
+salamandra_7b_en,rand_religion20_seed0,random,Religion,20,wikitext,word_perplexity,6.225341220145569,62
+salamandra_7b_en,rand_religion20_seed1,random,Religion,20,wikitext,word_perplexity,6.222736426344534,62
+salamandra_7b_en,rand_religion20_seed2,random,Religion,20,wikitext,word_perplexity,6.223277927372696,62
+salamandra_7b_en,rand_religion20_seed3,random,Religion,20,wikitext,word_perplexity,6.225083271143363,62
+salamandra_7b_en,rand_religion20_seed4,random,Religion,20,wikitext,word_perplexity,6.220957540402055,62
+salamandra_7b_en,real_gender20,real,Gender_identity,20,wikitext,word_perplexity,6.245727123887755,62
+salamandra_7b_en,real_gender5,real,Gender_identity,5,wikitext,word_perplexity,6.22436107079699,62
+salamandra_7b_en,real_race20,real,Race_ethnicity,20,wikitext,word_perplexity,6.274519983999532,62
+salamandra_7b_en,real_race5,real,Race_ethnicity,5,wikitext,word_perplexity,6.244769640763909,62
+salamandra_7b_en,real_religion20,real,Religion,20,wikitext,word_perplexity,6.262571736862606,62
+salamandra_7b_en,real_religion5,real,Religion,5,wikitext,word_perplexity,6.225495994677413,62
+salamandra_7b_en,baseline,baseline,,0,arc_challenge,acc_norm,48.208191126279864,1172
+salamandra_7b_en,rand_gender20_seed0,random,Gender_identity,20,arc_challenge,acc_norm,48.03754266211604,1172
+salamandra_7b_en,real_gender20,real,Gender_identity,20,arc_challenge,acc_norm,47.95221843003413,1172
+salamandra_7b_en,real_gender5,real,Gender_identity,5,arc_challenge,acc_norm,47.95221843003413,1172
+salamandra_7b_en,real_race20,real,Race_ethnicity,20,arc_challenge,acc_norm,47.95221843003413,1172
+salamandra_7b_en,real_race5,real,Race_ethnicity,5,arc_challenge,acc_norm,48.29351535836178,1172
+salamandra_7b_en,real_religion20,real,Religion,20,arc_challenge,acc_norm,48.208191126279864,1172
+salamandra_7b_en,real_religion5,real,Religion,5,arc_challenge,acc_norm,48.37883959044368,1172
+salamandra_7b_en,baseline,baseline,,0,hellaswag,acc_norm,76.46883091017726,10042
+salamandra_7b_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag,acc_norm,76.38916550487951,10042
+salamandra_7b_en,real_gender20,real,Gender_identity,20,hellaswag,acc_norm,76.38916550487951,10042
+salamandra_7b_en,real_gender5,real,Gender_identity,5,hellaswag,acc_norm,76.3792073292173,10042
+salamandra_7b_en,real_race20,real,Race_ethnicity,20,hellaswag,acc_norm,76.3294164509062,10042
+salamandra_7b_en,real_race5,real,Race_ethnicity,5,hellaswag,acc_norm,76.34933280223063,10042
+salamandra_7b_en,real_religion20,real,Religion,20,hellaswag,acc_norm,76.36924915355506,10042
+salamandra_7b_en,real_religion5,real,Religion,5,hellaswag,acc_norm,76.3792073292173,10042
+salamandra_7b_en,baseline,baseline,,0,hellaswag_es,acc_norm,67.86857264774909,9374
+salamandra_7b_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag_es,acc_norm,67.85790484318326,9374
+salamandra_7b_en,real_gender20,real,Gender_identity,20,hellaswag_es,acc_norm,67.76189460209089,9374
+salamandra_7b_en,real_gender5,real,Gender_identity,5,hellaswag_es,acc_norm,67.91124386601237,9374
+salamandra_7b_en,real_race20,real,Race_ethnicity,20,hellaswag_es,acc_norm,67.64454875186686,9374
+salamandra_7b_en,real_race5,real,Race_ethnicity,5,hellaswag_es,acc_norm,67.84723703861745,9374
+salamandra_7b_en,real_religion20,real,Religion,20,hellaswag_es,acc_norm,67.96458288884148,9374
+salamandra_7b_en,real_religion5,real,Religion,5,hellaswag_es,acc_norm,67.9219116705782,9374
+salamandra_7b_en,baseline,baseline,,0,mmlu,acc (micro),47.030337558752315,14042
+salamandra_7b_en,rand_gender20_seed0,random,Gender_identity,20,mmlu,acc (micro),46.9377581541091,14042
+salamandra_7b_en,real_gender20,real,Gender_identity,20,mmlu,acc (micro),46.560319042871384,14042
+salamandra_7b_en,real_race20,real,Race_ethnicity,20,mmlu,acc (micro),45.33542230451503,14042
+salamandra_7b_en,real_religion20,real,Religion,20,mmlu,acc (micro),46.375160233584964,14042
+llama_3.2_3b_en,baseline,baseline,,0,wikitext,word_perplexity,9.530891856473543,62
+llama_3.2_3b_en,rand_gender20_seed0,random,Gender_identity,20,wikitext,word_perplexity,9.534999948372805,62
+llama_3.2_3b_en,real_gender20,real,Gender_identity,20,wikitext,word_perplexity,9.604432478182671,62
+llama_3.2_3b_en,real_gender5,real,Gender_identity,5,wikitext,word_perplexity,9.580305994014205,62
+llama_3.2_3b_en,real_race20,real,Race_ethnicity,20,wikitext,word_perplexity,9.776323920751713,62
+llama_3.2_3b_en,real_race5,real,Race_ethnicity,5,wikitext,word_perplexity,9.575860947380008,62
+llama_3.2_3b_en,real_religion20,real,Religion,20,wikitext,word_perplexity,9.803624761748216,62
+llama_3.2_3b_en,real_religion5,real,Religion,5,wikitext,word_perplexity,9.684237009591738,62
+llama_3.2_3b_en,rand_gender20_seed1,random,Gender_identity,20,wikitext,word_perplexity,9.554616760179131,62
+llama_3.2_3b_en,rand_gender20_seed2,random,Gender_identity,20,wikitext,word_perplexity,9.536264332851035,62
+llama_3.2_3b_en,rand_gender20_seed3,random,Gender_identity,20,wikitext,word_perplexity,9.537370806804898,62
+llama_3.2_3b_en,rand_gender20_seed4,random,Gender_identity,20,wikitext,word_perplexity,9.534683878448014,62
+llama_3.2_3b_en,baseline,baseline,,0,arc_challenge,acc_norm,46.33105802047782,1172
+llama_3.2_3b_en,rand_gender20_seed0,random,Gender_identity,20,arc_challenge,acc_norm,46.33105802047782,1172
+llama_3.2_3b_en,real_gender20,real,Gender_identity,20,arc_challenge,acc_norm,46.33105802047782,1172
+llama_3.2_3b_en,real_gender5,real,Gender_identity,5,arc_challenge,acc_norm,46.075085324232084,1172
+llama_3.2_3b_en,real_race20,real,Race_ethnicity,20,arc_challenge,acc_norm,45.563139931740615,1172
+llama_3.2_3b_en,real_race5,real,Race_ethnicity,5,arc_challenge,acc_norm,46.160409556313994,1172
+llama_3.2_3b_en,real_religion20,real,Religion,20,arc_challenge,acc_norm,45.81911262798635,1172
+llama_3.2_3b_en,real_religion5,real,Religion,5,arc_challenge,acc_norm,45.73378839590443,1172
+llama_3.2_3b_en,baseline,baseline,,0,hellaswag,acc_norm,74.0390360485959,10042
+llama_3.2_3b_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag,acc_norm,74.13861780521809,10042
+llama_3.2_3b_en,real_gender20,real,Gender_identity,20,hellaswag,acc_norm,74.07886875124477,10042
+llama_3.2_3b_en,real_gender5,real,Gender_identity,5,hellaswag,acc_norm,74.08882692690699,10042
+llama_3.2_3b_en,real_race20,real,Race_ethnicity,20,hellaswag,acc_norm,73.79008165704043,10042
+llama_3.2_3b_en,real_race5,real,Race_ethnicity,5,hellaswag,acc_norm,73.89962158932484,10042
+llama_3.2_3b_en,real_religion20,real,Religion,20,hellaswag,acc_norm,73.75024895439155,10042
+llama_3.2_3b_en,real_religion5,real,Religion,5,hellaswag,acc_norm,73.77016530571599,10042
+llama_3.2_3b_en,baseline,baseline,,0,hellaswag_es,acc_norm,58.95028803072327,9374
+llama_3.2_3b_en,rand_gender20_seed0,random,Gender_identity,20,hellaswag_es,acc_norm,58.81160657136761,9374
+llama_3.2_3b_en,real_gender20,real,Gender_identity,20,hellaswag_es,acc_norm,58.89694900789417,9374
+llama_3.2_3b_en,real_gender5,real,Gender_identity,5,hellaswag_es,acc_norm,58.95028803072327,9374
+llama_3.2_3b_en,real_race20,real,Race_ethnicity,20,hellaswag_es,acc_norm,58.75826754853851,9374
+llama_3.2_3b_en,real_race5,real,Race_ethnicity,5,hellaswag_es,acc_norm,58.88628120332835,9374
+llama_3.2_3b_en,real_religion20,real,Religion,20,hellaswag_es,acc_norm,58.598250480051206,9374
+llama_3.2_3b_en,real_religion5,real,Religion,5,hellaswag_es,acc_norm,58.75826754853851,9374
+llama_3.2_3b_en,baseline,baseline,,0,mmlu,acc (micro),56.530408773678964,14042
+llama_3.2_3b_en,rand_gender20_seed0,random,Gender_identity,20,mmlu,acc (micro),56.45207235436548,14042
+llama_3.2_3b_en,real_gender20,real,Gender_identity,20,mmlu,acc (micro),56.38797892038171,14042
+llama_3.2_3b_en,real_race20,real,Race_ethnicity,20,mmlu,acc (micro),55.57612875658739,14042
+llama_3.2_3b_en,real_religion20,real,Religion,20,mmlu,acc (micro),56.48767981768978,14042
+llama_3.2_1b_en,baseline,baseline,,0,wikitext,word_perplexity,11.985343220017555,62
+llama_3.2_1b_en,real_gender20,real,Gender_identity,20,wikitext,word_perplexity,12.1406930123722,62
+llama_3.2_1b_en,real_gender5,real,Gender_identity,5,wikitext,word_perplexity,12.012788395554717,62
+llama_3.2_1b_en,real_race20,real,Race_ethnicity,20,wikitext,word_perplexity,12.093096098257027,62
+llama_3.2_1b_en,real_race5,real,Race_ethnicity,5,wikitext,word_perplexity,12.018763049280793,62
+llama_3.2_1b_en,real_religion20,real,Religion,20,wikitext,word_perplexity,12.129932216261823,62
+llama_3.2_1b_en,real_religion5,real,Religion,5,wikitext,word_perplexity,12.030472021860724,62
+llama_3.2_1b_en,baseline,baseline,,0,arc_challenge,acc_norm,37.03071672354949,1172
+llama_3.2_1b_en,real_gender20,real,Gender_identity,20,arc_challenge,acc_norm,36.177474402730375,1172
+llama_3.2_1b_en,real_gender5,real,Gender_identity,5,arc_challenge,acc_norm,36.43344709897611,1172
+llama_3.2_1b_en,real_race20,real,Race_ethnicity,20,arc_challenge,acc_norm,36.604095563139936,1172
+llama_3.2_1b_en,real_race5,real,Race_ethnicity,5,arc_challenge,acc_norm,36.262798634812285,1172
+llama_3.2_1b_en,real_religion20,real,Religion,20,arc_challenge,acc_norm,37.03071672354949,1172
+llama_3.2_1b_en,real_religion5,real,Religion,5,arc_challenge,acc_norm,36.689419795221845,1172
+llama_3.2_1b_en,baseline,baseline,,0,hellaswag,acc_norm,64.29994025094604,10042
+llama_3.2_1b_en,real_gender20,real,Gender_identity,20,hellaswag,acc_norm,64.05098585939056,10042
+llama_3.2_1b_en,real_gender5,real,Gender_identity,5,hellaswag,acc_norm,64.15056761601275,10042
+llama_3.2_1b_en,real_race20,real,Race_ethnicity,20,hellaswag,acc_norm,64.27006572395936,10042
+llama_3.2_1b_en,real_race5,real,Race_ethnicity,5,hellaswag,acc_norm,64.13065126468831,10042
+llama_3.2_1b_en,real_religion20,real,Religion,20,hellaswag,acc_norm,63.92152957578172,10042
+llama_3.2_1b_en,real_religion5,real,Religion,5,hellaswag,acc_norm,64.11073491336387,10042
+llama_3.2_1b_en,baseline,baseline,,0,hellaswag_es,acc_norm,47.22637081288671,9374
+llama_3.2_1b_en,real_gender20,real,Gender_identity,20,hellaswag_es,acc_norm,47.05568593983358,9374
+llama_3.2_1b_en,real_gender5,real,Gender_identity,5,hellaswag_es,acc_norm,47.13036057179433,9374
+llama_3.2_1b_en,real_race20,real,Race_ethnicity,20,hellaswag_es,acc_norm,47.34371666311073,9374
+llama_3.2_1b_en,real_race5,real,Race_ethnicity,5,hellaswag_es,acc_norm,47.30104544484745,9374
+llama_3.2_1b_en,real_religion20,real,Religion,20,hellaswag_es,acc_norm,46.97034350330702,9374
+llama_3.2_1b_en,real_religion5,real,Religion,5,hellaswag_es,acc_norm,47.04501813526776,9374
+llama_3.2_1b_en,baseline,baseline,,0,mmlu,acc (micro),31.120922945449365,14042
+llama_3.2_1b_en,real_gender20,real,Gender_identity,20,mmlu,acc (micro),32.317333713146276,14042
+llama_3.2_1b_en,real_race20,real,Race_ethnicity,20,mmlu,acc (micro),31.562455490670843,14042
+llama_3.2_1b_en,real_religion20,real,Religion,20,mmlu,acc (micro),32.153539381854436,14042
