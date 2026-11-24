@@ -15,6 +15,8 @@ Changed answers (`pred != base_pred`, `changed / n_items`, `%`) for each real an
 | `real_race5` | real | Race_ethnicity | 5 | 329 / 6,880 (4.78%) | [4.26, 5.29] | 4.26% | 1.12× | 4/11 | 2,417 / 58,492 (4.13%) | A100-SXM4-80GB | L27:5 |
 | `real_religion5` | real | Religion | 5 | 64 / 1,200 (5.33%) | [4.17, 6.58] | 7.81% | 0.68× | 9/11 | 5,075 / 58,492 (8.68%) | A100-SXM4-80GB | L19:1, L27:4 |
 
+*Legend — **Kind**: `real` (selected top-K) or `ablation` (exploratory subset); **Target Flips**: changed answers (`pred != base_pred`) in target category; **95% CI (%)**: paired item-bootstrap interval (`B = 1,000`); **Other Mean**: mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target position among all categories; **Layer Profile**: `L<layer>:<count>` of zeroed neurons.*
+
 ## 2. Selected vs. Layer-Matched Random Neurons
 
 Direct contrast of selected sets against uniform random neuron sets drawn from the exact same layers.
@@ -25,6 +27,8 @@ Direct contrast of selected sets against uniform random neuron sets drawn from t
 | Religion·20 (E2 seeds 0-9, all) | Religion | 133 / 1,200 (11.08%) | 13–20 (1.08–1.67%, mean 1.29%) | 8.58× | 1 of 11 | 9.61% vs. 1.63% | 1.15× vs. 0.80× | A100-SXM4-80GB / A100-SXM4-40GB; L4 |
 | Religion·20 (E2 seeds 2-9, A100-only) | Religion | 133 / 1,200 (11.08%) | 13–16 (1.08–1.33%, mean 1.21%) | 9.17× | 1 of 9 | 9.61% vs. 1.58% | 1.15× vs. 0.77× | A100-SXM4-80GB / A100-SXM4-40GB |
 | Gender·20 (L4 seed0 + A100 seeds 1-4, sensitivity) | Gender_identity | 504 / 5,672 (8.89%) | 77–94 (1.36–1.66%, mean 1.53%) | 5.81× | 1 of 6 | 4.17% vs. 1.63% | 2.13× vs. 0.94× | A100-SXM4-80GB / A100-SXM4-80GB; L4 |
+
+*Legend — **Selected/Random Flips**: target-category changed answers (`pred != base_pred`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: position of selected set among selected + random (`1` = highest); **Other Cats / Ratio**: mean flip `%` across non-target categories and `Target / Other` ratio.*
 
 ## 3. Changed Answers Across All Categories (`Set × Category`)
 
@@ -44,6 +48,8 @@ Full matrix of changed answers (`pred != base_pred`, `changed (flips_pct)`) acro
 | SES | 6,864 | 342 (4.98%) | 82 (1.19%) | 575 (8.38%) | 287 (4.18%) | 729 (10.62%) | 540 (7.87%) | 1.40% [1.15–1.54] | 1.53% [1.06–1.92] |
 | Sexual_orientation | 864 | 26 (3.01%) | 18 (2.08%) | 42 (4.86%) | 38 (4.40%) | 39 (4.51%) | 43 (4.98%) | 1.53% [1.04–1.97] | 1.78% [1.50–2.31] |
 
+*Legend — Cells show `changed (flips_pct)` (`pred != base_pred`, pooled `ambig + disambig`); random-family columns show `mean% [min–max]` across seeds.*
+
 <details>
 <summary>Expand ambiguous vs. disambiguated flips by category (real & ablation sets)</summary>
 
@@ -62,6 +68,8 @@ Per-category flip percentage split by `ambig / disambig` context for each real a
 | Religion | 2.50% / 1.83% | 1.17% / 1.00% | 9.00% / 5.83% | 6.67% / 5.50% | 12.67% / 9.50% | 6.83% / 3.83% |
 | SES | 6.00% / 3.96% | 1.40% / 0.99% | 10.05% / 6.70% | 5.13% / 3.23% | 12.65% / 8.60% | 9.56% / 6.18% |
 | Sexual_orientation | 2.55% / 3.47% | 2.08% / 2.08% | 5.32% / 4.40% | 3.94% / 4.86% | 4.86% / 4.17% | 5.09% / 4.86% |
+
+*Legend — Cells show `ambig% / disambig%` (S/A/U state changes from `direction.csv`).*
 
 </details>
 
@@ -86,6 +94,8 @@ Pairwise count of shared zeroed neurons, neuron Jaccard, and changed-item Jaccar
 | `real_gender5` vs. `real_religion5` | 0 / 5,5 | 0.000 | 0.077 | Gender_identity: 0.047 | Religion: 0.085 | - |
 | `real_race20` vs. `real_gender5` | 0 / 20,5 | 0.000 | 0.068 | Race_ethnicity: 0.057 | Gender_identity: 0.066 | - |
 | `real_religion20` vs. `real_gender5` | 0 / 20,5 | 0.000 | 0.066 | Religion: 0.043 | Gender_identity: 0.053 | - |
+
+*Legend — **Shared Neurons**: identical `(layer, index)` neurons (`shared / size_A, size_B`); **Neuron Jaccard**: `|A ∩ B| / |A ∪ B|` over zeroed neurons; **Items Jacc (All / Target A / Target B)**: Jaccard overlap of changed items across all items or restricted to each set's target category.*
 
 ## 5. Secondary Metrics (Bias Score Deltas, Stereotype Transitions, Accuracy Transitions)
 
@@ -130,6 +140,8 @@ Secondary benchmark metrics for target categories (`disambig` and `ambig` contex
 | Religion | `real_religion5` | ambig | 41 / 600 (6.83%) | 19 / 12 | 1.17% | 10 / 0 | - |
 | Religion | `real_religion5` | disambig | 23 / 600 (3.83%) | 9 / 13 | -0.67% | 13 / 10 | -1.51 [-4.51, 1.49] |
 
+*Legend — **A→S / S→A**: flips from anti-stereotype to stereotyped person and vice versa; **Net→Stereo**: `(A→S − S→A) / n_items` (`%`); **Corr→Inc / Inc→Corr**: accuracy transitions; **Bias Δ (95% CI)**: change in benchmark bias score vs. baseline with paired item-bootstrap CI.*
+
 ## 6. Baseline Log-Likelihood Margin Mechanism
 
 Median baseline margin (`top − second`) of changed versus unchanged items (`ALL` categories) and flip rate across baseline-margin deciles 1–10 (decile 1 = most undecided).
@@ -157,6 +169,8 @@ Median baseline margin (`top − second`) of changed versus unchanged items (`AL
 | 8 | [1.652, 2.266] | 0.00% | 0.00% | 0.19% | 0.00% | 0.27% | 0.00% | 0.00% | 0.00% |
 | 9 | [2.266, 3.499] | 0.00% | 0.00% | 0.02% | 0.00% | 0.02% | 0.00% | 0.00% | 0.00% |
 | 10 | [3.500, 14.250] | 0.00% | 0.00% | 0.00% | 0.00% | 0.00% | 0.00% | 0.00% | 0.00% |
+
+*Legend — **Median Margin**: median baseline log-likelihood gap (`top − second` among `person0`/`person1`/`unknown`) of changed vs. unchanged items; **Decile**: baseline-margin decile (`1` = smallest margin / most undecided, `10` = largest margin).*
 
 ## 7. Granular Breakdowns (Demographic Groups and Topics)
 

@@ -135,7 +135,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         rows,
         ["l", "l", "c", "c", "r", "r", "r", "r", "c", "c", "l"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets; **Random**: layer-matched uniform random control sets (`+1 L4` = extra L4 hardware-sensitivity rerun); **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*",
+        "",
+    ]
 
     # 1.2 Primary Result: Real vs Random
     R += [
@@ -166,7 +170,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         rows,
         ["l", "l", "l", "r", "r", "r", "c", "r", "r", "l"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Selected/Random Flips (Target)**: items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); **Other Cats**: unweighted mean flip `%` across non-target categories; **Ratio**: target-category flip `%` divided by the mean of the other categories (`>1×` = concentrated in target); `*(sens.)*`: sensitivity comparison.*",
+        "",
+    ]
 
     # 1.3 Target-Category Concentration (All Items Pooled)
     R += [
@@ -199,7 +207,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         rows,
         ["l", "l", "l", "r", "c", "r", "c", "r", "r", "c", "r"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Last Layer**: zeroed neurons located in the final MLP layer out of `K`; **Target Flips**: changed answers (`pred != base_pred`) in the target category; **95% CI (%)**: paired item-bootstrap percentile interval (`B = 1,000`); **Other Mean**: unweighted mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target-category position among all categories (`1` = highest); **All Benchmark Flips**: total changed answers across the full benchmark.*",
+        "",
+    ]
 
     # 1.4 Disambiguated-only concentration
     R += [
@@ -229,7 +241,15 @@ def render_master(tables: dict, manifest: dict) -> str:
         rows,
         ["l", "l", "l", "r", "r", "r", "r", "c"],
     ))
-    R += ["", "</details>", "", "---", ""]
+    R += [
+        "",
+        "*Legend — **Disambig Target / Other Mean**: changed-answer `%` restricted to disambiguated items (`direction.csv`, S/A/U state changes); **Ratio**: `Disambig Target / Disambig Other Mean`; **Rank**: target-category position among all categories (`1` = highest).*",
+        "",
+        "</details>",
+        "",
+        "---",
+        "",
+    ]
 
     # Level 2 Index
     R += [
@@ -257,7 +277,13 @@ def render_master(tables: dict, manifest: dict) -> str:
             scope,
         ])
     R.append(md_table(["Dossier", "Model", "Lang", "Bench", "Sets", "Contents"], rows, ["l", "l", "c", "c", "l", "l"]))
-    R += ["", "---", ""]
+    R += [
+        "",
+        "*Legend — **Sets**: number of selected (`real`), layer-matched random (`rand`), and exploratory ablation (`abl`) sets in each unit dossier.*",
+        "",
+        "---",
+        "",
+    ]
 
     # Level 3 Diagnostics
     R += [
@@ -296,6 +322,8 @@ def render_master(tables: dict, manifest: dict) -> str:
     ))
     R += [
         "",
+        "*Legend — **(All)**: pooled changed answers (`pred != base_pred`); **(Amb/Dis)**: flip `%` split into ambiguous / disambiguated items (S/A/U); **Jacc vs. Race5 / Rel5**: Jaccard overlap of changed items against `real_race5` and `real_religion5` within Religion / Race items.*",
+        "",
         "L2 norm of the `down_proj` column and within-layer percentiles in Layer 31 (14,336 neurons) for all nine neurons of `real_race5` and `real_religion5`.",
         "",
     ]
@@ -315,7 +343,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         rows,
         ["l", "l", "r", "r", "r", "r", "r"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **`down_proj` Norm**: L2 norm of the neuron's output column in Layer 31; **Norm Pct.**: percentile within Layer 31's 14,336 neurons; **Score (Pct.)**: differential-activation BiasScore and within-layer percentile for each category.*",
+        "",
+    ]
 
     # 3.2 Baseline Margin Mechanism
     R += [
@@ -347,7 +379,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         rows,
         ["l", "l", "r", "r", "r", "r", "r", "r"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Median Margin**: median baseline log-likelihood gap (`top − second` among `person0`/`person1`/`unknown`) for changed vs. unchanged items; **Decile 1 / 5 / 10 Flips**: flip `%` in baseline-margin deciles (`1` = smallest margin / most undecided, `10` = largest margin / most confident).*",
+        "",
+    ]
 
     # 3.3 Hardware Noise Controls
     R += [
@@ -371,6 +407,8 @@ def render_master(tables: dict, manifest: dict) -> str:
     ))
     R += [
         "",
+        "*Legend — **Flips (L4 vs. A100)**: unpruned baseline items whose 3-way prediction changes solely due to running on L4 versus A100 hardware (`changed / n_items`, `%`).*",
+        "",
         "Sensitivity comparison of the identical random set `rand_gender20_seed0` in `Llama-3.2-3B EN` evaluated on A100-SXM4-80GB versus L4 against the A100-SXM4-40GB baseline.",
         "",
     ]
@@ -387,7 +425,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         rows,
         ["l", "r", "r", "r"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **A100-80GB / L4 Flips**: changed answers against the A100-40GB baseline for the exact same random neuron set on each GPU; **L4 − A100 (pp)**: percentage-point hardware difference.*",
+        "",
+    ]
 
     # 3.4 Provenance
     R += [
@@ -468,7 +510,11 @@ def render_unit(unit: str, tables: dict) -> str:
         rows,
         ["l", "c", "l", "r", "r", "c", "r", "r", "c", "r", "l", "l"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Kind**: `real` (selected top-K) or `ablation` (exploratory subset); **Target Flips**: changed answers (`pred != base_pred`) in target category; **95% CI (%)**: paired item-bootstrap interval (`B = 1,000`); **Other Mean**: mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target position among all categories; **Layer Profile**: `L<layer>:<count>` of zeroed neurons.*",
+        "",
+    ]
 
     # 2. Real vs Random (if any)
     if not u_rvr.empty:
@@ -498,7 +544,11 @@ def render_unit(unit: str, tables: dict) -> str:
             rows,
             ["l", "l", "r", "r", "r", "c", "r", "r", "l"],
         ))
-        R.append("")
+        R += [
+            "",
+            "*Legend — **Selected/Random Flips**: target-category changed answers (`pred != base_pred`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: position of selected set among selected + random (`1` = highest); **Other Cats / Ratio**: mean flip `%` across non-target categories and `Target / Other` ratio.*",
+            "",
+        ]
 
     # 3. Full Set x Category Matrix (all items pooled + ambig/disambig in details)
     R += [
@@ -536,7 +586,11 @@ def render_unit(unit: str, tables: dict) -> str:
             row.append(f"{sub['flips_pct'].mean():.2f}% [{sub['flips_pct'].min():.2f}–{sub['flips_pct'].max():.2f}]")
         rows.append(row)
     R.append(md_table(headers, rows, align))
-    R.append("")
+    R += [
+        "",
+        "*Legend — Cells show `changed (flips_pct)` (`pred != base_pred`, pooled `ambig + disambig`); random-family columns show `mean% [min–max]` across seeds.*",
+        "",
+    ]
 
     # Ambig / Disambig breakdown in details if present
     f_ctx = u_flips[u_flips["context"].isin(["ambig", "disambig"]) & u_flips["kind"].isin(["real", "ablation"])]
@@ -558,7 +612,13 @@ def render_unit(unit: str, tables: dict) -> str:
                 row.append(f"{fmt_num(a, 2)}% / {fmt_num(d, 2)}%")
             rows.append(row)
         R.append(md_table(["Category"] + [f"`{s}`" for s in nonrand_sets], rows, ["l"] + ["c"] * len(nonrand_sets)))
-        R += ["", "</details>", ""]
+        R += [
+            "",
+            "*Legend — Cells show `ambig% / disambig%` (S/A/U state changes from `direction.csv`).*",
+            "",
+            "</details>",
+            "",
+        ]
 
     # 4. Overlap
     if not u_ov.empty:
@@ -585,7 +645,11 @@ def render_unit(unit: str, tables: dict) -> str:
             rows,
             ["l", "c", "r", "r", "r", "r", "l"],
         ))
-        R.append("")
+        R += [
+            "",
+            "*Legend — **Shared Neurons**: identical `(layer, index)` neurons (`shared / size_A, size_B`); **Neuron Jaccard**: `|A ∩ B| / |A ∪ B|` over zeroed neurons; **Items Jacc (All / Target A / Target B)**: Jaccard overlap of changed items across all items or restricted to each set's target category.*",
+            "",
+        ]
 
     # 5. Secondary metrics
     if not u_sec.empty:
@@ -646,7 +710,11 @@ def render_unit(unit: str, tables: dict) -> str:
                 rows,
                 ["l", "l", "c", "r", "c", "r", "c", "r"],
             ))
-        R.append("")
+        R += [
+            "",
+            "*Legend — **A→S / S→A**: flips from anti-stereotype to stereotyped person and vice versa; **Net→Stereo**: `(A→S − S→A) / n_items` (`%`); **Corr→Inc / Inc→Corr**: accuracy transitions; **Bias Δ (95% CI)**: change in benchmark bias score vs. baseline with paired item-bootstrap CI.*",
+            "",
+        ]
 
     # 6. Margin mechanism
     if not u_msum.empty and not u_mdec.empty:
@@ -687,7 +755,11 @@ def render_unit(unit: str, tables: dict) -> str:
             rows,
             ["c", "c"] + ["r"] * len(dec_cols),
         ))
-        R.append("")
+        R += [
+            "",
+            "*Legend — **Median Margin**: median baseline log-likelihood gap (`top − second` among `person0`/`person1`/`unknown`) of changed vs. unchanged items; **Decile**: baseline-margin decile (`1` = smallest margin / most undecided, `10` = largest margin).*",
+            "",
+        ]
 
     # 7. Granular breakdowns (groups & topics) in collapsible blocks
     if not u_grp.empty:

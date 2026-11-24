@@ -15,6 +15,8 @@ Changed answers (`pred != base_pred`, `changed / n_items`, `%`) for each real an
 | `real_race5` | real | Race_ethnicity | 5 | 538 / 6,880 (7.82%) | - | 6.12% | 1.28× | 4/11 | 3,675 / 58,492 (6.28%) | A100-SXM4-40GB | L14:1, L15:4 |
 | `real_religion5` | real | Religion | 5 | 141 / 1,200 (11.75%) | - | 4.43% | 2.65× | 1/11 | 2,934 / 58,492 (5.02%) | A100-SXM4-40GB | L11:1, L15:4 |
 
+*Legend — **Kind**: `real` (selected top-K) or `ablation` (exploratory subset); **Target Flips**: changed answers (`pred != base_pred`) in target category; **95% CI (%)**: paired item-bootstrap interval (`B = 1,000`); **Other Mean**: mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target position among all categories; **Layer Profile**: `L<layer>:<count>` of zeroed neurons.*
+
 ## 2. Changed Answers Across All Categories (`Set × Category`)
 
 Full matrix of changed answers (`pred != base_pred`, `changed (flips_pct)`) across every benchmark category (all items pooled; random families summarized by mean).
@@ -32,6 +34,8 @@ Full matrix of changed answers (`pred != base_pred`, `changed (flips_pct)`) acro
 | Religion | 1,200 | 68 (5.67%) | 152 (12.67%) | 270 (22.50%) | 24 (2.00%) | 148 (12.33%) | 141 (11.75%) |
 | SES | 6,864 | 395 (5.75%) | 373 (5.43%) | 268 (3.90%) | 78 (1.14%) | 269 (3.92%) | 195 (2.84%) |
 | Sexual_orientation | 864 | 42 (4.86%) | 32 (3.70%) | 48 (5.56%) | 23 (2.66%) | 37 (4.28%) | 31 (3.59%) |
+
+*Legend — Cells show `changed (flips_pct)` (`pred != base_pred`, pooled `ambig + disambig`); random-family columns show `mean% [min–max]` across seeds.*
 
 ## 3. Neuron and Changed-Item Overlap Between Sets
 
@@ -54,6 +58,8 @@ Pairwise count of shared zeroed neurons, neuron Jaccard, and changed-item Jaccar
 | `real_gender5` vs. `real_race5` | 0 / 5,5 | 0.000 | - | Gender_identity: - | Race_ethnicity: - | - |
 | `real_gender5` vs. `real_religion5` | 0 / 5,5 | 0.000 | - | Gender_identity: - | Religion: - | - |
 | `real_race5` vs. `real_religion5` | 0 / 5,5 | 0.000 | - | Race_ethnicity: - | Religion: - | - |
+
+*Legend — **Shared Neurons**: identical `(layer, index)` neurons (`shared / size_A, size_B`); **Neuron Jaccard**: `|A ∩ B| / |A ∪ B|` over zeroed neurons; **Items Jacc (All / Target A / Target B)**: Jaccard overlap of changed items across all items or restricted to each set's target category.*
 
 ## 4. Secondary Metrics (Bias Score Deltas, Stereotype Transitions, Accuracy Transitions)
 
@@ -79,3 +85,5 @@ Secondary benchmark metrics for target categories (`disambig` and `ambig` contex
 | Religion | `real_race5` | disambig | - | - / - | - | - / - | 4.46 |
 | Religion | `real_religion20` | disambig | - | - / - | - | - / - | 2.00 |
 | Religion | `real_religion5` | disambig | - | - / - | - | - / - | 1.86 |
+
+*Legend — **A→S / S→A**: flips from anti-stereotype to stereotyped person and vice versa; **Net→Stereo**: `(A→S − S→A) / n_items` (`%`); **Corr→Inc / Inc→Corr**: accuracy transitions; **Bias Δ (95% CI)**: change in benchmark bias score vs. baseline with paired item-bootstrap CI.*

@@ -27,6 +27,8 @@ All eight E3 units covered in this report, with dataset size, number of interven
 | [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | Llama-3.1-8B | ES | EsBBQ | 27,320 (10 cats) | 6 | 0 | 0 | 5, 20 | Yes | A100-SXM4-40GB; A100-SXM4-80GB |
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | Llama-3.2-3B | ES | EsBBQ | 27,320 (10 cats) | 6 | 0 | 0 | 5, 20 | Yes | L4 |
 
+*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets; **Random**: layer-matched uniform random control sets (`+1 L4` = extra L4 hardware-sensitivity rerun); **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*
+
 ### 1.2 Primary Result: Selected vs. Layer-Matched Random Neurons
 
 Changed answers (`changed / n_items`, `%`) in the target category and across the remaining categories for selected neurons versus random neurons drawn uniformly from the exact same layers (primary comparisons first; sensitivity rows marked).
@@ -44,6 +46,8 @@ Changed answers (`changed / n_items`, `%`) in the target category and across the
 | [`salamandra-7b_es`](units/salamandra-7b_es.md) | Gender·5 (seeds 0-4) | Gender | 983 / 4,832 (20.34%) | 12–86 (0.25–1.78% (mean 0.62%)) | 32.77× | 1 of 6 | 4.21% vs. 0.77% | 4.83× vs. 0.77× | A100-SXM4-80GB / A100-SXM4-80GB |
 | [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Gender·20 (L4 seed0 + A100 seeds 1-4, sensitivity) *(sens.)* | Gender_identity | 504 / 5,672 (8.89%) | 77–94 (1.36–1.66% (mean 1.53%)) | 5.81× | 1 of 6 | 4.17% vs. 1.63% | 2.13× vs. 0.94× | A100-SXM4-80GB / A100-SXM4-80GB; L4 |
 | [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Religion·20 (E2 seeds 2-9, A100-only) *(sens.)* | Religion | 133 / 1,200 (11.08%) | 13–16 (1.08–1.33% (mean 1.21%)) | 9.17× | 1 of 9 | 9.61% vs. 1.58% | 1.15× vs. 0.77× | A100-SXM4-80GB / A100-SXM4-40GB |
+
+*Legend — **Selected/Random Flips (Target)**: items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); **Other Cats**: unweighted mean flip `%` across non-target categories; **Ratio**: target-category flip `%` divided by the mean of the other categories (`>1×` = concentrated in target); `*(sens.)*`: sensitivity comparison.*
 
 ### 1.3 Target-Category Concentration (All Items Pooled)
 
@@ -103,6 +107,8 @@ Changed answers for every real set (`K = 5`, `K = 20`, and EsBBQ grid sets) in i
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp12` | RaceEthnicity | 5 | 5/5 | 298 / 3,716 (8.02%) | [7.13, 8.83] | 8.76% | 0.92× | 6/10 | 2,376 / 27,320 (8.70%) |
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp2` | Religion | 5 | 3/5 | 59 / 648 (9.10%) | [6.79, 11.27] | 3.85% | 2.36× | 1/10 | 1,070 / 27,320 (3.92%) |
 
+*Legend — **Last Layer**: zeroed neurons located in the final MLP layer out of `K`; **Target Flips**: changed answers (`pred != base_pred`) in the target category; **95% CI (%)**: paired item-bootstrap percentile interval (`B = 1,000`); **Other Mean**: unweighted mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target-category position among all categories (`1` = highest); **All Benchmark Flips**: total changed answers across the full benchmark.*
+
 ### 1.4 Target-Category Concentration (Disambiguated Items Only)
 
 Same localization ratios and ranks restricted to disambiguated items (`context = disambig`, matching the EsBBQ summary view reported in `R1_exp.md`).
@@ -158,6 +164,8 @@ Same localization ratios and ranks restricted to disambiguated items (`context =
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp12` | RaceEthnicity | 5 | 6.87% | 8.49% | 0.81× | 6/10 |
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp2` | Religion | 5 | 8.33% | 3.28% | 2.54× | 1/10 |
 
+*Legend — **Disambig Target / Other Mean**: changed-answer `%` restricted to disambiguated items (`direction.csv`, S/A/U state changes); **Ratio**: `Disambig Target / Disambig Other Mean`; **Rank**: target-category position among all categories (`1` = highest).*
+
 </details>
 
 ---
@@ -177,6 +185,8 @@ Each unit dossier follows the same layout: unit summary, real-vs-random controls
 | [`units/llama-3.1-8b_es.md`](units/llama-3.1-8b_es.md) | Llama-3.1-8B | ES | EsBBQ | 6 real / 0 rand / 0 abl | Full per-item analysis (flips, overlap, secondary metrics, margins, groups, topics) |
 | [`units/llama-3.2-3b_es.md`](units/llama-3.2-3b_es.md) | Llama-3.2-3B | ES | EsBBQ | 6 real / 0 rand / 0 abl | Full per-item analysis (flips, overlap, secondary metrics, margins, groups, topics) |
 
+*Legend — **Sets**: number of selected (`real`), layer-matched random (`rand`), and exploratory ablation (`abl`) sets in each unit dossier.*
+
 ---
 
 ## 3. Diagnostics and Controls (Level 3)
@@ -193,6 +203,8 @@ Exploratory decomposition of `real_race5` and `real_religion5` into their shared
 | `abl_race4` | L31.1495, L31.2100, L31.6466, L31.6532 | 19 / 1,200 (1.58%) | 1.67% / 1.50% | 155 / 6,880 (2.25%) | 3.28% / 1.22% | 89 / 5,672 (1.57%) | 0.09 / 0.22 | 0.09 / 0.16 |
 | `abl_religion4` | L31.33, L31.311, L31.2398, L31.2564 | 74 / 1,200 (6.17%) | 7.67% / 4.67% | 175 / 6,880 (2.54%) | 3.60% / 1.48% | 81 / 5,672 (1.43%) | 0.09 / 0.13 | 0.26 / 0.22 |
 
+*Legend — **(All)**: pooled changed answers (`pred != base_pred`); **(Amb/Dis)**: flip `%` split into ambiguous / disambiguated items (S/A/U); **Jacc vs. Race5 / Rel5**: Jaccard overlap of changed items against `real_race5` and `real_religion5` within Religion / Race items.*
+
 L2 norm of the `down_proj` column and within-layer percentiles in Layer 31 (14,336 neurons) for all nine neurons of `real_race5` and `real_religion5`.
 
 | Neuron | Ablation Subset | `down_proj` Norm | Norm Pct. | Religion Score (Pct.) | Race Score (Pct.) | Gender Score (Pct.) |
@@ -206,6 +218,8 @@ L2 norm of the `down_proj` column and within-layer percentiles in Layer 31 (14,3
 | `L31·311` | `abl_religion4` | 0.4344 | 0.91% | 2.355 (99.99%) | 0.923 (99.90%) | 0.371 (99.78%) |
 | `L31·2398` | `abl_religion4` | 0.3790 | 0.34% | 2.247 (99.98%) | 1.063 (99.95%) | 0.321 (99.65%) |
 | `L31·2564` | `abl_religion4` | 0.6237 | 15.39% | 1.893 (99.97%) | 0.698 (99.79%) | 0.355 (99.75%) |
+
+*Legend — **`down_proj` Norm**: L2 norm of the neuron's output column in Layer 31; **Norm Pct.**: percentile within Layer 31's 14,336 neurons; **Score (Pct.)**: differential-activation BiasScore and within-layer percentile for each category.*
 
 ### 3.2 Baseline Indecision Mechanism (Margin Deciles)
 
@@ -237,6 +251,8 @@ Median baseline log-likelihood margin (`top − second` across person0/person1/u
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp11` | 2,337 | 0.219 | 1.125 | 39.02% | 1.90% | 0.07% |
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp14` | 3,307 | 0.312 | 1.156 | 40.81% | 10.43% | 0.00% |
 
+*Legend — **Median Margin**: median baseline log-likelihood gap (`top − second` among `person0`/`person1`/`unknown`) for changed vs. unchanged items; **Decile 1 / 5 / 10 Flips**: flip `%` in baseline-margin deciles (`1` = smallest margin / most undecided, `10` = largest margin / most confident).*
+
 ### 3.3 Hardware Noise Controls (L4 vs. A100)
 
 K3 baseline rerun comparison for `Llama-3.1-8B ES` (unpruned model evaluated on A100 vs. L4 across all 27,320 EsBBQ items), establishing the cross-GPU hardware flip floor.
@@ -255,6 +271,8 @@ K3 baseline rerun comparison for `Llama-3.1-8B ES` (unpruned model evaluated on 
 | SpanishRegion | 17 / 324 (5.25%) | 6 / 664 (0.90%) | 23 / 988 (2.33%) |
 | **TOTAL** | 212 / 8,792 (2.41%) | 294 / 18,528 (1.59%) | 506 / 27,320 (1.85%) |
 
+*Legend — **Flips (L4 vs. A100)**: unpruned baseline items whose 3-way prediction changes solely due to running on L4 versus A100 hardware (`changed / n_items`, `%`).*
+
 Sensitivity comparison of the identical random set `rand_gender20_seed0` in `Llama-3.2-3B EN` evaluated on A100-SXM4-80GB versus L4 against the A100-SXM4-40GB baseline.
 
 | BBQ Category | A100-80GB Flips | L4 Flips | L4 − A100 (pp) |
@@ -270,6 +288,8 @@ Sensitivity comparison of the identical random set `rand_gender20_seed0` in `Lla
 | Religion | 18 / 1,200 (1.50%) | 15 / 1,200 (1.25%) | -0.25 pp |
 | SES | 98 / 6,864 (1.43%) | 119 / 6,864 (1.73%) | +0.31 pp |
 | Sexual_orientation | 13 / 864 (1.50%) | 15 / 864 (1.74%) | +0.23 pp |
+
+*Legend — **A100-80GB / L4 Flips**: changed answers against the A100-40GB baseline for the exact same random neuron set on each GPU; **L4 − A100 (pp)**: percentage-point hardware difference.*
 
 ### 3.4 Provenance and Source Tables
 
