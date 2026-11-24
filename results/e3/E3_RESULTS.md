@@ -27,7 +27,7 @@ All eight E3 units covered in this report, with dataset size, number of interven
 | [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | Llama-3.1-8B | ES | EsBBQ | 27,320 (10 cats) | 6 | 0 | 0 | 5, 20 | Yes | A100-SXM4-40GB; A100-SXM4-80GB |
 | [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | Llama-3.2-3B | ES | EsBBQ | 27,320 (10 cats) | 6 | 0 | 0 | 5, 20 | Yes | L4 |
 
-*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets; **Random**: layer-matched uniform random control sets (`+1 L4` = extra L4 hardware-sensitivity rerun); **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*
+*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets (see 3.1); **Random**: layer-matched uniform random control sets (`+1 L4` = extra L4 hardware-sensitivity rerun); **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*
 
 ### 1.2 Primary Result: Selected vs. Layer-Matched Random Neurons
 
