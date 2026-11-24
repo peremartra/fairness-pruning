@@ -210,3 +210,18 @@ __marimo__/
 results/.DS_Store
 /results/capabilities_zeroed/results/lm_evals
 notebooks/.02_Evaluate_MBBQ.backup.ipynb
+
+# --- Agent workspace (Antigravity / other coding agents): never commit ---
+.agent_comms/
+.agent/
+.agents/
+.antigravity/
+.gemini/
+.claude/
+scratch/
+tmp/
+*.tmp
+*.bak
+*_scratch.*
+# Local copies of Colab/Drive outputs
+*.csv.gz.tmp
