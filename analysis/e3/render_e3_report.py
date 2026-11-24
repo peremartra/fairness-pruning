@@ -137,7 +137,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     ))
     R += [
         "",
-        "*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets; **Random**: layer-matched uniform random control sets (`+1 L4` = extra L4 hardware-sensitivity rerun); **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*",
+        "*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets (see 3.1); **Random**: layer-matched uniform random control sets (`+N L4` = extra L4 hardware-sensitivity reruns); **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*",
         "",
     ]
 
@@ -810,7 +810,10 @@ def render_unit(unit: str, tables: dict) -> str:
 
 def render_readme(manifest: dict) -> str:
     R = [
-        "# results/e3 — Consolidated E3 Experiment Results",
+        "# results/e3 — Canonical Reference E3 Experiment Results",
+        "",
+        "**Status: Canonical Reference Dataset (updated 2026-11-24).**",
+        "Use this directory for all paper tables, figures, and follow-up analyses. Every primary comparison is **100% hardware-matched** (all 5 EN units + `Salamandra-7B ES` + `Llama-3.1-8B ES` on A100; `Llama-3.2-3B ES` homogeneously on L4; zero mixed L4-vs-A100 comparisons). Earlier L4-mixed Drive analysis folders (such as `llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/` and `esbbq_zeroed_llama8b/analysis/20261112_081632_items/`) are superseded and retained on Drive for provenance/sensitivity only.",
         "",
         "Structured, reproducible summary of all E3 neuron-zeroing interventions across models and languages, built directly from the verified per-item analysis outputs on Google Drive.",
         "",

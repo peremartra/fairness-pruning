@@ -1,4 +1,7 @@
-# results/e3 — Consolidated E3 Experiment Results
+# results/e3 — Canonical Reference E3 Experiment Results
+
+**Status: Canonical Reference Dataset (updated 2026-11-24).**
+Use this directory for all paper tables, figures, and follow-up analyses. Every primary comparison is **100% hardware-matched** (all 5 EN units + `Salamandra-7B ES` + `Llama-3.1-8B ES` on A100; `Llama-3.2-3B ES` homogeneously on L4; zero mixed L4-vs-A100 comparisons). Earlier L4-mixed Drive analysis folders (such as `llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/` and `esbbq_zeroed_llama8b/analysis/20261112_081632_items/`) are superseded and retained on Drive for provenance/sensitivity only.
 
 Structured, reproducible summary of all E3 neuron-zeroing interventions across models and languages, built directly from the verified per-item analysis outputs on Google Drive.
 
@@ -29,4 +32,4 @@ python analysis/e3/render_e3_report.py \
   --out-dir results/e3
 ```
 
-Last built from Drive: `2026-11-24T10:16:45+00:00` (`89` source files verified).
+Last built from Drive: `2026-11-24T18:05:08+00:00` (`89` source files verified).

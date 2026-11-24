@@ -1,6 +1,6 @@
 unit,model,language,n_tasks,n_real_sets,n_random_full_battery,n_random_wikitext_only,n_random_total,k_values,mmlu_excluded_chance,checks_total,checks_problems,gpus_baseline_real,gpus_random
-llama_3.1_8b_en,Llama-3.1-8B,EN,5,6,1,14,15,"5, 20",False,51,0,A100-SXM4-80GB; unknown,A100-SXM4-40GB; L4; unknown
-qwen3_4b_base_en,Qwen3-4B-Base,EN,5,6,1,9,10,"5, 20",False,46,0,A100-SXM4-40GB; unknown,A100-SXM4-40GB; L4; unknown
-salamandra_7b_en,Salamandra-7B,EN,5,6,1,9,10,"5, 20",False,46,0,A100-SXM4-40GB; unknown,A100-SXM4-40GB; L4; unknown
+llama_3.1_8b_en,Llama-3.1-8B,EN,5,6,1,14,15,"5, 20",False,51,0,A100-SXM4-80GB; unknown,A100-SXM4-40GB; A100-SXM4-80GB; unknown
+qwen3_4b_base_en,Qwen3-4B-Base,EN,5,6,1,9,10,"5, 20",False,46,0,A100-SXM4-40GB; unknown,A100-SXM4-40GB; A100-SXM4-80GB; unknown
+salamandra_7b_en,Salamandra-7B,EN,5,6,1,9,10,"5, 20",False,46,0,A100-SXM4-40GB; unknown,A100-SXM4-40GB; A100-SXM4-80GB; unknown
 llama_3.2_3b_en,Llama-3.2-3B,EN,5,6,1,4,5,"5, 20",False,41,0,A100-SXM4-80GB,A100-SXM4-80GB
 llama_3.2_1b_en,Llama-3.2-1B,EN,5,6,0,0,0,"5, 20",True,32,0,A100-SXM4-40GB; unknown,-

@@ -185,6 +185,7 @@ def main():
     work.mkdir(parents=True)
 
     logs_dir = drive / "checkpoints_e3_cap" / "results" / "lm_evals"
+    a100_rerun_logs_dir = drive / "checkpoints_e4_a100_rerun" / "results" / "lm_evals"
     refreshed_log = []
 
     for unit in UNITS:
@@ -193,11 +194,11 @@ def main():
         assert src_items.exists(), f"Missing Drive items dir: {src_items}"
         shutil.copytree(src_items, dst_items)
         stale = find_stale_or_new(work / unit, logs_dir, unit, extract_mod)
-        print(f"[{unit}] copied {len(list(dst_items.iterdir()))} item files; stale/new logs: {len(stale)}", flush=True)
+        print(f"[{unit}] copied {len(list(dst_items.iterdir()))} item files; stale/new in checkpoints_e3_cap: {len(stale)}", flush=True)
         if stale:
             for sid, task, reason in stale:
                 print(f"  -> refreshing {sid} / {task} ({reason})", flush=True)
-                refreshed_log.append({"unit": unit, "set": sid, "task": task, "reason": reason})
+                refreshed_log.append({"unit": unit, "set": sid, "task": task, "source": "checkpoints_e3_cap", "reason": reason})
             sets_to_run = sorted({sid for sid, _, _ in stale})
             tasks_to_run = sorted({t for _, t, _ in stale})
             cmd = [
@@ -211,6 +212,31 @@ def main():
             ]
             r = subprocess.run(cmd, check=False)
             assert r.returncode == 0, f"extract_items_cap.py failed for {unit} (rc={r.returncode})"
+
+        # Overlay any A100 reruns in checkpoints_e4_a100_rerun/ (takes precedence over earlier L4 logs)
+        if a100_rerun_logs_dir.exists():
+            a100_stale = find_stale_or_new(work / unit, a100_rerun_logs_dir, unit, extract_mod)
+            if a100_stale:
+                print(f"[{unit}] overlaying {len(a100_stale)} A100 rerun logs from checkpoints_e4_a100_rerun", flush=True)
+                for sid, task, reason in a100_stale:
+                    print(f"  -> overlaying {sid} / {task} (A100 rerun)", flush=True)
+                    refreshed_log.append({"unit": unit, "set": sid, "task": task, "source": "checkpoints_e4_a100_rerun", "reason": "A100 rerun"})
+                sets_to_run = sorted({sid for sid, _, _ in a100_stale})
+                tasks_to_run = sorted({t for _, t, _ in a100_stale})
+                empty_fp = work / "_no_old_cap_dir"
+                empty_fp.mkdir(exist_ok=True)
+                cmd = [
+                    sys.executable, "-u", str(extract_script),
+                    "--fair-pruning-dir", str(empty_fp),
+                    "--logs-dir", str(a100_rerun_logs_dir),
+                    "--units", unit,
+                    "--out-root", str(work),
+                    "--sets", *sets_to_run,
+                    "--tasks", *tasks_to_run,
+                    "--overwrite",
+                ]
+                r = subprocess.run(cmd, check=False)
+                assert r.returncode == 0, f"extract_items_cap.py overlay failed for {unit} (rc={r.returncode})"
 
     out = Path(args.out_dir)
     if out.exists():

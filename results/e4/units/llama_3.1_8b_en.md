@@ -15,7 +15,7 @@ Unmodified benchmark values (`word_perplexity` for WikiText; `%` accuracy for AR
 | `real_race5` | 7.554 | 54.95% | 79.36% | 66.87% | - |
 | `real_religion20` | 7.593 | 55.12% | 79.28% | 66.76% | 65.50% |
 | `real_religion5` | 7.560 | 55.03% | 79.30% | 66.83% | - |
-| `rand_gender20_seed0` | 7.550 | 54.86% | 79.35% | 66.74% | 65.54% |
+| `rand_gender20_seed0` | 7.550 | 54.86% | 79.39% | 66.76% | 65.54% |
 | `rand_gender20_seed1` | 7.555 | - | - | - | - |
 | `rand_gender20_seed2` | 7.554 | - | - | - | - |
 | `rand_gender20_seed3` | 7.544 | - | - | - | - |
@@ -64,21 +64,21 @@ Item-paired deltas (`set − baseline`) with 95% percentile bootstrap confidence
 | arc_challenge | `real_race5` | real | 54.95% | 54.61% | +0.341 pp | [-0.171, +0.853] | equiv |
 | arc_challenge | `real_religion20` | real | 55.12% | 54.61% | +0.512 pp | [-0.256, +1.280] | inconcl |
 | arc_challenge | `real_religion5` | real | 55.03% | 54.61% | +0.427 pp | [-0.171, +1.024] | inconcl |
-| arc_challenge | `rand_gender20_seed0` | random | 54.86% | 54.61% | +0.256 pp | [-0.256, +0.853] | equiv |
+| arc_challenge | `rand_gender20_seed0` | random | 54.86% | 54.61% | +0.256 pp | [-0.171, +0.683] | equiv |
 | hellaswag | `real_gender20` | real | 79.36% | 79.30% | +0.060 pp | [-0.169, +0.299] | equiv |
 | hellaswag | `real_gender5` | real | 79.28% | 79.30% | -0.020 pp | [-0.179, +0.139] | equiv |
 | hellaswag | `real_race20` | real | 79.33% | 79.30% | +0.030 pp | [-0.179, +0.239] | equiv |
 | hellaswag | `real_race5` | real | 79.36% | 79.30% | +0.060 pp | [-0.080, +0.199] | equiv |
 | hellaswag | `real_religion20` | real | 79.28% | 79.30% | -0.020 pp | [-0.229, +0.189] | equiv |
 | hellaswag | `real_religion5` | real | 79.30% | 79.30% | +0.000 pp | [-0.139, +0.139] | equiv |
-| hellaswag | `rand_gender20_seed0` | random | 79.35% | 79.30% | +0.050 pp | [-0.080, +0.179] | equiv |
+| hellaswag | `rand_gender20_seed0` | random | 79.39% | 79.30% | +0.090 pp | [+0.000, +0.189] | equiv |
 | hellaswag_es | `real_gender20` | real | 66.74% | 66.88% | -0.139 pp | [-0.395, +0.107] | equiv |
 | hellaswag_es | `real_gender5` | real | 66.88% | 66.88% | +0.000 pp | [-0.192, +0.181] | equiv |
 | hellaswag_es | `real_race20` | real | 66.75% | 66.88% | -0.128 pp | [-0.384, +0.128] | equiv |
 | hellaswag_es | `real_race5` | real | 66.87% | 66.88% | -0.011 pp | [-0.181, +0.160] | equiv |
 | hellaswag_es | `real_religion20` | real | 66.76% | 66.88% | -0.117 pp | [-0.373, +0.128] | equiv |
 | hellaswag_es | `real_religion5` | real | 66.83% | 66.88% | -0.043 pp | [-0.224, +0.139] | equiv |
-| hellaswag_es | `rand_gender20_seed0` | random | 66.74% | 66.88% | -0.139 pp | [-0.309, +0.032] | equiv |
+| hellaswag_es | `rand_gender20_seed0` | random | 66.76% | 66.88% | -0.117 pp | [-0.267, +0.021] | equiv |
 | mmlu | `real_gender20` | real | 65.34% | 65.28% | +0.057 pp | [-0.164, +0.278] | equiv |
 | mmlu | `real_race20` | real | 65.33% | 65.28% | +0.043 pp | [-0.292, +0.385] | equiv |
 | mmlu | `real_religion20` | real | 65.50% | 65.28% | +0.221 pp | [-0.071, +0.506] | equiv |
@@ -106,8 +106,8 @@ Paired differences (`real − random`) across all tasks and random seeds availab
 | wikitext | `real_religion20` vs. `rand_religion20_seed8` | 7.593 | 7.554 | +0.510% | [+0.329, +0.712] | - |
 | wikitext | `real_religion20` vs. `rand_religion20_seed9` | 7.593 | 7.552 | +0.545% | [+0.351, +0.754] | - |
 | arc_challenge | `real_gender20` vs. `rand_gender20_seed0` | 55.12% | 54.86% | +0.256 pp | [-0.512, +1.024] | inconcl |
-| hellaswag | `real_gender20` vs. `rand_gender20_seed0` | 79.36% | 79.35% | +0.010 pp | [-0.229, +0.249] | equiv |
-| hellaswag_es | `real_gender20` vs. `rand_gender20_seed0` | 66.74% | 66.74% | +0.000 pp | [-0.267, +0.267] | equiv |
+| hellaswag | `real_gender20` vs. `rand_gender20_seed0` | 79.36% | 79.39% | -0.030 pp | [-0.269, +0.209] | equiv |
+| hellaswag_es | `real_gender20` vs. `rand_gender20_seed0` | 66.74% | 66.76% | -0.021 pp | [-0.277, +0.235] | equiv |
 | mmlu | `real_gender20` vs. `rand_gender20_seed0` | 65.34% | 65.54% | -0.199 pp | [-0.456, +0.071] | equiv |
 
 ## 4. MMLU Micro vs. Macro Reconciliation
@@ -136,9 +136,9 @@ GPU hardware, batch size, and `lm-eval` version recorded per set and task from `
 | `baseline` | hellaswag_es | A100-SXM4-80GB | 16 | 0.4.9.2 | E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15 |
 | `baseline` | mmlu | A100-SXM4-80GB | 4 | 0.4.9.2 | E4_handoff.md §3 (mmlu_batch_size recorded in the summary) |
 | `baseline` | wikitext | A100-SXM4-80GB | 16 | 0.4.9.2 | E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15 |
-| `rand_gender20_seed0` | arc_challenge | L4 | 16 | 0.4.9.2 | E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15 |
-| `rand_gender20_seed0` | hellaswag | L4 | 16 | 0.4.9.2 | E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15 |
-| `rand_gender20_seed0` | hellaswag_es | L4 | 16 | 0.4.9.2 | E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15 |
+| `rand_gender20_seed0` | arc_challenge | A100-SXM4-80GB | 16 | 0.4.9.2 | A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run |
+| `rand_gender20_seed0` | hellaswag | A100-SXM4-80GB | 16 | 0.4.9.2 | A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run |
+| `rand_gender20_seed0` | hellaswag_es | A100-SXM4-80GB | 16 | 0.4.9.2 | A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run |
 | `rand_gender20_seed0` | mmlu | A100-SXM4-40GB | 4 | 0.4.9.2 | E4_handoff.md §4 (repeated on A100 after OOM on L4) |
 | `rand_gender20_seed0` | wikitext | A100-SXM4-40GB | 1 | 0.4.9.2 | E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15 |
 | `rand_gender20_seed1` | wikitext | unknown | unknown | 0.4.9.2 | - |

@@ -1,6 +1,6 @@
 # E4 Results — General-Capability Evaluation After Neuron Zeroing
 
-Paired item-level bootstrap (`B = 10,000`, `seed = 0`, equivalence margin `±1.0 pp`, chance exclusion `< 35%`) across five English base models and five benchmarks (`inputs.json`, built `2026-11-24T11:36:48+00:00`; refreshed `9` newer Drive logs (2026-11-23 `llama_3.2_3b_en` A100 reruns)).
+Paired item-level bootstrap (`B = 10,000`, `seed = 0`, equivalence margin `±1.0 pp`, chance exclusion `< 35%`) across five English base models and five benchmarks (`inputs.json`, built `2026-11-24T18:02:53+00:00`; refreshed `20` A100 rerun logs (`llama_3.2_3b_en`, `llama_3.1_8b_en`, `salamandra_7b_en`, `qwen3_4b_base_en`)).
 
 ## Navigation
 
@@ -18,9 +18,9 @@ All five E4 units, counts of real and random sets evaluated, extraction verifica
 
 | Unit | Model | Real Sets | Random (Full) | Random (WikiText-only) | K | MMLU Status | Checks | Baseline/Real GPUs | Random GPUs |
 | :--- | :--- | ---: | ---: | ---: | :---: | :---: | :---: | :--- | :--- |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | Llama-3.1-8B | 6 | 1 | 14 | 5, 20 | Included | 51 (0 problems) | A100-SXM4-80GB; unknown | A100-SXM4-40GB; L4; unknown |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | Qwen3-4B-Base | 6 | 1 | 9 | 5, 20 | Included | 46 (0 problems) | A100-SXM4-40GB; unknown | A100-SXM4-40GB; L4; unknown |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | Salamandra-7B | 6 | 1 | 9 | 5, 20 | Included | 46 (0 problems) | A100-SXM4-40GB; unknown | A100-SXM4-40GB; L4; unknown |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | Llama-3.1-8B | 6 | 1 | 14 | 5, 20 | Included | 51 (0 problems) | A100-SXM4-80GB; unknown | A100-SXM4-40GB; A100-SXM4-80GB; unknown |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | Qwen3-4B-Base | 6 | 1 | 9 | 5, 20 | Included | 46 (0 problems) | A100-SXM4-40GB; unknown | A100-SXM4-40GB; A100-SXM4-80GB; unknown |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | Salamandra-7B | 6 | 1 | 9 | 5, 20 | Included | 46 (0 problems) | A100-SXM4-40GB; unknown | A100-SXM4-40GB; A100-SXM4-80GB; unknown |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | Llama-3.2-3B | 6 | 1 | 4 | 5, 20 | Included | 41 (0 problems) | A100-SXM4-80GB | A100-SXM4-80GB |
 | [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Llama-3.2-1B | 6 | 0 | 0 | 5, 20 | Excluded (<35%) | 32 (0 problems) | A100-SXM4-40GB; unknown | - |
 
@@ -58,19 +58,19 @@ Direct comparison of `real_gender20` against `rand_gender20_seed0` (same layer p
 | Unit | Task | Real − Baseline | Random(seed0) − Baseline | Real − Random(seed0) | GPUs (Real / Rand) |
 | :--- | :--- | ---: | ---: | ---: | :--- |
 | [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | wikitext | +0.72% [+0.50, +0.94] | +0.07% [+0.00, +0.19] | +0.65% [+0.42, +0.87] | A100-SXM4-80GB / A100-SXM4-40GB |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | arc_challenge | +0.51 [-0.26, +1.28] (inconcl) | +0.26 [-0.26, +0.85] (equiv) | +0.26 [-0.51, +1.02] (inconcl) | A100-SXM4-80GB / L4 |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag | +0.06 [-0.17, +0.30] (equiv) | +0.05 [-0.08, +0.18] (equiv) | +0.01 [-0.23, +0.25] (equiv) | A100-SXM4-80GB / L4 |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag_es | -0.14 [-0.39, +0.11] (equiv) | -0.14 [-0.31, +0.03] (equiv) | +0.00 [-0.27, +0.27] (equiv) | A100-SXM4-80GB / L4 |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | arc_challenge | +0.51 [-0.26, +1.28] (inconcl) | +0.26 [-0.17, +0.68] (equiv) | +0.26 [-0.51, +1.02] (inconcl) | A100-SXM4-80GB / A100-SXM4-80GB |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag | +0.06 [-0.17, +0.30] (equiv) | +0.09 [+0.00, +0.19] (equiv) | -0.03 [-0.27, +0.21] (equiv) | A100-SXM4-80GB / A100-SXM4-80GB |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag_es | -0.14 [-0.39, +0.11] (equiv) | -0.12 [-0.27, +0.02] (equiv) | -0.02 [-0.28, +0.23] (equiv) | A100-SXM4-80GB / A100-SXM4-80GB |
 | [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | mmlu | +0.06 [-0.16, +0.28] (equiv) | +0.26 [+0.04, +0.48] (equiv) | -0.20 [-0.46, +0.07] (equiv) | A100-SXM4-80GB / A100-SXM4-40GB |
 | [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | wikitext | +6.33% [+5.92, +6.74] | +0.19% [+0.06, +0.36] | +6.13% [+5.73, +6.52] | A100-SXM4-40GB / A100-SXM4-40GB |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | arc_challenge | +0.85 [-0.34, +2.13] (inconcl) | +0.51 [-0.17, +1.28] (inconcl) | +0.34 [-0.85, +1.54] (inconcl) | A100-SXM4-40GB / L4 |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag | -0.65 [-1.05, -0.26] (inconcl) | +0.11 [-0.07, +0.29] (equiv) | -0.76 [-1.16, -0.37] (inconcl) | A100-SXM4-40GB / L4 |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag_es | +0.02 [-0.36, +0.39] (equiv) | +0.11 [-0.09, +0.30] (equiv) | -0.09 [-0.47, +0.30] (equiv) | A100-SXM4-40GB / L4 |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | mmlu | -0.37 [-0.64, -0.10] (equiv) | +0.01 [-0.20, +0.21] (equiv) | -0.38 [-0.67, -0.09] (equiv) | A100-SXM4-40GB / L4 |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | wikitext | +0.41% [+0.25, +0.57] | +0.01% [-0.00, +0.03] | +0.40% [+0.24, +0.57] | A100-SXM4-40GB / L4 |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | arc_challenge | -0.26 [-0.94, +0.43] (equiv) | -0.17 [-0.77, +0.43] (equiv) | -0.09 [-0.94, +0.77] (equiv) | A100-SXM4-40GB / L4 |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag | -0.08 [-0.29, +0.13] (equiv) | -0.08 [-0.23, +0.07] (equiv) | +0.00 [-0.20, +0.21] (equiv) | A100-SXM4-40GB / L4 |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag_es | -0.11 [-0.31, +0.10] (equiv) | -0.01 [-0.18, +0.15] (equiv) | -0.10 [-0.32, +0.13] (equiv) | A100-SXM4-40GB / L4 |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | arc_challenge | +0.85 [-0.34, +2.13] (inconcl) | +0.51 [-0.09, +1.19] (inconcl) | +0.34 [-0.85, +1.54] (inconcl) | A100-SXM4-40GB / A100-SXM4-80GB |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag | -0.65 [-1.05, -0.26] (inconcl) | +0.03 [-0.13, +0.19] (equiv) | -0.68 [-1.09, -0.28] (inconcl) | A100-SXM4-40GB / A100-SXM4-80GB |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag_es | +0.02 [-0.36, +0.39] (equiv) | +0.03 [-0.16, +0.22] (equiv) | -0.01 [-0.39, +0.36] (equiv) | A100-SXM4-40GB / A100-SXM4-80GB |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | mmlu | -0.37 [-0.64, -0.10] (equiv) | +0.01 [-0.14, +0.16] (equiv) | -0.38 [-0.66, -0.11] (equiv) | A100-SXM4-40GB / A100-SXM4-80GB |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | wikitext | +0.41% [+0.25, +0.57] | +0.01% [-0.00, +0.03] | +0.40% [+0.24, +0.57] | A100-SXM4-40GB / A100-SXM4-80GB |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | arc_challenge | -0.26 [-0.94, +0.43] (equiv) | +0.00 [-0.43, +0.43] (equiv) | -0.26 [-0.94, +0.43] (equiv) | A100-SXM4-40GB / A100-SXM4-80GB |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag | -0.08 [-0.29, +0.13] (equiv) | +0.01 [-0.14, +0.16] (equiv) | -0.09 [-0.30, +0.12] (equiv) | A100-SXM4-40GB / A100-SXM4-80GB |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag_es | -0.11 [-0.31, +0.10] (equiv) | +0.07 [-0.07, +0.22] (equiv) | -0.18 [-0.39, +0.03] (equiv) | A100-SXM4-40GB / A100-SXM4-80GB |
 | [`salamandra_7b_en`](units/salamandra_7b_en.md) | mmlu | -0.47 [-0.84, -0.11] (equiv) | -0.09 [-0.36, +0.18] (equiv) | -0.38 [-0.73, -0.02] (equiv) | A100-SXM4-40GB / A100-SXM4-40GB |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | wikitext | +0.77% [+0.52, +1.03] | +0.04% [+0.00, +0.11] | +0.73% [+0.48, +0.99] | A100-SXM4-80GB / A100-SXM4-80GB |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | arc_challenge | +0.00 [-0.85, +0.77] (equiv) | +0.00 [-0.60, +0.60] (equiv) | +0.00 [-0.85, +0.85] (equiv) | A100-SXM4-80GB / A100-SXM4-80GB |
@@ -113,9 +113,9 @@ Each unit dossier follows the same layout: raw scores across all sets, full base
 
 | Dossier | Model | Sets | Baseline/Real GPUs | Random GPUs |
 | :--- | :--- | :--- | :--- | :--- |
-| [`units/llama_3.1_8b_en.md`](units/llama_3.1_8b_en.md) | Llama-3.1-8B | 6 real / 1 full-rand / 14 wt-rand | A100-SXM4-80GB; unknown | A100-SXM4-40GB; L4; unknown |
-| [`units/qwen3_4b_base_en.md`](units/qwen3_4b_base_en.md) | Qwen3-4B-Base | 6 real / 1 full-rand / 9 wt-rand | A100-SXM4-40GB; unknown | A100-SXM4-40GB; L4; unknown |
-| [`units/salamandra_7b_en.md`](units/salamandra_7b_en.md) | Salamandra-7B | 6 real / 1 full-rand / 9 wt-rand | A100-SXM4-40GB; unknown | A100-SXM4-40GB; L4; unknown |
+| [`units/llama_3.1_8b_en.md`](units/llama_3.1_8b_en.md) | Llama-3.1-8B | 6 real / 1 full-rand / 14 wt-rand | A100-SXM4-80GB; unknown | A100-SXM4-40GB; A100-SXM4-80GB; unknown |
+| [`units/qwen3_4b_base_en.md`](units/qwen3_4b_base_en.md) | Qwen3-4B-Base | 6 real / 1 full-rand / 9 wt-rand | A100-SXM4-40GB; unknown | A100-SXM4-40GB; A100-SXM4-80GB; unknown |
+| [`units/salamandra_7b_en.md`](units/salamandra_7b_en.md) | Salamandra-7B | 6 real / 1 full-rand / 9 wt-rand | A100-SXM4-40GB; unknown | A100-SXM4-40GB; A100-SXM4-80GB; unknown |
 | [`units/llama_3.2_3b_en.md`](units/llama_3.2_3b_en.md) | Llama-3.2-3B | 6 real / 1 full-rand / 4 wt-rand | A100-SXM4-80GB | A100-SXM4-80GB |
 | [`units/llama_3.2_1b_en.md`](units/llama_3.2_1b_en.md) | Llama-3.2-1B | 6 real / 0 full-rand / 0 wt-rand | A100-SXM4-40GB; unknown | - |
 
@@ -152,7 +152,7 @@ Item-weighted micro MMLU accuracy (used throughout E4 and reported by `lm-eval`)
 | [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | `real_race20` | 65.33% | 66.39% | +1.06 pp | 66.37% |
 | [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | `real_religion20` | 65.50% | 66.55% | +1.05 pp | 66.54% |
 | [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | `baseline` | 73.09% | 75.59% | +2.50 pp | 75.52% |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | `rand_gender20_seed0` | 73.10% | 75.56% | +2.47 pp | 75.49% |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | `rand_gender20_seed0` | 73.10% | 75.57% | +2.47 pp | - |
 | [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | `real_gender20` | 72.72% | 75.28% | +2.56 pp | 75.20% |
 | [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | `real_race20` | 72.84% | 75.29% | +2.45 pp | 75.21% |
 | [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | `real_religion20` | 72.77% | 75.41% | +2.64 pp | 75.33% |
@@ -180,19 +180,19 @@ Cells where the random control ran on a different GPU architecture (L4) than the
 | Unit | Task | Baseline GPU | Real Gender·20 GPU | Random Gender·20 (seed0) GPU | Hardware Match |
 | :--- | :--- | :--- | :--- | :--- | :---: |
 | [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | wikitext | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-40GB | Matched (A100) |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | arc_challenge | A100-SXM4-80GB | A100-SXM4-80GB | L4 | Mixed (A100 vs. L4) |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag | A100-SXM4-80GB | A100-SXM4-80GB | L4 | Mixed (A100 vs. L4) |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag_es | A100-SXM4-80GB | A100-SXM4-80GB | L4 | Mixed (A100 vs. L4) |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | arc_challenge | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | hellaswag_es | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
 | [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | mmlu | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-40GB | Matched (A100) |
 | [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | wikitext | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-40GB | Matched (A100) |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | arc_challenge | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag_es | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | mmlu | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | wikitext | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | arc_challenge | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag_es | A100-SXM4-40GB | A100-SXM4-40GB | L4 | Mixed (A100 vs. L4) |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | arc_challenge | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | hellaswag_es | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | mmlu | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | wikitext | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | arc_challenge | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | hellaswag_es | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-80GB | Matched (A100) |
 | [`salamandra_7b_en`](units/salamandra_7b_en.md) | mmlu | A100-SXM4-40GB | A100-SXM4-40GB | A100-SXM4-40GB | Matched (A100) |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | wikitext | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | arc_challenge | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
@@ -208,11 +208,11 @@ All numbers in this report and its unit dossiers are rendered directly from the 
 
 | CSV Table | Rows | Columns | Size |
 | :--- | ---: | ---: | ---: |
-| [`tables/checks.csv`](tables/checks.csv) | 216 | 11 | 23,314 B |
-| [`tables/deltas.csv`](tables/deltas.csv) | 247 | 19 | 60,098 B |
-| [`tables/e4_capabilities_table.csv`](tables/e4_capabilities_table.csv) | 247 | 10 | 37,372 B |
-| [`tables/e4_inventory.csv`](tables/e4_inventory.csv) | 5 | 14 | 714 B |
-| [`tables/e4_wikitext_random_summary.csv`](tables/e4_wikitext_random_summary.csv) | 7 | 15 | 1,950 B |
-| [`tables/mmlu_micro_macro.csv`](tables/mmlu_micro_macro.csv) | 24 | 9 | 3,135 B |
-| [`tables/provenance.csv`](tables/provenance.csv) | 216 | 8 | 28,479 B |
-| [`tables/raw_values.csv`](tables/raw_values.csv) | 216 | 9 | 21,153 B |
+| [`tables/checks.csv`](tables/checks.csv) | 216 | 11 | 23,209 B |
+| [`tables/deltas.csv`](tables/deltas.csv) | 247 | 19 | 60,104 B |
+| [`tables/e4_capabilities_table.csv`](tables/e4_capabilities_table.csv) | 247 | 10 | 37,378 B |
+| [`tables/e4_inventory.csv`](tables/e4_inventory.csv) | 5 | 14 | 750 B |
+| [`tables/e4_wikitext_random_summary.csv`](tables/e4_wikitext_random_summary.csv) | 7 | 15 | 1,948 B |
+| [`tables/mmlu_micro_macro.csv`](tables/mmlu_micro_macro.csv) | 24 | 9 | 3,109 B |
+| [`tables/provenance.csv`](tables/provenance.csv) | 216 | 8 | 28,946 B |
+| [`tables/raw_values.csv`](tables/raw_values.csv) | 216 | 9 | 21,155 B |

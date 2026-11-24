@@ -1,7 +1,7 @@
 {
   "units": {
     "llama_3.1_8b_en": {
-      "sets_json_sha256": "f9b39ba8be2f146c75ff989bd375c2f9600c8f0acaa4f930dd5d651ab4863c69",
+      "sets_json_sha256": "ca99e005bded41660fe301ae28981f3db9a0e2df345b12c33760cd2fc3c7fbeb",
       "tables": {
         "baseline__wikitext": "3f95f7baf2fdee419f024e74041bfedca87bc94226a8c06c32d9898cd73671e6",
         "rand_gender20_seed0__wikitext": "37c931526f355ce87425dc15c0e591e4534a74ef2e1426b2b2d33a8404474f61",
@@ -26,7 +26,7 @@
         "real_religion20__wikitext": "060071b3674f7345c68e39e64c2e8d50780230c16fcb1d0096b34e72039d7260",
         "real_religion5__wikitext": "696ece81735ece4266739cbda085ae4d12cce1228c4d66c81278b414b6761bd5",
         "baseline__arc_challenge": "fd8ab2a05654b918682fa5954c6f0df2e5a33efb9318b054402fc918e814cf18",
-        "rand_gender20_seed0__arc_challenge": "b90be4077685bedf7e622e3fe6085d37d36a9c2728924be58fa190c899b5c525",
+        "rand_gender20_seed0__arc_challenge": "97c52c6cea0331c3dcbeaa81869eea5364c7dd1d3e986dea641b644888cae0d7",
         "real_gender20__arc_challenge": "4176276b58f314717091a6f255de1a319d820d6aafb931a1f7475d1b9e9cedc4",
         "real_gender5__arc_challenge": "bad030248550f40aeb4bcb468471d313653ec732efaedcb2cc754bf8d859fad1",
         "real_race20__arc_challenge": "f81131005d1bbe8279a24bad72b82923eb91a1e700d5b5e5ff387b7ef4666121",
@@ -34,7 +34,7 @@
         "real_religion20__arc_challenge": "6648d1cc99d7d4a75984fa3fe5ff9affdb9970bddb0f930eb78e535fbaa46b1a",
         "real_religion5__arc_challenge": "6b2331dbaef737471467c5bbc44b95386f24330310a72f4fc7ea35cf0e80872f",
         "baseline__hellaswag": "b463aaa7669072eff097a4a5e01d5a0680f06d9bc798c27f8d3e0827d9bbd3e8",
-        "rand_gender20_seed0__hellaswag": "1a918796a1ddfda8de26214d53de98517bed72590c1012c078b9e831a5b35c90",
+        "rand_gender20_seed0__hellaswag": "e26a6be689529106088f6e14d08a5f58df28069de30a84eba86843970f983a6d",
         "real_gender20__hellaswag": "a2201301a39ab709f618e1e41daf1945789a5060b2fb15ab511c73b126c5e223",
         "real_gender5__hellaswag": "947a336b903026b69da5e8accc96fb99add02db69a6212b39e4fe009e146e714",
         "real_race20__hellaswag": "5a830f2249b67fcd01f5d1ce23355aa7ea638fa937705c068fb9572e7963d895",
@@ -42,7 +42,7 @@
         "real_religion20__hellaswag": "1ce8c062d300fae8686296e23f2bbf52b7a01ccf4fd0de3ab73468facdaf9d52",
         "real_religion5__hellaswag": "713f32834e34cb9106b30f81c30d3142bf1e1df711e8ba66471e00eea4a5246c",
         "baseline__hellaswag_es": "deb12eb9601e0587c1278089387b37c6fca417028144149f6c363892d9f1c1fd",
-        "rand_gender20_seed0__hellaswag_es": "f63132cda52021ea3fbb5f1a716460c7514ee22d399bae38ead1b99d38ecfa71",
+        "rand_gender20_seed0__hellaswag_es": "50ee27845a7f8681d060aab42d0b958aa402c774214a89b68e162c435596f3e7",
         "real_gender20__hellaswag_es": "2ee1c145b5dfed731c62c4f9b09aec34874d98be213cac07eb132b37ea2620e4",
         "real_gender5__hellaswag_es": "7bbdecc0954848726369a6524b23061cc19b6abcfb43382a99e3e2e6dde3f4bb",
         "real_race20__hellaswag_es": "36ee668eaa77ba58aab6407c200ba3eb34e17285483a574c781820265e237a37",
@@ -57,7 +57,7 @@
       }
     },
     "qwen3_4b_base_en": {
-      "sets_json_sha256": "dc6779e6761ec11cba0265423a14130bd8a92dd3123df4c49ebdc817d37962f1",
+      "sets_json_sha256": "cb8c6052a826dec57938ebe67cc015f70138427027641833f14cd44163622dac",
       "tables": {
         "baseline__wikitext": "000e472a6f9ab64e767897c6b5eb59ddff7a3b127849a1215fe2720ea408ccb1",
         "rand_gender20_seed0__wikitext": "ef79756dc3dbf2fd96b3fd964be6dd0db185d7c43b0141db74225221881fbce9",
@@ -77,7 +77,7 @@
         "real_religion20__wikitext": "33be5dcf7a0e20fbea3dc9ba3b42c133c8f5508ff9de4e294d1082d6b7b8c276",
         "real_religion5__wikitext": "ed2258d3d83777ec7a617773a2e58e789395d212fbe0f371afec4fb01ec5cff1",
         "baseline__arc_challenge": "028df20697588bfa624aed0051dbfc0bef5b80acedd34f407844f6f57c55bba2",
-        "rand_gender20_seed0__arc_challenge": "48ff47cfe9f3e1b707306dc198d9fd4376fa1a1a043f05e0ceae66e26f0099b5",
+        "rand_gender20_seed0__arc_challenge": "70702bf56df7bfd54417ed1d797263324415c219654fab44d5f7db4b83964726",
         "real_gender20__arc_challenge": "54413197bce8b00ec8cf000a4daa5bbed57c1500116aa2d9941df07e0182b2be",
         "real_gender5__arc_challenge": "a63c2488abd35ed64391170b9eb65057cb295c896b0e459ca0f12c42fdc765b3",
         "real_race20__arc_challenge": "db523c8e4e0358849380986343583850efa54da515dd496daa7305b9080dae97",
@@ -85,7 +85,7 @@
         "real_religion20__arc_challenge": "c358e78a27eba1d5483360e8801fc7110f5543d191d181db189fc3a4ead84274",
         "real_religion5__arc_challenge": "508d8a6b9175da3e4bff4ae5c48015a22487a1631728c97e0bdca8a49eb3ff58",
         "baseline__hellaswag": "c54b3168a913570eff5ebab15a4d8eee13a1e2f9246727e2c7eceec4c6276164",
-        "rand_gender20_seed0__hellaswag": "0a5717a157656b13139b6212bf220e63d1c1b07d0aad4cd3ba72682b4f5fd32b",
+        "rand_gender20_seed0__hellaswag": "1038d3194397cdcdfeb607fd1913b9b8a4f5633cb3a2b6a886086425cfc6dc53",
         "real_gender20__hellaswag": "95991a7048ea903284d8ca4222a280c44246c5a3af7eb2dd80938cde7ea8a5c4",
         "real_gender5__hellaswag": "bd1eb1a8b989240241add59fc7a243615c2b383181df9f90138965c26db12727",
         "real_race20__hellaswag": "219793449635b4e2b06cb6eb552d101cd43c94a4d2256776d8e65f9a1d23edc5",
@@ -93,7 +93,7 @@
         "real_religion20__hellaswag": "51dec962ec9bf5f22e3b9c1507bdd6007f8dfa0aae5fde90fba6b0812ac54d73",
         "real_religion5__hellaswag": "62d68e83eff62393be18172b030b7247fb44063f7b186cbc6fc2cb914a2c30c8",
         "baseline__hellaswag_es": "de2ec1845b69f764b52d4c4a52d0c115d129ac5bd8146c2df048f1168e05c768",
-        "rand_gender20_seed0__hellaswag_es": "8ebb214f7ce21ebf8c8eae532f2338fdc02223f1e95db6a8b7b2e50ad2d4c535",
+        "rand_gender20_seed0__hellaswag_es": "ffa88045deb956001302ddc06700d29d076e73275e552f47a6ad75b2fe565db3",
         "real_gender20__hellaswag_es": "9f04f5c94eae833532b09e1f75983a9aa69ae381f3a5cdfa83bdab8c36e9820c",
         "real_gender5__hellaswag_es": "ed4266c6af1a799505e1f3f1e0be116b483f87a8ebaff9b6457349b13b874740",
         "real_race20__hellaswag_es": "a49b14da9547b3c65bd91d1b9363b4684cdbdf91c259643df71b89569d1962b3",
@@ -101,14 +101,14 @@
         "real_religion20__hellaswag_es": "7880ef4394c7b0f4072063fb9d12386eb5c9fa70cedd63c70875c034d3ac3dae",
         "real_religion5__hellaswag_es": "f083b58f3bb0699e48c2c776c02ec332c152b5957a393ad18c5eec5aa9edc388",
         "baseline__mmlu": "347b9c78cfe29e87c4b4e08076bf1c94a6b0767b3e8e77b142eb1e555df592de",
-        "rand_gender20_seed0__mmlu": "b64eba8af1e83ee5e57ebaa351297bc98c3cc83634908162e8b47088b1de7811",
+        "rand_gender20_seed0__mmlu": "b2ca60adece3357a55dc48ad6cc9c2051e86bc6fddd2bd4b5f3a30bbc0334d7d",
         "real_gender20__mmlu": "765361c06e68c0ac04a36789e2d7f25cf23202b16201e572da182ac711c7d56e",
         "real_race20__mmlu": "5f75d62eb911869e0801d86d573eebcae56c55bf9dca039fb570b40c61bf9818",
         "real_religion20__mmlu": "49842b6c0256be10817c46533c04703043babcad31637ef69463f79d8c626e21"
       }
     },
     "salamandra_7b_en": {
-      "sets_json_sha256": "27f5b8f5c5f33ff2dbd63aad9afc31b607cd1b070dfd0e08d66b79841ed7266d",
+      "sets_json_sha256": "3739387255fa2b806fbd2278fcff4ecec89ba4011a2def9e531390e0f8e1089b",
       "tables": {
         "baseline__wikitext": "9ef15d49ef8f59d855dd0ea10f5e790fae88a3b3e47c865cac8b546e55646fa3",
         "rand_gender20_seed0__wikitext": "2e7bfde2f2c6dbfb0fd2277ca1b27e31c9ea3eb006e097b9a82e9376fded6409",
@@ -128,7 +128,7 @@
         "real_religion20__wikitext": "264a8463899a43790a0a88b28f39d1cd9a0cb3db2931b8cca9a53f9f9e458ba7",
         "real_religion5__wikitext": "2c109ab4c9e1a4f2f2c9537400425789cdd614d45f792dcedbe3e789de24d826",
         "baseline__arc_challenge": "58537d690c5057b59ca341aada3402d2bbf74f74822a7dae11fc00fd139eec54",
-        "rand_gender20_seed0__arc_challenge": "72b01cd613684c199fbaa833bfe7fcdd2962c409be5fbd6f73d50965cb1b5085",
+        "rand_gender20_seed0__arc_challenge": "19f048362746b2e516366716d559bb73453695ecee294b488634d769e6ddb940",
         "real_gender20__arc_challenge": "e4afb9429b017c159cede570a20e200e779de7485ed315b4800dbc95d5bd16e4",
         "real_gender5__arc_challenge": "afb4093462910325e0c727196bd686fb7424d8af2dd73e415e7be829530f48ea",
         "real_race20__arc_challenge": "9ed70714ef8d5b48467bb66456ff39b05542b11a832d98c5692aeb986355d122",
@@ -136,7 +136,7 @@
         "real_religion20__arc_challenge": "b393f46fc3b9436cec8feccf980d8632d2ae086d84a663ceffd90479143d0224",
         "real_religion5__arc_challenge": "c9c7c300efc2a9231066a4c9e85b3e48db9885b634c57ff98e97fcae7ed5cdc8",
         "baseline__hellaswag": "6cc22d9c1b70a7f4830937e97c47c77d63fa107525e5116b1d7c89a99ff70d0b",
-        "rand_gender20_seed0__hellaswag": "eb8d0f117b2cfcf00ccbef941b3b46dd96df45df46739cfb2b351a617064cfd8",
+        "rand_gender20_seed0__hellaswag": "4380f879b54cec96735a38644bf2ffe4a760d9d4fb4252667a8fe2cb6d52fc6d",
         "real_gender20__hellaswag": "91e15fc76bfd9a26cffcb46768adbe51f50e07c97393fc831bfb4656fa5fd0f6",
         "real_gender5__hellaswag": "10c7b0bd44a5fbb2920b642a4b66b376fc9d4c04c5b6d6ea2cc5967472f80e5c",
         "real_race20__hellaswag": "701ef09fc3e3966be589b61d72ac14fe4eb0340f8671536dd584e896a96be80c",
@@ -144,7 +144,7 @@
         "real_religion20__hellaswag": "eef3e0e2348a370a6f5af84b37bc847cedab88a896bd6c340486373e29c23a58",
         "real_religion5__hellaswag": "19eb7103c5eb0a8064ab07af03ae80df024bef84b78adb9777fa9ed67a207766",
         "baseline__hellaswag_es": "8b038c4b7b94889327de097b10da13d2b641f02c700905ade092ce1166769270",
-        "rand_gender20_seed0__hellaswag_es": "546754281dc2bd2ab1b78a0b93a4717b1f71fa9743b29552a2729e41bee1cd98",
+        "rand_gender20_seed0__hellaswag_es": "58e22aa06d213d8c619017fbb7cc36f92e15d0a9e1f471ba540ae1dd8e2a9f8a",
         "real_gender20__hellaswag_es": "d8a4fb36afaaf41e8ec224fe94bbd2652759b7bd695fdaba22668a125bc0e9ea",
         "real_gender5__hellaswag_es": "b47d39dd0dab59441737ea3b77c438600f6fa9d3d404241e28d5a162a8753a6b",
         "real_race20__hellaswag_es": "14effd94efd950ebc06c46679c966b7f4896b1ed9d09903810d89c44d973fd39",
@@ -159,7 +159,7 @@
       }
     },
     "llama_3.2_3b_en": {
-      "sets_json_sha256": "63cc805bf7552cb457662b592faf74639d4969f7b978e4d9386393101c8dd663",
+      "sets_json_sha256": "c54bb3fee5aefc3f0c1b6fbea4c3395c59eb3baa9ab632073b99a048610c75bc",
       "tables": {
         "baseline__wikitext": "0fd675ff5b35527ea101537cec914228198b98eefcabd164660f07e572144caa",
         "rand_gender20_seed0__wikitext": "e369a74abec3d01abdc2c41ad402727217e2b00f1996b4e5c00019684129840f",
@@ -245,7 +245,7 @@
   "script": "e4_cap_analysis.py",
   "script_sha256": "fb57bf305b17f8f0e7ba25c8a41ef0434edc7fc5de562c7abb885d7821c46378",
   "repo_commit": null,
-  "python": "3.13.18",
+  "python": "3.13.16",
   "numpy": "2.4.6",
   "args": {
     "items_root": "/content/e4_work_items",
@@ -264,65 +264,151 @@
     "compare_old": null,
     "out_dir": "/content/e4_tables"
   },
-  "created_utc": "20261124_113455",
-  "provenance_file_sha256": "c80f5b7cc97aee4bf4f38f4ef32596a71101f971e967a167aeaf60d8310857c8",
+  "created_utc": "20261124_180128",
+  "provenance_file_sha256": "7e503e2e788ac3d9e9faf806aa8577362d6f1d4de77547c260e87300f0f46a2d",
   "n_deltas": 247,
   "n_checks_with_problems": 0,
-  "build_e4_tables_utc": "2026-11-24T11:36:48+00:00",
+  "build_e4_tables_utc": "2026-11-24T18:02:53+00:00",
   "refreshed_from_drive_logs": [
+    {
+      "unit": "llama_3.1_8b_en",
+      "set": "rand_gender20_seed0",
+      "task": "arc_challenge",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "llama_3.1_8b_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "llama_3.1_8b_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag_es",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "qwen3_4b_base_en",
+      "set": "rand_gender20_seed0",
+      "task": "arc_challenge",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "qwen3_4b_base_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "qwen3_4b_base_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag_es",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "qwen3_4b_base_en",
+      "set": "rand_gender20_seed0",
+      "task": "mmlu",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "salamandra_7b_en",
+      "set": "rand_gender20_seed0",
+      "task": "wikitext",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "salamandra_7b_en",
+      "set": "rand_gender20_seed0",
+      "task": "arc_challenge",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "salamandra_7b_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
+    {
+      "unit": "salamandra_7b_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag_es",
+      "source": "checkpoints_e4_a100_rerun",
+      "reason": "A100 rerun"
+    },
     {
       "unit": "llama_3.2_3b_en",
       "set": "rand_gender20_seed0",
       "task": "wikitext",
-      "reason": "2026-11-23 A100 rerun (T2)"
-    },
-    {
-      "unit": "llama_3.2_3b_en",
-      "set": "rand_gender20_seed0",
-      "task": "arc_challenge",
-      "reason": "2026-11-23 A100 rerun (T2)"
-    },
-    {
-      "unit": "llama_3.2_3b_en",
-      "set": "rand_gender20_seed0",
-      "task": "hellaswag",
-      "reason": "2026-11-23 A100 rerun (T2)"
-    },
-    {
-      "unit": "llama_3.2_3b_en",
-      "set": "rand_gender20_seed0",
-      "task": "hellaswag_es",
-      "reason": "2026-11-23 A100 rerun (T2)"
-    },
-    {
-      "unit": "llama_3.2_3b_en",
-      "set": "rand_gender20_seed0",
-      "task": "mmlu",
-      "reason": "2026-11-23 A100 rerun (T2)"
+      "source": "checkpoints_e3_cap",
+      "reason": "size_changed(3860257->3860271)"
     },
     {
       "unit": "llama_3.2_3b_en",
       "set": "rand_gender20_seed1",
       "task": "wikitext",
-      "reason": "2026-11-23 A100 run (T1)"
+      "source": "checkpoints_e3_cap",
+      "reason": "new_log"
     },
     {
       "unit": "llama_3.2_3b_en",
       "set": "rand_gender20_seed2",
       "task": "wikitext",
-      "reason": "2026-11-23 A100 run (T1)"
+      "source": "checkpoints_e3_cap",
+      "reason": "new_log"
     },
     {
       "unit": "llama_3.2_3b_en",
       "set": "rand_gender20_seed3",
       "task": "wikitext",
-      "reason": "2026-11-23 A100 run (T1)"
+      "source": "checkpoints_e3_cap",
+      "reason": "new_log"
     },
     {
       "unit": "llama_3.2_3b_en",
       "set": "rand_gender20_seed4",
       "task": "wikitext",
-      "reason": "2026-11-23 A100 run (T1)"
+      "source": "checkpoints_e3_cap",
+      "reason": "new_log"
+    },
+    {
+      "unit": "llama_3.2_3b_en",
+      "set": "rand_gender20_seed0",
+      "task": "arc_challenge",
+      "source": "checkpoints_e3_cap",
+      "reason": "size_changed(3259351->3259281)"
+    },
+    {
+      "unit": "llama_3.2_3b_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag",
+      "source": "checkpoints_e3_cap",
+      "reason": "size_changed(52182023->52182086)"
+    },
+    {
+      "unit": "llama_3.2_3b_en",
+      "set": "rand_gender20_seed0",
+      "task": "hellaswag_es",
+      "source": "checkpoints_e3_cap",
+      "reason": "size_changed(52636146->52636228)"
+    },
+    {
+      "unit": "llama_3.2_3b_en",
+      "set": "rand_gender20_seed0",
+      "task": "mmlu",
+      "source": "checkpoints_e3_cap",
+      "reason": "size_changed(201775933->201778546)"
     }
   ]
 }

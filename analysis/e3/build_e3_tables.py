@@ -109,7 +109,7 @@ UNITS_CONFIG = [
         "language": "EN",
         "benchmark": "BBQ",
         "mode": "bbq_items_3b_random",
-        "analysis_dir": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random",
+        "analysis_dir": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random",
         "target_categories": ["Religion", "Race_ethnicity", "Gender_identity"],
         "last_layer": 27,
     },
@@ -140,7 +140,7 @@ UNITS_CONFIG = [
         "language": "ES",
         "benchmark": "EsBBQ",
         "mode": "esbbq_items",
-        "analysis_dir": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items",
+        "analysis_dir": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base",
         "runs_jsonl": "results/esbbq_zeroed_llama8b/runs.jsonl",
         "target_categories": ["Religion", "Gender", "RaceEthnicity"],
         "last_layer": 31,
@@ -315,7 +315,7 @@ def process_items_unit(cfg: dict, drive: Path, tracked: list, accum: dict):
             if unit == "salamandra-7b_es":
                 return "A100-SXM4-80GB (E1)"
             if unit == "llama-3.1-8b_es":
-                return "L4 (E1)"
+                return "A100-SXM4-40GB (K3)"
             if unit == "llama-3.2-3b_es":
                 return "L4 (rerun)"
         return normalize_gpu(g)
@@ -332,7 +332,7 @@ def process_items_unit(cfg: dict, drive: Path, tracked: list, accum: dict):
     sens_sids = [s for s, m in sets_meta.items() if m.get("kind") == "random_sensitivity"]
     ks = sorted({int(sets_meta[s]["k"]) for s in real_sids if sets_meta[s].get("k") is not None})
     real_cats = sorted({str(sets_meta[s].get("category")) for s in real_sids if sets_meta[s].get("category")})
-    gpus_used = sorted({get_gpu(s) for s in sets_meta if s != "baseline"})
+    gpus_used = sorted({get_gpu(s) for s, m in sets_meta.items() if s != "baseline" and m.get("kind") != "random_sensitivity"})
 
     accum["inventory"].append({
         "unit": unit,
@@ -557,8 +557,8 @@ def process_items_unit(cfg: dict, drive: Path, tracked: list, accum: dict):
     if rnd_sids or sens_sids:
         if unit == "llama-3.2-3b_en":
             add_rvr("Gender·20 (seeds 0-4, A100-only)", "real_gender20", [f"rand_gender20_seed{i}" for i in range(5)], True)
-            add_rvr("Religion·20 (E2 seeds 0-9, all)", "real_religion20", [f"rand_religion20_seed{i}" for i in range(10)], True)
-            add_rvr("Religion·20 (E2 seeds 2-9, A100-only)", "real_religion20", [f"rand_religion20_seed{i}" for i in range(2, 10)], False)
+            add_rvr("Religion·20 (seeds 0-9, A100-only)", "real_religion20", [f"rand_religion20_seed{i}" for i in range(10)], True)
+            add_rvr("Religion·20 (L4 seeds 0-1 + A100 seeds 2-9, sensitivity)", "real_religion20", ["rand_religion20_seed0_L4", "rand_religion20_seed1_L4"] + [f"rand_religion20_seed{i}" for i in range(2, 10)], False)
             add_rvr("Gender·20 (L4 seed0 + A100 seeds 1-4, sensitivity)", "real_gender20", ["rand_gender20_seed0_L4"] + [f"rand_gender20_seed{i}" for i in range(1, 5)], False)
         elif bench == "EsBBQ":
             by_matched = {}

@@ -6,6 +6,16 @@ Repo: `peremartra/fairness-pruning` (paper P0 "Fairness Pruning: Locating Demogr
 
 The paper LOCALIZES bias; it does not reduce it. The primary measure is the percentage of changed answers (`flips_pct`): real neurons vs random neurons of the same layer profile, and concentration of the changes in the target category. BBQ bias score and accuracy are secondary. Never frame a result as "bias reduction" or "cost".
 
+## Canonical Reference Results (use these for all paper tables, figures, and follow-up analyses)
+
+As of **2026-11-24**, all L4-vs-A100 GPU hardware mixing in E3 and E4 has been eliminated. The single canonical reference datasets for the paper are:
+
+- **E3 (Localization & Interventions):** [`results/e3/`](results/e3/) — master report [`results/e3/E3_RESULTS.md`](results/e3/E3_RESULTS.md), unit dossiers [`results/e3/units/`](results/e3/units/), and verified CSV tables [`results/e3/tables/`](results/e3/tables/) (SHA-256 traced in [`results/e3/tables/inputs_manifest.json`](results/e3/tables/inputs_manifest.json)). Hardware status: all 5 EN units + `Salamandra-7B ES` + `Llama-3.1-8B ES` are **100% A100**; `Llama-3.2-3B ES` is **100% L4** (homogeneous baseline + intervened).
+  - Canonical updated Drive folders (superseding earlier L4-mixed folders, which remain on Drive for provenance only):
+    - `MyDrive/fair_pruning/results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/` (using A100 `rand_religion20_seed0..1` from `checkpoints_e2_a100_rerun/` and `items_religion_a100_seed01/`, plus A100 `rand_gender20_seed0` from `items_random_seed0_a100/`).
+    - `MyDrive/fair_pruning/results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/` (recomputed against the A100 K3 baseline).
+- **E4 (General Capabilities):** [`results/e4/`](results/e4/) — master report [`results/e4/E4_RESULTS.md`](results/e4/E4_RESULTS.md), unit dossiers [`results/e4/units/`](results/e4/units/), consolidated CSV tables [`results/e4/tables/`](results/e4/tables/), and [`results/e4/e4_capabilities_table.csv`](results/e4/e4_capabilities_table.csv). Hardware status: **20/20** real-vs-random cells are **Matched (A100)** (`216/216` extraction checks with 0 problems; overlays A100 reruns in `MyDrive/fair_pruning/checkpoints_e4_a100_rerun/` and the 2026-11-23 `llama_3.2_3b_en` A100 reruns). Supersedes earlier L4-mixed E4 analysis folders (e.g., `results/e4/analysis/20261115_123154_caps/`).
+
 ## Hard rules
 
 1. **Never commit, push, or change git state.** The owner does it. Do not run `git add/commit/push/reset/checkout/stash`. (*unless explicitly requested by the owner)*

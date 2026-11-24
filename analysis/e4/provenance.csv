@@ -4,24 +4,24 @@ llama_3.1_8b_en,baseline,mmlu,A100-SXM4-80GB,4,E4_handoff.md §3 (mmlu_batch_siz
 llama_3.1_8b_en,real_gender20,*,A100-SXM4-80GB,16,"E4_handoff.md §3 (env.gpu of the summary); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
 llama_3.1_8b_en,real_gender20,mmlu,A100-SXM4-80GB,4,E4_handoff.md §3 (mmlu_batch_size recorded in the summary)
 llama_3.1_8b_en,rand_gender20_seed0,wikitext,A100-SXM4-40GB,1,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-llama_3.1_8b_en,rand_gender20_seed0,arc_challenge,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-llama_3.1_8b_en,rand_gender20_seed0,hellaswag,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-llama_3.1_8b_en,rand_gender20_seed0,hellaswag_es,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
+llama_3.1_8b_en,rand_gender20_seed0,arc_challenge,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run"
+llama_3.1_8b_en,rand_gender20_seed0,hellaswag,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run"
+llama_3.1_8b_en,rand_gender20_seed0,hellaswag_es,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run"
 llama_3.1_8b_en,rand_gender20_seed0,mmlu,A100-SXM4-40GB,4,E4_handoff.md §4 (repeated on A100 after OOM on L4)
 qwen3_4b_base_en,baseline,*,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
 qwen3_4b_base_en,baseline,mmlu,A100-SXM4-40GB,4,E4_handoff.md §3
 qwen3_4b_base_en,real_gender20,*,A100-SXM4-40GB,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
 qwen3_4b_base_en,real_gender20,mmlu,A100-SXM4-40GB,4,E4_handoff.md §3
 qwen3_4b_base_en,rand_gender20_seed0,wikitext,A100-SXM4-40GB,1,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-qwen3_4b_base_en,rand_gender20_seed0,arc_challenge,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-qwen3_4b_base_en,rand_gender20_seed0,hellaswag,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-qwen3_4b_base_en,rand_gender20_seed0,hellaswag_es,L4,16,"E4_handoff.md §3; batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-qwen3_4b_base_en,rand_gender20_seed0,mmlu,L4,4,E4_handoff.md §3 and §4
+qwen3_4b_base_en,rand_gender20_seed0,arc_challenge,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run"
+qwen3_4b_base_en,rand_gender20_seed0,hellaswag,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run"
+qwen3_4b_base_en,rand_gender20_seed0,hellaswag_es,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run"
+qwen3_4b_base_en,rand_gender20_seed0,mmlu,A100-SXM4-80GB,4,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-12 L4 run"
 salamandra_7b_en,rand_gender20_seed0,mmlu,A100-SXM4-40GB,4,Salamandra MMLU retry (agent report)
-salamandra_7b_en,rand_gender20_seed0,arc_challenge,L4,16,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-salamandra_7b_en,rand_gender20_seed0,hellaswag,L4,16,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-salamandra_7b_en,rand_gender20_seed0,hellaswag_es,L4,16,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
-salamandra_7b_en,rand_gender20_seed0,wikitext,L4,1,"orchestrator prompt A (L4 plan); batch from per-set summary (batch_size 16, wikitext_batch_size 1), checked 2026-11-15"
+salamandra_7b_en,rand_gender20_seed0,arc_challenge,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-13 L4 run"
+salamandra_7b_en,rand_gender20_seed0,hellaswag,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-13 L4 run"
+salamandra_7b_en,rand_gender20_seed0,hellaswag_es,A100-SXM4-80GB,16,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-13 L4 run"
+salamandra_7b_en,rand_gender20_seed0,wikitext,A100-SXM4-80GB,1,"A100 rerun (2026-11-24, checkpoints_e4_a100_rerun, lm_eval 0.4.9.2, nvidia-smi: NVIDIA A100-SXM4-80GB); supersedes 2026-11-13 L4 run"
 salamandra_7b_en,baseline,*,A100-SXM4-40GB,16,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15"
 salamandra_7b_en,baseline,wikitext,A100-SXM4-40GB,1,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15"
 salamandra_7b_en,baseline,mmlu,A100-SXM4-40GB,4,"per-set summary env.gpu and batch sizes (Drive), checked 2026-11-15"

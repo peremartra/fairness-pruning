@@ -1,9 +1,9 @@
 {
-  "generated_at_utc": "2026-11-24T10:16:45+00:00",
+  "generated_at_utc": "2026-11-24T18:05:08+00:00",
   "script": "analysis/e3/build_e3_tables.py",
-  "script_sha256": "55680c2dace51ec30729c4a70e8336900483977f18d0d795ac78bd13a31bb65c",
+  "script_sha256": "05d5985ce7dc4f7906585bbd1a39e078a54fa70c501a7fbceaa2dc13a13424cb",
   "repo_commit": null,
-  "python": "3.13.18",
+  "python": "3.13.16",
   "numpy": "2.4.6",
   "pandas": "2.2.3",
   "units": [
@@ -20,32 +20,32 @@
     "e3_inventory.csv": {
       "rows": 8,
       "cols": 16,
-      "bytes": 1754
+      "bytes": 1769
     },
     "e3_localization_summary.csv": {
       "rows": 54,
       "cols": 29,
-      "bytes": 15492
+      "bytes": 15503
     },
     "e3_real_vs_random.csv": {
       "rows": 11,
       "cols": 29,
-      "bytes": 4516
+      "bytes": 4555
     },
     "e3_flips_by_category.csv": {
-      "rows": 3420,
+      "rows": 3486,
       "cols": 14,
-      "bytes": 440478
+      "bytes": 450545
     },
     "e3_neuron_overlap.csv": {
       "rows": 162,
       "cols": 16,
-      "bytes": 27080
+      "bytes": 27091
     },
     "e3_secondary_metrics.csv": {
       "rows": 477,
       "cols": 28,
-      "bytes": 91406
+      "bytes": 91388
     },
     "e3_ablation_l31_6950.csv": {
       "rows": 45,
@@ -60,22 +60,22 @@
     "e3_margin_summary.csv": {
       "rows": 238,
       "cols": 7,
-      "bytes": 16275
+      "bytes": 16280
     },
     "e3_margin_deciles.csv": {
       "rows": 570,
       "cols": 8,
-      "bytes": 41376
+      "bytes": 41357
     },
     "e3_groups.csv": {
       "rows": 1644,
       "cols": 8,
-      "bytes": 127868
+      "bytes": 127866
     },
     "e3_esbbq_topics.csv": {
       "rows": 1596,
       "cols": 8,
-      "bytes": 132156
+      "bytes": 131821
     },
     "e3_gpu_noise_k3.csv": {
       "rows": 11,
@@ -88,9 +88,9 @@
       "bytes": 1860
     },
     "e3_provenance.csv": {
-      "rows": 118,
+      "rows": 120,
       "cols": 18,
-      "bytes": 28243
+      "bytes": 28916
     }
   },
   "source_files": [
@@ -245,59 +245,59 @@
       "sha256": "d95b9fa0c2c9be7f98ad9836e06308dbe0b62e19e02ec8e32a664118eb1b9ad0"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/inputs.json",
-      "bytes": 35153,
-      "sha256": "f423fcad654df45a6193908e518b2c83788c57bcc25df3245166cced0f9d65e7"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/inputs.json",
+      "bytes": 37906,
+      "sha256": "57c4c5cc043bf1480e20f72662bdaff123c63df5201a958ff5056742cce36159"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/direction.csv",
-      "bytes": 78792,
-      "sha256": "dd894b4cd0e1fd8839f6bf9a56616150529bbcce3a6498293d54d6da708abe0b"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/direction.csv",
+      "bytes": 87052,
+      "sha256": "d5de3629451bbd5ea8b992b6a3fe2dc40cee15d3d81d29b7ff6836711c570340"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/bootstrap.csv",
-      "bytes": 36433,
-      "sha256": "a34dcacc85e9511fcc4ca59434e8b60b05dabd026b61b7788783601c73b5db23"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/bootstrap.csv",
+      "bytes": 40159,
+      "sha256": "4c6f677dd3637f3233f760f640ea9e8d4e4ec60e93c370a33eea98e2bbcce3a8"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/margin_changed_vs_unchanged.csv",
-      "bytes": 15455,
-      "sha256": "d53f1d4faea064bd9464d05e75e7edbd99032f41b816a9fa4e4f3166888f50c5"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/margin_changed_vs_unchanged.csv",
+      "bytes": 17254,
+      "sha256": "04e7c2cb7f172697641499e57cd59d5633de5bd949d7e53204f8584e1d0b18e6"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/margin_deciles.csv",
-      "bytes": 13660,
-      "sha256": "24294fea48ad812f8f103d1b90525521a8502c3b11588f6c000af7415826e42b"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/margin_deciles.csv",
+      "bytes": 15220,
+      "sha256": "e211e1f18aeffcaae0e139eb5426a1b18b3f0e3adb1594eff2100e37ce26bbd6"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/groups.csv",
-      "bytes": 253793,
-      "sha256": "11830e0609704565fd4a78e994255cf6b93be7401e447564e5252d3a723bfeac"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/groups.csv",
+      "bytes": 282349,
+      "sha256": "436137e436f95dcb553059442a2cc2c889592d8ddcb452e301a2b989cbf58e3b"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/overlap_changed_items_all.csv",
-      "bytes": 9971,
-      "sha256": "771063fbf86423c68ef9b8dde4735ab00903b095d6a4cdfe7f71f149885a433c"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/overlap_changed_items_all.csv",
+      "bytes": 11845,
+      "sha256": "6351ff5ceccb5158fcc51243ccdffce371088ae00b6aa68e3e99557a7dc2f87f"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/overlap_changed_items_Religion.csv",
-      "bytes": 8923,
-      "sha256": "82527888875e64f139c84a99c7abb8f31e04954d32f7ab7e8a473c3698a7a62c"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/overlap_changed_items_Religion.csv",
+      "bytes": 10435,
+      "sha256": "b9b41e773393c48e271061cc1388f09402c9e7a0e6f688e1383b0aec908193b2"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/overlap_changed_items_Race_ethnicity.csv",
-      "bytes": 9683,
-      "sha256": "b8561b514f8055306d195bb7012c88561f2072f284a8a1bbbf542d8e3f8b6f97"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/overlap_changed_items_Race_ethnicity.csv",
+      "bytes": 11497,
+      "sha256": "1de4da7296cb1b5b0334054e9f60c458f3c1fc6490a3b906a84f5482d3aecd9a"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/overlap_changed_items_Gender_identity.csv",
-      "bytes": 9669,
-      "sha256": "8b89283bce9c90ef6ed27c4e4352fa40dd92decda6e00a0149470a19b2dbd397"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/overlap_changed_items_Gender_identity.csv",
+      "bytes": 11541,
+      "sha256": "e4812c81e935b5f7043cf33242d2cc510d9533837fa6948222c0378e1ebba8b6"
     },
     {
-      "path": "results/e3/llama-3.2-3b_en/analysis/20261123_200457_items_3b_random/flips_by_category.csv",
-      "bytes": 39464,
-      "sha256": "d171c8ec257d8fb8bc969b8926a854c2025aa1c331c197581a9696b02a32bb36"
+      "path": "results/e3/llama-3.2-3b_en/analysis/20261124_a100_items_3b_random/flips_by_category.csv",
+      "bytes": 43494,
+      "sha256": "b70660736604d0a36ecbd56b992e70889a823df819e4a28c3bca3eedd6667ae3"
     },
     {
       "path": "results/e3/llama-3.2-1b_en/per_set/baseline_summary.json",
@@ -400,59 +400,59 @@
       "sha256": "215430012aefce5f8005e8e8d408a46670baf3d43d5a4b851d11685c2e1d4bd6"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/inputs.json",
-      "bytes": 66055,
-      "sha256": "d3a996eb1120e2cd8bb6969c4d436556c29566932affccdc4a01700501d57be9"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/inputs.json",
+      "bytes": 64927,
+      "sha256": "6dac353374bed0a2b8675462b2fa2107ad28f0dba9212e33dc10cf854f627dee"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/direction.csv",
-      "bytes": 16548,
-      "sha256": "719c879bf5b5b6980dab67701ddc0f4abaeed2bea3c38daa827b5ceec028559a"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/direction.csv",
+      "bytes": 16667,
+      "sha256": "483e17208d55e4a5d3de22d103c3fe474038eee750d74a308897eb2f61627bda"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/bootstrap.csv",
-      "bytes": 15129,
-      "sha256": "b098d451f3f2e3558abc34d89cda1cfe017c569693014ef1987e838a24a1a77a"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/bootstrap.csv",
+      "bytes": 15014,
+      "sha256": "c68bfed8c4356c8757c9f2dc93390831be8386033854e4df135493e7a1aac87c"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/margin_changed_vs_unchanged.csv",
-      "bytes": 2702,
-      "sha256": "b09857bc76830f783b2ba380ad384ad463e8f5bc18a3de2f007c5f9f11a7928c"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/margin_changed_vs_unchanged.csv",
+      "bytes": 2726,
+      "sha256": "8f8927a0fad35edf21f18428cce38fff20212f860c15df58517b681cee4d8f42"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/margin_deciles.csv",
-      "bytes": 2841,
-      "sha256": "6f5e195fd925edf08b5f9876738635d7511e47b958eab0962c8896c1c8969f0e"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/margin_deciles.csv",
+      "bytes": 2820,
+      "sha256": "ef28018b476965310751a4d80160a63f5d79e6b79d88222272ff821539f5faa0"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/groups.csv",
-      "bytes": 27485,
-      "sha256": "ac3d6eaaef4671a2617ae2ce38323bc770854fa30f47acabe267e4c6a77a152f"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/groups.csv",
+      "bytes": 27663,
+      "sha256": "52c53c3759d672667e2c971fef31a566da32d21daf3b7bd3d8b559abf32151ac"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/overlap_changed_items_all.csv",
-      "bytes": 671,
-      "sha256": "517dffa6fb0b55a3b3acfa31015d8dd3c5fa0b8167dbc6fc0528e6b726c57672"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/overlap_changed_items_all.csv",
+      "bytes": 685,
+      "sha256": "8c9fe95a9680fd8eefc94bd2f33a2b66d1c8c5654fb72fb7a926fe750b7581d1"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/overlap_changed_items_Religion.csv",
-      "bytes": 595,
-      "sha256": "f7f2b45a14a52eba1f10bf9f0acc08653f13cd0a47dd26597ce8397ed7224268"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/overlap_changed_items_Religion.csv",
+      "bytes": 635,
+      "sha256": "ebb2bba4028b2a95e0883338a1168261ffa5390e72a9422304f78ad433dc9cad"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/overlap_changed_items_Gender.csv",
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/overlap_changed_items_Gender.csv",
       "bytes": 661,
-      "sha256": "992a01d755c89569c48f93a45e13907850f2f55d67d31dc10cc1c42acf60ea92"
+      "sha256": "dd0e7ede3decc1344273f545f45b346fe9e9c9bfff076c47d5e79a28f7606e37"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/overlap_changed_items_RaceEthnicity.csv",
-      "bytes": 631,
-      "sha256": "37ba76e647abc1419446abdfb8627b75fce0e82167041fe3d957ad15b1a1fc5d"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/overlap_changed_items_RaceEthnicity.csv",
+      "bytes": 659,
+      "sha256": "0e8e6f66621138386c6bfa9fb15ff167b021ce3951c481527788c4684668813f"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/topics.csv",
-      "bytes": 71827,
-      "sha256": "c2e7a64f12cd18c0b1801b63f39ba4bf2a037d543aed6467614e6ceb579b38ba"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/topics.csv",
+      "bytes": 71531,
+      "sha256": "25832a67ef387d482370a70c388ca59841642db923151b02ab31fe55298ca0dc"
     },
     {
       "path": "results/esbbq_zeroed_llama8b/runs.jsonl",
@@ -460,9 +460,9 @@
       "sha256": "aa262250a149c19783295ede433d1284e390c36e96e21fae9cdb1e5af2c7e1dd"
     },
     {
-      "path": "results/esbbq_zeroed_llama8b/analysis/20261112_081632_items/changed_by_category.csv",
-      "bytes": 2880,
-      "sha256": "6ccfaa8cd87dde5887003473b34bc95c31a07eeabb020d890ea9f0159e3f7695"
+      "path": "results/esbbq_zeroed_llama8b/analysis/20261124_141737_items_a100base/changed_by_category.csv",
+      "bytes": 2901,
+      "sha256": "bf8f016e4838287c4686f3eb1b4c66cf93051c2866a8fedf40859c571425c1de"
     },
     {
       "path": "results/esbbq_zeroed_llama3b/analysis/20261112_081707_items/inputs.json",

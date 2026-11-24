@@ -92,7 +92,7 @@ def render_master(tables: dict, inputs: dict) -> str:
 
     refreshed = inputs.get("refreshed_from_drive_logs") or []
     refresh_note = (
-        f"; refreshed `{len(refreshed)}` newer Drive logs (2026-11-23 `llama_3.2_3b_en` A100 reruns)"
+        f"; refreshed `{len(refreshed)}` A100 rerun logs (`llama_3.2_3b_en`, `llama_3.1_8b_en`, `salamandra_7b_en`, `qwen3_4b_base_en`)"
         if refreshed
         else ""
     )

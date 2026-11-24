@@ -2,8 +2,8 @@ unit,task,comparison,value_a,value_b,delta,ci95_lo,ci95_hi,unit_of_delta,verdict
 llama_3.1_8b_en,wikitext,real_gender20_vs_baseline,7.598704006846772,7.544208955845432,0.722,0.497,0.941,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,real_gender5_vs_baseline,7.56298848180246,7.544208955845432,0.249,0.085,0.431,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,real_race20_vs_baseline,7.613927033635199,7.544208955845432,0.924,0.726,1.105,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_race5_vs_baseline,7.554218892662806,7.544208955845432,0.133,0.036,0.265,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_baseline,7.592881305735862,7.544208955845432,0.645,0.449,0.845,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_race5_vs_baseline,7.5542188926628056,7.544208955845432,0.133,0.036,0.265,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_baseline,7.592881305735861,7.544208955845432,0.645,0.449,0.845,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,real_religion5_vs_baseline,7.560356536645881,7.544208955845432,0.214,0.075,0.378,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_gender20_seed0_vs_baseline,7.549712778555599,7.544208955845432,0.073,0.0,0.194,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,real_gender20_vs_rand_gender20_seed0,7.598704006846772,7.549712778555599,0.649,0.422,0.873,relative % change of word perplexity,n/a (no margin for perplexity)
@@ -16,32 +16,32 @@ llama_3.1_8b_en,wikitext,real_gender20_vs_rand_gender20_seed3,7.598704006846772,
 llama_3.1_8b_en,wikitext,rand_gender20_seed4_vs_baseline,7.549212265160086,7.544208955845432,0.066,0.0,0.183,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,real_gender20_vs_rand_gender20_seed4,7.598704006846772,7.549212265160086,0.656,0.429,0.885,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed0_vs_baseline,7.56198572800793,7.544208955845432,0.236,0.092,0.404,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed0,7.592881305735862,7.56198572800793,0.409,0.229,0.608,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed0,7.592881305735861,7.56198572800793,0.409,0.229,0.608,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed1_vs_baseline,7.5529669245866735,7.544208955845432,0.116,0.011,0.248,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed1,7.592881305735862,7.5529669245866735,0.528,0.34,0.734,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed1,7.592881305735861,7.5529669245866735,0.528,0.34,0.734,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed2_vs_baseline,7.557725507414978,7.544208955845432,0.179,0.032,0.353,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed2,7.592881305735862,7.557725507414978,0.465,0.265,0.684,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed2,7.592881305735861,7.557725507414978,0.465,0.265,0.684,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed3_vs_baseline,7.558727696284828,7.544208955845432,0.192,-0.054,0.559,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed3,7.592881305735862,7.558727696284828,0.452,0.007,0.797,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed3,7.592881305735861,7.558727696284828,0.452,0.007,0.797,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed4_vs_baseline,7.5452093523588974,7.544208955845432,0.013,-0.013,0.042,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed4,7.592881305735862,7.5452093523588974,0.632,0.436,0.829,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed4,7.592881305735861,7.5452093523588974,0.632,0.436,0.829,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed5_vs_baseline,7.54846155728216,7.544208955845432,0.056,-0.057,0.197,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed5,7.592881305735862,7.54846155728216,0.588,0.398,0.787,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed5,7.592881305735861,7.54846155728216,0.588,0.398,0.787,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed6_vs_baseline,7.54946251770997,7.544208955845432,0.07,-0.006,0.192,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed6,7.592881305735862,7.54946251770997,0.575,0.383,0.775,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,rand_religion20_seed7_vs_baseline,7.554218892662806,7.544208955845432,0.133,0.014,0.286,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed7,7.592881305735862,7.554218892662806,0.512,0.332,0.713,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed6,7.592881305735861,7.54946251770997,0.575,0.383,0.775,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,rand_religion20_seed7_vs_baseline,7.5542188926628056,7.544208955845432,0.133,0.014,0.286,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed7,7.592881305735861,7.5542188926628056,0.512,0.332,0.713,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed8_vs_baseline,7.554344100883687,7.544208955845432,0.134,0.016,0.287,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed8,7.592881305735862,7.554344100883687,0.51,0.329,0.712,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed8,7.592881305735861,7.554344100883687,0.51,0.329,0.712,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,wikitext,rand_religion20_seed9_vs_baseline,7.551715164000433,7.544208955845432,0.099,0.0,0.227,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed9,7.592881305735862,7.551715164000433,0.545,0.351,0.754,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.1_8b_en,wikitext,real_religion20_vs_rand_religion20_seed9,7.592881305735861,7.551715164000433,0.545,0.351,0.754,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.1_8b_en,arc_challenge,real_gender20_vs_baseline,55.11945392491467,54.60750853242321,0.512,-0.256,1.28,pp,inconclusive
 llama_3.1_8b_en,arc_challenge,real_gender5_vs_baseline,54.26621160409556,54.60750853242321,-0.341,-0.853,0.171,pp,equivalent
 llama_3.1_8b_en,arc_challenge,real_race20_vs_baseline,55.631399317406135,54.60750853242321,1.024,0.256,1.877,pp,inconclusive
 llama_3.1_8b_en,arc_challenge,real_race5_vs_baseline,54.94880546075085,54.60750853242321,0.341,-0.171,0.853,pp,equivalent
 llama_3.1_8b_en,arc_challenge,real_religion20_vs_baseline,55.11945392491467,54.60750853242321,0.512,-0.256,1.28,pp,inconclusive
 llama_3.1_8b_en,arc_challenge,real_religion5_vs_baseline,55.034129692832764,54.60750853242321,0.427,-0.171,1.024,pp,inconclusive
-llama_3.1_8b_en,arc_challenge,rand_gender20_seed0_vs_baseline,54.863481228668945,54.60750853242321,0.256,-0.256,0.853,pp,equivalent
+llama_3.1_8b_en,arc_challenge,rand_gender20_seed0_vs_baseline,54.863481228668945,54.60750853242321,0.256,-0.171,0.683,pp,equivalent
 llama_3.1_8b_en,arc_challenge,real_gender20_vs_rand_gender20_seed0,55.11945392491467,54.863481228668945,0.256,-0.512,1.024,pp,inconclusive
 llama_3.1_8b_en,hellaswag,real_gender20_vs_baseline,79.35670185222067,79.29695279824736,0.06,-0.169,0.299,pp,equivalent
 llama_3.1_8b_en,hellaswag,real_gender5_vs_baseline,79.27703644692292,79.29695279824736,-0.02,-0.179,0.139,pp,equivalent
@@ -49,16 +49,16 @@ llama_3.1_8b_en,hellaswag,real_race20_vs_baseline,79.32682732523402,79.296952798
 llama_3.1_8b_en,hellaswag,real_race5_vs_baseline,79.35670185222067,79.29695279824736,0.06,-0.08,0.199,pp,equivalent
 llama_3.1_8b_en,hellaswag,real_religion20_vs_baseline,79.27703644692292,79.29695279824736,-0.02,-0.229,0.189,pp,equivalent
 llama_3.1_8b_en,hellaswag,real_religion5_vs_baseline,79.29695279824736,79.29695279824736,0.0,-0.139,0.139,pp,equivalent
-llama_3.1_8b_en,hellaswag,rand_gender20_seed0_vs_baseline,79.34674367655845,79.29695279824736,0.05,-0.08,0.179,pp,equivalent
-llama_3.1_8b_en,hellaswag,real_gender20_vs_rand_gender20_seed0,79.35670185222067,79.34674367655845,0.01,-0.229,0.249,pp,equivalent
+llama_3.1_8b_en,hellaswag,rand_gender20_seed0_vs_baseline,79.38657637920733,79.29695279824736,0.09,0.0,0.189,pp,equivalent
+llama_3.1_8b_en,hellaswag,real_gender20_vs_rand_gender20_seed0,79.35670185222067,79.38657637920733,-0.03,-0.269,0.209,pp,equivalent
 llama_3.1_8b_en,hellaswag_es,real_gender20_vs_baseline,66.73778536377213,66.8764668231278,-0.139,-0.395,0.107,pp,equivalent
 llama_3.1_8b_en,hellaswag_es,real_gender5_vs_baseline,66.8764668231278,66.8764668231278,0.0,-0.192,0.181,pp,equivalent
 llama_3.1_8b_en,hellaswag_es,real_race20_vs_baseline,66.74845316833795,66.8764668231278,-0.128,-0.384,0.128,pp,equivalent
 llama_3.1_8b_en,hellaswag_es,real_race5_vs_baseline,66.86579901856197,66.8764668231278,-0.011,-0.181,0.16,pp,equivalent
 llama_3.1_8b_en,hellaswag_es,real_religion20_vs_baseline,66.75912097290377,66.8764668231278,-0.117,-0.373,0.128,pp,equivalent
 llama_3.1_8b_en,hellaswag_es,real_religion5_vs_baseline,66.83379560486452,66.8764668231278,-0.043,-0.224,0.139,pp,equivalent
-llama_3.1_8b_en,hellaswag_es,rand_gender20_seed0_vs_baseline,66.73778536377213,66.8764668231278,-0.139,-0.309,0.032,pp,equivalent
-llama_3.1_8b_en,hellaswag_es,real_gender20_vs_rand_gender20_seed0,66.73778536377213,66.73778536377213,0.0,-0.267,0.267,pp,equivalent
+llama_3.1_8b_en,hellaswag_es,rand_gender20_seed0_vs_baseline,66.75912097290377,66.8764668231278,-0.117,-0.267,0.021,pp,equivalent
+llama_3.1_8b_en,hellaswag_es,real_gender20_vs_rand_gender20_seed0,66.73778536377213,66.75912097290377,-0.021,-0.277,0.235,pp,equivalent
 llama_3.1_8b_en,mmlu,real_gender20_vs_baseline,65.33969520011395,65.28272325879504,0.057,-0.164,0.278,pp,equivalent
 llama_3.1_8b_en,mmlu,real_race20_vs_baseline,65.32545221478422,65.28272325879504,0.043,-0.292,0.385,pp,equivalent
 llama_3.1_8b_en,mmlu,real_religion20_vs_baseline,65.50348953140578,65.28272325879504,0.221,-0.071,0.506,pp,equivalent
@@ -96,7 +96,7 @@ qwen3_4b_base_en,arc_challenge,real_race20_vs_baseline,52.218430034129696,51.023
 qwen3_4b_base_en,arc_challenge,real_race5_vs_baseline,52.04778156996587,51.02389078498294,1.024,0.0,2.048,pp,inconclusive
 qwen3_4b_base_en,arc_challenge,real_religion20_vs_baseline,51.19453924914675,51.02389078498294,0.171,-1.109,1.451,pp,inconclusive
 qwen3_4b_base_en,arc_challenge,real_religion5_vs_baseline,51.877133105802045,51.02389078498294,0.853,-0.085,1.792,pp,inconclusive
-qwen3_4b_base_en,arc_challenge,rand_gender20_seed0_vs_baseline,51.5358361774744,51.02389078498294,0.512,-0.171,1.28,pp,inconclusive
+qwen3_4b_base_en,arc_challenge,rand_gender20_seed0_vs_baseline,51.5358361774744,51.02389078498294,0.512,-0.085,1.195,pp,inconclusive
 qwen3_4b_base_en,arc_challenge,real_gender20_vs_rand_gender20_seed0,51.877133105802045,51.5358361774744,0.341,-0.853,1.536,pp,inconclusive
 qwen3_4b_base_en,hellaswag,real_gender20_vs_baseline,73.04321848237403,73.69049990041823,-0.647,-1.046,-0.259,pp,inconclusive
 qwen3_4b_base_en,hellaswag,real_gender5_vs_baseline,73.32204740091616,73.69049990041823,-0.368,-0.677,-0.05,pp,equivalent
@@ -104,21 +104,21 @@ qwen3_4b_base_en,hellaswag,real_race20_vs_baseline,73.09300936068513,73.69049990
 qwen3_4b_base_en,hellaswag,real_race5_vs_baseline,73.65066719776937,73.69049990041823,-0.04,-0.279,0.189,pp,equivalent
 qwen3_4b_base_en,hellaswag,real_religion20_vs_baseline,72.96355307707628,73.69049990041823,-0.727,-1.145,-0.309,pp,inconclusive
 qwen3_4b_base_en,hellaswag,real_religion5_vs_baseline,73.41167098187611,73.69049990041823,-0.279,-0.548,-0.01,pp,equivalent
-qwen3_4b_base_en,hellaswag,rand_gender20_seed0_vs_baseline,73.80003983270265,73.69049990041823,0.11,-0.07,0.289,pp,equivalent
-qwen3_4b_base_en,hellaswag,real_gender20_vs_rand_gender20_seed0,73.04321848237403,73.80003983270265,-0.757,-1.155,-0.368,pp,inconclusive
+qwen3_4b_base_en,hellaswag,rand_gender20_seed0_vs_baseline,73.7203744274049,73.69049990041823,0.03,-0.129,0.189,pp,equivalent
+qwen3_4b_base_en,hellaswag,real_gender20_vs_rand_gender20_seed0,73.04321848237403,73.7203744274049,-0.677,-1.085,-0.279,pp,inconclusive
 qwen3_4b_base_en,hellaswag_es,real_gender20_vs_baseline,62.13996159590356,62.118625986771924,0.021,-0.363,0.395,pp,equivalent
 qwen3_4b_base_en,hellaswag_es,real_gender5_vs_baseline,62.22530403243013,62.118625986771924,0.107,-0.299,0.512,pp,equivalent
 qwen3_4b_base_en,hellaswag_es,real_race20_vs_baseline,62.065286963942825,62.118625986771924,-0.053,-0.469,0.363,pp,equivalent
 qwen3_4b_base_en,hellaswag_es,real_race5_vs_baseline,62.01194794111372,62.118625986771924,-0.107,-0.448,0.235,pp,equivalent
 qwen3_4b_base_en,hellaswag_es,real_religion20_vs_baseline,62.13996159590356,62.118625986771924,0.021,-0.373,0.406,pp,equivalent
 qwen3_4b_base_en,hellaswag_es,real_religion5_vs_baseline,62.257307446127584,62.118625986771924,0.139,-0.213,0.491,pp,equivalent
-qwen3_4b_base_en,hellaswag_es,rand_gender20_seed0_vs_baseline,62.22530403243013,62.118625986771924,0.107,-0.085,0.299,pp,equivalent
-qwen3_4b_base_en,hellaswag_es,real_gender20_vs_rand_gender20_seed0,62.13996159590356,62.22530403243013,-0.085,-0.469,0.299,pp,equivalent
+qwen3_4b_base_en,hellaswag_es,rand_gender20_seed0_vs_baseline,62.150629400469384,62.118625986771924,0.032,-0.16,0.224,pp,equivalent
+qwen3_4b_base_en,hellaswag_es,real_gender20_vs_rand_gender20_seed0,62.13996159590356,62.150629400469384,-0.011,-0.395,0.363,pp,equivalent
 qwen3_4b_base_en,mmlu,real_gender20_vs_baseline,72.71756160091155,73.0878792194844,-0.37,-0.641,-0.1,pp,equivalent
 qwen3_4b_base_en,mmlu,real_race20_vs_baseline,72.83862697621421,73.0878792194844,-0.249,-0.47,-0.028,pp,equivalent
 qwen3_4b_base_en,mmlu,real_religion20_vs_baseline,72.76741204956559,73.0878792194844,-0.32,-0.563,-0.078,pp,equivalent
-qwen3_4b_base_en,mmlu,rand_gender20_seed0_vs_baseline,73.09500071214927,73.0878792194844,0.007,-0.199,0.207,pp,equivalent
-qwen3_4b_base_en,mmlu,real_gender20_vs_rand_gender20_seed0,72.71756160091155,73.09500071214927,-0.377,-0.669,-0.093,pp,equivalent
+qwen3_4b_base_en,mmlu,rand_gender20_seed0_vs_baseline,73.10212220481412,73.0878792194844,0.014,-0.135,0.164,pp,equivalent
+qwen3_4b_base_en,mmlu,real_gender20_vs_rand_gender20_seed0,72.71756160091155,73.10212220481412,-0.385,-0.655,-0.107,pp,equivalent
 salamandra_7b_en,wikitext,real_gender20_vs_baseline,6.245727123887755,6.220235818700552,0.41,0.254,0.573,relative % change of word perplexity,n/a (no margin for perplexity)
 salamandra_7b_en,wikitext,real_gender5_vs_baseline,6.22436107079699,6.220235818700552,0.066,-0.005,0.16,relative % change of word perplexity,n/a (no margin for perplexity)
 salamandra_7b_en,wikitext,real_race20_vs_baseline,6.274519983999532,6.220235818700552,0.873,0.659,1.096,relative % change of word perplexity,n/a (no margin for perplexity)
@@ -151,24 +151,24 @@ salamandra_7b_en,arc_challenge,real_race20_vs_baseline,47.95221843003413,48.2081
 salamandra_7b_en,arc_challenge,real_race5_vs_baseline,48.29351535836178,48.208191126279864,0.085,-0.512,0.683,pp,equivalent
 salamandra_7b_en,arc_challenge,real_religion20_vs_baseline,48.208191126279864,48.208191126279864,0.0,-0.597,0.597,pp,equivalent
 salamandra_7b_en,arc_challenge,real_religion5_vs_baseline,48.37883959044368,48.208191126279864,0.171,-0.256,0.597,pp,equivalent
-salamandra_7b_en,arc_challenge,rand_gender20_seed0_vs_baseline,48.03754266211604,48.208191126279864,-0.171,-0.768,0.427,pp,equivalent
-salamandra_7b_en,arc_challenge,real_gender20_vs_rand_gender20_seed0,47.95221843003413,48.03754266211604,-0.085,-0.939,0.768,pp,equivalent
+salamandra_7b_en,arc_challenge,rand_gender20_seed0_vs_baseline,48.208191126279864,48.208191126279864,0.0,-0.427,0.427,pp,equivalent
+salamandra_7b_en,arc_challenge,real_gender20_vs_rand_gender20_seed0,47.95221843003413,48.208191126279864,-0.256,-0.939,0.427,pp,equivalent
 salamandra_7b_en,hellaswag,real_gender20_vs_baseline,76.38916550487951,76.46883091017726,-0.08,-0.289,0.129,pp,equivalent
 salamandra_7b_en,hellaswag,real_gender5_vs_baseline,76.3792073292173,76.46883091017726,-0.09,-0.239,0.06,pp,equivalent
 salamandra_7b_en,hellaswag,real_race20_vs_baseline,76.3294164509062,76.46883091017726,-0.139,-0.349,0.07,pp,equivalent
 salamandra_7b_en,hellaswag,real_race5_vs_baseline,76.34933280223063,76.46883091017726,-0.119,-0.319,0.08,pp,equivalent
 salamandra_7b_en,hellaswag,real_religion20_vs_baseline,76.36924915355506,76.46883091017726,-0.1,-0.309,0.11,pp,equivalent
 salamandra_7b_en,hellaswag,real_religion5_vs_baseline,76.3792073292173,76.46883091017726,-0.09,-0.249,0.07,pp,equivalent
-salamandra_7b_en,hellaswag,rand_gender20_seed0_vs_baseline,76.38916550487951,76.46883091017726,-0.08,-0.229,0.07,pp,equivalent
-salamandra_7b_en,hellaswag,real_gender20_vs_rand_gender20_seed0,76.38916550487951,76.38916550487951,0.0,-0.199,0.209,pp,equivalent
+salamandra_7b_en,hellaswag,rand_gender20_seed0_vs_baseline,76.47878908583947,76.46883091017726,0.01,-0.139,0.159,pp,equivalent
+salamandra_7b_en,hellaswag,real_gender20_vs_rand_gender20_seed0,76.38916550487951,76.47878908583947,-0.09,-0.299,0.119,pp,equivalent
 salamandra_7b_en,hellaswag_es,real_gender20_vs_baseline,67.76189460209089,67.86857264774909,-0.107,-0.309,0.096,pp,equivalent
 salamandra_7b_en,hellaswag_es,real_gender5_vs_baseline,67.91124386601237,67.86857264774909,0.043,-0.085,0.171,pp,equivalent
 salamandra_7b_en,hellaswag_es,real_race20_vs_baseline,67.64454875186686,67.86857264774909,-0.224,-0.469,0.021,pp,equivalent
 salamandra_7b_en,hellaswag_es,real_race5_vs_baseline,67.84723703861745,67.86857264774909,-0.021,-0.224,0.171,pp,equivalent
 salamandra_7b_en,hellaswag_es,real_religion20_vs_baseline,67.96458288884148,67.86857264774909,0.096,-0.149,0.341,pp,equivalent
 salamandra_7b_en,hellaswag_es,real_religion5_vs_baseline,67.9219116705782,67.86857264774909,0.053,-0.107,0.213,pp,equivalent
-salamandra_7b_en,hellaswag_es,rand_gender20_seed0_vs_baseline,67.85790484318326,67.86857264774909,-0.011,-0.181,0.149,pp,equivalent
-salamandra_7b_en,hellaswag_es,real_gender20_vs_rand_gender20_seed0,67.76189460209089,67.85790484318326,-0.096,-0.32,0.128,pp,equivalent
+salamandra_7b_en,hellaswag_es,rand_gender20_seed0_vs_baseline,67.94324727970984,67.86857264774909,0.075,-0.075,0.224,pp,equivalent
+salamandra_7b_en,hellaswag_es,real_gender20_vs_rand_gender20_seed0,67.76189460209089,67.94324727970984,-0.181,-0.395,0.032,pp,equivalent
 salamandra_7b_en,mmlu,real_gender20_vs_baseline,46.560319042871384,47.030337558752315,-0.47,-0.84,-0.107,pp,equivalent
 salamandra_7b_en,mmlu,real_race20_vs_baseline,45.33542230451503,47.030337558752315,-1.695,-2.258,-1.132,pp,worse
 salamandra_7b_en,mmlu,real_religion20_vs_baseline,46.375160233584964,47.030337558752315,-0.655,-0.997,-0.328,pp,equivalent
@@ -222,7 +222,7 @@ llama_3.2_3b_en,mmlu,real_gender20_vs_rand_gender20_seed0,56.38797892038171,56.4
 llama_3.2_1b_en,wikitext,real_gender20_vs_baseline,12.1406930123722,11.985343220017555,1.296,1.071,1.545,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.2_1b_en,wikitext,real_gender5_vs_baseline,12.012788395554717,11.985343220017555,0.229,0.063,0.478,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.2_1b_en,wikitext,real_race20_vs_baseline,12.093096098257027,11.985343220017555,0.899,0.678,1.12,relative % change of word perplexity,n/a (no margin for perplexity)
-llama_3.2_1b_en,wikitext,real_race5_vs_baseline,12.018763049280793,11.985343220017555,0.279,0.139,0.446,relative % change of word perplexity,n/a (no margin for perplexity)
+llama_3.2_1b_en,wikitext,real_race5_vs_baseline,12.01876304928079,11.985343220017555,0.279,0.139,0.446,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.2_1b_en,wikitext,real_religion20_vs_baseline,12.129932216261823,11.985343220017555,1.206,0.735,1.95,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.2_1b_en,wikitext,real_religion5_vs_baseline,12.030472021860724,11.985343220017555,0.377,-0.051,1.145,relative % change of word perplexity,n/a (no margin for perplexity)
 llama_3.2_1b_en,arc_challenge,real_gender20_vs_baseline,36.177474402730375,37.03071672354949,-0.853,-2.048,0.341,pp,inconclusive

@@ -15,7 +15,8 @@ Detailed metric interpretation is intentionally delegated to each subdirectory R
 | `generations/` | Baseline paired generations used as analysis input |
 | `neuron_analysis/` | Per-neuron bias/fairness scores for pruning candidate selection |
 | `figures/bias_path/` | Bias-path visualizations and summary CSVs |
-| `e4/` | E4: small table of the capability cost of the interventions (full outputs on Drive) |
+| `e3/` | **Canonical reference E3 results** (localization & interventions across 8 model × language units; 100% hardware-matched, master report `E3_RESULTS.md`, unit dossiers, verified CSVs in `tables/`) |
+| `e4/` | **Canonical reference E4 results** (general-capability paired bootstrap across 5 EN models × 5 tasks; 20/20 cells matched on A100, master report `E4_RESULTS.md`, unit dossiers, verified CSVs in `tables/` and `e4_capabilities_table.csv`) |
 
 ## Top-Level Files In This Folder
 
@@ -47,4 +48,6 @@ Use the README in each subfolder for schemas, provenance, and generation workflo
 - `generations/README.md`
 - `neuron_analysis/README.md`
 - `figures/bias_path/README.md`
+- `e3/README.md` *(canonical E3 reference)*
+- `e4/README.md` *(canonical E4 reference)*
 
