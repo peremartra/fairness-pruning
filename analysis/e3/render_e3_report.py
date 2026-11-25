@@ -115,8 +115,6 @@ def render_master(tables: dict, manifest: dict) -> str:
     for _, r in inv.iterrows():
         link = f"[`{r['unit']}`](units/{r['unit']}.md)"
         rnd_str = str(int(r["n_random_sets"]))
-        if int(r["n_random_sensitivity_sets"]) > 0:
-            rnd_str += f" (+{int(r['n_random_sensitivity_sets'])} L4)"
         rows.append([
             link,
             r["model"],
@@ -137,7 +135,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     ))
     R += [
         "",
-        "*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets (see 3.1); **Random**: layer-matched uniform random control sets (`+N L4` = extra L4 hardware-sensitivity reruns); **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*",
+        "*Legend — **Real**: selected top-K neuron sets; **Abl.**: exploratory ablation subsets derived from real sets (see 3.1); **Random**: layer-matched uniform random control sets; **K**: number of zeroed neurons per set; **Per-item**: whether full item-level logs and bootstrap analysis are available (`Summary only` = aggregated per-category summary JSONs only).*",
         "",
     ]
 
@@ -145,17 +143,17 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 1.2 Primary Result: Selected vs. Layer-Matched Random Neurons",
         "",
-        "**Why this check:** tests the paper's core localization claim—whether zeroing BiasScore-selected neurons changes substantially more target-category answers than zeroing the same number of random neurons drawn uniformly from the exact same MLP layers (primary comparisons first; sensitivity rows marked).",
+        "**Why this check:** tests the paper's core localization claim—whether zeroing BiasScore-selected neurons changes substantially more target-category answers than zeroing the same number of random neurons drawn uniformly from the exact same MLP layers (all primary comparisons are hardware-matched on A100).",
         "",
     ]
     rows = []
-    for _, r in rvr.sort_values(["is_primary", "benchmark", "unit", "comparison"], ascending=[False, True, True, True]).iterrows():
-        tag = "" if bool(r["is_primary"]) else " *(sens.)*"
+    rvr_primary = rvr[rvr["is_primary"]].sort_values(["benchmark", "unit", "comparison"], ascending=[True, True, True])
+    for _, r in rvr_primary.iterrows():
         rand_cnt = f"{int(r['rand_target_changed_min']):,}–{int(r['rand_target_changed_max']):,}"
         rand_pct = f"{r['rand_target_flips_min']:.2f}–{r['rand_target_flips_max']:.2f}% (mean {r['rand_target_flips_mean']:.2f}%)"
         rows.append([
             f"[`{r['unit']}`](units/{r['unit']}.md)",
-            f"{r['comparison']}{tag}",
+            r["comparison"],
             r["target_category"],
             fmt_cnt_pct(r["real_target_changed"], r["target_n_items"], r["real_target_flips_pct"]),
             f"{rand_cnt} ({rand_pct})",
@@ -170,7 +168,12 @@ def render_master(tables: dict, manifest: dict) -> str:
     ))
     R += [
         "",
-        "*Legend — **Selected Flips (Target)**: target-category items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Random Flips (Target, min–max)**: range across the layer-matched random seeds reported as `min–max changed items (min–max% (mean %))` over the same `n_items` target denominator (e.g., `41–76` = lowest and highest seed counts, `0.72–1.34%` = corresponding percentages, `mean 0.93%` = average across seeds); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); `*(sens.)*`: sensitivity comparison.*",
+        "*Legend — **Selected Flips (Target)**: target-category items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Random Flips (Target, min–max)**: range across the layer-matched random seeds reported as `min–max changed items (min–max% (mean %))` over the same `n_items` target denominator (e.g., `41–76` = lowest and highest seed counts, `0.72–1.34%` = corresponding percentages, `mean 0.93%` = average across seeds); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest).*",
+        "",
+        "**Key takeaways:**",
+        "- **Selected sets exceed all random controls (9/9):** across all 9 primary comparisons, none of the 55 layer-matched A100 random seeds reaches the selected set's flip rate (`Rank 1` in every case), with `Real/Rand` ratios ranging from **6.10× to 32.77×**.",
+        "- **Layer-matched random controls flip few items:** random-seed means remain between **0.62% and 1.46%** (per-seed range `0.25%–3.17%`), indicating that the layer profile and `K` alone account for only a small share of the observed changes.",
+        "- **Differences by model scale and category:** the largest flip rates and ratios appear in `Gender` for the 7–8B models (`Llama-3.1-8B EN`: `24.00%` / `25.68×`; `Salamandra-7B EN`: `16.36%` / `17.58×`; `Salamandra-7B ES` at `K = 5`: `20.34%` / `32.77×`), whereas `Llama-3.2-3B EN` and `Qwen3-4B-Base EN` show smaller absolute rates (`6.58%–11.08%`, ratios `6.10×–9.43×`).",
         "",
     ]
 
@@ -208,6 +211,13 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "*Legend — **Last Layer**: zeroed neurons located in the final MLP layer out of `K`; **Target Flips**: changed answers (`pred != base_pred`) in the target category; **95% CI (%)**: paired item-bootstrap percentile interval (`B = 1,000`); **Other Mean**: unweighted mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **All Benchmark Flips**: total changed answers across the full benchmark.*",
         "",
+        "**Key takeaways:**",
+        "- **`Gender·20` changes much more in Gender than in the other categories (7 of 8 units):** across every Llama and Salamandra unit (EN and ES), the flip rate in Gender is **2.13× to 3.82×** higher than the mean of the other categories (EN: `Llama-3.1-8B` `3.82×`, `Salamandra-7B` `3.79×`, `Llama-3.2-1B` `3.04×`, `Llama-3.2-3B` `2.13×`; ES: `Salamandra-7B` `3.38×`, `Llama-3.2-3B` `2.51×`, `Llama-3.1-8B` `2.44×`).",
+        "- **`Religion` shows a smaller gap over other categories, and `Race` shows very little:** at `K = 20` outside Qwen, `Religion` changes **1.15×–2.70×** more than the other-category mean (highest in `Salamandra-7B EN` `2.48×` and `Llama-3.2-1B EN` `2.70×`), while `Race` stays at **1.04×–1.82×** (`1.04×–1.17×` in ES).",
+        "- **`Qwen3-4B-Base EN` changes all categories roughly equally:** across all 6 sets, target-category flip rates are close to the other-category mean (`Ratio` **0.83×–1.05×**); although selected neurons flip more items than random controls (Table 1.2), the effect is not focused on the target category.",
+        "- **`K = 5` is enough in some models but too small in others:** in `Llama-3.1-8B EN`, `Salamandra-7B EN`, and `Salamandra-7B ES`, `Gender·5` already produces nearly the same Gender flip rate as `Gender·20` (`23.33%` vs. `24.00%`, `16.10%` vs. `16.36%`, `20.34%` vs. `19.60%`) with less spillover (`Ratio` `4.83×–5.45×`). By contrast, in `Llama-3.2-3B EN/ES`, `Llama-3.2-1B EN`, and `Llama-3.1-8B ES`, `Gender·5` barely moves Gender (`1.32%–2.34%`, `Ratio < 1×`) and the gap only emerges at `K = 20`.",
+        "- **Last-layer predominance (especially in `Race` and `Religion`):** most selected neurons in `Race` and `Religion` come from the final MLP layer (often `17/20–20/20`), whereas `Gender` draws more neurons from earlier layers (`6/20–17/20` in the last layer).",
+        "",
     ]
 
     # 1.4 Disambiguated-only concentration
@@ -242,6 +252,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         "*Legend — **Disambig Target / Other Mean**: changed-answer `%` restricted to disambiguated items (`direction.csv`, S/A/U state changes); **Ratio**: `Disambig Target / Disambig Other Mean`.*",
         "",
         "</details>",
+        "",
+        "**Key takeaways:**",
+        "- **Lower absolute flip rates than pooled, but changes persist on disambiguated items:** restricting to items with a clear factual answer reduces absolute flip rates compared with Table 1.3 (e.g., `Llama-3.1-8B EN Gender·20`: `14.67%` vs. `24.00%`; `Salamandra-7B EN Gender·20`: `8.43%` vs. `16.36%`; `Salamandra-7B ES Gender·5`: `16.47%` vs. `20.34%`), yet substantial changes remain.",
+        "- **Cross-category and cross-model patterns match Table 1.3:** `Gender·20` keeps ratios of **2.00×–3.91×** across Llama and Salamandra (EN and ES), and `Gender·5` reaches **4.17×–5.10×** in the three 7–8B units where `K = 5` is active; `Qwen3-4B-Base EN` stays near or below `1×` (**0.46×–1.03×**).",
+        "- **Slightly higher ratios for `Religion` on disambiguated items:** excluding ambiguous items raises the `Religion` ratio in several units (`Llama-3.1-8B EN`: `1.54× → 1.96×` at `K = 20`, `2.77× → 3.63×` at `K = 5`; `Salamandra-7B EN`: `2.48× → 3.36×`, `2.76× → 3.94×`; `Llama-3.1-8B ES`: `1.32× → 1.78×`, `1.53× → 2.01×`).",
         "",
         "---",
         "",
@@ -287,15 +302,17 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "### 3.1 Single-Neuron Ablation (`Llama-3.1-8B EN`, `L31·6950`)",
         "",
-        "**Why this check:** tests whether the shared effect of `real_race5` and `real_religion5` in `Llama-3.1-8B EN` is spread across all five neurons or concentrated in their single shared neuron (`abl_shared1` = `L31·6950`), comparing changed answers and item-level overlap (`In` = share of row flips in the original Top-5; `Reprod.` = share of original Top-5 flips reproduced) across Religion, Race, and Gender.",
+        "**Why this check:** tests whether the shared effect of `real_race5` and `real_religion5` in `Llama-3.1-8B EN` is spread across all five neurons or concentrated in their single shared neuron (`abl_shared1` = `L31·6950`), comparing changed answers and item-level overlap (`In` = share of row flips present in the original Top-5; `Reprod.` = share of original Top-5 flips reproduced) across Religion and Race.",
         "",
     ]
     abl_all = abl[abl["context"] == "all"].copy()
     abl_counts = abl_all.set_index(["set", "category"])["changed"].to_dict()
 
-    def _overlap_pcts(sub_df, ref_sid: str, j_col: str):
+    def _overlap_pcts(sub_df, sid: str, ref_sid: str, j_col: str):
+        if sid == ref_sid:
+            return "—", "—"
         in_vals, rep_vals = [], []
-        for cat in ("Religion", "Race_ethnicity", "Gender_identity"):
+        for cat in ("Religion", "Race_ethnicity"):
             n_s = int(sub_df.loc[cat, "changed"])
             n_ref = int(abl_counts[(ref_sid, cat)])
             j = float(sub_df.loc[cat, j_col])
@@ -314,27 +331,31 @@ def render_master(tables: dict, manifest: dict) -> str:
         if sub.empty:
             continue
         neurons = sub["neurons"].iloc[0]
-        in_r5, rep_r5 = _overlap_pcts(sub, "real_race5", "jaccard_vs_real_race5_allctx")
-        in_rel5, rep_rel5 = _overlap_pcts(sub, "real_religion5", "jaccard_vs_real_religion5_allctx")
+        in_r5, rep_r5 = _overlap_pcts(sub, sid, "real_race5", "jaccard_vs_real_race5_allctx")
+        in_rel5, rep_rel5 = _overlap_pcts(sub, sid, "real_religion5", "jaccard_vs_real_religion5_allctx")
         rows.append([
             f"`{sid}`",
             neurons,
             fmt_cnt_pct(sub.loc["Religion", "changed"], sub.loc["Religion", "n_items"], sub.loc["Religion", "flips_pct"]),
             fmt_cnt_pct(sub.loc["Race_ethnicity", "changed"], sub.loc["Race_ethnicity", "n_items"], sub.loc["Race_ethnicity", "flips_pct"]),
-            fmt_cnt_pct(sub.loc["Gender_identity", "changed"], sub.loc["Gender_identity", "n_items"], sub.loc["Gender_identity", "flips_pct"]),
             in_r5,
             rep_r5,
             in_rel5,
             rep_rel5,
         ])
     R.append(md_table(
-        ["Set", "Neurons (L31)", "Religion (All)", "Race (All)", "Gender (All)", "In Race5 (Rel/Race/Gen)", "Reprod. Race5 (Rel/Race/Gen)", "In Rel5 (Rel/Race/Gen)", "Reprod. Rel5 (Rel/Race/Gen)"],
+        ["Set", "Neurons (L31)", "Religion (All)", "Race (All)", "In Race5 (Rel/Race)", "Reprod. Race5 (Rel/Race)", "In Rel5 (Rel/Race)", "Reprod. Rel5 (Rel/Race)"],
         rows,
-        ["l", "l", "r", "r", "r", "c", "c", "c", "c"],
+        ["l", "l", "r", "r", "c", "c", "c", "c"],
     ))
     R += [
         "",
-        "*Legend — **(All)**: pooled changed answers (`changed / n_items`, `%`, `pred != base_pred`); **In Race5 / In Rel5 (Rel/Race/Gen)**: percentage of the row's changed answers that also changed in the original `real_race5` / `real_religion5` set (`shared / row_changed`, ordered `Religion / Race / Gender`); **Reprod. Race5 / Reprod. Rel5 (Rel/Race/Gen)**: percentage of the original `real_race5` / `real_religion5` changed answers reproduced by the row (`shared / original_changed`, ordered `Religion / Race / Gender`).*",
+        "*Legend — **(All)**: pooled changed answers (`changed / n_items`, `%`, `pred != base_pred`); **In Race5 / In Rel5 (Rel/Race)**: percentage of the row's changed answers that also changed in `real_race5` / `real_religion5` (`shared / row_changed`, ordered `Religion / Race`); **Reprod. Race5 / Reprod. Rel5 (Rel/Race)**: percentage of `real_race5` / `real_religion5` changed answers reproduced by the row (`shared / original_changed`, ordered `Religion / Race`); `—`: self-comparison.*",
+        "",
+        "**Key takeaways:**",
+        "- **One neuron (`L31·6950`) accounts for most of `real_race5` and `real_religion5` with few new flips:** against `real_race5`, **95.7%** (`111/116`) of `L31·6950`'s Religion flips and **86.6%** (`348/402`) of its Race flips were already changed by the full 5-neuron set (only `4.3%` and `13.4%` new), reproducing **91.0%** and **83.9%** of the original flips; against `real_religion5`, **75.0% / 83.8%** were in the original and **73.7% / 79.1%** are reproduced.",
+        "- **The other four Race neurons (`abl_race4`) have little effect:** although `63.2%` (Religion) and `65.2%` (Race) of their flips overlap with `real_race5`, the absolute counts are small (`1.58%` and `2.25%`) and reproduce only **9.8% / 24.3%** of `real_race5`.",
+        "- **The other four Religion neurons (`abl_religion4`) show partial, less aligned changes:** they flip `6.17%` in Religion and `2.54%` in Race, with roughly half not present in `real_religion5` (`In`: **54.1% / 61.1%**) and reproducing **33.9% / 25.1%** of `real_religion5`. *(Exploratory single-model check; no dedicated 1-neuron random control.)*",
         "",
         "**Why this check:** tests whether `L31·6950`'s disproportionate effect is merely due to abnormally large output weights (`down_proj` column norm) rather than its differential activation (`BiasScore`). Below are the `down_proj` L2 norms, BiasScores, and within-layer percentiles across all 14,336 neurons of Layer 31 for the nine neurons in `real_race5` and `real_religion5` (all nine have below-median weight norms, percentiles 0.34%–25.96%, ruling out a weight-magnitude artifact).",
         "",
@@ -357,7 +378,12 @@ def render_master(tables: dict, manifest: dict) -> str:
     ))
     R += [
         "",
-        "*Legend — **`down_proj` Norm**: L2 norm of the neuron's output column in Layer 31; **Norm Pct.**: percentile within Layer 31's 14,336 neurons; **Score (Pct.)**: differential-activation BiasScore and within-layer percentile for each category.*",
+        "*Legend — **`down_proj` Norm**: L2 norm of the neuron's output column in Layer 31; **Norm Pct.**: weight-norm percentile within Layer 31's 14,336 neurons; **Score (Pct.)**: differential-activation BiasScore and BiasScore percentile within Layer 31 for each category.*",
+        "",
+        "**Key takeaways:**",
+        "- **Small output weights (`down_proj`):** `L31·6950`'s impact is not explained by large output weights; its **weight-norm percentile** (`8.20%`, norm `0.5622`) sits well below the Layer 31 median, and all nine neurons fall in the bottom quarter by weight size (**weight-norm percentiles `0.34%–25.96%`**).",
+        "- **A high `BiasScore` alone does not guarantee large flip counts:** the four neurons in `abl_race4` reach nearly the same **Race `BiasScore` percentiles** as `L31·6950` (**`99.97%–99.99%`** vs. `99.99%`), yet together produce far fewer flips than `L31·6950` alone.",
+        "- **`L31·6950` scores near the top in all three categories:** its **`BiasScore` percentiles** are `99.99%` (Religion), `99.99%` (Race), and `99.71%` (Gender), unlike narrower neurons such as `L31·1495` (`99.99%` in Race vs. `58.80%` in Religion). One possible hypothesis (not directly measured on BBQ activations) is that this cross-category breadth causes `L31·6950` to fire on more evaluation items than the other Top-5 neurons.",
         "",
     ]
 
@@ -365,7 +391,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 3.2 Baseline Indecision Mechanism (Margin Deciles)",
         "",
-        "**Why this check:** tests whether neuron zeroing disrupts confident predictions at random or acts selectively at the decision boundary by flipping only items where the unpruned model was already undecided. Below are the median baseline log-likelihood margins (`top − second` across `person0`/`person1`/`unknown`) of changed versus unchanged items, and the flip rate in Decile 1 (most undecided 10%), Decile 5, and Decile 10 (most confident 10%, `0.00%` flips in 18 of 19 rows, max `0.07%`) for `K = 20` real sets (plus `Gender·5` in `Salamandra-7B ES`).",
+        "**Why this check:** tests whether neuron zeroing disrupts confident predictions at random or acts selectively at the decision boundary by flipping only items where the unpruned model was already undecided. Below are the median baseline log-likelihood margins (`top − second` across `person0`/`person1`/`unknown`) of changed versus unchanged items, and the flip rate in Decile 1 (most undecided 10%), Decile 5, and Decile 10 (most confident 10%, `0.00%` flips in 22 of 23 rows, max `0.07%`) for `K = 20` real sets (plus `Gender·5` in `Salamandra-7B ES`).",
         "",
     ]
     msum_all = msum[(msum["category"] == "ALL") & (msum["kind"] == "real")]
@@ -395,6 +421,11 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "*Legend — **Median Margin**: median baseline log-likelihood gap (`top − second` among `person0`/`person1`/`unknown`) for changed vs. unchanged items; **Decile 1 / 5 / 10 Flips**: flip `%` in baseline-margin deciles (`1` = smallest margin / most undecided, `10` = largest margin / most confident).*",
         "",
+        "**Key takeaways:**",
+        "- **Flips occur on items where the baseline model was already undecided:** across all 23 rows (7 units), the median baseline margin (`top − second`) of changed items is **0.094–0.375**, versus **1.000–2.750** for unchanged items (~4× to ~11× smaller).",
+        "- **High-confidence baseline predictions barely move:** flip rates are **19.88%–42.64%** in Decile 1 (`32%–43%` for all `K = 20` sets), drop to **0.11%–10.43%** in Decile 5, and reach **0.00% in 22 of 23 rows** in Decile 10 (max `0.07%` in `llama-3.2-3b_es exp11`).",
+        "- **Consistent mechanism across families and languages:** the same pattern holds on both BBQ (EN) and EsBBQ (ES), including `Qwen3-4B-Base` (which has larger baseline margins, `~2.7`, yet still flips `38%–42%` in Decile 1 vs. `0.00%` in Decile 10).",
+        "",
     ]
 
     # 3.3 Hardware Noise Controls
@@ -421,6 +452,10 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "*Legend — **Flips (L4 vs. A100)**: unpruned baseline items whose 3-way prediction changes solely due to running on L4 versus A100 hardware (`changed / n_items`, `%`).*",
         "",
+        "**Key takeaways:**",
+        "- **Switching GPU hardware alone changes `1.85%` of answers:** evaluating the exact same unpruned model on A100 versus L4 alters **506 / 27,320** EsBBQ items (`2.41%` ambiguous, `1.59%` disambiguated), ranging from **1.40% (`SES`) to 2.65% (`LGBTQIA`)** across categories.",
+        "- **Comparable in size to small-set and random effects:** this `1.85%` hardware floor is on the same scale as layer-matched random controls (`0.6%–1.5%`) and close to small `K = 5` sets in `Llama-3.1-8B ES` (`2.34%–3.70%`), motivating matched GPU hardware for baseline and intervened runs.",
+        "",
         "**Why this check:** measures how much L4-vs-A100 hardware noise inflates a random control set's flip rate when evaluated on L4 against an A100 baseline (identical `rand_gender20_seed0` set in `Llama-3.2-3B EN` run on A100-SXM4-80GB vs. L4).",
         "",
     ]
@@ -440,6 +475,10 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "",
         "*Legend — **A100-80GB / L4 Flips**: changed answers against the A100-40GB baseline for the exact same random neuron set on each GPU; **L4 − A100 (pp)**: percentage-point hardware difference.*",
+        "",
+        "**Key takeaways:**",
+        "- **Running on L4 against an A100 baseline inflates flips in 10 of 11 categories:** the identical random set shows **+0.13 pp to +0.63 pp** more flips on L4 than on A100 (`Gender_identity`: `1.23% → 1.60%`, `+0.37 pp`; `Physical_appearance`: `1.59% → 2.22%`, `+0.63 pp`; sole exception `Religion`: `-0.25 pp`).",
+        "- **Why L4 random controls were rerun on A100:** rerunning the L4 random sets on A100 avoids inflating the random baseline in primary comparisons.",
         "",
     ]
 
@@ -537,7 +576,7 @@ def render_unit(unit: str, tables: dict) -> str:
         ]
         sec_num += 1
         rows = []
-        for _, r in u_rvr.iterrows():
+        for _, r in u_rvr[u_rvr["is_primary"]].iterrows():
             rand_str = f"{int(r['rand_target_changed_min']):,}–{int(r['rand_target_changed_max']):,} ({r['rand_target_flips_min']:.2f}–{r['rand_target_flips_max']:.2f}%, mean {r['rand_target_flips_mean']:.2f}%)"
             rows.append([
                 r["comparison"],

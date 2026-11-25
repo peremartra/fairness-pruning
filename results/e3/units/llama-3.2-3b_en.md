@@ -25,8 +25,6 @@
 | :--- | :--- | ---: | ---: | ---: | :---: | :--- |
 | Gender·20 (seeds 0-4, A100-only) | Gender_identity | 504 / 5,672 (8.89%) | 70–94 (1.23–1.66%, mean 1.46%) | 6.10× | 1 of 6 | A100-SXM4-80GB / A100-SXM4-80GB |
 | Religion·20 (seeds 0-9, A100-only) | Religion | 133 / 1,200 (11.08%) | 11–16 (0.92–1.33%, mean 1.17%) | 9.43× | 1 of 11 | A100-SXM4-80GB / A100-SXM4-40GB; A100-SXM4-80GB |
-| Religion·20 (L4 seeds 0-1 + A100 seeds 2-9, sensitivity) | Religion | 133 / 1,200 (11.08%) | 13–20 (1.08–1.67%, mean 1.29%) | 8.58× | 1 of 11 | A100-SXM4-80GB / A100-SXM4-40GB; L4 |
-| Gender·20 (L4 seed0 + A100 seeds 1-4, sensitivity) | Gender_identity | 504 / 5,672 (8.89%) | 77–94 (1.36–1.66%, mean 1.53%) | 5.81× | 1 of 6 | A100-SXM4-80GB / A100-SXM4-80GB; L4 |
 
 *Legend — **Selected Flips**: target-category changed answers (`changed / n_items`, `%`, `pred != base_pred`); **Random Flips (min–max, mean)**: range across the layer-matched random seeds reported as `min–max changed items (min–max%, mean %)` over the same `n_items` target denominator; **Real/Rand**: `Selected % / Random mean %`; **Rank**: position of selected set among selected + random (`1` = highest).*
 
