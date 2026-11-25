@@ -4,35 +4,35 @@
 
 ## 1. Set Summary and Target-Category Localization
 
-Changed answers (`pred != base_pred`, `changed / n_items`, `%`) for each real and ablation set in its target category versus the mean of the other categories, with layer distribution and GPU.
+**Why this check:** summarizes how strongly each selected (and ablation) neuron set concentrates answer changes (`pred != base_pred`) in its target category versus the mean of the other categories, together with its layer profile and GPU.
 
-| Set | Kind | Target Cat. | K | Target Flips | 95% CI (%) | Other Mean | Ratio | Rank | All Benchmark Flips | GPU | Layer Profile |
-| :--- | :---: | :--- | ---: | ---: | :---: | ---: | ---: | :---: | ---: | :--- | :--- |
-| `exp5` | real | Religion | 40 | 78 / 648 (12.04%) | [9.41, 14.51] | 7.75% | 1.55× | 3/10 | 1,857 / 27,320 (6.80%) | A100-SXM4-80GB | L23:1, L24:1, L25:1, L26:1, L27:1, L29:1, L31:34 |
-| `exp11` | real | Gender | 20 | 947 / 4,832 (19.60%) | [18.56, 20.70] | 5.79% | 3.38× | 1/10 | 2,334 / 27,320 (8.54%) | A100-SXM4-80GB | L26:1, L29:1, L30:1, L31:17 |
-| `exp9` | real | Age | 20 | 214 / 4,068 (5.26%) | [4.67, 5.92] | 6.38% | 0.82× | 8/10 | 1,527 / 27,320 (5.59%) | A100-SXM4-80GB | L31:20 |
-| `exp8` | real | Age | 10 | 212 / 4,068 (5.21%) | [4.57, 5.88] | 4.47% | 1.17× | 2/10 | 1,071 / 27,320 (3.92%) | A100-SXM4-80GB | L31:10 |
-| `exp10` | real | Gender | 5 | 983 / 4,832 (20.34%) | [19.31, 21.40] | 4.21% | 4.83× | 1/10 | 2,048 / 27,320 (7.50%) | A100-SXM4-80GB | L31:5 |
-| `exp12` | real | RaceEthnicity | 5 | 69 / 3,716 (1.86%) | [1.45, 2.29] | 1.89% | 0.98× | 5/10 | 484 / 27,320 (1.77%) | A100-SXM4-80GB | L31:5 |
-| `exp2` | real | Religion | 5 | 22 / 648 (3.40%) | [2.16, 4.94] | 2.74% | 1.24× | 3/10 | 775 / 27,320 (2.84%) | A100-SXM4-80GB | L23:1, L31:4 |
-| `exp7` | real | Age | 5 | 207 / 4,068 (5.09%) | [4.40, 5.78] | 3.27% | 1.56× | 2/10 | 862 / 27,320 (3.16%) | A100-SXM4-80GB | L31:5 |
-| `exp1` | real | Religion | 1 | 9 / 648 (1.39%) | [0.62, 2.47] | 1.72% | 0.81× | 7/10 | 460 / 27,320 (1.68%) | A100-SXM4-80GB | L31:1 |
+| Set | Kind | Target Cat. | K | Target Flips | 95% CI (%) | Other Mean | Ratio | All Benchmark Flips | GPU | Layer Profile |
+| :--- | :---: | :--- | ---: | ---: | :---: | ---: | ---: | ---: | :--- | :--- |
+| `exp5` | real | Religion | 40 | 78 / 648 (12.04%) | [9.41, 14.51] | 7.75% | 1.55× | 1,857 / 27,320 (6.80%) | A100-SXM4-80GB | L23:1, L24:1, L25:1, L26:1, L27:1, L29:1, L31:34 |
+| `exp11` | real | Gender | 20 | 947 / 4,832 (19.60%) | [18.56, 20.70] | 5.79% | 3.38× | 2,334 / 27,320 (8.54%) | A100-SXM4-80GB | L26:1, L29:1, L30:1, L31:17 |
+| `exp9` | real | Age | 20 | 214 / 4,068 (5.26%) | [4.67, 5.92] | 6.38% | 0.82× | 1,527 / 27,320 (5.59%) | A100-SXM4-80GB | L31:20 |
+| `exp8` | real | Age | 10 | 212 / 4,068 (5.21%) | [4.57, 5.88] | 4.47% | 1.17× | 1,071 / 27,320 (3.92%) | A100-SXM4-80GB | L31:10 |
+| `exp10` | real | Gender | 5 | 983 / 4,832 (20.34%) | [19.31, 21.40] | 4.21% | 4.83× | 2,048 / 27,320 (7.50%) | A100-SXM4-80GB | L31:5 |
+| `exp12` | real | RaceEthnicity | 5 | 69 / 3,716 (1.86%) | [1.45, 2.29] | 1.89% | 0.98× | 484 / 27,320 (1.77%) | A100-SXM4-80GB | L31:5 |
+| `exp2` | real | Religion | 5 | 22 / 648 (3.40%) | [2.16, 4.94] | 2.74% | 1.24× | 775 / 27,320 (2.84%) | A100-SXM4-80GB | L23:1, L31:4 |
+| `exp7` | real | Age | 5 | 207 / 4,068 (5.09%) | [4.40, 5.78] | 3.27% | 1.56× | 862 / 27,320 (3.16%) | A100-SXM4-80GB | L31:5 |
+| `exp1` | real | Religion | 1 | 9 / 648 (1.39%) | [0.62, 2.47] | 1.72% | 0.81× | 460 / 27,320 (1.68%) | A100-SXM4-80GB | L31:1 |
 
-*Legend — **Kind**: `real` (selected top-K) or `ablation` (exploratory subset); **Target Flips**: changed answers (`pred != base_pred`) in target category; **95% CI (%)**: paired item-bootstrap interval (`B = 1,000`); **Other Mean**: mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target position among all categories; **Layer Profile**: `L<layer>:<count>` of zeroed neurons.*
+*Legend — **Kind**: `real` (selected top-K) or `ablation` (exploratory subset); **Target Flips**: changed answers (`pred != base_pred`) in target category; **95% CI (%)**: paired item-bootstrap interval (`B = 1,000`); **Other Mean**: mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Layer Profile**: `L<layer>:<count>` of zeroed neurons.*
 
 ## 2. Selected vs. Layer-Matched Random Neurons
 
-Direct contrast of selected sets against uniform random neuron sets drawn from the exact same layers.
+**Why this check:** tests whether the BiasScore-selected neurons change substantially more target-category answers than uniform random neuron sets drawn from the exact same MLP layers.
 
-| Comparison | Target Cat. | Selected Flips | Random Flips (min–max, mean) | Real/Rand | Rank | Other Cats (Real vs. Rand) | Ratio (Real vs. Rand) | GPUs |
-| :--- | :--- | ---: | ---: | ---: | :---: | ---: | ---: | :--- |
-| Gender·5 (seeds 0-4) | Gender | 983 / 4,832 (20.34%) | 12–86 (0.25–1.78%, mean 0.62%) | 32.77× | 1 of 6 | 4.21% vs. 0.77% | 4.83× vs. 0.77× | A100-SXM4-80GB / A100-SXM4-80GB |
+| Comparison | Target Cat. | Selected Flips | Random Flips (min–max, mean) | Real/Rand | Rank | GPUs |
+| :--- | :--- | ---: | ---: | ---: | :---: | :--- |
+| Gender·5 (seeds 0-4) | Gender | 983 / 4,832 (20.34%) | 12–86 (0.25–1.78%, mean 0.62%) | 32.77× | 1 of 6 | A100-SXM4-80GB / A100-SXM4-80GB |
 
-*Legend — **Selected/Random Flips**: target-category changed answers (`pred != base_pred`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: position of selected set among selected + random (`1` = highest); **Other Cats / Ratio**: mean flip `%` across non-target categories and `Target / Other` ratio.*
+*Legend — **Selected Flips**: target-category changed answers (`changed / n_items`, `%`, `pred != base_pred`); **Random Flips (min–max, mean)**: range across the layer-matched random seeds reported as `min–max changed items (min–max%, mean %)` over the same `n_items` target denominator; **Real/Rand**: `Selected % / Random mean %`; **Rank**: position of selected set among selected + random (`1` = highest).*
 
 ## 3. Changed Answers Across All Categories (`Set × Category`)
 
-Full matrix of changed answers (`pred != base_pred`, `changed (flips_pct)`) across every benchmark category (all items pooled; random families summarized by mean).
+**Why this table:** exposes the full `set × category` flip matrix (`pred != base_pred`, all items pooled; random families summarized by mean) so off-target spillover across individual categories can be inspected directly.
 
 | Category | Items | `exp1` | `exp2` | `exp5` | `exp7` | `exp8` | `exp9` | `exp10` | `exp11` | `exp12` | `rand_exp10` (mean) |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -73,7 +73,7 @@ Per-category flip percentage split by `ambig / disambig` context for each real a
 
 ## 4. Neuron and Changed-Item Overlap Between Sets
 
-Pairwise count of shared zeroed neurons, neuron Jaccard, and changed-item Jaccard (all items and within each set's target category).
+**Why this check:** tests whether distinct target categories share the same high-BiasScore neurons and whether different interventions flip the same underlying items (pairwise shared neurons, neuron Jaccard, and changed-item Jaccard).
 
 | Pair | Shared Neurons | Neuron Jaccard | Items Jacc (All) | Items Jacc (Target A) | Items Jacc (Target B) | Shared Neuron IDs |
 | :--- | :---: | ---: | ---: | ---: | ---: | :--- |
@@ -118,7 +118,7 @@ Pairwise count of shared zeroed neurons, neuron Jaccard, and changed-item Jaccar
 
 ## 5. Secondary Metrics (Bias Score Deltas, Stereotype Transitions, Accuracy Transitions)
 
-Secondary benchmark metrics for target categories (`disambig` and `ambig` contexts, state-based S/A/U transitions); descriptive and not primary localization measures.
+**Why this table:** reports secondary directional metrics (BBQ/EsBBQ bias-score deltas, stereotype transitions `A→S`/`S→A`, and accuracy transitions) for descriptive completeness; these are secondary to answer-change localization.
 
 | Category | Set | Context | Flips | A→S / S→A | Net→Stereo | Corr→Inc / Inc→Corr | EsBBQ Bias Δ (95% CI) | BBQ-Formula Disamb Δ (95% CI) |
 | :--- | :--- | :---: | ---: | :---: | ---: | :---: | ---: | ---: |
@@ -199,7 +199,7 @@ Secondary benchmark metrics for target categories (`disambig` and `ambig` contex
 
 ## 6. Baseline Log-Likelihood Margin Mechanism
 
-Median baseline margin (`top − second`) of changed versus unchanged items (`ALL` categories) and flip rate across baseline-margin deciles 1–10 (decile 1 = most undecided).
+**Why this check:** verifies whether changed answers come selectively from baseline-undecided items (low `top − second` margin) rather than confident predictions, comparing median margins and flip rates across deciles 1–10.
 
 | Set | Kind | Changed Items (All) | Median Margin (Changed) | Median Margin (Unchanged) |
 | :--- | :---: | ---: | ---: | ---: |
@@ -231,7 +231,7 @@ Median baseline margin (`top − second`) of changed versus unchanged items (`AL
 
 ## 7. Granular Breakdowns (Demographic Groups and Topics)
 
-Flip rates disaggregated by mentioned demographic group (`answer_info`) and, for EsBBQ, by item topic (`relevant_social_value`).
+**Why this table:** checks whether answer changes concentrate in specific demographic subgroups (`answer_info`) or social topics (`relevant_social_value`, EsBBQ) within each target category.
 
 <details>
 <summary>Expand demographic group breakdown (target categories)</summary>

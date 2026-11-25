@@ -107,7 +107,7 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "### 1.1 Experiment Inventory",
         "",
-        "All eight E3 units covered in this report, with dataset size, number of intervened sets, tested K values, and GPU hardware.",
+        "**Why this table:** summarizes the full experimental scope across all eight E3 units (models, languages, benchmarks, set counts, tested K values, and GPU hardware) so every downstream table maps to its exact evaluation setup.",
         "",
     ]
 
@@ -145,7 +145,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 1.2 Primary Result: Selected vs. Layer-Matched Random Neurons",
         "",
-        "Changed answers (`changed / n_items`, `%`) in the target category and across the remaining categories for selected neurons versus random neurons drawn uniformly from the exact same layers (primary comparisons first; sensitivity rows marked).",
+        "**Why this check:** tests the paper's core localization claim—whether zeroing BiasScore-selected neurons changes substantially more target-category answers than zeroing the same number of random neurons drawn uniformly from the exact same MLP layers (primary comparisons first; sensitivity rows marked).",
         "",
     ]
     rows = []
@@ -161,18 +161,16 @@ def render_master(tables: dict, manifest: dict) -> str:
             f"{rand_cnt} ({rand_pct})",
             f"{r['ratio_real_over_rand_mean']:.2f}×",
             r["rank_of_real"],
-            f"{r['real_other_mean_flips_pct']:.2f}% vs. {r['rand_other_mean_flips_pct']:.2f}%",
-            f"{r['real_specificity_ratio']:.2f}× vs. {r['rand_specificity_ratio_mean']:.2f}×",
             f"{r['real_gpu']} / {r['random_gpus']}",
         ])
     R.append(md_table(
-        ["Unit", "Comparison", "Target Cat.", "Selected Flips (Target)", "Random Flips (Target, min–max)", "Real/Rand", "Rank", "Other Cats (Real vs. Rand)", "Ratio (Real vs. Rand)", "GPUs (Real / Rand)"],
+        ["Unit", "Comparison", "Target Cat.", "Selected Flips (Target)", "Random Flips (Target, min–max)", "Real/Rand", "Rank", "GPUs (Real / Rand)"],
         rows,
-        ["l", "l", "l", "r", "r", "r", "c", "r", "r", "l"],
+        ["l", "l", "l", "r", "r", "r", "c", "l"],
     ))
     R += [
         "",
-        "*Legend — **Selected/Random Flips (Target)**: items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); **Other Cats**: unweighted mean flip `%` across non-target categories; **Ratio**: target-category flip `%` divided by the mean of the other categories (`>1×` = concentrated in target); `*(sens.)*`: sensitivity comparison.*",
+        "*Legend — **Selected Flips (Target)**: target-category items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Random Flips (Target, min–max)**: range across the layer-matched random seeds reported as `min–max changed items (min–max% (mean %))` over the same `n_items` target denominator (e.g., `41–76` = lowest and highest seed counts, `0.72–1.34%` = corresponding percentages, `mean 0.93%` = average across seeds); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); `*(sens.)*`: sensitivity comparison.*",
         "",
     ]
 
@@ -180,7 +178,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 1.3 Target-Category Concentration (All Items Pooled)",
         "",
-        "Changed answers for every real set (`K = 5`, `K = 20`, and EsBBQ grid sets) in its target category versus the unweighted mean of the other categories, with 95% item-bootstrap CI, concentration ratio, rank, and total benchmark flips.",
+        "**Why this check:** tests whether the answer changes caused by selected neurons concentrate in their target demographic category rather than moving all benchmark categories equally, comparing `Target Flips` against `Other Mean` across every real set (`K = 5`, `K = 20`, and EsBBQ grid sets).",
         "",
     ]
     loc_real = loc[loc["kind"] == "real"].copy()
@@ -199,17 +197,16 @@ def render_master(tables: dict, manifest: dict) -> str:
             fmt_ci(r["target_flips_ci_low"], r["target_flips_ci_high"]),
             f"{r['other_mean_flips_pct']:.2f}%",
             f"{r['specificity_ratio']:.2f}×",
-            f"{int(r['target_rank'])}/{int(r['n_categories'])}",
             fmt_cnt_pct(r["all_items_changed"], r["all_items_total"], r["all_items_flips_pct"]),
         ])
     R.append(md_table(
-        ["Unit", "Set", "Target Cat.", "K", "Last Layer", "Target Flips", "95% CI (%)", "Other Mean", "Ratio", "Rank", "All Benchmark Flips"],
+        ["Unit", "Set", "Target Cat.", "K", "Last Layer", "Target Flips", "95% CI (%)", "Other Mean", "Ratio", "All Benchmark Flips"],
         rows,
-        ["l", "l", "l", "r", "c", "r", "c", "r", "r", "c", "r"],
+        ["l", "l", "l", "r", "c", "r", "c", "r", "r", "r"],
     ))
     R += [
         "",
-        "*Legend — **Last Layer**: zeroed neurons located in the final MLP layer out of `K`; **Target Flips**: changed answers (`pred != base_pred`) in the target category; **95% CI (%)**: paired item-bootstrap percentile interval (`B = 1,000`); **Other Mean**: unweighted mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target-category position among all categories (`1` = highest); **All Benchmark Flips**: total changed answers across the full benchmark.*",
+        "*Legend — **Last Layer**: zeroed neurons located in the final MLP layer out of `K`; **Target Flips**: changed answers (`pred != base_pred`) in the target category; **95% CI (%)**: paired item-bootstrap percentile interval (`B = 1,000`); **Other Mean**: unweighted mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **All Benchmark Flips**: total changed answers across the full benchmark.*",
         "",
     ]
 
@@ -217,7 +214,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 1.4 Target-Category Concentration (Disambiguated Items Only)",
         "",
-        "Same localization ratios and ranks restricted to disambiguated items (`context = disambig`, matching the EsBBQ summary view reported in `R1_exp.md`).",
+        "**Why this check:** verifies that target-category concentration still holds when restricted to disambiguated items alone (`context = disambig`, where the prompt supplies a clear factual answer), confirming the effect is not confined to ambiguous items.",
         "",
         "<details>",
         "<summary>Expand disambiguated-only localization table (all real sets with per-item logs)</summary>",
@@ -234,16 +231,15 @@ def render_master(tables: dict, manifest: dict) -> str:
             f"{r['disambig_target_flips_pct']:.2f}%",
             f"{r['disambig_other_mean_flips_pct']:.2f}%",
             f"{r['disambig_specificity_ratio']:.2f}×",
-            f"{int(r['disambig_target_rank'])}/{int(r['n_categories'])}",
         ])
     R.append(md_table(
-        ["Unit", "Set", "Target Cat.", "K", "Disambig Target (%)", "Disambig Other Mean (%)", "Ratio", "Rank"],
+        ["Unit", "Set", "Target Cat.", "K", "Disambig Target (%)", "Disambig Other Mean (%)", "Ratio"],
         rows,
-        ["l", "l", "l", "r", "r", "r", "r", "c"],
+        ["l", "l", "l", "r", "r", "r", "r"],
     ))
     R += [
         "",
-        "*Legend — **Disambig Target / Other Mean**: changed-answer `%` restricted to disambiguated items (`direction.csv`, S/A/U state changes); **Ratio**: `Disambig Target / Disambig Other Mean`; **Rank**: target-category position among all categories (`1` = highest).*",
+        "*Legend — **Disambig Target / Other Mean**: changed-answer `%` restricted to disambiguated items (`direction.csv`, S/A/U state changes); **Ratio**: `Disambig Target / Disambig Other Mean`.*",
         "",
         "</details>",
         "",
@@ -255,7 +251,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "## 2. Unit Dossiers (Level 2)",
         "",
-        "Each unit dossier follows the same layout: unit summary, real-vs-random controls, full `set × category` flip matrix, neuron/item Jaccard overlap, secondary BBQ/EsBBQ bias and accuracy metrics, baseline margin mechanism, and demographic group/topic breakdowns.",
+        "**Why this table:** indexes the eight homogeneous per-unit dossiers where full `set × category` matrices, neuron/item overlaps, secondary bias/accuracy metrics, margin deciles, and demographic group/topic breakdowns are stored.",
         "",
     ]
     rows = []
@@ -279,7 +275,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R.append(md_table(["Dossier", "Model", "Lang", "Bench", "Sets", "Contents"], rows, ["l", "l", "c", "c", "l", "l"]))
     R += [
         "",
-        "*Legend — **Sets**: number of selected (`real`), layer-matched random (`rand`), and exploratory ablation (`abl`) sets in each unit dossier.*",
+        "*Legend — **Sets**: number of selected (`real`), layer-matched random (`rand`), and exploratory ablation (`abl`) sets in each unit dossier. The `3 abl` sets in `llama-3.1-8b_en` decompose `real_race5` and `real_religion5` around their single shared neuron `L31·6950`: `abl_shared1` (`L31·6950` alone, 1 neuron), `abl_race4` (`real_race5` without `L31·6950`, 4 neurons), and `abl_religion4` (`real_religion5` without `L31·6950`, 4 neurons); see [Section 3.1](#31-single-neuron-ablation-llama-31-8b-en-l316950).*",
         "",
         "---",
         "",
@@ -291,12 +287,26 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "### 3.1 Single-Neuron Ablation (`Llama-3.1-8B EN`, `L31·6950`)",
         "",
-        "Exploratory decomposition of `real_race5` and `real_religion5` into their shared neuron (`abl_shared1` = `L31·6950`) and the remaining four neurons of each set (`abl_race4`, `abl_religion4`), showing changed answers across contexts and Jaccard overlap with the original Top-5 sets.",
+        "**Why this check:** tests whether the shared effect of `real_race5` and `real_religion5` in `Llama-3.1-8B EN` is spread across all five neurons or concentrated in their single shared neuron (`abl_shared1` = `L31·6950`), comparing changed answers and item-level overlap (`In` = share of row flips in the original Top-5; `Reprod.` = share of original Top-5 flips reproduced) across Religion, Race, and Gender.",
         "",
     ]
     abl_all = abl[abl["context"] == "all"].copy()
-    abl_amb = abl[abl["context"] == "ambig"].set_index(["set", "category"])
-    abl_dis = abl[abl["context"] == "disambig"].set_index(["set", "category"])
+    abl_counts = abl_all.set_index(["set", "category"])["changed"].to_dict()
+
+    def _overlap_pcts(sub_df, ref_sid: str, j_col: str):
+        in_vals, rep_vals = [], []
+        for cat in ("Religion", "Race_ethnicity", "Gender_identity"):
+            n_s = int(sub_df.loc[cat, "changed"])
+            n_ref = int(abl_counts[(ref_sid, cat)])
+            j = float(sub_df.loc[cat, j_col])
+            inter = round((j / (1.0 + j)) * (n_s + n_ref)) if j > 0 else 0
+            denom = n_s + n_ref - inter
+            if denom > 0:
+                assert abs((inter / denom) - j) < 1e-10, f"Overlap recovery mismatch for {ref_sid} {cat}"
+            in_vals.append(f"{100.0 * inter / n_s:.1f}%" if n_s else "-")
+            rep_vals.append(f"{100.0 * inter / n_ref:.1f}%" if n_ref else "-")
+        return " / ".join(in_vals), " / ".join(rep_vals)
+
     piv_sets = ["real_race5", "real_religion5", "abl_shared1", "abl_race4", "abl_religion4"]
     rows = []
     for sid in piv_sets:
@@ -304,27 +314,29 @@ def render_master(tables: dict, manifest: dict) -> str:
         if sub.empty:
             continue
         neurons = sub["neurons"].iloc[0]
+        in_r5, rep_r5 = _overlap_pcts(sub, "real_race5", "jaccard_vs_real_race5_allctx")
+        in_rel5, rep_rel5 = _overlap_pcts(sub, "real_religion5", "jaccard_vs_real_religion5_allctx")
         rows.append([
             f"`{sid}`",
             neurons,
             fmt_cnt_pct(sub.loc["Religion", "changed"], sub.loc["Religion", "n_items"], sub.loc["Religion", "flips_pct"]),
-            f"{abl_amb.loc[(sid, 'Religion'), 'flips_pct']:.2f}% / {abl_dis.loc[(sid, 'Religion'), 'flips_pct']:.2f}%",
             fmt_cnt_pct(sub.loc["Race_ethnicity", "changed"], sub.loc["Race_ethnicity", "n_items"], sub.loc["Race_ethnicity", "flips_pct"]),
-            f"{abl_amb.loc[(sid, 'Race_ethnicity'), 'flips_pct']:.2f}% / {abl_dis.loc[(sid, 'Race_ethnicity'), 'flips_pct']:.2f}%",
             fmt_cnt_pct(sub.loc["Gender_identity", "changed"], sub.loc["Gender_identity", "n_items"], sub.loc["Gender_identity", "flips_pct"]),
-            f"{sub.loc['Religion', 'jaccard_vs_real_race5_allctx']:.2f} / {sub.loc['Race_ethnicity', 'jaccard_vs_real_race5_allctx']:.2f}",
-            f"{sub.loc['Religion', 'jaccard_vs_real_religion5_allctx']:.2f} / {sub.loc['Race_ethnicity', 'jaccard_vs_real_religion5_allctx']:.2f}",
+            in_r5,
+            rep_r5,
+            in_rel5,
+            rep_rel5,
         ])
     R.append(md_table(
-        ["Set", "Neurons (L31)", "Religion (All)", "Religion (Amb/Dis)", "Race (All)", "Race (Amb/Dis)", "Gender (All)", "Jacc vs. Race5 (Rel/Race)", "Jacc vs. Rel5 (Rel/Race)"],
+        ["Set", "Neurons (L31)", "Religion (All)", "Race (All)", "Gender (All)", "In Race5 (Rel/Race/Gen)", "Reprod. Race5 (Rel/Race/Gen)", "In Rel5 (Rel/Race/Gen)", "Reprod. Rel5 (Rel/Race/Gen)"],
         rows,
-        ["l", "l", "r", "c", "r", "c", "r", "c", "c"],
+        ["l", "l", "r", "r", "r", "c", "c", "c", "c"],
     ))
     R += [
         "",
-        "*Legend — **(All)**: pooled changed answers (`pred != base_pred`); **(Amb/Dis)**: flip `%` split into ambiguous / disambiguated items (S/A/U); **Jacc vs. Race5 / Rel5**: Jaccard overlap of changed items against `real_race5` and `real_religion5` within Religion / Race items.*",
+        "*Legend — **(All)**: pooled changed answers (`changed / n_items`, `%`, `pred != base_pred`); **In Race5 / In Rel5 (Rel/Race/Gen)**: percentage of the row's changed answers that also changed in the original `real_race5` / `real_religion5` set (`shared / row_changed`, ordered `Religion / Race / Gender`); **Reprod. Race5 / Reprod. Rel5 (Rel/Race/Gen)**: percentage of the original `real_race5` / `real_religion5` changed answers reproduced by the row (`shared / original_changed`, ordered `Religion / Race / Gender`).*",
         "",
-        "L2 norm of the `down_proj` column and within-layer percentiles in Layer 31 (14,336 neurons) for all nine neurons of `real_race5` and `real_religion5`.",
+        "**Why this check:** tests whether `L31·6950`'s disproportionate effect is merely due to abnormally large output weights (`down_proj` column norm) rather than its differential activation (`BiasScore`). Below are the `down_proj` L2 norms, BiasScores, and within-layer percentiles across all 14,336 neurons of Layer 31 for the nine neurons in `real_race5` and `real_religion5` (all nine have below-median weight norms, percentiles 0.34%–25.96%, ruling out a weight-magnitude artifact).",
         "",
     ]
     rows = []
@@ -353,7 +365,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 3.2 Baseline Indecision Mechanism (Margin Deciles)",
         "",
-        "Median baseline log-likelihood margin (`top − second` across person0/person1/unknown) of changed versus unchanged items across all categories, alongside flip rate in decile 1 (most undecided) versus decile 10 (most confident) for `K = 20` real sets (and `Gender·5` in Salamandra-7B ES).",
+        "**Why this check:** tests whether neuron zeroing disrupts confident predictions at random or acts selectively at the decision boundary by flipping only items where the unpruned model was already undecided. Below are the median baseline log-likelihood margins (`top − second` across `person0`/`person1`/`unknown`) of changed versus unchanged items, and the flip rate in Decile 1 (most undecided 10%), Decile 5, and Decile 10 (most confident 10%, `0.00%` flips in 18 of 19 rows, max `0.07%`) for `K = 20` real sets (plus `Gender·5` in `Salamandra-7B ES`).",
         "",
     ]
     msum_all = msum[(msum["category"] == "ALL") & (msum["kind"] == "real")]
@@ -389,7 +401,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 3.3 Hardware Noise Controls (L4 vs. A100)",
         "",
-        "K3 baseline rerun comparison for `Llama-3.1-8B ES` (unpruned model evaluated on A100 vs. L4 across all 27,320 EsBBQ items), establishing the cross-GPU hardware flip floor.",
+        "**Why this check:** quantifies the pure cross-GPU hardware flip floor when running the exact same unpruned model (`Llama-3.1-8B ES`, K3 rerun across all 27,320 EsBBQ items) on A100 versus L4, showing why primary comparisons must stay on matching GPU hardware.",
         "",
     ]
     rows = []
@@ -409,7 +421,7 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "*Legend — **Flips (L4 vs. A100)**: unpruned baseline items whose 3-way prediction changes solely due to running on L4 versus A100 hardware (`changed / n_items`, `%`).*",
         "",
-        "Sensitivity comparison of the identical random set `rand_gender20_seed0` in `Llama-3.2-3B EN` evaluated on A100-SXM4-80GB versus L4 against the A100-SXM4-40GB baseline.",
+        "**Why this check:** measures how much L4-vs-A100 hardware noise inflates a random control set's flip rate when evaluated on L4 against an A100 baseline (identical `rand_gender20_seed0` set in `Llama-3.2-3B EN` run on A100-SXM4-80GB vs. L4).",
         "",
     ]
     rows = []
@@ -435,7 +447,7 @@ def render_master(tables: dict, manifest: dict) -> str:
     R += [
         "### 3.4 Provenance and Source Tables",
         "",
-        "Every number above is generated deterministically from the consolidated CSV files in `results/e3/tables/`, each traced by SHA-256 to its source Drive file in `tables/inputs_manifest.json`.",
+        "**Why this table:** lists every consolidated CSV table in `results/e3/tables/` from which this report is deterministically generated, each traced by SHA-256 to its source Drive file in `tables/inputs_manifest.json`.",
         "",
     ]
     rows = []
@@ -483,7 +495,7 @@ def render_unit(unit: str, tables: dict) -> str:
     R += [
         f"## {sec_num}. Set Summary and Target-Category Localization",
         "",
-        "Changed answers (`pred != base_pred`, `changed / n_items`, `%`) for each real and ablation set in its target category versus the mean of the other categories, with layer distribution and GPU.",
+        "**Why this check:** summarizes how strongly each selected (and ablation) neuron set concentrates answer changes (`pred != base_pred`) in its target category versus the mean of the other categories, together with its layer profile and GPU.",
         "",
     ]
     sec_num += 1
@@ -500,19 +512,18 @@ def render_unit(unit: str, tables: dict) -> str:
             fmt_ci(r["target_flips_ci_low"], r["target_flips_ci_high"]),
             (f"{r['other_mean_flips_pct']:.2f}%" if pd.notna(r["other_mean_flips_pct"]) else "-"),
             (f"{r['specificity_ratio']:.2f}×" if pd.notna(r["specificity_ratio"]) else "-"),
-            (f"{int(r['target_rank'])}/{int(r['n_categories'])}" if pd.notna(r["target_rank"]) else "-"),
             fmt_cnt_pct(r["all_items_changed"], r["all_items_total"], r["all_items_flips_pct"]),
             r["gpu"],
             lprof,
         ])
     R.append(md_table(
-        ["Set", "Kind", "Target Cat.", "K", "Target Flips", "95% CI (%)", "Other Mean", "Ratio", "Rank", "All Benchmark Flips", "GPU", "Layer Profile"],
+        ["Set", "Kind", "Target Cat.", "K", "Target Flips", "95% CI (%)", "Other Mean", "Ratio", "All Benchmark Flips", "GPU", "Layer Profile"],
         rows,
-        ["l", "c", "l", "r", "r", "c", "r", "r", "c", "r", "l", "l"],
+        ["l", "c", "l", "r", "r", "c", "r", "r", "r", "l", "l"],
     ))
     R += [
         "",
-        "*Legend — **Kind**: `real` (selected top-K) or `ablation` (exploratory subset); **Target Flips**: changed answers (`pred != base_pred`) in target category; **95% CI (%)**: paired item-bootstrap interval (`B = 1,000`); **Other Mean**: mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target position among all categories; **Layer Profile**: `L<layer>:<count>` of zeroed neurons.*",
+        "*Legend — **Kind**: `real` (selected top-K) or `ablation` (exploratory subset); **Target Flips**: changed answers (`pred != base_pred`) in target category; **95% CI (%)**: paired item-bootstrap interval (`B = 1,000`); **Other Mean**: mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Layer Profile**: `L<layer>:<count>` of zeroed neurons.*",
         "",
     ]
 
@@ -521,7 +532,7 @@ def render_unit(unit: str, tables: dict) -> str:
         R += [
             f"## {sec_num}. Selected vs. Layer-Matched Random Neurons",
             "",
-            "Direct contrast of selected sets against uniform random neuron sets drawn from the exact same layers.",
+            "**Why this check:** tests whether the BiasScore-selected neurons change substantially more target-category answers than uniform random neuron sets drawn from the exact same MLP layers.",
             "",
         ]
         sec_num += 1
@@ -535,18 +546,16 @@ def render_unit(unit: str, tables: dict) -> str:
                 rand_str,
                 f"{r['ratio_real_over_rand_mean']:.2f}×",
                 r["rank_of_real"],
-                f"{r['real_other_mean_flips_pct']:.2f}% vs. {r['rand_other_mean_flips_pct']:.2f}%",
-                f"{r['real_specificity_ratio']:.2f}× vs. {r['rand_specificity_ratio_mean']:.2f}×",
                 f"{r['real_gpu']} / {r['random_gpus']}",
             ])
         R.append(md_table(
-            ["Comparison", "Target Cat.", "Selected Flips", "Random Flips (min–max, mean)", "Real/Rand", "Rank", "Other Cats (Real vs. Rand)", "Ratio (Real vs. Rand)", "GPUs"],
+            ["Comparison", "Target Cat.", "Selected Flips", "Random Flips (min–max, mean)", "Real/Rand", "Rank", "GPUs"],
             rows,
-            ["l", "l", "r", "r", "r", "c", "r", "r", "l"],
+            ["l", "l", "r", "r", "r", "c", "l"],
         ))
         R += [
             "",
-            "*Legend — **Selected/Random Flips**: target-category changed answers (`pred != base_pred`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: position of selected set among selected + random (`1` = highest); **Other Cats / Ratio**: mean flip `%` across non-target categories and `Target / Other` ratio.*",
+            "*Legend — **Selected Flips**: target-category changed answers (`changed / n_items`, `%`, `pred != base_pred`); **Random Flips (min–max, mean)**: range across the layer-matched random seeds reported as `min–max changed items (min–max%, mean %)` over the same `n_items` target denominator; **Real/Rand**: `Selected % / Random mean %`; **Rank**: position of selected set among selected + random (`1` = highest).*",
             "",
         ]
 
@@ -554,7 +563,7 @@ def render_unit(unit: str, tables: dict) -> str:
     R += [
         f"## {sec_num}. Changed Answers Across All Categories (`Set × Category`)",
         "",
-        "Full matrix of changed answers (`pred != base_pred`, `changed (flips_pct)`) across every benchmark category (all items pooled; random families summarized by mean).",
+        "**Why this table:** exposes the full `set × category` flip matrix (`pred != base_pred`, all items pooled; random families summarized by mean) so off-target spillover across individual categories can be inspected directly.",
         "",
     ]
     sec_num += 1
@@ -625,7 +634,7 @@ def render_unit(unit: str, tables: dict) -> str:
         R += [
             f"## {sec_num}. Neuron and Changed-Item Overlap Between Sets",
             "",
-            "Pairwise count of shared zeroed neurons, neuron Jaccard, and changed-item Jaccard (all items and within each set's target category).",
+            "**Why this check:** tests whether distinct target categories share the same high-BiasScore neurons and whether different interventions flip the same underlying items (pairwise shared neurons, neuron Jaccard, and changed-item Jaccard).",
             "",
         ]
         sec_num += 1
@@ -656,7 +665,7 @@ def render_unit(unit: str, tables: dict) -> str:
         R += [
             f"## {sec_num}. Secondary Metrics (Bias Score Deltas, Stereotype Transitions, Accuracy Transitions)",
             "",
-            "Secondary benchmark metrics for target categories (`disambig` and `ambig` contexts, state-based S/A/U transitions); descriptive and not primary localization measures.",
+            "**Why this table:** reports secondary directional metrics (BBQ/EsBBQ bias-score deltas, stereotype transitions `A→S`/`S→A`, and accuracy transitions) for descriptive completeness; these are secondary to answer-change localization.",
             "",
         ]
         sec_num += 1
@@ -721,7 +730,7 @@ def render_unit(unit: str, tables: dict) -> str:
         R += [
             f"## {sec_num}. Baseline Log-Likelihood Margin Mechanism",
             "",
-            "Median baseline margin (`top − second`) of changed versus unchanged items (`ALL` categories) and flip rate across baseline-margin deciles 1–10 (decile 1 = most undecided).",
+            "**Why this check:** verifies whether changed answers come selectively from baseline-undecided items (low `top − second` margin) rather than confident predictions, comparing median margins and flip rates across deciles 1–10.",
             "",
         ]
         sec_num += 1
@@ -766,7 +775,7 @@ def render_unit(unit: str, tables: dict) -> str:
         R += [
             f"## {sec_num}. Granular Breakdowns (Demographic Groups and Topics)",
             "",
-            "Flip rates disaggregated by mentioned demographic group (`answer_info`) and, for EsBBQ, by item topic (`relevant_social_value`).",
+            "**Why this table:** checks whether answer changes concentrate in specific demographic subgroups (`answer_info`) or social topics (`relevant_social_value`, EsBBQ) within each target category.",
             "",
             "<details>",
             "<summary>Expand demographic group breakdown (target categories)</summary>",

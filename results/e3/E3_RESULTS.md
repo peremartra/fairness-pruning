@@ -14,7 +14,7 @@ Consolidated from `89` verified Drive files (`inputs_manifest.json`, generated `
 
 ### 1.1 Experiment Inventory
 
-All eight E3 units covered in this report, with dataset size, number of intervened sets, tested K values, and GPU hardware.
+**Why this table:** summarizes the full experimental scope across all eight E3 units (models, languages, benchmarks, set counts, tested K values, and GPU hardware) so every downstream table maps to its exact evaluation setup.
 
 | Unit | Model | Lang | Bench | Items | Real | Abl. | Random | K | Per-item | Intervened GPUs |
 | :--- | :--- | :---: | :---: | ---: | ---: | ---: | ---: | :---: | :---: | :--- |
@@ -31,140 +31,140 @@ All eight E3 units covered in this report, with dataset size, number of interven
 
 ### 1.2 Primary Result: Selected vs. Layer-Matched Random Neurons
 
-Changed answers (`changed / n_items`, `%`) in the target category and across the remaining categories for selected neurons versus random neurons drawn uniformly from the exact same layers (primary comparisons first; sensitivity rows marked).
+**Why this check:** tests the paper's core localization claim—whether zeroing BiasScore-selected neurons changes substantially more target-category answers than zeroing the same number of random neurons drawn uniformly from the exact same MLP layers (primary comparisons first; sensitivity rows marked).
 
-| Unit | Comparison | Target Cat. | Selected Flips (Target) | Random Flips (Target, min–max) | Real/Rand | Rank | Other Cats (Real vs. Rand) | Ratio (Real vs. Rand) | GPUs (Real / Rand) |
-| :--- | :--- | :--- | ---: | ---: | ---: | :---: | ---: | ---: | :--- |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | Gender·20 (seeds 0-4) | Gender_identity | 1,361 / 5,672 (24.00%) | 41–76 (0.72–1.34% (mean 0.93%)) | 25.68× | 1 of 6 | 6.28% vs. 1.23% | 3.82× vs. 0.75× | A100-SXM4-80GB / A100-SXM4-40GB |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | Religion·20 (seeds 0-9) | Religion | 120 / 1,200 (10.00%) | 10–38 (0.83–3.17% (mean 1.37%)) | 7.32× | 1 of 11 | 6.50% vs. 1.41% | 1.54× vs. 0.97× | A100-SXM4-80GB / A100-SXM4-40GB |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Gender·20 (seeds 0-4, A100-only) | Gender_identity | 504 / 5,672 (8.89%) | 70–94 (1.23–1.66% (mean 1.46%)) | 6.10× | 1 of 6 | 4.17% vs. 1.58% | 2.13× vs. 0.92× | A100-SXM4-80GB / A100-SXM4-80GB |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Religion·20 (seeds 0-9, A100-only) | Religion | 133 / 1,200 (11.08%) | 11–16 (0.92–1.33% (mean 1.17%)) | 9.43× | 1 of 11 | 9.61% vs. 1.53% | 1.15× vs. 0.77× | A100-SXM4-80GB / A100-SXM4-40GB; A100-SXM4-80GB |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | Gender·20 (seeds 0-4) | Gender_identity | 397 / 5,672 (7.00%) | 28–64 (0.49–1.13% (mean 0.76%)) | 9.19× | 1 of 6 | 7.48% vs. 0.83% | 0.94× vs. 0.91× | A100-SXM4-40GB / A100-SXM4-40GB |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | Religion·20 (seeds 0-4) | Religion | 79 / 1,200 (6.58%) | 8–16 (0.67–1.33% (mean 0.93%)) | 7.05× | 1 of 6 | 7.98% vs. 0.59% | 0.83× vs. 1.63× | A100-SXM4-40GB / A100-SXM4-40GB |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | Gender·20 (seeds 0-4) | Gender_identity | 928 / 5,672 (16.36%) | 41–81 (0.72–1.43% (mean 0.93%)) | 17.58× | 1 of 6 | 4.31% vs. 1.15% | 3.79× vs. 0.80× | A100-SXM4-40GB / A100-SXM4-40GB |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | Religion·20 (seeds 0-4) | Religion | 163 / 1,200 (13.58%) | 11–19 (0.92–1.58% (mean 1.23%)) | 11.01× | 1 of 6 | 5.49% vs. 1.18% | 2.48× vs. 1.07× | A100-SXM4-40GB / A100-SXM4-40GB |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | Gender·5 (seeds 0-4) | Gender | 983 / 4,832 (20.34%) | 12–86 (0.25–1.78% (mean 0.62%)) | 32.77× | 1 of 6 | 4.21% vs. 0.77% | 4.83× vs. 0.77× | A100-SXM4-80GB / A100-SXM4-80GB |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Gender·20 (L4 seed0 + A100 seeds 1-4, sensitivity) *(sens.)* | Gender_identity | 504 / 5,672 (8.89%) | 77–94 (1.36–1.66% (mean 1.53%)) | 5.81× | 1 of 6 | 4.17% vs. 1.63% | 2.13× vs. 0.94× | A100-SXM4-80GB / A100-SXM4-80GB; L4 |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Religion·20 (L4 seeds 0-1 + A100 seeds 2-9, sensitivity) *(sens.)* | Religion | 133 / 1,200 (11.08%) | 13–20 (1.08–1.67% (mean 1.29%)) | 8.58× | 1 of 11 | 9.61% vs. 1.63% | 1.15× vs. 0.80× | A100-SXM4-80GB / A100-SXM4-40GB; L4 |
+| Unit | Comparison | Target Cat. | Selected Flips (Target) | Random Flips (Target, min–max) | Real/Rand | Rank | GPUs (Real / Rand) |
+| :--- | :--- | :--- | ---: | ---: | ---: | :---: | :--- |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | Gender·20 (seeds 0-4) | Gender_identity | 1,361 / 5,672 (24.00%) | 41–76 (0.72–1.34% (mean 0.93%)) | 25.68× | 1 of 6 | A100-SXM4-80GB / A100-SXM4-40GB |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | Religion·20 (seeds 0-9) | Religion | 120 / 1,200 (10.00%) | 10–38 (0.83–3.17% (mean 1.37%)) | 7.32× | 1 of 11 | A100-SXM4-80GB / A100-SXM4-40GB |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Gender·20 (seeds 0-4, A100-only) | Gender_identity | 504 / 5,672 (8.89%) | 70–94 (1.23–1.66% (mean 1.46%)) | 6.10× | 1 of 6 | A100-SXM4-80GB / A100-SXM4-80GB |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Religion·20 (seeds 0-9, A100-only) | Religion | 133 / 1,200 (11.08%) | 11–16 (0.92–1.33% (mean 1.17%)) | 9.43× | 1 of 11 | A100-SXM4-80GB / A100-SXM4-40GB; A100-SXM4-80GB |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | Gender·20 (seeds 0-4) | Gender_identity | 397 / 5,672 (7.00%) | 28–64 (0.49–1.13% (mean 0.76%)) | 9.19× | 1 of 6 | A100-SXM4-40GB / A100-SXM4-40GB |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | Religion·20 (seeds 0-4) | Religion | 79 / 1,200 (6.58%) | 8–16 (0.67–1.33% (mean 0.93%)) | 7.05× | 1 of 6 | A100-SXM4-40GB / A100-SXM4-40GB |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | Gender·20 (seeds 0-4) | Gender_identity | 928 / 5,672 (16.36%) | 41–81 (0.72–1.43% (mean 0.93%)) | 17.58× | 1 of 6 | A100-SXM4-40GB / A100-SXM4-40GB |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | Religion·20 (seeds 0-4) | Religion | 163 / 1,200 (13.58%) | 11–19 (0.92–1.58% (mean 1.23%)) | 11.01× | 1 of 6 | A100-SXM4-40GB / A100-SXM4-40GB |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | Gender·5 (seeds 0-4) | Gender | 983 / 4,832 (20.34%) | 12–86 (0.25–1.78% (mean 0.62%)) | 32.77× | 1 of 6 | A100-SXM4-80GB / A100-SXM4-80GB |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Gender·20 (L4 seed0 + A100 seeds 1-4, sensitivity) *(sens.)* | Gender_identity | 504 / 5,672 (8.89%) | 77–94 (1.36–1.66% (mean 1.53%)) | 5.81× | 1 of 6 | A100-SXM4-80GB / A100-SXM4-80GB; L4 |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | Religion·20 (L4 seeds 0-1 + A100 seeds 2-9, sensitivity) *(sens.)* | Religion | 133 / 1,200 (11.08%) | 13–20 (1.08–1.67% (mean 1.29%)) | 8.58× | 1 of 11 | A100-SXM4-80GB / A100-SXM4-40GB; L4 |
 
-*Legend — **Selected/Random Flips (Target)**: items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); **Other Cats**: unweighted mean flip `%` across non-target categories; **Ratio**: target-category flip `%` divided by the mean of the other categories (`>1×` = concentrated in target); `*(sens.)*`: sensitivity comparison.*
+*Legend — **Selected Flips (Target)**: target-category items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Random Flips (Target, min–max)**: range across the layer-matched random seeds reported as `min–max changed items (min–max% (mean %))` over the same `n_items` target denominator (e.g., `41–76` = lowest and highest seed counts, `0.72–1.34%` = corresponding percentages, `mean 0.93%` = average across seeds); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); `*(sens.)*`: sensitivity comparison.*
 
 ### 1.3 Target-Category Concentration (All Items Pooled)
 
-Changed answers for every real set (`K = 5`, `K = 20`, and EsBBQ grid sets) in its target category versus the unweighted mean of the other categories, with 95% item-bootstrap CI, concentration ratio, rank, and total benchmark flips.
+**Why this check:** tests whether the answer changes caused by selected neurons concentrate in their target demographic category rather than moving all benchmark categories equally, comparing `Target Flips` against `Other Mean` across every real set (`K = 5`, `K = 20`, and EsBBQ grid sets).
 
-| Unit | Set | Target Cat. | K | Last Layer | Target Flips | 95% CI (%) | Other Mean | Ratio | Rank | All Benchmark Flips |
-| :--- | :--- | :--- | ---: | :---: | ---: | :---: | ---: | ---: | :---: | ---: |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender20` | Gender_identity | 20 | 15/20 | 1,361 / 5,672 (24.00%) | [22.88, 25.09] | 6.28% | 3.82× | 1/11 | 5,291 / 58,492 (9.05%) |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race20` | Race_ethnicity | 20 | 20/20 | 519 / 6,880 (7.54%) | [6.96, 8.17] | 5.43% | 1.39× | 3/11 | 3,399 / 58,492 (5.81%) |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion20` | Religion | 20 | 19/20 | 120 / 1,200 (10.00%) | [8.25, 11.67] | 6.50% | 1.54× | 2/11 | 4,027 / 58,492 (6.88%) |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender5` | Gender_identity | 5 | 4/5 | 1,323 / 5,672 (23.33%) | [22.23, 24.40] | 4.39% | 5.32× | 1/11 | 4,598 / 58,492 (7.86%) |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 415 / 6,880 (6.03%) | [5.49, 6.60] | 3.78% | 1.59× | 3/11 | 2,375 / 58,492 (4.06%) |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion5` | Religion | 5 | 5/5 | 118 / 1,200 (9.83%) | [8.17, 11.42] | 3.55% | 2.77× | 1/11 | 2,487 / 58,492 (4.25%) |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender20` | Gender_identity | 20 | 8/20 | 928 / 5,672 (16.36%) | [15.39, 17.28] | 4.31% | 3.79× | 1/11 | 3,860 / 58,492 (6.60%) |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race20` | Race_ethnicity | 20 | 18/20 | 519 / 6,880 (7.54%) | [6.95, 8.18] | 4.14% | 1.82× | 1/11 | 3,131 / 58,492 (5.35%) |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion20` | Religion | 20 | 17/20 | 163 / 1,200 (13.58%) | [11.75, 15.59] | 5.49% | 2.48× | 1/11 | 3,866 / 58,492 (6.61%) |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender5` | Gender_identity | 5 | 2/5 | 913 / 5,672 (16.10%) | [15.14, 17.00] | 2.95% | 5.45× | 1/11 | 2,953 / 58,492 (5.05%) |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 351 / 6,880 (5.10%) | [4.61, 5.58] | 2.84% | 1.79× | 2/11 | 2,255 / 58,492 (3.86%) |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion5` | Religion | 5 | 4/5 | 113 / 1,200 (9.42%) | [7.75, 11.08] | 3.41% | 2.76× | 1/11 | 2,471 / 58,492 (4.22%) |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender20` | Gender_identity | 20 | 18/20 | 397 / 5,672 (7.00%) | [6.38, 7.63] | 7.48% | 0.94× | 8/11 | 4,353 / 58,492 (7.44%) |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race20` | Race_ethnicity | 20 | 19/20 | 371 / 6,880 (5.39%) | [4.90, 5.94] | 6.33% | 0.85× | 9/11 | 3,695 / 58,492 (6.32%) |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion20` | Religion | 20 | 20/20 | 79 / 1,200 (6.58%) | [5.17, 8.00] | 7.98% | 0.83× | 9/11 | 4,746 / 58,492 (8.11%) |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender5` | Gender_identity | 5 | 5/5 | 245 / 5,672 (4.32%) | [3.83, 4.85] | 5.22% | 0.83× | 8/11 | 3,132 / 58,492 (5.35%) |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 199 / 6,880 (2.89%) | [2.51, 3.31] | 3.03% | 0.96× | 5/11 | 2,123 / 58,492 (3.63%) |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion5` | Religion | 5 | 5/5 | 49 / 1,200 (4.08%) | [3.08, 5.25] | 3.89% | 1.05× | 5/11 | 2,560 / 58,492 (4.38%) |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender20` | Gender_identity | 20 | 6/20 | 504 / 5,672 (8.89%) | [8.16, 9.61] | 4.17% | 2.13× | 1/11 | 2,912 / 58,492 (4.98%) |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race20` | Race_ethnicity | 20 | 18/20 | 857 / 6,880 (12.46%) | [11.72, 13.24] | 8.03% | 1.55× | 1/11 | 5,857 / 58,492 (10.01%) |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion20` | Religion | 20 | 14/20 | 133 / 1,200 (11.08%) | [9.50, 12.84] | 9.61% | 1.15× | 3/11 | 6,261 / 58,492 (10.70%) |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender5` | Gender_identity | 5 | 0/5 | 75 / 5,672 (1.32%) | [1.02, 1.60] | 1.46% | 0.90× | 8/11 | 887 / 58,492 (1.52%) |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 329 / 6,880 (4.78%) | [4.26, 5.29] | 4.26% | 1.12× | 4/11 | 2,417 / 58,492 (4.13%) |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion5` | Religion | 5 | 4/5 | 64 / 1,200 (5.33%) | [4.17, 6.58] | 7.81% | 0.68× | 9/11 | 5,075 / 58,492 (8.68%) |
-| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_gender20` | Gender_identity | 20 | 8/20 | 1,150 / 5,672 (20.28%) | - | 6.67% | 3.04× | 1/11 | 5,428 / 58,492 (9.28%) |
-| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_race20` | Race_ethnicity | 20 | 13/20 | 797 / 6,880 (11.58%) | - | 7.51% | 1.54× | 4/11 | 5,255 / 58,492 (8.98%) |
-| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_religion20` | Religion | 20 | 18/20 | 270 / 1,200 (22.50%) | - | 8.32% | 2.70× | 1/11 | 5,556 / 58,492 (9.50%) |
-| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_gender5` | Gender_identity | 5 | 1/5 | 108 / 5,672 (1.90%) | - | 1.93% | 0.99× | 8/11 | 1,157 / 58,492 (1.98%) |
-| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_race5` | Race_ethnicity | 5 | 4/5 | 538 / 6,880 (7.82%) | - | 6.12% | 1.28× | 4/11 | 3,675 / 58,492 (6.28%) |
-| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_religion5` | Religion | 5 | 4/5 | 141 / 1,200 (11.75%) | - | 4.43% | 2.65× | 1/11 | 2,934 / 58,492 (5.02%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp5` | Religion | 40 | 34/40 | 78 / 648 (12.04%) | [9.41, 14.51] | 7.75% | 1.55× | 3/10 | 1,857 / 27,320 (6.80%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp9` | Age | 20 | 20/20 | 214 / 4,068 (5.26%) | [4.67, 5.92] | 6.38% | 0.82× | 8/10 | 1,527 / 27,320 (5.59%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp11` | Gender | 20 | 17/20 | 947 / 4,832 (19.60%) | [18.56, 20.70] | 5.79% | 3.38× | 1/10 | 2,334 / 27,320 (8.54%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp8` | Age | 10 | 10/10 | 212 / 4,068 (5.21%) | [4.57, 5.88] | 4.47% | 1.17× | 2/10 | 1,071 / 27,320 (3.92%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp7` | Age | 5 | 5/5 | 207 / 4,068 (5.09%) | [4.40, 5.78] | 3.27% | 1.56× | 2/10 | 862 / 27,320 (3.16%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp10` | Gender | 5 | 5/5 | 983 / 4,832 (20.34%) | [19.31, 21.40] | 4.21% | 4.83× | 1/10 | 2,048 / 27,320 (7.50%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp12` | RaceEthnicity | 5 | 5/5 | 69 / 3,716 (1.86%) | [1.45, 2.29] | 1.89% | 0.98× | 5/10 | 484 / 27,320 (1.77%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp2` | Religion | 5 | 4/5 | 22 / 648 (3.40%) | [2.16, 4.94] | 2.74% | 1.24× | 3/10 | 775 / 27,320 (2.84%) |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp1` | Religion | 1 | 1/1 | 9 / 648 (1.39%) | [0.62, 2.47] | 1.72% | 0.81× | 7/10 | 460 / 27,320 (1.68%) |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp11` | Gender | 20 | 16/20 | 626 / 4,832 (12.96%) | [11.92, 13.91] | 5.31% | 2.44× | 1/10 | 1,853 / 27,320 (6.78%) |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp14` | RaceEthnicity | 20 | 20/20 | 335 / 3,716 (9.02%) | [8.02, 9.99] | 8.65% | 1.04× | 4/10 | 2,418 / 27,320 (8.85%) |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp13` | Religion | 20 | 17/20 | 43 / 648 (6.64%) | [4.63, 8.80] | 5.03% | 1.32× | 2/10 | 1,354 / 27,320 (4.96%) |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp10` | Gender | 5 | 4/5 | 113 / 4,832 (2.34%) | [1.95, 2.79] | 3.29% | 0.71× | 10/10 | 881 / 27,320 (3.22%) |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp12` | RaceEthnicity | 5 | 5/5 | 114 / 3,716 (3.07%) | [2.53, 3.63] | 2.84% | 1.08× | 4/10 | 812 / 27,320 (2.97%) |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp2` | Religion | 5 | 4/5 | 24 / 648 (3.70%) | [2.16, 5.25] | 2.42% | 1.53× | 2/10 | 644 / 27,320 (2.36%) |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp11` | Gender | 20 | 10/20 | 816 / 4,832 (16.89%) | [15.85, 17.98] | 6.73% | 2.51× | 1/10 | 2,337 / 27,320 (8.55%) |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp14` | RaceEthnicity | 20 | 12/20 | 529 / 3,716 (14.24%) | [13.13, 15.31] | 12.19% | 1.17× | 5/10 | 3,307 / 27,320 (12.10%) |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp13` | Religion | 20 | 13/20 | 101 / 648 (15.59%) | [12.50, 18.36] | 10.96% | 1.42× | 3/10 | 3,055 / 27,320 (11.18%) |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp10` | Gender | 5 | 2/5 | 74 / 4,832 (1.53%) | [1.20, 1.88] | 2.79% | 0.55× | 10/10 | 684 / 27,320 (2.50%) |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp12` | RaceEthnicity | 5 | 5/5 | 298 / 3,716 (8.02%) | [7.13, 8.83] | 8.76% | 0.92× | 6/10 | 2,376 / 27,320 (8.70%) |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp2` | Religion | 5 | 3/5 | 59 / 648 (9.10%) | [6.79, 11.27] | 3.85% | 2.36× | 1/10 | 1,070 / 27,320 (3.92%) |
+| Unit | Set | Target Cat. | K | Last Layer | Target Flips | 95% CI (%) | Other Mean | Ratio | All Benchmark Flips |
+| :--- | :--- | :--- | ---: | :---: | ---: | :---: | ---: | ---: | ---: |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender20` | Gender_identity | 20 | 15/20 | 1,361 / 5,672 (24.00%) | [22.88, 25.09] | 6.28% | 3.82× | 5,291 / 58,492 (9.05%) |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race20` | Race_ethnicity | 20 | 20/20 | 519 / 6,880 (7.54%) | [6.96, 8.17] | 5.43% | 1.39× | 3,399 / 58,492 (5.81%) |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion20` | Religion | 20 | 19/20 | 120 / 1,200 (10.00%) | [8.25, 11.67] | 6.50% | 1.54× | 4,027 / 58,492 (6.88%) |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender5` | Gender_identity | 5 | 4/5 | 1,323 / 5,672 (23.33%) | [22.23, 24.40] | 4.39% | 5.32× | 4,598 / 58,492 (7.86%) |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 415 / 6,880 (6.03%) | [5.49, 6.60] | 3.78% | 1.59× | 2,375 / 58,492 (4.06%) |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion5` | Religion | 5 | 5/5 | 118 / 1,200 (9.83%) | [8.17, 11.42] | 3.55% | 2.77× | 2,487 / 58,492 (4.25%) |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender20` | Gender_identity | 20 | 8/20 | 928 / 5,672 (16.36%) | [15.39, 17.28] | 4.31% | 3.79× | 3,860 / 58,492 (6.60%) |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race20` | Race_ethnicity | 20 | 18/20 | 519 / 6,880 (7.54%) | [6.95, 8.18] | 4.14% | 1.82× | 3,131 / 58,492 (5.35%) |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion20` | Religion | 20 | 17/20 | 163 / 1,200 (13.58%) | [11.75, 15.59] | 5.49% | 2.48× | 3,866 / 58,492 (6.61%) |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender5` | Gender_identity | 5 | 2/5 | 913 / 5,672 (16.10%) | [15.14, 17.00] | 2.95% | 5.45× | 2,953 / 58,492 (5.05%) |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 351 / 6,880 (5.10%) | [4.61, 5.58] | 2.84% | 1.79× | 2,255 / 58,492 (3.86%) |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion5` | Religion | 5 | 4/5 | 113 / 1,200 (9.42%) | [7.75, 11.08] | 3.41% | 2.76× | 2,471 / 58,492 (4.22%) |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender20` | Gender_identity | 20 | 18/20 | 397 / 5,672 (7.00%) | [6.38, 7.63] | 7.48% | 0.94× | 4,353 / 58,492 (7.44%) |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race20` | Race_ethnicity | 20 | 19/20 | 371 / 6,880 (5.39%) | [4.90, 5.94] | 6.33% | 0.85× | 3,695 / 58,492 (6.32%) |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion20` | Religion | 20 | 20/20 | 79 / 1,200 (6.58%) | [5.17, 8.00] | 7.98% | 0.83× | 4,746 / 58,492 (8.11%) |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender5` | Gender_identity | 5 | 5/5 | 245 / 5,672 (4.32%) | [3.83, 4.85] | 5.22% | 0.83× | 3,132 / 58,492 (5.35%) |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 199 / 6,880 (2.89%) | [2.51, 3.31] | 3.03% | 0.96× | 2,123 / 58,492 (3.63%) |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion5` | Religion | 5 | 5/5 | 49 / 1,200 (4.08%) | [3.08, 5.25] | 3.89% | 1.05× | 2,560 / 58,492 (4.38%) |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender20` | Gender_identity | 20 | 6/20 | 504 / 5,672 (8.89%) | [8.16, 9.61] | 4.17% | 2.13× | 2,912 / 58,492 (4.98%) |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race20` | Race_ethnicity | 20 | 18/20 | 857 / 6,880 (12.46%) | [11.72, 13.24] | 8.03% | 1.55× | 5,857 / 58,492 (10.01%) |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion20` | Religion | 20 | 14/20 | 133 / 1,200 (11.08%) | [9.50, 12.84] | 9.61% | 1.15× | 6,261 / 58,492 (10.70%) |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender5` | Gender_identity | 5 | 0/5 | 75 / 5,672 (1.32%) | [1.02, 1.60] | 1.46% | 0.90× | 887 / 58,492 (1.52%) |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race5` | Race_ethnicity | 5 | 5/5 | 329 / 6,880 (4.78%) | [4.26, 5.29] | 4.26% | 1.12× | 2,417 / 58,492 (4.13%) |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion5` | Religion | 5 | 4/5 | 64 / 1,200 (5.33%) | [4.17, 6.58] | 7.81% | 0.68× | 5,075 / 58,492 (8.68%) |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_gender20` | Gender_identity | 20 | 8/20 | 1,150 / 5,672 (20.28%) | - | 6.67% | 3.04× | 5,428 / 58,492 (9.28%) |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_race20` | Race_ethnicity | 20 | 13/20 | 797 / 6,880 (11.58%) | - | 7.51% | 1.54× | 5,255 / 58,492 (8.98%) |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_religion20` | Religion | 20 | 18/20 | 270 / 1,200 (22.50%) | - | 8.32% | 2.70× | 5,556 / 58,492 (9.50%) |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_gender5` | Gender_identity | 5 | 1/5 | 108 / 5,672 (1.90%) | - | 1.93% | 0.99× | 1,157 / 58,492 (1.98%) |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_race5` | Race_ethnicity | 5 | 4/5 | 538 / 6,880 (7.82%) | - | 6.12% | 1.28× | 3,675 / 58,492 (6.28%) |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_religion5` | Religion | 5 | 4/5 | 141 / 1,200 (11.75%) | - | 4.43% | 2.65× | 2,934 / 58,492 (5.02%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp5` | Religion | 40 | 34/40 | 78 / 648 (12.04%) | [9.41, 14.51] | 7.75% | 1.55× | 1,857 / 27,320 (6.80%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp9` | Age | 20 | 20/20 | 214 / 4,068 (5.26%) | [4.67, 5.92] | 6.38% | 0.82× | 1,527 / 27,320 (5.59%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp11` | Gender | 20 | 17/20 | 947 / 4,832 (19.60%) | [18.56, 20.70] | 5.79% | 3.38× | 2,334 / 27,320 (8.54%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp8` | Age | 10 | 10/10 | 212 / 4,068 (5.21%) | [4.57, 5.88] | 4.47% | 1.17× | 1,071 / 27,320 (3.92%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp7` | Age | 5 | 5/5 | 207 / 4,068 (5.09%) | [4.40, 5.78] | 3.27% | 1.56× | 862 / 27,320 (3.16%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp10` | Gender | 5 | 5/5 | 983 / 4,832 (20.34%) | [19.31, 21.40] | 4.21% | 4.83× | 2,048 / 27,320 (7.50%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp12` | RaceEthnicity | 5 | 5/5 | 69 / 3,716 (1.86%) | [1.45, 2.29] | 1.89% | 0.98× | 484 / 27,320 (1.77%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp2` | Religion | 5 | 4/5 | 22 / 648 (3.40%) | [2.16, 4.94] | 2.74% | 1.24× | 775 / 27,320 (2.84%) |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp1` | Religion | 1 | 1/1 | 9 / 648 (1.39%) | [0.62, 2.47] | 1.72% | 0.81× | 460 / 27,320 (1.68%) |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp11` | Gender | 20 | 16/20 | 626 / 4,832 (12.96%) | [11.92, 13.91] | 5.31% | 2.44× | 1,853 / 27,320 (6.78%) |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp14` | RaceEthnicity | 20 | 20/20 | 335 / 3,716 (9.02%) | [8.02, 9.99] | 8.65% | 1.04× | 2,418 / 27,320 (8.85%) |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp13` | Religion | 20 | 17/20 | 43 / 648 (6.64%) | [4.63, 8.80] | 5.03% | 1.32× | 1,354 / 27,320 (4.96%) |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp10` | Gender | 5 | 4/5 | 113 / 4,832 (2.34%) | [1.95, 2.79] | 3.29% | 0.71× | 881 / 27,320 (3.22%) |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp12` | RaceEthnicity | 5 | 5/5 | 114 / 3,716 (3.07%) | [2.53, 3.63] | 2.84% | 1.08× | 812 / 27,320 (2.97%) |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp2` | Religion | 5 | 4/5 | 24 / 648 (3.70%) | [2.16, 5.25] | 2.42% | 1.53× | 644 / 27,320 (2.36%) |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp11` | Gender | 20 | 10/20 | 816 / 4,832 (16.89%) | [15.85, 17.98] | 6.73% | 2.51× | 2,337 / 27,320 (8.55%) |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp14` | RaceEthnicity | 20 | 12/20 | 529 / 3,716 (14.24%) | [13.13, 15.31] | 12.19% | 1.17× | 3,307 / 27,320 (12.10%) |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp13` | Religion | 20 | 13/20 | 101 / 648 (15.59%) | [12.50, 18.36] | 10.96% | 1.42× | 3,055 / 27,320 (11.18%) |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp10` | Gender | 5 | 2/5 | 74 / 4,832 (1.53%) | [1.20, 1.88] | 2.79% | 0.55× | 684 / 27,320 (2.50%) |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp12` | RaceEthnicity | 5 | 5/5 | 298 / 3,716 (8.02%) | [7.13, 8.83] | 8.76% | 0.92× | 2,376 / 27,320 (8.70%) |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp2` | Religion | 5 | 3/5 | 59 / 648 (9.10%) | [6.79, 11.27] | 3.85% | 2.36× | 1,070 / 27,320 (3.92%) |
 
-*Legend — **Last Layer**: zeroed neurons located in the final MLP layer out of `K`; **Target Flips**: changed answers (`pred != base_pred`) in the target category; **95% CI (%)**: paired item-bootstrap percentile interval (`B = 1,000`); **Other Mean**: unweighted mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **Rank**: target-category position among all categories (`1` = highest); **All Benchmark Flips**: total changed answers across the full benchmark.*
+*Legend — **Last Layer**: zeroed neurons located in the final MLP layer out of `K`; **Target Flips**: changed answers (`pred != base_pred`) in the target category; **95% CI (%)**: paired item-bootstrap percentile interval (`B = 1,000`); **Other Mean**: unweighted mean flip `%` across non-target categories; **Ratio**: `Target % / Other Mean %`; **All Benchmark Flips**: total changed answers across the full benchmark.*
 
 ### 1.4 Target-Category Concentration (Disambiguated Items Only)
 
-Same localization ratios and ranks restricted to disambiguated items (`context = disambig`, matching the EsBBQ summary view reported in `R1_exp.md`).
+**Why this check:** verifies that target-category concentration still holds when restricted to disambiguated items alone (`context = disambig`, where the prompt supplies a clear factual answer), confirming the effect is not confined to ambiguous items.
 
 <details>
 <summary>Expand disambiguated-only localization table (all real sets with per-item logs)</summary>
 
-| Unit | Set | Target Cat. | K | Disambig Target (%) | Disambig Other Mean (%) | Ratio | Rank |
-| :--- | :--- | :--- | ---: | ---: | ---: | ---: | :---: |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender20` | Gender_identity | 20 | 14.67% | 3.75% | 3.91× | 1/11 |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race20` | Race_ethnicity | 20 | 4.68% | 3.03% | 1.55× | 3/11 |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion20` | Religion | 20 | 7.00% | 3.58% | 1.96× | 1/11 |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender5` | Gender_identity | 5 | 14.21% | 2.84% | 5.00× | 1/11 |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race5` | Race_ethnicity | 5 | 3.69% | 2.04% | 1.81× | 3/11 |
-| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion5` | Religion | 5 | 7.00% | 1.93% | 3.63× | 1/11 |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender20` | Gender_identity | 20 | 8.43% | 2.42% | 3.49× | 1/11 |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race20` | Race_ethnicity | 20 | 3.75% | 2.14% | 1.75× | 3/11 |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion20` | Religion | 20 | 9.50% | 2.83% | 3.36× | 1/11 |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender5` | Gender_identity | 5 | 8.04% | 1.58% | 5.10× | 1/11 |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race5` | Race_ethnicity | 5 | 2.70% | 1.39% | 1.94× | 2/11 |
-| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion5` | Religion | 5 | 6.33% | 1.61% | 3.94× | 1/11 |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender20` | Gender_identity | 20 | 3.28% | 3.20% | 1.03× | 5/11 |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race20` | Race_ethnicity | 20 | 1.57% | 2.55% | 0.62× | 8/11 |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion20` | Religion | 20 | 2.33% | 3.37% | 0.69× | 6/11 |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender5` | Gender_identity | 5 | 1.38% | 2.19% | 0.63× | 10/11 |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race5` | Race_ethnicity | 5 | 0.67% | 1.46% | 0.46× | 8/11 |
-| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion5` | Religion | 5 | 1.33% | 1.58% | 0.85× | 5/11 |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender20` | Gender_identity | 20 | 6.63% | 3.31% | 2.00× | 1/11 |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race20` | Race_ethnicity | 20 | 10.00% | 6.14% | 1.63× | 1/11 |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion20` | Religion | 20 | 9.50% | 7.40% | 1.28× | 2/11 |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender5` | Gender_identity | 5 | 1.16% | 1.14% | 1.02× | 3/11 |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race5` | Race_ethnicity | 5 | 3.92% | 3.48% | 1.13× | 5/11 |
-| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion5` | Religion | 5 | 3.83% | 5.99% | 0.64× | 10/11 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp5` | Religion | 40 | 11.57% | 6.78% | 1.71× | 3/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp9` | Age | 20 | 5.40% | 5.56% | 0.97× | 5/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp11` | Gender | 20 | 15.66% | 5.16% | 3.04× | 1/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp8` | Age | 10 | 5.19% | 3.98% | 1.30× | 2/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp7` | Age | 5 | 5.30% | 2.81% | 1.89× | 2/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp10` | Gender | 5 | 16.47% | 3.95% | 4.17× | 1/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp12` | RaceEthnicity | 5 | 1.45% | 1.71% | 0.85× | 6/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp2` | Religion | 5 | 3.01% | 2.20% | 1.37× | 2/10 |
-| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp1` | Religion | 1 | 1.39% | 1.50% | 0.93× | 6/10 |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp11` | Gender | 20 | 10.52% | 4.08% | 2.58× | 1/10 |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp14` | RaceEthnicity | 20 | 8.08% | 7.05% | 1.15× | 4/10 |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp13` | Religion | 20 | 7.41% | 4.16% | 1.78× | 1/10 |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp10` | Gender | 5 | 1.83% | 2.73% | 0.67× | 8/10 |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp12` | RaceEthnicity | 5 | 2.57% | 2.42% | 1.06× | 5/10 |
-| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp2` | Religion | 5 | 3.94% | 1.96% | 2.01× | 1/10 |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp11` | Gender | 20 | 14.96% | 5.77% | 2.59× | 1/10 |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp14` | RaceEthnicity | 20 | 12.30% | 11.76% | 1.05× | 6/10 |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp13` | Religion | 20 | 15.74% | 9.66% | 1.63× | 2/10 |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp10` | Gender | 5 | 1.11% | 2.19% | 0.51× | 10/10 |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp12` | RaceEthnicity | 5 | 6.87% | 8.49% | 0.81× | 6/10 |
-| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp2` | Religion | 5 | 8.33% | 3.28% | 2.54× | 1/10 |
+| Unit | Set | Target Cat. | K | Disambig Target (%) | Disambig Other Mean (%) | Ratio |
+| :--- | :--- | :--- | ---: | ---: | ---: | ---: |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender20` | Gender_identity | 20 | 14.67% | 3.75% | 3.91× |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race20` | Race_ethnicity | 20 | 4.68% | 3.03% | 1.55× |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion20` | Religion | 20 | 7.00% | 3.58% | 1.96× |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender5` | Gender_identity | 5 | 14.21% | 2.84% | 5.00× |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race5` | Race_ethnicity | 5 | 3.69% | 2.04% | 1.81× |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion5` | Religion | 5 | 7.00% | 1.93% | 3.63× |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender20` | Gender_identity | 20 | 8.43% | 2.42% | 3.49× |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race20` | Race_ethnicity | 20 | 3.75% | 2.14% | 1.75× |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion20` | Religion | 20 | 9.50% | 2.83% | 3.36× |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender5` | Gender_identity | 5 | 8.04% | 1.58% | 5.10× |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race5` | Race_ethnicity | 5 | 2.70% | 1.39% | 1.94× |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion5` | Religion | 5 | 6.33% | 1.61% | 3.94× |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender20` | Gender_identity | 20 | 3.28% | 3.20% | 1.03× |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race20` | Race_ethnicity | 20 | 1.57% | 2.55% | 0.62× |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion20` | Religion | 20 | 2.33% | 3.37% | 0.69× |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender5` | Gender_identity | 5 | 1.38% | 2.19% | 0.63× |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race5` | Race_ethnicity | 5 | 0.67% | 1.46% | 0.46× |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion5` | Religion | 5 | 1.33% | 1.58% | 0.85× |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender20` | Gender_identity | 20 | 6.63% | 3.31% | 2.00× |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race20` | Race_ethnicity | 20 | 10.00% | 6.14% | 1.63× |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion20` | Religion | 20 | 9.50% | 7.40% | 1.28× |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender5` | Gender_identity | 5 | 1.16% | 1.14% | 1.02× |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race5` | Race_ethnicity | 5 | 3.92% | 3.48% | 1.13× |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion5` | Religion | 5 | 3.83% | 5.99% | 0.64× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp5` | Religion | 40 | 11.57% | 6.78% | 1.71× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp9` | Age | 20 | 5.40% | 5.56% | 0.97× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp11` | Gender | 20 | 15.66% | 5.16% | 3.04× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp8` | Age | 10 | 5.19% | 3.98% | 1.30× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp7` | Age | 5 | 5.30% | 2.81% | 1.89× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp10` | Gender | 5 | 16.47% | 3.95% | 4.17× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp12` | RaceEthnicity | 5 | 1.45% | 1.71% | 0.85× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp2` | Religion | 5 | 3.01% | 2.20% | 1.37× |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp1` | Religion | 1 | 1.39% | 1.50% | 0.93× |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp11` | Gender | 20 | 10.52% | 4.08% | 2.58× |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp14` | RaceEthnicity | 20 | 8.08% | 7.05% | 1.15× |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp13` | Religion | 20 | 7.41% | 4.16% | 1.78× |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp10` | Gender | 5 | 1.83% | 2.73% | 0.67× |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp12` | RaceEthnicity | 5 | 2.57% | 2.42% | 1.06× |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp2` | Religion | 5 | 3.94% | 1.96% | 2.01× |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp11` | Gender | 20 | 14.96% | 5.77% | 2.59× |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp14` | RaceEthnicity | 20 | 12.30% | 11.76% | 1.05× |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp13` | Religion | 20 | 15.74% | 9.66% | 1.63× |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp10` | Gender | 5 | 1.11% | 2.19% | 0.51× |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp12` | RaceEthnicity | 5 | 6.87% | 8.49% | 0.81× |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp2` | Religion | 5 | 8.33% | 3.28% | 2.54× |
 
-*Legend — **Disambig Target / Other Mean**: changed-answer `%` restricted to disambiguated items (`direction.csv`, S/A/U state changes); **Ratio**: `Disambig Target / Disambig Other Mean`; **Rank**: target-category position among all categories (`1` = highest).*
+*Legend — **Disambig Target / Other Mean**: changed-answer `%` restricted to disambiguated items (`direction.csv`, S/A/U state changes); **Ratio**: `Disambig Target / Disambig Other Mean`.*
 
 </details>
 
@@ -172,7 +172,7 @@ Same localization ratios and ranks restricted to disambiguated items (`context =
 
 ## 2. Unit Dossiers (Level 2)
 
-Each unit dossier follows the same layout: unit summary, real-vs-random controls, full `set × category` flip matrix, neuron/item Jaccard overlap, secondary BBQ/EsBBQ bias and accuracy metrics, baseline margin mechanism, and demographic group/topic breakdowns.
+**Why this table:** indexes the eight homogeneous per-unit dossiers where full `set × category` matrices, neuron/item overlaps, secondary bias/accuracy metrics, margin deciles, and demographic group/topic breakdowns are stored.
 
 | Dossier | Model | Lang | Bench | Sets | Contents |
 | :--- | :--- | :---: | :---: | :--- | :--- |
@@ -185,7 +185,7 @@ Each unit dossier follows the same layout: unit summary, real-vs-random controls
 | [`units/llama-3.1-8b_es.md`](units/llama-3.1-8b_es.md) | Llama-3.1-8B | ES | EsBBQ | 6 real / 0 rand / 0 abl | Full per-item analysis (flips, overlap, secondary metrics, margins, groups, topics) |
 | [`units/llama-3.2-3b_es.md`](units/llama-3.2-3b_es.md) | Llama-3.2-3B | ES | EsBBQ | 6 real / 0 rand / 0 abl | Full per-item analysis (flips, overlap, secondary metrics, margins, groups, topics) |
 
-*Legend — **Sets**: number of selected (`real`), layer-matched random (`rand`), and exploratory ablation (`abl`) sets in each unit dossier.*
+*Legend — **Sets**: number of selected (`real`), layer-matched random (`rand`), and exploratory ablation (`abl`) sets in each unit dossier. The `3 abl` sets in `llama-3.1-8b_en` decompose `real_race5` and `real_religion5` around their single shared neuron `L31·6950`: `abl_shared1` (`L31·6950` alone, 1 neuron), `abl_race4` (`real_race5` without `L31·6950`, 4 neurons), and `abl_religion4` (`real_religion5` without `L31·6950`, 4 neurons); see [Section 3.1](#31-single-neuron-ablation-llama-31-8b-en-l316950).*
 
 ---
 
@@ -193,19 +193,19 @@ Each unit dossier follows the same layout: unit summary, real-vs-random controls
 
 ### 3.1 Single-Neuron Ablation (`Llama-3.1-8B EN`, `L31·6950`)
 
-Exploratory decomposition of `real_race5` and `real_religion5` into their shared neuron (`abl_shared1` = `L31·6950`) and the remaining four neurons of each set (`abl_race4`, `abl_religion4`), showing changed answers across contexts and Jaccard overlap with the original Top-5 sets.
+**Why this check:** tests whether the shared effect of `real_race5` and `real_religion5` in `Llama-3.1-8B EN` is spread across all five neurons or concentrated in their single shared neuron (`abl_shared1` = `L31·6950`), comparing changed answers and item-level overlap (`In` = share of row flips in the original Top-5; `Reprod.` = share of original Top-5 flips reproduced) across Religion, Race, and Gender.
 
-| Set | Neurons (L31) | Religion (All) | Religion (Amb/Dis) | Race (All) | Race (Amb/Dis) | Gender (All) | Jacc vs. Race5 (Rel/Race) | Jacc vs. Rel5 (Rel/Race) |
-| :--- | :--- | ---: | :---: | ---: | :---: | ---: | :---: | :---: |
-| `real_race5` | L31.1495, L31.2100, L31.6466, L31.6532, L31.6950 | 122 / 1,200 (10.17%) | 13.50% / 6.83% | 415 / 6,880 (6.03%) | 8.37% / 3.69% | 105 / 5,672 (1.85%) | 1.00 / 1.00 | 0.55 / 0.66 |
-| `real_religion5` | L31.33, L31.311, L31.2398, L31.2564, L31.6950 | 118 / 1,200 (9.83%) | 12.67% / 7.00% | 426 / 6,880 (6.19%) | 8.87% / 3.52% | 105 / 5,672 (1.85%) | 0.55 / 0.66 | 1.00 / 1.00 |
-| `abl_shared1` | L31.6950 | 116 / 1,200 (9.67%) | 12.83% / 6.50% | 402 / 6,880 (5.84%) | 8.34% / 3.34% | 60 / 5,672 (1.06%) | 0.87 / 0.74 | 0.59 / 0.69 |
-| `abl_race4` | L31.1495, L31.2100, L31.6466, L31.6532 | 19 / 1,200 (1.58%) | 1.67% / 1.50% | 155 / 6,880 (2.25%) | 3.28% / 1.22% | 89 / 5,672 (1.57%) | 0.09 / 0.22 | 0.09 / 0.16 |
-| `abl_religion4` | L31.33, L31.311, L31.2398, L31.2564 | 74 / 1,200 (6.17%) | 7.67% / 4.67% | 175 / 6,880 (2.54%) | 3.60% / 1.48% | 81 / 5,672 (1.43%) | 0.09 / 0.13 | 0.26 / 0.22 |
+| Set | Neurons (L31) | Religion (All) | Race (All) | Gender (All) | In Race5 (Rel/Race/Gen) | Reprod. Race5 (Rel/Race/Gen) | In Rel5 (Rel/Race/Gen) | Reprod. Rel5 (Rel/Race/Gen) |
+| :--- | :--- | ---: | ---: | ---: | :---: | :---: | :---: | :---: |
+| `real_race5` | L31.1495, L31.2100, L31.6466, L31.6532, L31.6950 | 122 / 1,200 (10.17%) | 415 / 6,880 (6.03%) | 105 / 5,672 (1.85%) | 100.0% / 100.0% / 100.0% | 100.0% / 100.0% / 100.0% | 69.7% / 80.5% / 41.0% | 72.0% / 78.4% / 41.0% |
+| `real_religion5` | L31.33, L31.311, L31.2398, L31.2564, L31.6950 | 118 / 1,200 (9.83%) | 426 / 6,880 (6.19%) | 105 / 5,672 (1.85%) | 72.0% / 78.4% / 41.0% | 69.7% / 80.5% / 41.0% | 100.0% / 100.0% / 100.0% | 100.0% / 100.0% / 100.0% |
+| `abl_shared1` | L31.6950 | 116 / 1,200 (9.67%) | 402 / 6,880 (5.84%) | 60 / 5,672 (1.06%) | 95.7% / 86.6% / 73.3% | 91.0% / 83.9% / 41.9% | 75.0% / 83.8% / 66.7% | 73.7% / 79.1% / 38.1% |
+| `abl_race4` | L31.1495, L31.2100, L31.6466, L31.6532 | 19 / 1,200 (1.58%) | 155 / 6,880 (2.25%) | 89 / 5,672 (1.57%) | 63.2% / 65.2% / 68.5% | 9.8% / 24.3% / 58.1% | 57.9% / 50.3% / 30.3% | 9.3% / 18.3% / 25.7% |
+| `abl_religion4` | L31.33, L31.311, L31.2398, L31.2564 | 74 / 1,200 (6.17%) | 175 / 6,880 (2.54%) | 81 / 5,672 (1.43%) | 23.0% / 38.9% / 33.3% | 13.9% / 16.4% / 25.7% | 54.1% / 61.1% / 74.1% | 33.9% / 25.1% / 57.1% |
 
-*Legend — **(All)**: pooled changed answers (`pred != base_pred`); **(Amb/Dis)**: flip `%` split into ambiguous / disambiguated items (S/A/U); **Jacc vs. Race5 / Rel5**: Jaccard overlap of changed items against `real_race5` and `real_religion5` within Religion / Race items.*
+*Legend — **(All)**: pooled changed answers (`changed / n_items`, `%`, `pred != base_pred`); **In Race5 / In Rel5 (Rel/Race/Gen)**: percentage of the row's changed answers that also changed in the original `real_race5` / `real_religion5` set (`shared / row_changed`, ordered `Religion / Race / Gender`); **Reprod. Race5 / Reprod. Rel5 (Rel/Race/Gen)**: percentage of the original `real_race5` / `real_religion5` changed answers reproduced by the row (`shared / original_changed`, ordered `Religion / Race / Gender`).*
 
-L2 norm of the `down_proj` column and within-layer percentiles in Layer 31 (14,336 neurons) for all nine neurons of `real_race5` and `real_religion5`.
+**Why this check:** tests whether `L31·6950`'s disproportionate effect is merely due to abnormally large output weights (`down_proj` column norm) rather than its differential activation (`BiasScore`). Below are the `down_proj` L2 norms, BiasScores, and within-layer percentiles across all 14,336 neurons of Layer 31 for the nine neurons in `real_race5` and `real_religion5` (all nine have below-median weight norms, percentiles 0.34%–25.96%, ruling out a weight-magnitude artifact).
 
 | Neuron | Ablation Subset | `down_proj` Norm | Norm Pct. | Religion Score (Pct.) | Race Score (Pct.) | Gender Score (Pct.) |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: |
@@ -223,7 +223,7 @@ L2 norm of the `down_proj` column and within-layer percentiles in Layer 31 (14,3
 
 ### 3.2 Baseline Indecision Mechanism (Margin Deciles)
 
-Median baseline log-likelihood margin (`top − second` across person0/person1/unknown) of changed versus unchanged items across all categories, alongside flip rate in decile 1 (most undecided) versus decile 10 (most confident) for `K = 20` real sets (and `Gender·5` in Salamandra-7B ES).
+**Why this check:** tests whether neuron zeroing disrupts confident predictions at random or acts selectively at the decision boundary by flipping only items where the unpruned model was already undecided. Below are the median baseline log-likelihood margins (`top − second` across `person0`/`person1`/`unknown`) of changed versus unchanged items, and the flip rate in Decile 1 (most undecided 10%), Decile 5, and Decile 10 (most confident 10%, `0.00%` flips in 18 of 19 rows, max `0.07%`) for `K = 20` real sets (plus `Gender·5` in `Salamandra-7B ES`).
 
 | Unit | Set | Changed Items (All) | Median Margin (Changed) | Median Margin (Unchanged) | Decile 1 Flips | Decile 5 Flips | Decile 10 Flips |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -255,7 +255,7 @@ Median baseline log-likelihood margin (`top − second` across person0/person1/u
 
 ### 3.3 Hardware Noise Controls (L4 vs. A100)
 
-K3 baseline rerun comparison for `Llama-3.1-8B ES` (unpruned model evaluated on A100 vs. L4 across all 27,320 EsBBQ items), establishing the cross-GPU hardware flip floor.
+**Why this check:** quantifies the pure cross-GPU hardware flip floor when running the exact same unpruned model (`Llama-3.1-8B ES`, K3 rerun across all 27,320 EsBBQ items) on A100 versus L4, showing why primary comparisons must stay on matching GPU hardware.
 
 | EsBBQ Category | Ambiguous Flips (L4 vs. A100) | Disambiguated Flips (L4 vs. A100) | Total Flips (L4 vs. A100) |
 | :--- | ---: | ---: | ---: |
@@ -273,7 +273,7 @@ K3 baseline rerun comparison for `Llama-3.1-8B ES` (unpruned model evaluated on 
 
 *Legend — **Flips (L4 vs. A100)**: unpruned baseline items whose 3-way prediction changes solely due to running on L4 versus A100 hardware (`changed / n_items`, `%`).*
 
-Sensitivity comparison of the identical random set `rand_gender20_seed0` in `Llama-3.2-3B EN` evaluated on A100-SXM4-80GB versus L4 against the A100-SXM4-40GB baseline.
+**Why this check:** measures how much L4-vs-A100 hardware noise inflates a random control set's flip rate when evaluated on L4 against an A100 baseline (identical `rand_gender20_seed0` set in `Llama-3.2-3B EN` run on A100-SXM4-80GB vs. L4).
 
 | BBQ Category | A100-80GB Flips | L4 Flips | L4 − A100 (pp) |
 | :--- | ---: | ---: | ---: |
@@ -293,7 +293,7 @@ Sensitivity comparison of the identical random set `rand_gender20_seed0` in `Lla
 
 ### 3.4 Provenance and Source Tables
 
-Every number above is generated deterministically from the consolidated CSV files in `results/e3/tables/`, each traced by SHA-256 to its source Drive file in `tables/inputs_manifest.json`.
+**Why this table:** lists every consolidated CSV table in `results/e3/tables/` from which this report is deterministically generated, each traced by SHA-256 to its source Drive file in `tables/inputs_manifest.json`.
 
 | CSV Table | Rows | Columns | Size |
 | :--- | ---: | ---: | ---: |
