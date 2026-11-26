@@ -146,11 +146,21 @@ def render_master(tables: dict, manifest: dict) -> str:
         "**Why this check:** tests the paper's core localization claim—whether zeroing BiasScore-selected neurons changes substantially more target-category answers than zeroing the same number of random neurons drawn uniformly from the exact same MLP layers (all primary comparisons are hardware-matched on A100).",
         "",
     ]
+    sec_dis_idx = tables["secondary"][(tables["secondary"]["kind"] == "real") & (tables["secondary"]["context"] == "disambig")].set_index(["unit", "set", "category"])
     rows = []
     rvr_primary = rvr[rvr["is_primary"]].sort_values(["benchmark", "unit", "comparison"], ascending=[True, True, True])
     for _, r in rvr_primary.iterrows():
         rand_cnt = f"{int(r['rand_target_changed_min']):,}–{int(r['rand_target_changed_max']):,}"
         rand_pct = f"{r['rand_target_flips_min']:.2f}–{r['rand_target_flips_max']:.2f}% (mean {r['rand_target_flips_mean']:.2f}%)"
+        key = (r["unit"], r["real_set"], r["target_category"])
+        if key in sec_dis_idx.index:
+            sr = sec_dis_idx.loc[key]
+            if r["benchmark"] == "EsBBQ":
+                bias_str = fmt_val_ci(sr["esbbq_disamb_bias_delta"], sr["esbbq_disamb_bias_delta_ci_low"], sr["esbbq_disamb_bias_delta_ci_high"])
+            else:
+                bias_str = fmt_val_ci(sr["disamb_bias_delta"], sr["disamb_bias_delta_ci_low"], sr["disamb_bias_delta_ci_high"])
+        else:
+            bias_str = "-"
         rows.append([
             f"[`{r['unit']}`](units/{r['unit']}.md)",
             r["comparison"],
@@ -159,21 +169,23 @@ def render_master(tables: dict, manifest: dict) -> str:
             f"{rand_cnt} ({rand_pct})",
             f"{r['ratio_real_over_rand_mean']:.2f}×",
             r["rank_of_real"],
+            bias_str,
             f"{r['real_gpu']} / {r['random_gpus']}",
         ])
     R.append(md_table(
-        ["Unit", "Comparison", "Target Cat.", "Selected Flips (Target)", "Random Flips (Target, min–max)", "Real/Rand", "Rank", "GPUs (Real / Rand)"],
+        ["Unit", "Comparison", "Target Cat.", "Selected Flips (Target)", "Random Flips (Target, min–max)", "Real/Rand", "Rank", "Disambig Bias Δ (95% CI)", "GPUs (Real / Rand)"],
         rows,
-        ["l", "l", "l", "r", "r", "r", "c", "l"],
+        ["l", "l", "l", "r", "r", "r", "c", "r", "l"],
     ))
     R += [
         "",
-        "*Legend — **Selected Flips (Target)**: target-category items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Random Flips (Target, min–max)**: range across the layer-matched random seeds reported as `min–max changed items (min–max% (mean %))` over the same `n_items` target denominator (e.g., `41–76` = lowest and highest seed counts, `0.72–1.34%` = corresponding percentages, `mean 0.93%` = average across seeds); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest).*",
+        "*Legend — **Selected Flips (Target)**: target-category items whose 3-way prediction (`person0`/`person1`/`unknown`) differs from baseline (`changed / n_items`, `%`); **Random Flips (Target, min–max)**: range across the layer-matched random seeds reported as `min–max changed items (min–max% (mean %))` over the same `n_items` target denominator (e.g., `41–76` = lowest and highest seed counts, `0.72–1.34%` = corresponding percentages, `mean 0.93%` = average across seeds); **Real/Rand**: `Selected % / Random mean %`; **Rank**: ordinal position of the selected set among selected + random (`1` = highest); **Disambig Bias Δ (95% CI)**: secondary metric showing the native benchmark disambiguated bias-score change (`real − baseline`, paired bootstrap 95% CI; `salamandra-7b_es` uses EsBBQ's definition, not directly comparable to BBQ).*",
         "",
         "**Key takeaways:**",
         "- **Selected sets exceed all random controls (9/9):** across all 9 primary comparisons, none of the 55 layer-matched A100 random seeds reaches the selected set's flip rate (`Rank 1` in every case), with `Real/Rand` ratios ranging from **6.10× to 32.77×**.",
         "- **Layer-matched random controls flip few items:** random-seed means remain between **0.62% and 1.46%** (per-seed range `0.25%–3.17%`), indicating that the layer profile and `K` alone account for only a small share of the observed changes.",
         "- **Differences by model scale and category:** the largest flip rates and ratios appear in `Gender` for the 7–8B models (`Llama-3.1-8B EN`: `24.00%` / `25.68×`; `Salamandra-7B EN`: `16.36%` / `17.58×`; `Salamandra-7B ES` at `K = 5`: `20.34%` / `32.77×`), whereas `Llama-3.2-3B EN` and `Qwen3-4B-Base EN` show smaller absolute rates (`6.58%–11.08%`, ratios `6.10×–9.43×`).",
+        "- **Large answer changes do not translate into a consistent bias-score shift:** in **8 of the 9** primary rows, the 95% CI of `Disambig Bias Δ` crosses `0` (e.g., `Llama-3.1-8B EN Gender·20`: `24.00%` flips but `Δ = -0.85 [-3.67, +1.90]`; `Salamandra-7B ES Gender·5`: `20.34%` flips but `Δ = +1.92 [-0.78, +4.51]`), with only `Llama-3.2-3B EN Religion·20` (`-5.17 [-9.67, -0.15]`) lying strictly below `0`.",
         "",
     ]
 
@@ -297,7 +309,7 @@ def render_master(tables: dict, manifest: dict) -> str:
                 n_pos += 1
             else:
                 n_cross += 1
-        flips_str = f"{r['changed_pct']:.2f}%" if pd.notna(r["changed_pct"]) else "-"
+        flips_str = fmt_cnt_pct(r["changed"], r["n_items"], r["changed_pct"]) if pd.notna(r["changed_pct"]) else "-"
         as_sa_str = f"{fmt_int(r['A_to_S'])} / {fmt_int(r['S_to_A'])}" if pd.notna(r["A_to_S"]) else "-"
         net_str = f"{r['net_towards_stereotype_pct']:+.2f}%" if pd.notna(r["net_towards_stereotype_pct"]) else "-"
         bias_str = fmt_val_ci(b_delta, b_lo, b_hi) if pd.notna(b_lo) else (f"{b_delta:+.2f}" if pd.notna(b_delta) else "-")
