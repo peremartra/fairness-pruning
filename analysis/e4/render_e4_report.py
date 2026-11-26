@@ -104,7 +104,7 @@ def render_master(tables: dict, inputs: dict) -> str:
         "",
         "## Navigation",
         "",
-        "- **Level 1 — Cross-Model Overview:** [1.1 Inventory & Protocol](#11-experiment-inventory-and-protocol) · [1.2 Main Matrix (`K = 20`, Real vs. Baseline)](#12-main-matrix-k--20-real-sets-vs-baseline) · [1.3 Real vs. Random (`Gender·20`)](#13-real-vs-layer-matched-random-control-gender20-seed-0) · [1.4 `K = 5` vs. `K = 20` Comparison](#14-k--5-vs-k--20-comparison-real-sets-vs-baseline)",
+        "- **Level 1 — Cross-Model Overview:** [1.1 Inventory & Protocol](#11-experiment-inventory-and-protocol) · [1.2 Main Matrix (`K = 20`, Real vs. Baseline)](#12-main-matrix-k--20-real-sets-vs-baseline) · [1.3 Real vs. Random (`Gender·20`)](#13-real-vs-layer-matched-random-control-gender20-seed-0) · [1.4 Main Matrix (`K = 5`, Real vs. Baseline)](#14-main-matrix-k--5-real-sets-vs-baseline)",
         "- **Level 2 — Unit Dossiers:** [2. Index of Units](#2-unit-dossiers-level-2)",
         "- **Level 3 — Diagnostics & Provenance:** [3.1 WikiText Multi-Seed Random Controls](#31-wikitext-multi-seed-random-controls) · [3.2 MMLU Micro vs. Macro](#32-mmlu-micro-vs-macro-57-subjects) · [3.3 Hardware Provenance (A100 vs. L4) & Checks](#33-hardware-provenance-a100-vs-l4-and-extraction-checks) · [3.4 Source Tables](#34-source-tables)",
         "",
@@ -215,41 +215,36 @@ def render_master(tables: dict, inputs: dict) -> str:
         "",
     ]
 
-    # 1.4 K=5 vs K=20 comparison
+    # 1.4 Main Matrix K=5 Real vs Baseline
     R += [
-        "### 1.4 `K = 5` vs. `K = 20` Comparison (Real Sets vs. Baseline)",
+        "### 1.4 Main Matrix: `K = 5` Real Sets vs. Baseline",
         "",
-        "Paired deltas against baseline for `K = 5` alongside `K = 20` across the four tasks evaluated at both K values (`MMLU` is evaluated at `K = 20` only).",
-        "",
-        "<details>",
-        "<summary>Expand K = 5 vs. K = 20 table across all five models</summary>",
+        "Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict at `±1 pp`) across the four benchmarks evaluated at `K = 5` (`MMLU` is evaluated at `K = 20` only), with unpruned baseline scores shown on the first row of each model.",
         "",
     ]
-    k_tasks = ["wikitext", "arc_challenge", "hellaswag", "hellaswag_es"]
+    k5_tasks = ["wikitext", "arc_challenge", "hellaswag", "hellaswag_es"]
     rows = []
     for _, inv_r in inv.iterrows():
-        u = inv_r["unit"]
-        for cat_key in ("gender", "race", "religion"):
-            s5, s20 = f"real_{cat_key}5", f"real_{cat_key}20"
-            row = [f"[`{u}`](units/{u}.md)", cat_key.capitalize()]
-            for t in k_tasks:
-                d5 = d_base.loc[(u, s5, t)] if (u, s5, t) in d_base.index else None
-                d20 = d_base.loc[(u, s20, t)] if (u, s20, t) in d_base.index else None
-                u_sym = "%" if t == "wikitext" else ""
-                c5 = f"{d5['delta']:+.2f}{u_sym}" if d5 is not None else "-"
-                c20 = f"{d20['delta']:+.2f}{u_sym}" if d20 is not None else "-"
-                row.append(f"{c5} / {c20}")
-            rows.append(row)
+        u, mname = inv_r["unit"], inv_r["model"]
+        b_cells = [fmt_val(t, raw_idx.get((u, "baseline", t), np.nan)) for t in k5_tasks]
+        rows.append([f"[`{u}`](units/{u}.md)", mname, "`baseline` *(raw)*"] + b_cells)
+        for sid in ("real_gender5", "real_race5", "real_religion5"):
+            cells = []
+            for t in k5_tasks:
+                if (u, sid, t) in d_base.index:
+                    dr = d_base.loc[(u, sid, t)]
+                    cells.append(fmt_delta_cell(t, dr["delta"], dr["ci95_lo"], dr["ci95_hi"], dr["verdict"]))
+                else:
+                    cells.append("-")
+            rows.append(["", "", f"`{sid}`"] + cells)
     R.append(md_table(
-        ["Unit", "Category", "WikiText (K=5 / K=20)", "ARC-C (K=5 / K=20)", "HellaSwag (K=5 / K=20)", "HellaSwag-es (K=5 / K=20)"],
+        ["Unit", "Model", "Set"] + [TASK_SHORT[t] for t in k5_tasks],
         rows,
-        ["l", "l", "r", "r", "r", "r"],
+        ["l", "l", "l"] + ["r"] * len(k5_tasks),
     ))
     R += [
         "",
-        "*Legend — Cells show `K=5 / K=20` paired deltas vs. baseline (`Δ%` relative word perplexity for WikiText; percentage points `pp` for ARC-C, HellaSwag, and HellaSwag-es; MMLU is evaluated at `K = 20` only).*",
-        "",
-        "</details>",
+        "*Legend — **`baseline` *(raw)***: unpruned model score (`word_perplexity` for WikiText, lower is better; `%` accuracy for the three QA benchmarks); **WikiText (Δ%)**: relative percentage change in word perplexity vs. baseline (`+` = higher/worse perplexity); **ARC-C / HellaSwag / HellaSwag-es (pp)**: percentage-point change (`real − baseline`) with 95% paired item-level bootstrap CI (`B = 10,000`, `seed = 0`); **Verdicts (`±1.0 pp` equivalence margin)**: `equiv` = entire 95% CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = entire CI below `-1 pp` (`MMLU` is evaluated at `K = 20` only).*",
         "",
         "---",
         "",

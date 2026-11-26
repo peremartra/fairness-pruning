@@ -4,7 +4,7 @@ Paired item-level bootstrap (`B = 10,000`, `seed = 0`, equivalence margin `±1.0
 
 ## Navigation
 
-- **Level 1 — Cross-Model Overview:** [1.1 Inventory & Protocol](#11-experiment-inventory-and-protocol) · [1.2 Main Matrix (`K = 20`, Real vs. Baseline)](#12-main-matrix-k--20-real-sets-vs-baseline) · [1.3 Real vs. Random (`Gender·20`)](#13-real-vs-layer-matched-random-control-gender20-seed-0) · [1.4 `K = 5` vs. `K = 20` Comparison](#14-k--5-vs-k--20-comparison-real-sets-vs-baseline)
+- **Level 1 — Cross-Model Overview:** [1.1 Inventory & Protocol](#11-experiment-inventory-and-protocol) · [1.2 Main Matrix (`K = 20`, Real vs. Baseline)](#12-main-matrix-k--20-real-sets-vs-baseline) · [1.3 Real vs. Random (`Gender·20`)](#13-real-vs-layer-matched-random-control-gender20-seed-0) · [1.4 Main Matrix (`K = 5`, Real vs. Baseline)](#14-main-matrix-k--5-real-sets-vs-baseline)
 - **Level 2 — Unit Dossiers:** [2. Index of Units](#2-unit-dossiers-level-2)
 - **Level 3 — Diagnostics & Provenance:** [3.1 WikiText Multi-Seed Random Controls](#31-wikitext-multi-seed-random-controls) · [3.2 MMLU Micro vs. Macro](#32-mmlu-micro-vs-macro-57-subjects) · [3.3 Hardware Provenance (A100 vs. L4) & Checks](#33-hardware-provenance-a100-vs-l4-and-extraction-checks) · [3.4 Source Tables](#34-source-tables)
 
@@ -84,34 +84,34 @@ Direct comparison of `real_gender20` against `rand_gender20_seed0` (same layer p
 
 *Legend — **Real − Baseline / Random(seed0) − Baseline / Real − Random(seed0)**: paired item-level differences with 95% bootstrap CI (`Δ%` relative perplexity for WikiText; percentage points `pp` for accuracy tasks) and `±1.0 pp` equivalence verdicts (`equiv`, `inconcl`, `WORSE`); **GPUs (Real / Rand)**: verified A100 hardware for each side.*
 
-### 1.4 `K = 5` vs. `K = 20` Comparison (Real Sets vs. Baseline)
+### 1.4 Main Matrix: `K = 5` Real Sets vs. Baseline
 
-Paired deltas against baseline for `K = 5` alongside `K = 20` across the four tasks evaluated at both K values (`MMLU` is evaluated at `K = 20` only).
+Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict at `±1 pp`) across the four benchmarks evaluated at `K = 5` (`MMLU` is evaluated at `K = 20` only), with unpruned baseline scores shown on the first row of each model.
 
-<details>
-<summary>Expand K = 5 vs. K = 20 table across all five models</summary>
+| Unit | Model | Set | WikiText (Δ%) | ARC-C (pp) | HellaSwag (pp) | HellaSwag-es (pp) |
+| :--- | :--- | :--- | ---: | ---: | ---: | ---: |
+| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | Llama-3.1-8B | `baseline` *(raw)* | 7.544 | 54.61% | 79.30% | 66.88% |
+|  |  | `real_gender5` | +0.25% [+0.09, +0.43] | -0.34 [-0.85, +0.17] (equiv) | -0.02 [-0.18, +0.14] (equiv) | +0.00 [-0.19, +0.18] (equiv) |
+|  |  | `real_race5` | +0.13% [+0.04, +0.27] | +0.34 [-0.17, +0.85] (equiv) | +0.06 [-0.08, +0.20] (equiv) | -0.01 [-0.18, +0.16] (equiv) |
+|  |  | `real_religion5` | +0.21% [+0.07, +0.38] | +0.43 [-0.17, +1.02] (inconcl) | +0.00 [-0.14, +0.14] (equiv) | -0.04 [-0.22, +0.14] (equiv) |
+| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | Qwen3-4B-Base | `baseline` *(raw)* | 10.374 | 51.02% | 73.69% | 62.12% |
+|  |  | `real_gender5` | +3.72% [+3.48, +3.97] | +0.60 [-0.43, +1.62] (inconcl) | -0.37 [-0.68, -0.05] (equiv) | +0.11 [-0.30, +0.51] (equiv) |
+|  |  | `real_race5` | +1.89% [+1.69, +2.10] | +1.02 [+0.00, +2.05] (inconcl) | -0.04 [-0.28, +0.19] (equiv) | -0.11 [-0.45, +0.23] (equiv) |
+|  |  | `real_religion5` | +1.98% [+1.79, +2.17] | +0.85 [-0.09, +1.79] (inconcl) | -0.28 [-0.55, -0.01] (equiv) | +0.14 [-0.21, +0.49] (equiv) |
+| [`salamandra_7b_en`](units/salamandra_7b_en.md) | Salamandra-7B | `baseline` *(raw)* | 6.220 | 48.21% | 76.47% | 67.87% |
+|  |  | `real_gender5` | +0.07% [-0.01, +0.16] | -0.26 [-0.85, +0.34] (equiv) | -0.09 [-0.24, +0.06] (equiv) | +0.04 [-0.09, +0.17] (equiv) |
+|  |  | `real_race5` | +0.39% [+0.25, +0.55] | +0.09 [-0.51, +0.68] (equiv) | -0.12 [-0.32, +0.08] (equiv) | -0.02 [-0.22, +0.17] (equiv) |
+|  |  | `real_religion5` | +0.08% [+0.01, +0.19] | +0.17 [-0.26, +0.60] (equiv) | -0.09 [-0.25, +0.07] (equiv) | +0.05 [-0.11, +0.21] (equiv) |
+| [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | Llama-3.2-3B | `baseline` *(raw)* | 9.531 | 46.33% | 74.04% | 58.95% |
+|  |  | `real_gender5` | +0.52% [+0.32, +0.75] | -0.26 [-0.77, +0.26] (equiv) | +0.05 [-0.19, +0.29] (equiv) | +0.00 [-0.18, +0.17] (equiv) |
+|  |  | `real_race5` | +0.47% [+0.28, +0.67] | -0.17 [-0.94, +0.60] (equiv) | -0.14 [-0.35, +0.07] (equiv) | -0.06 [-0.29, +0.16] (equiv) |
+|  |  | `real_religion5` | +1.61% [+1.46, +1.78] | -0.60 [-1.71, +0.43] (inconcl) | -0.27 [-0.55, +0.01] (equiv) | -0.19 [-0.46, +0.06] (equiv) |
+| [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Llama-3.2-1B | `baseline` *(raw)* | 11.985 | 37.03% | 64.30% | 47.23% |
+|  |  | `real_gender5` | +0.23% [+0.06, +0.48] | -0.60 [-1.19, +0.00] (inconcl) | -0.15 [-0.37, +0.07] (equiv) | -0.10 [-0.27, +0.07] (equiv) |
+|  |  | `real_race5` | +0.28% [+0.14, +0.45] | -0.77 [-1.62, +0.09] (inconcl) | -0.17 [-0.38, +0.04] (equiv) | +0.07 [-0.15, +0.29] (equiv) |
+|  |  | `real_religion5` | +0.38% [-0.05, +1.15] | -0.34 [-1.19, +0.43] (inconcl) | -0.19 [-0.41, +0.02] (equiv) | -0.18 [-0.45, +0.09] (equiv) |
 
-| Unit | Category | WikiText (K=5 / K=20) | ARC-C (K=5 / K=20) | HellaSwag (K=5 / K=20) | HellaSwag-es (K=5 / K=20) |
-| :--- | :--- | ---: | ---: | ---: | ---: |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | Gender | +0.25% / +0.72% | -0.34 / +0.51 | -0.02 / +0.06 | +0.00 / -0.14 |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | Race | +0.13% / +0.92% | +0.34 / +1.02 | +0.06 / +0.03 | -0.01 / -0.13 |
-| [`llama_3.1_8b_en`](units/llama_3.1_8b_en.md) | Religion | +0.21% / +0.65% | +0.43 / +0.51 | +0.00 / -0.02 | -0.04 / -0.12 |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | Gender | +3.72% / +6.33% | +0.60 / +0.85 | -0.37 / -0.65 | +0.11 / +0.02 |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | Race | +1.89% / +3.77% | +1.02 / +1.19 | -0.04 / -0.60 | -0.11 / -0.05 |
-| [`qwen3_4b_base_en`](units/qwen3_4b_base_en.md) | Religion | +1.98% / +7.48% | +0.85 / +0.17 | -0.28 / -0.73 | +0.14 / +0.02 |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | Gender | +0.07% / +0.41% | -0.26 / -0.26 | -0.09 / -0.08 | +0.04 / -0.11 |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | Race | +0.39% / +0.87% | +0.09 / -0.26 | -0.12 / -0.14 | -0.02 / -0.22 |
-| [`salamandra_7b_en`](units/salamandra_7b_en.md) | Religion | +0.08% / +0.68% | +0.17 / +0.00 | -0.09 / -0.10 | +0.05 / +0.10 |
-| [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | Gender | +0.52% / +0.77% | -0.26 / +0.00 | +0.05 / +0.04 | +0.00 / -0.05 |
-| [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | Race | +0.47% / +2.58% | -0.17 / -0.77 | -0.14 / -0.25 | -0.06 / -0.19 |
-| [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | Religion | +1.61% / +2.86% | -0.60 / -0.51 | -0.27 / -0.29 | -0.19 / -0.35 |
-| [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Gender | +0.23% / +1.30% | -0.60 / -0.85 | -0.15 / -0.25 | -0.10 / -0.17 |
-| [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Race | +0.28% / +0.90% | -0.77 / -0.43 | -0.17 / -0.03 | +0.07 / +0.12 |
-| [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Religion | +0.38% / +1.21% | -0.34 / +0.00 | -0.19 / -0.38 | -0.18 / -0.26 |
-
-*Legend — Cells show `K=5 / K=20` paired deltas vs. baseline (`Δ%` relative word perplexity for WikiText; percentage points `pp` for ARC-C, HellaSwag, and HellaSwag-es; MMLU is evaluated at `K = 20` only).*
-
-</details>
+*Legend — **`baseline` *(raw)***: unpruned model score (`word_perplexity` for WikiText, lower is better; `%` accuracy for the three QA benchmarks); **WikiText (Δ%)**: relative percentage change in word perplexity vs. baseline (`+` = higher/worse perplexity); **ARC-C / HellaSwag / HellaSwag-es (pp)**: percentage-point change (`real − baseline`) with 95% paired item-level bootstrap CI (`B = 10,000`, `seed = 0`); **Verdicts (`±1.0 pp` equivalence margin)**: `equiv` = entire 95% CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = entire CI below `-1 pp` (`MMLU` is evaluated at `K = 20` only).*
 
 ---
 
