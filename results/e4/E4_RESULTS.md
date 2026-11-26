@@ -14,7 +14,7 @@ Paired item-level bootstrap (`B = 10,000`, `seed = 0`, equivalence margin `±1.0
 
 ### 1.1 Experiment Inventory and Protocol
 
-All five E4 units, counts of real and random sets evaluated, extraction verification checks, and hardware used for baseline/real versus random evaluations.
+**Why this table:** summarizes the E4 evaluation scope across all five English base models (real and random set counts, tested K values, MMLU exclusions, extraction checks, and GPU hardware), specifying which comparisons each unit supports.
 
 | Unit | Model | Real Sets | Random (Full) | Random (WikiText-only) | K | MMLU Status | Checks | Baseline/Real GPUs | Random GPUs |
 | :--- | :--- | ---: | ---: | ---: | :---: | :---: | :---: | :--- | :--- |
@@ -28,7 +28,7 @@ All five E4 units, counts of real and random sets evaluated, extraction verifica
 
 ### 1.2 Main Matrix: `K = 20` Real Sets vs. Baseline
 
-Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict at `±1 pp`) across all five benchmarks for every `K = 20` real set, with unpruned baseline scores shown on the first row of each model.
+**Why this check:** evaluates whether zeroing `K = 20` selected neurons alters general model capabilities across five benchmarks (WikiText perplexity and four QA accuracy tasks) relative to the unpruned baseline, using paired item-level bootstrap CIs and a `±1.0 pp` equivalence margin.
 
 | Unit | Model | Set | WikiText (Δ%) | ARC-C (pp) | HellaSwag (pp) | HellaSwag-es (pp) | MMLU micro (pp) |
 | :--- | :--- | :--- | ---: | ---: | ---: | ---: | ---: |
@@ -55,9 +55,15 @@ Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict a
 
 *Legend — **`baseline` *(raw)***: unpruned model score (`word_perplexity` for WikiText, lower is better; `%` accuracy for the four QA benchmarks); **WikiText (Δ%)**: relative percentage change in word perplexity vs. baseline (`+` = higher/worse perplexity); **ARC-C / HellaSwag / HellaSwag-es / MMLU (pp)**: percentage-point change (`real − baseline`) with 95% paired item-level bootstrap CI (`B = 10,000`, `seed = 0`); **Verdicts (`±1.0 pp` equivalence margin)**: `equiv` = entire 95% CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = entire CI below `-1 pp`, `excl (<35%)` = baseline near chance.*
 
+**Key takeaways:**
+- **Equivalence within `±1 pp` in most accuracy cells:** out of 57 valid accuracy cells (excluding the 3 near-chance MMLU cells in `Llama-3.2-1B`), **42 are equivalent**, **14 are inconclusive** (11 of them in `ARC-C`, due to its smaller `1,172`-item sample), and only **1 is `WORSE`**: `Salamandra-7B real_race20` on MMLU (`-1.69 pp [-2.26, -1.13]`).
+- **Stability on `HellaSwag-es` and `HellaSwag`:** **15/15** cells on `HellaSwag-es` (`-0.35` to `+0.12 pp`) and **13/15** on `HellaSwag` are equivalent (the 2 inconclusive cells are `Qwen3-4B-Base` `Gender·20` `-0.65 pp` and `Religion·20` `-0.73 pp`).
+- **All large-benchmark cells in `Llama-3.1-8B` are equivalent:** `HellaSwag`, `HellaSwag-es`, and `MMLU` stay within `-0.14` to `+0.22 pp` across all three categories (`Gender`, `Race`, `Religion`).
+- **WikiText perplexity rises slightly in Llama/Salamandra and noticeably in Qwen:** increases are **`+0.41%` to `+0.92%`** in `Llama-3.1-8B` and `Salamandra-7B`, **`+0.77%` to `+2.86%`** in `Llama-3.2-1B/3B`, and **`+3.77%` to `+7.48%`** in `Qwen3-4B-Base`.
+
 ### 1.3 Real vs. Layer-Matched Random Control (`Gender·20`, seed 0)
 
-Direct comparison of `real_gender20` against `rand_gender20_seed0` (same layer profile, full 5-task battery) across the four models with a full random control, with explicit GPU hardware per side.
+**Why this check:** contrasts `real_gender20` against a layer-matched random control (`rand_gender20_seed0`) across all five benchmarks on matched A100 hardware, separating the effect of the selected neurons from zeroing 20 arbitrary neurons in the same layers.
 
 | Unit | Task | Real − Baseline | Random(seed0) − Baseline | Real − Random(seed0) | GPUs (Real / Rand) |
 | :--- | :--- | ---: | ---: | ---: | :--- |
@@ -84,9 +90,14 @@ Direct comparison of `real_gender20` against `rand_gender20_seed0` (same layer p
 
 *Legend — **Real − Baseline / Random(seed0) − Baseline / Real − Random(seed0)**: paired item-level differences with 95% bootstrap CI (`Δ%` relative perplexity for WikiText; percentage points `pp` for accuracy tasks) and `±1.0 pp` equivalence verdicts (`equiv`, `inconcl`, `WORSE`); **GPUs (Real / Rand)**: verified A100 hardware for each side.*
 
+**Key takeaways:**
+- **Random controls barely move any task:** `Random(seed0) − Baseline` is equivalent in **15/16** accuracy cells (the single inconclusive cell is `Qwen ARC-C` `+0.51 pp`), and WikiText changes by only **`+0.01%` to `+0.19%`**.
+- **On accuracy tasks, `Real` and `Random` are equivalent in 13 of 16 cells:** `Real − Random` is equivalent in **4/4** models on `HellaSwag-es` and `MMLU` and in **3/4** on `HellaSwag`; the 3 inconclusive cells are in `ARC-C` (2) and `Qwen HellaSwag` (`-0.68 pp`), with zero `WORSE` verdicts.
+- **On WikiText, selected neurons raise perplexity more than random neurons in every model:** `Real − Random` is positive across all four units (`+0.40%` in `Salamandra-7B`, `+0.65%` in `Llama-3.1-8B`, `+0.73%` in `Llama-3.2-3B`, and **`+6.13%`** in `Qwen3-4B-Base`).
+
 ### 1.4 Main Matrix: `K = 5` Real Sets vs. Baseline
 
-Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict at `±1 pp`) across the four benchmarks evaluated at `K = 5` (`MMLU` is evaluated at `K = 20` only), with unpruned baseline scores shown on the first row of each model.
+**Why this check:** evaluates the same general-capability effect when only `K = 5` neurons are zeroed (across the four benchmarks evaluated at `K = 5`; `MMLU` is evaluated at `K = 20` only).
 
 | Unit | Model | Set | WikiText (Δ%) | ARC-C (pp) | HellaSwag (pp) | HellaSwag-es (pp) |
 | :--- | :--- | :--- | ---: | ---: | ---: | ---: |
@@ -113,11 +124,15 @@ Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict a
 
 *Legend — **`baseline` *(raw)***: unpruned model score (`word_perplexity` for WikiText, lower is better; `%` accuracy for the three QA benchmarks); **WikiText (Δ%)**: relative percentage change in word perplexity vs. baseline (`+` = higher/worse perplexity); **ARC-C / HellaSwag / HellaSwag-es (pp)**: percentage-point change (`real − baseline`) with 95% paired item-level bootstrap CI (`B = 10,000`, `seed = 0`); **Verdicts (`±1.0 pp` equivalence margin)**: `equiv` = entire 95% CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = entire CI below `-1 pp` (`MMLU` is evaluated at `K = 20` only).*
 
+**Key takeaways:**
+- **Zero `WORSE` cells and more equivalences than at `K = 20`:** out of 45 accuracy cells, **37 are equivalent** and **8 are inconclusive** (all in `ARC-C`). Both `HellaSwag` (**15/15**) and `HellaSwag-es` (**15/15**) are 100% equivalent, with deltas between `-0.37` and `+0.14 pp`.
+- **WikiText shifts are much smaller at `K = 5` than at `K = 20`:** increases remain small in `Llama-3.1-8B` (`+0.13%` to `+0.25%`) and `Salamandra-7B` (`+0.07%` to `+0.39%`), including `Gender·5` (which in E3 already captured most of the Gender effect); `Qwen3-4B-Base` remains the exception at **`+1.89%` to `+3.72%`**.
+
 ---
 
 ## 2. Unit Dossiers (Level 2)
 
-Each unit dossier follows the same layout: raw scores across all sets, full baseline deltas with 95% bootstrap CIs, real-vs-random contrasts across all seeds, MMLU micro-vs-macro reconciliation, and per-task GPU/batch provenance.
+**Why this table:** indexes the five per-model dossiers containing raw scores, full baseline deltas with 95% CIs, all real-vs-random contrasts, MMLU micro-vs-macro reconciliation, and per-task GPU/batch provenance.
 
 | Dossier | Model | Sets | Baseline/Real GPUs | Random GPUs |
 | :--- | :--- | :--- | :--- | :--- |
@@ -133,7 +148,7 @@ Each unit dossier follows the same layout: raw scores across all sets, full base
 
 ### 3.1 WikiText Multi-Seed Random Controls
 
-Relative word-perplexity change (`%` vs. baseline) of `K = 20` real sets compared against all available layer-matched random seeds (note: `bf16` document log-likelihood quantization sets an interpretability floor near `~0.1%`).
+**Why this check:** tests across multiple layer-matched random seeds (`n = 5` or `10`) whether the WikiText perplexity increase of `K = 20` real sets consistently exceeds the random-seed range (and the `~0.1%` `bf16` quantization floor).
 
 | Unit | Real Set | Random Family | Base PPL | Real Δ% [95% CI] | Random Δ% (min–max, mean) | Real − Random Δ% (mean [min, max]) |
 | :--- | :--- | :--- | ---: | ---: | ---: | ---: |
@@ -147,9 +162,13 @@ Relative word-perplexity change (`%` vs. baseline) of `K = 20` real sets compare
 
 *Legend — **Base PPL**: unpruned WikiText word perplexity (`62` documents, lower is better); **Real Δ% [95% CI]**: relative perplexity change vs. baseline (`+` = higher perplexity); **Random Δ%**: min–max and mean relative change across all layer-matched random seeds; **Real − Random Δ%**: paired real-minus-random difference (mean `[min, max]` across seeds). Differences `< ~0.1%` lie below the `bf16` document log-likelihood quantization floor.*
 
+**Key takeaways:**
+- **Selected sets exceed every random seed in all 7 comparisons:** random-seed means remain between **`+0.05%` and `+0.18%`** (individual seed max `+0.43%`), while every real set sits above the highest random seed.
+- **Two distinct regimes by architecture:** in Llama and Salamandra the mean `Real − Random` gap is small (**`+0.34%` to `+0.68%`**), whereas in `Qwen3-4B-Base` it is an order of magnitude larger (**`+6.14%`** for `Gender·20` and **`+7.43%`** for `Religion·20`).
+
 ### 3.2 MMLU Micro vs. Macro (57 Subjects)
 
-Item-weighted micro MMLU accuracy (used throughout E4 and reported by `lm-eval`) versus the unweighted 57-subject macro average stored in `_cap.json` (+0.35 to +2.64 pp higher; never mix in one table).
+**Why this check:** documents the systematic offset between item-weighted micro MMLU accuracy (`14,042` items, used throughout E4) and the unweighted 57-subject macro average stored in `_cap.json`, preventing accidental mixing of the two metrics.
 
 <details>
 <summary>Expand MMLU micro vs. macro table (all evaluated units and sets)</summary>
@@ -185,9 +204,13 @@ Item-weighted micro MMLU accuracy (used throughout E4 and reported by `lm-eval`)
 
 </details>
 
+**Key takeaways:**
+- **Macro is consistently higher than micro (`+0.35` to `+2.64 pp`):** the offset varies by model (`Llama-3.2-1B`: `+0.35–0.59 pp`; `Llama-3.1-8B`: `+0.99–1.15 pp`; `Llama-3.2-3B` and `Salamandra-7B`: `+1.06–1.50 pp`; `Qwen3-4B-Base`: `+2.45–2.64 pp`).
+- **Consistency rule:** although `real − baseline` deltas are similar under both definitions, micro and macro values must never be combined in the same table.
+
 ### 3.3 Hardware Provenance (A100 vs. L4) and Extraction Checks
 
-Per-task GPU hardware across baseline, `real_gender20`, and `rand_gender20_seed0` for the four units with full random controls (all 20/20 cells matched on A100), plus overall extraction integrity across all per-item logs.
+**Why this check:** verifies that all full-battery real-vs-random capability comparisons ran on matched A100 hardware and that all `216` extracted per-item tables agree exactly with `lm-eval` aggregates and baseline item hashes.
 
 | Unit | Task | Baseline GPU | Real Gender·20 GPU | Random Gender·20 (seed0) GPU | Hardware Match |
 | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -216,9 +239,13 @@ Per-task GPU hardware across baseline, `real_gender20`, and `rand_gender20_seed0
 
 Extraction verification (`tables/checks.csv`): **216** unit × set × task tables checked, **0** problems detected, 100% item-key and `doc_hash` alignment with baseline.
 
+**Key takeaways:**
+- **Full A100 hardware matching:** all **20/20** cells (`4` models × `5` tasks) across `baseline`, `real_gender20`, and `rand_gender20_seed0` are matched on **A100** (zero L4-vs-A100 mixing).
+- **Zero extraction issues:** `216/216` tables verified with **0 problems** and 100% `doc_hash` alignment with baseline.
+
 ### 3.4 Source Tables
 
-All numbers in this report and its unit dossiers are rendered directly from the verified CSV tables under `results/e4/tables/` (and mirrored in `results/e4/e4_capabilities_table.csv`).
+**Why this table:** lists every consolidated CSV table in `results/e4/tables/` (and its mirror `results/e4/e4_capabilities_table.csv`) from which this report and its unit dossiers are deterministically generated.
 
 | CSV Table | Rows | Columns | Size |
 | :--- | ---: | ---: | ---: |
