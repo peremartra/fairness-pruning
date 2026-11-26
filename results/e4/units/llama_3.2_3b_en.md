@@ -21,6 +21,8 @@ Unmodified benchmark values (`word_perplexity` for WikiText; `%` accuracy for AR
 | `rand_gender20_seed3` | 9.537 | - | - | - | - |
 | `rand_gender20_seed4` | 9.535 | - | - | - | - |
 
+*Legend — **WikiText (ppl)**: word perplexity over 62 documents (lower is better); **ARC-C / HellaSwag / HellaSwag-es (%)**: `acc_norm` accuracy; **MMLU micro (%)**: item-weighted 5-shot accuracy over 14,042 items (`-` = task not evaluated for that set).*
+
 ## 2. Paired Differences vs. Baseline (`B = 10,000`, `±1 pp` Margin)
 
 Item-paired deltas (`set − baseline`) with 95% percentile bootstrap confidence intervals and equivalence verdicts for all real sets and full-battery random controls.
@@ -64,6 +66,8 @@ Item-paired deltas (`set − baseline`) with 95% percentile bootstrap confidence
 | mmlu | `real_religion20` | real | 56.49% | 56.53% | -0.043 pp | [-0.392, +0.299] | equiv |
 | mmlu | `rand_gender20_seed0` | random | 56.45% | 56.53% | -0.078 pp | [-0.271, +0.114] | equiv |
 
+*Legend — **Delta / 95% CI**: paired item-level difference (`set − baseline`, `B = 10,000`, `seed = 0`, relative `%` for WikiText, `pp` for QA tasks); **Verdict (`±1.0 pp` margin)**: `equiv` = CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = CI below `-1 pp`, `excl (<35%)` = baseline near chance.*
+
 ## 3. Real vs. Layer-Matched Random Contrasts
 
 Paired differences (`real − random`) across all tasks and random seeds available for this unit.
@@ -80,6 +84,8 @@ Paired differences (`real − random`) across all tasks and random seeds availab
 | hellaswag_es | `real_gender20` vs. `rand_gender20_seed0` | 58.90% | 58.81% | +0.085 pp | [-0.149, +0.320] | equiv |
 | mmlu | `real_gender20` vs. `rand_gender20_seed0` | 56.39% | 56.45% | -0.064 pp | [-0.306, +0.185] | equiv |
 
+*Legend — **Delta / 95% CI**: paired difference (`real − random`, relative `%` for WikiText, `pp` for QA tasks); **Verdict**: equivalence at `±1.0 pp` margin (`equiv`, `inconcl`, `WORSE`).*
+
 ## 4. MMLU Micro vs. Macro Reconciliation
 
 Item-weighted micro accuracy (`14,042` items) compared with unweighted 57-subject macro accuracy and `_cap.json` values.
@@ -91,6 +97,8 @@ Item-weighted micro accuracy (`14,042` items) compared with unweighted 57-subjec
 | `real_gender20` | 56.39% | 57.77% | +1.38 pp | 57.72% |
 | `real_race20` | 55.58% | 56.75% | +1.18 pp | 56.72% |
 | `real_religion20` | 56.49% | 57.81% | +1.32 pp | 57.77% |
+
+*Legend — **Micro**: item-weighted accuracy used throughout E4; **Macro**: unweighted 57-subject mean matching `_cap.json`.*
 
 ## 5. Hardware and Batch-Size Provenance
 

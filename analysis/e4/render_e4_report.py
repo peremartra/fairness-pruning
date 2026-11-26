@@ -137,7 +137,11 @@ def render_master(tables: dict, inputs: dict) -> str:
         rows,
         ["l", "l", "r", "r", "r", "c", "c", "c", "l", "l"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Real Sets**: selected top-K sets (`Gender`/`Race`/`Religion` × `K = 5, 20`); **Random (Full)**: layer-matched random control evaluated on all 5 benchmarks (`rand_gender20_seed0`); **Random (WikiText-only)**: additional random seeds evaluated on WikiText only; **MMLU Status**: `Excluded (<35%)` when unpruned baseline accuracy is below the 35% near-chance threshold; **Checks**: per-item extraction integrity checks (`0 problems` = 100% agreement with `lm-eval` aggregates and baseline item hashes).*",
+        "",
+    ]
 
     # 1.2 Main Matrix K=20 Real vs Baseline
     R += [
@@ -167,7 +171,11 @@ def render_master(tables: dict, inputs: dict) -> str:
         rows,
         ["l", "l", "l"] + ["r"] * len(TASK_ORDER),
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **`baseline` *(raw)***: unpruned model score (`word_perplexity` for WikiText, lower is better; `%` accuracy for the four QA benchmarks); **WikiText (Δ%)**: relative percentage change in word perplexity vs. baseline (`+` = higher/worse perplexity); **ARC-C / HellaSwag / HellaSwag-es / MMLU (pp)**: percentage-point change (`real − baseline`) with 95% paired item-level bootstrap CI (`B = 10,000`, `seed = 0`); **Verdicts (`±1.0 pp` equivalence margin)**: `equiv` = entire 95% CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = entire CI below `-1 pp`, `excl (<35%)` = baseline near chance.*",
+        "",
+    ]
 
     # 1.3 Real vs Random (Gender·20 seed 0)
     R += [
@@ -201,7 +209,11 @@ def render_master(tables: dict, inputs: dict) -> str:
         rows,
         ["l", "l", "r", "r", "r", "l"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Real − Baseline / Random(seed0) − Baseline / Real − Random(seed0)**: paired item-level differences with 95% bootstrap CI (`Δ%` relative perplexity for WikiText; percentage points `pp` for accuracy tasks) and `±1.0 pp` equivalence verdicts (`equiv`, `inconcl`, `WORSE`); **GPUs (Real / Rand)**: verified A100 hardware for each side.*",
+        "",
+    ]
 
     # 1.4 K=5 vs K=20 comparison
     R += [
@@ -233,7 +245,15 @@ def render_master(tables: dict, inputs: dict) -> str:
         rows,
         ["l", "l", "r", "r", "r", "r"],
     ))
-    R += ["", "</details>", "", "---", ""]
+    R += [
+        "",
+        "*Legend — Cells show `K=5 / K=20` paired deltas vs. baseline (`Δ%` relative word perplexity for WikiText; percentage points `pp` for ARC-C, HellaSwag, and HellaSwag-es; MMLU is evaluated at `K = 20` only).*",
+        "",
+        "</details>",
+        "",
+        "---",
+        "",
+    ]
 
     # Level 2 Index
     R += [
@@ -280,7 +300,11 @@ def render_master(tables: dict, inputs: dict) -> str:
         rows,
         ["l", "l", "l", "r", "r", "r", "r"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Base PPL**: unpruned WikiText word perplexity (`62` documents, lower is better); **Real Δ% [95% CI]**: relative perplexity change vs. baseline (`+` = higher perplexity); **Random Δ%**: min–max and mean relative change across all layer-matched random seeds; **Real − Random Δ%**: paired real-minus-random difference (mean `[min, max]` across seeds). Differences `< ~0.1%` lie below the `bf16` document log-likelihood quantization floor.*",
+        "",
+    ]
 
     # 3.2 MMLU micro vs macro
     R += [
@@ -308,13 +332,19 @@ def render_master(tables: dict, inputs: dict) -> str:
         rows,
         ["l", "l", "r", "r", "r", "r"],
     ))
-    R += ["", "</details>", ""]
+    R += [
+        "",
+        "*Legend — **Micro (14,042 items)**: item-weighted accuracy used throughout E4 and reported by `lm-eval`; **Macro (57 subjects)**: unweighted average across the 57 MMLU subjects; **`_cap.json` Value**: macro value stored in per-set checkpoint summaries (never mix with micro in one table).*",
+        "",
+        "</details>",
+        "",
+    ]
 
     # 3.3 Hardware provenance & checks
     R += [
         "### 3.3 Hardware Provenance (A100 vs. L4) and Extraction Checks",
         "",
-        "Cells where the random control ran on a different GPU architecture (L4) than the baseline/real sets (A100), plus overall extraction integrity across all per-item logs.",
+        "Per-task GPU hardware across baseline, `real_gender20`, and `rand_gender20_seed0` for the four units with full random controls (all 20/20 cells matched on A100), plus overall extraction integrity across all per-item logs.",
         "",
     ]
     mix_rows = []
@@ -335,6 +365,8 @@ def render_master(tables: dict, inputs: dict) -> str:
     ))
     n_bad = int(((~checks["agg_ok"]) | (checks["cap_ok"] == False) | (checks["extraction_problems"].fillna("") != "")).sum())
     R += [
+        "",
+        "*Legend — **Hardware Match**: `Matched (A100)` confirms baseline, real, and random runs all executed on A100 GPUs (zero L4-vs-A100 hardware mixing).*",
         "",
         f"Extraction verification (`tables/checks.csv`): **{len(checks)}** unit × set × task tables checked, **{n_bad}** problems detected, 100% item-key and `doc_hash` alignment with baseline.",
         "",
@@ -394,7 +426,11 @@ def render_unit(unit: str, tables: dict) -> str:
         rows,
         ["l", "r", "r", "r", "r", "r"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **WikiText (ppl)**: word perplexity over 62 documents (lower is better); **ARC-C / HellaSwag / HellaSwag-es (%)**: `acc_norm` accuracy; **MMLU micro (%)**: item-weighted 5-shot accuracy over 14,042 items (`-` = task not evaluated for that set).*",
+        "",
+    ]
 
     # 2. Deltas vs Baseline
     R += [
@@ -426,7 +462,11 @@ def render_unit(unit: str, tables: dict) -> str:
         rows,
         ["l", "l", "c", "r", "r", "r", "c", "c"],
     ))
-    R.append("")
+    R += [
+        "",
+        "*Legend — **Delta / 95% CI**: paired item-level difference (`set − baseline`, `B = 10,000`, `seed = 0`, relative `%` for WikiText, `pp` for QA tasks); **Verdict (`±1.0 pp` margin)**: `equiv` = CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = CI below `-1 pp`, `excl (<35%)` = baseline near chance.*",
+        "",
+    ]
 
     # 3. Real vs Random (if present)
     d_rvr = udel[udel["set_b"] != "baseline"].copy()
@@ -459,7 +499,11 @@ def render_unit(unit: str, tables: dict) -> str:
             rows,
             ["l", "l", "r", "r", "r", "c", "c"],
         ))
-        R.append("")
+        R += [
+            "",
+            "*Legend — **Delta / 95% CI**: paired difference (`real − random`, relative `%` for WikiText, `pp` for QA tasks); **Verdict**: equivalence at `±1.0 pp` margin (`equiv`, `inconcl`, `WORSE`).*",
+            "",
+        ]
 
     # 4. MMLU micro vs macro
     if not umm.empty:
@@ -485,7 +529,11 @@ def render_unit(unit: str, tables: dict) -> str:
             rows,
             ["l", "r", "r", "r", "r"],
         ))
-        R.append("")
+        R += [
+            "",
+            "*Legend — **Micro**: item-weighted accuracy used throughout E4; **Macro**: unweighted 57-subject mean matching `_cap.json`.*",
+            "",
+        ]
 
     # 5. Provenance
     R += [

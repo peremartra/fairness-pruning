@@ -24,6 +24,8 @@ All five E4 units, counts of real and random sets evaluated, extraction verifica
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | Llama-3.2-3B | 6 | 1 | 4 | 5, 20 | Included | 41 (0 problems) | A100-SXM4-80GB | A100-SXM4-80GB |
 | [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Llama-3.2-1B | 6 | 0 | 0 | 5, 20 | Excluded (<35%) | 32 (0 problems) | A100-SXM4-40GB; unknown | - |
 
+*Legend — **Real Sets**: selected top-K sets (`Gender`/`Race`/`Religion` × `K = 5, 20`); **Random (Full)**: layer-matched random control evaluated on all 5 benchmarks (`rand_gender20_seed0`); **Random (WikiText-only)**: additional random seeds evaluated on WikiText only; **MMLU Status**: `Excluded (<35%)` when unpruned baseline accuracy is below the 35% near-chance threshold; **Checks**: per-item extraction integrity checks (`0 problems` = 100% agreement with `lm-eval` aggregates and baseline item hashes).*
+
 ### 1.2 Main Matrix: `K = 20` Real Sets vs. Baseline
 
 Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict at `±1 pp`) across all five benchmarks for every `K = 20` real set, with unpruned baseline scores shown on the first row of each model.
@@ -50,6 +52,8 @@ Paired differences (`real − baseline`, 95% bootstrap CI, equivalence verdict a
 |  |  | `real_gender20` | +1.30% [+1.07, +1.55] | -0.85 [-2.05, +0.34] (inconcl) | -0.25 [-0.56, +0.06] (equiv) | -0.17 [-0.47, +0.13] (equiv) | +1.20 [+0.71, +1.69] (excl (<35%)) |
 |  |  | `real_race20` | +0.90% [+0.68, +1.12] | -0.43 [-1.45, +0.51] (inconcl) | -0.03 [-0.26, +0.21] (equiv) | +0.12 [-0.14, +0.37] (equiv) | +0.44 [+0.03, +0.85] (excl (<35%)) |
 |  |  | `real_religion20` | +1.21% [+0.73, +1.95] | +0.00 [-0.94, +0.94] (equiv) | -0.38 [-0.64, -0.12] (equiv) | -0.26 [-0.53, +0.03] (equiv) | +1.03 [+0.52, +1.55] (excl (<35%)) |
+
+*Legend — **`baseline` *(raw)***: unpruned model score (`word_perplexity` for WikiText, lower is better; `%` accuracy for the four QA benchmarks); **WikiText (Δ%)**: relative percentage change in word perplexity vs. baseline (`+` = higher/worse perplexity); **ARC-C / HellaSwag / HellaSwag-es / MMLU (pp)**: percentage-point change (`real − baseline`) with 95% paired item-level bootstrap CI (`B = 10,000`, `seed = 0`); **Verdicts (`±1.0 pp` equivalence margin)**: `equiv` = entire 95% CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = entire CI below `-1 pp`, `excl (<35%)` = baseline near chance.*
 
 ### 1.3 Real vs. Layer-Matched Random Control (`Gender·20`, seed 0)
 
@@ -78,6 +82,8 @@ Direct comparison of `real_gender20` against `rand_gender20_seed0` (same layer p
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | hellaswag_es | -0.05 [-0.29, +0.18] (equiv) | -0.14 [-0.31, +0.03] (equiv) | +0.09 [-0.15, +0.32] (equiv) | A100-SXM4-80GB / A100-SXM4-80GB |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | mmlu | -0.14 [-0.39, +0.11] (equiv) | -0.08 [-0.27, +0.11] (equiv) | -0.06 [-0.31, +0.19] (equiv) | A100-SXM4-80GB / A100-SXM4-80GB |
 
+*Legend — **Real − Baseline / Random(seed0) − Baseline / Real − Random(seed0)**: paired item-level differences with 95% bootstrap CI (`Δ%` relative perplexity for WikiText; percentage points `pp` for accuracy tasks) and `±1.0 pp` equivalence verdicts (`equiv`, `inconcl`, `WORSE`); **GPUs (Real / Rand)**: verified A100 hardware for each side.*
+
 ### 1.4 `K = 5` vs. `K = 20` Comparison (Real Sets vs. Baseline)
 
 Paired deltas against baseline for `K = 5` alongside `K = 20` across the four tasks evaluated at both K values (`MMLU` is evaluated at `K = 20` only).
@@ -102,6 +108,8 @@ Paired deltas against baseline for `K = 5` alongside `K = 20` across the four ta
 | [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Gender | +0.23% / +1.30% | -0.60 / -0.85 | -0.15 / -0.25 | -0.10 / -0.17 |
 | [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Race | +0.28% / +0.90% | -0.77 / -0.43 | -0.17 / -0.03 | +0.07 / +0.12 |
 | [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | Religion | +0.38% / +1.21% | -0.34 / +0.00 | -0.19 / -0.38 | -0.18 / -0.26 |
+
+*Legend — Cells show `K=5 / K=20` paired deltas vs. baseline (`Δ%` relative word perplexity for WikiText; percentage points `pp` for ARC-C, HellaSwag, and HellaSwag-es; MMLU is evaluated at `K = 20` only).*
 
 </details>
 
@@ -137,6 +145,8 @@ Relative word-perplexity change (`%` vs. baseline) of `K = 20` real sets compare
 | [`salamandra_7b_en`](units/salamandra_7b_en.md) | `real_religion20` | `rand_religion20` (n=5) | 6.220 | +0.68% [+0.52, +0.84] | +0.01% to +0.08% (mean +0.05%) | +0.63% [+0.60, +0.67] |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | `real_gender20` | `rand_gender20` (n=5) | 9.531 | +0.77% [+0.52, +1.03] | +0.04% to +0.25% (mean +0.09%) | +0.68% [+0.52, +0.73] |
 
+*Legend — **Base PPL**: unpruned WikiText word perplexity (`62` documents, lower is better); **Real Δ% [95% CI]**: relative perplexity change vs. baseline (`+` = higher perplexity); **Random Δ%**: min–max and mean relative change across all layer-matched random seeds; **Real − Random Δ%**: paired real-minus-random difference (mean `[min, max]` across seeds). Differences `< ~0.1%` lie below the `bf16` document log-likelihood quantization floor.*
+
 ### 3.2 MMLU Micro vs. Macro (57 Subjects)
 
 Item-weighted micro MMLU accuracy (used throughout E4 and reported by `lm-eval`) versus the unweighted 57-subject macro average stored in `_cap.json` (+0.35 to +2.64 pp higher; never mix in one table).
@@ -171,11 +181,13 @@ Item-weighted micro MMLU accuracy (used throughout E4 and reported by `lm-eval`)
 | [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | `real_race20` | 31.56% | 31.91% | +0.35 pp | 31.91% |
 | [`llama_3.2_1b_en`](units/llama_3.2_1b_en.md) | `real_religion20` | 32.15% | 32.61% | +0.46 pp | 32.60% |
 
+*Legend — **Micro (14,042 items)**: item-weighted accuracy used throughout E4 and reported by `lm-eval`; **Macro (57 subjects)**: unweighted average across the 57 MMLU subjects; **`_cap.json` Value**: macro value stored in per-set checkpoint summaries (never mix with micro in one table).*
+
 </details>
 
 ### 3.3 Hardware Provenance (A100 vs. L4) and Extraction Checks
 
-Cells where the random control ran on a different GPU architecture (L4) than the baseline/real sets (A100), plus overall extraction integrity across all per-item logs.
+Per-task GPU hardware across baseline, `real_gender20`, and `rand_gender20_seed0` for the four units with full random controls (all 20/20 cells matched on A100), plus overall extraction integrity across all per-item logs.
 
 | Unit | Task | Baseline GPU | Real Gender·20 GPU | Random Gender·20 (seed0) GPU | Hardware Match |
 | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -199,6 +211,8 @@ Cells where the random control ran on a different GPU architecture (L4) than the
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | hellaswag | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | hellaswag_es | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
 | [`llama_3.2_3b_en`](units/llama_3.2_3b_en.md) | mmlu | A100-SXM4-80GB | A100-SXM4-80GB | A100-SXM4-80GB | Matched (A100) |
+
+*Legend — **Hardware Match**: `Matched (A100)` confirms baseline, real, and random runs all executed on A100 GPUs (zero L4-vs-A100 hardware mixing).*
 
 Extraction verification (`tables/checks.csv`): **216** unit × set × task tables checked, **0** problems detected, 100% item-key and `doc_hash` alignment with baseline.
 

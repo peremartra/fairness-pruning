@@ -239,7 +239,7 @@ Consolidated from `89` verified Drive files (`inputs_manifest.json`, generated `
 | `L31·2398` | `abl_religion4` | 0.3790 | 0.34% | 2.247 (99.98%) | 1.063 (99.95%) | 0.321 (99.65%) |
 | `L31·2564` | `abl_religion4` | 0.6237 | 15.39% | 1.893 (99.97%) | 0.698 (99.79%) | 0.355 (99.75%) |
 
-*Legend — **`down_proj` Norm**: L2 norm of the neuron's output column in Layer 31; **Norm Pct.**: weight-norm percentile within Layer 31's 14,336 neurons; **Score (Pct.)**: differential-activation BiasScore and BiasScore percentile within Layer 31 for each category.*
+*Legend — **`down_proj` Norm**: L2 norm of the neuron's output column in Layer 31; **Norm Pct.**: weight-norm percentile within Layer 31's 14,336 neurons (`100%` = largest, `0%` = smallest, so `8.20%` means 91.8% of neurons have larger weights); **Score (Pct.)**: differential-activation BiasScore and BiasScore percentile within Layer 31 (`100%` = highest) for each category.*
 
 **Key takeaways:**
 - **Small output weights (`down_proj`):** `L31·6950`'s impact is not explained by large output weights; its **weight-norm percentile** (`8.20%`, norm `0.5622`) sits well below the Layer 31 median, and all nine neurons fall in the bottom quarter by weight size (**weight-norm percentiles `0.34%–25.96%`**).

@@ -16,6 +16,8 @@ Unmodified benchmark values (`word_perplexity` for WikiText; `%` accuracy for AR
 | `real_religion20` | 12.130 | 37.03% | 63.92% | 46.97% | 32.15% |
 | `real_religion5` | 12.030 | 36.69% | 64.11% | 47.05% | - |
 
+*Legend — **WikiText (ppl)**: word perplexity over 62 documents (lower is better); **ARC-C / HellaSwag / HellaSwag-es (%)**: `acc_norm` accuracy; **MMLU micro (%)**: item-weighted 5-shot accuracy over 14,042 items (`-` = task not evaluated for that set).*
+
 ## 2. Paired Differences vs. Baseline (`B = 10,000`, `±1 pp` Margin)
 
 Item-paired deltas (`set − baseline`) with 95% percentile bootstrap confidence intervals and equivalence verdicts for all real sets and full-battery random controls.
@@ -50,6 +52,8 @@ Item-paired deltas (`set − baseline`) with 95% percentile bootstrap confidence
 | mmlu | `real_race20` | real | 31.56% | 31.12% | +0.442 pp | [+0.028, +0.847] | excl (<35%) |
 | mmlu | `real_religion20` | real | 32.15% | 31.12% | +1.033 pp | [+0.520, +1.545] | excl (<35%) |
 
+*Legend — **Delta / 95% CI**: paired item-level difference (`set − baseline`, `B = 10,000`, `seed = 0`, relative `%` for WikiText, `pp` for QA tasks); **Verdict (`±1.0 pp` margin)**: `equiv` = CI within `[-1, +1] pp`, `inconcl` = CI crosses `±1 pp`, `WORSE` = CI below `-1 pp`, `excl (<35%)` = baseline near chance.*
+
 ## 3. MMLU Micro vs. Macro Reconciliation
 
 Item-weighted micro accuracy (`14,042` items) compared with unweighted 57-subject macro accuracy and `_cap.json` values.
@@ -60,6 +64,8 @@ Item-weighted micro accuracy (`14,042` items) compared with unweighted 57-subjec
 | `real_gender20` | 32.32% | 32.91% | +0.59 pp | 32.90% |
 | `real_race20` | 31.56% | 31.91% | +0.35 pp | 31.91% |
 | `real_religion20` | 32.15% | 32.61% | +0.46 pp | 32.60% |
+
+*Legend — **Micro**: item-weighted accuracy used throughout E4; **Macro**: unweighted 57-subject mean matching `_cap.json`.*
 
 ## 4. Hardware and Batch-Size Provenance
 
