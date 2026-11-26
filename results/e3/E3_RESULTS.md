@@ -4,7 +4,7 @@ Consolidated from `89` verified Drive files (`inputs_manifest.json`, generated `
 
 ## Navigation
 
-- **Level 1 — Cross-Unit Overview:** [1.1 Inventory](#11-experiment-inventory) · [1.2 Real vs. Random Controls](#12-primary-result-selected-vs-layer-matched-random-neurons) · [1.3 Localization (All Items)](#13-target-category-concentration-all-items-pooled) · [1.4 Localization (Disambiguated Only)](#14-target-category-concentration-disambiguated-items-only)
+- **Level 1 — Cross-Unit Overview:** [1.1 Inventory](#11-experiment-inventory) · [1.2 Real vs. Random Controls](#12-primary-result-selected-vs-layer-matched-random-neurons) · [1.3 Localization (All Items)](#13-target-category-concentration-all-items-pooled) · [1.4 Localization (Disambiguated Only)](#14-target-category-concentration-disambiguated-items-only) · [1.5 Secondary Bias Score Deltas](#15-secondary-metric-summary-bbq--esbbq-disambiguated-bias-score-deltas)
 - **Level 2 — Unit Dossiers:** [2. Index of Units](#2-unit-dossiers-level-2)
 - **Level 3 — Diagnostics & Controls:** [3.1 Single-Neuron Ablation (`L31·6950`)](#31-single-neuron-ablation-llama-31-8b-en-l316950) · [3.2 Baseline Margin Mechanism](#32-baseline-indecision-mechanism-margin-deciles) · [3.3 Hardware Noise Controls](#33-hardware-noise-controls-l4-vs-a100) · [3.4 Provenance & Tables](#34-provenance-and-source-tables)
 
@@ -182,6 +182,76 @@ Consolidated from `89` verified Drive files (`inputs_manifest.json`, generated `
 - **Lower absolute flip rates than pooled, but changes persist on disambiguated items:** restricting to items with a clear factual answer reduces absolute flip rates compared with Table 1.3 (e.g., `Llama-3.1-8B EN Gender·20`: `14.67%` vs. `24.00%`; `Salamandra-7B EN Gender·20`: `8.43%` vs. `16.36%`; `Salamandra-7B ES Gender·5`: `16.47%` vs. `20.34%`), yet substantial changes remain.
 - **Cross-category and cross-model patterns match Table 1.3:** `Gender·20` keeps ratios of **2.00×–3.91×** across Llama and Salamandra (EN and ES), and `Gender·5` reaches **4.17×–5.10×** in the three 7–8B units where `K = 5` is active; `Qwen3-4B-Base EN` stays near or below `1×` (**0.46×–1.03×**).
 - **Slightly higher ratios for `Religion` on disambiguated items:** excluding ambiguous items raises the `Religion` ratio in several units (`Llama-3.1-8B EN`: `1.54× → 1.96×` at `K = 20`, `2.77× → 3.63×` at `K = 5`; `Salamandra-7B EN`: `2.48× → 3.36×`, `2.76× → 3.94×`; `Llama-3.1-8B ES`: `1.32× → 1.78×`, `1.53× → 2.01×`).
+
+### 1.5 Secondary Metric Summary: BBQ / EsBBQ Disambiguated Bias Score Deltas
+
+**Why this check:** summarizes how the benchmark's disambiguated bias score moves (`real − baseline`) and how flips split between anti-stereotype→stereotype (`A→S`) and stereotype→anti-stereotype (`S→A`) for every real set on its own target category, testing whether neuron zeroing produces a consistent directional bias shift or largely symmetric flips.
+
+<details>
+<summary>Expand disambiguated bias-score summary table (all 51 real sets across 8 units)</summary>
+
+| Unit | Set | Bench | Target Cat. | K | Disambig Flips | A→S / S→A | Net→Stereo | Disambig Bias Δ (95% CI) |
+| :--- | :--- | :---: | :--- | ---: | ---: | :---: | ---: | ---: |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender20` | BBQ | Gender_identity | 20 | 14.67% | 202 / 214 | -0.42% | -0.85 [-3.67, 1.90] |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race20` | BBQ | Race_ethnicity | 20 | 4.68% | 93 / 68 | +0.73% | 1.45 [0.00, 2.91] |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion20` | BBQ | Religion | 20 | 7.00% | 19 / 20 | -0.17% | 0.20 [-4.37, 4.65] |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_gender5` | BBQ | Gender_identity | 5 | 14.21% | 199 / 204 | -0.18% | -0.35 [-3.24, 2.54] |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_race5` | BBQ | Race_ethnicity | 5 | 3.69% | 69 / 58 | +0.32% | 0.64 [-0.58, 1.92] |
+| [`llama-3.1-8b_en`](units/llama-3.1-8b_en.md) | `real_religion5` | BBQ | Religion | 5 | 7.00% | 16 / 24 | -1.33% | -2.35 [-6.67, 1.87] |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender20` | BBQ | Gender_identity | 20 | 8.43% | 116 / 123 | -0.25% | -0.49 [-2.54, 1.76] |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race20` | BBQ | Race_ethnicity | 20 | 3.75% | 49 / 78 | -0.84% | -1.75 [-3.00, -0.49] |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion20` | BBQ | Religion | 20 | 9.50% | 27 / 26 | +0.17% | 0.27 [-4.74, 5.57] |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_gender5` | BBQ | Gender_identity | 5 | 8.04% | 107 / 121 | -0.49% | -0.99 [-2.96, 1.20] |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_race5` | BBQ | Race_ethnicity | 5 | 2.70% | 34 / 58 | -0.70% | -1.43 [-2.53, -0.38] |
+| [`salamandra-7b_en`](units/salamandra-7b_en.md) | `real_religion5` | BBQ | Religion | 5 | 6.33% | 17 / 21 | -0.67% | -1.40 [-5.91, 3.11] |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender20` | BBQ | Gender_identity | 20 | 3.28% | 43 / 50 | -0.25% | -0.49 [-1.90, 0.85] |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race20` | BBQ | Race_ethnicity | 20 | 1.57% | 33 / 19 | +0.41% | 0.76 [-0.00, 1.55] |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion20` | BBQ | Religion | 20 | 2.33% | 6 / 3 | +0.50% | 1.18 [-0.91, 3.45] |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_gender5` | BBQ | Gender_identity | 5 | 1.38% | 19 / 20 | -0.04% | -0.07 [-0.92, 0.78] |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_race5` | BBQ | Race_ethnicity | 5 | 0.67% | 11 / 9 | +0.06% | 0.03 [-0.47, 0.53] |
+| [`qwen3-4b-base_en`](units/qwen3-4b-base_en.md) | `real_religion5` | BBQ | Religion | 5 | 1.33% | 4 / 4 | +0.00% | 0.00 [-1.78, 2.15] |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender20` | BBQ | Gender_identity | 20 | 6.63% | 81 / 107 | -0.92% | -1.83 [-3.81, 0.07] |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race20` | BBQ | Race_ethnicity | 20 | 10.00% | 187 / 157 | +0.87% | 1.74 [-0.41, 3.78] |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion20` | BBQ | Religion | 20 | 9.50% | 20 / 36 | -2.67% | -5.17 [-9.67, -0.15] |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_gender5` | BBQ | Gender_identity | 5 | 1.16% | 20 / 13 | +0.25% | 0.49 [-0.28, 1.27] |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_race5` | BBQ | Race_ethnicity | 5 | 3.92% | 75 / 60 | +0.44% | 0.87 [-0.35, 2.15] |
+| [`llama-3.2-3b_en`](units/llama-3.2-3b_en.md) | `real_religion5` | BBQ | Religion | 5 | 3.83% | 9 / 13 | -0.67% | -1.51 [-4.51, 1.49] |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_gender20` | BBQ | Gender_identity | 20 | - | - | - | -5.85 |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_race20` | BBQ | Race_ethnicity | 20 | - | - | - | -0.55 |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_religion20` | BBQ | Religion | 20 | - | - | - | +2.00 |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_gender5` | BBQ | Gender_identity | 5 | - | - | - | +0.35 |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_race5` | BBQ | Race_ethnicity | 5 | - | - | - | -0.29 |
+| [`llama-3.2-1b_en`](units/llama-3.2-1b_en.md) | `real_religion5` | BBQ | Religion | 5 | - | - | - | +1.86 |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp5` | EsBBQ | Religion | 40 | 11.57% | 21 / 29 | -1.85% | -3.70 [-10.09, 2.39] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp9` | EsBBQ | Age | 20 | 5.40% | 68 / 64 | +0.14% | 0.07 [-1.74, 1.85] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp11` | EsBBQ | Gender | 20 | 15.66% | 281 / 240 | +1.23% | 2.46 [-0.16, 4.93] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp8` | EsBBQ | Age | 10 | 5.19% | 65 / 65 | +0.00% | -0.29 [-1.88, 1.41] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp7` | EsBBQ | Age | 5 | 5.30% | 72 / 66 | +0.22% | 0.07 [-1.75, 1.80] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp10` | EsBBQ | Gender | 5 | 16.47% | 290 / 258 | +0.96% | 1.92 [-0.78, 4.51] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp12` | EsBBQ | RaceEthnicity | 5 | 1.45% | 16 / 16 | +0.00% | 0.00 [-0.89, 0.89] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp2` | EsBBQ | Religion | 5 | 3.01% | 7 / 6 | +0.23% | 0.46 [-2.78, 3.65] |
+| [`salamandra-7b_es`](units/salamandra-7b_es.md) | `exp1` | EsBBQ | Religion | 1 | 1.39% | 4 / 2 | +0.46% | 0.93 [-1.34, 3.23] |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp11` | EsBBQ | Gender | 20 | 10.52% | 196 / 152 | +1.32% | 2.76 [0.66, 5.01] |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp14` | EsBBQ | RaceEthnicity | 20 | 8.08% | 97 / 89 | +0.32% | -0.08 [-2.36, 2.09] |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp13` | EsBBQ | Religion | 20 | 7.41% | 11 / 17 | -1.39% | -1.85 [-6.85, 3.21] |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp10` | EsBBQ | Gender | 5 | 1.83% | 31 / 30 | +0.03% | 0.06 [-0.90, 0.90] |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp12` | EsBBQ | RaceEthnicity | 5 | 2.57% | 28 / 33 | -0.20% | -0.32 [-1.53, 0.80] |
+| [`llama-3.1-8b_es`](units/llama-3.1-8b_es.md) | `exp2` | EsBBQ | Religion | 5 | 3.94% | 6 / 10 | -0.93% | -2.31 [-5.88, 1.41] |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp11` | EsBBQ | Gender | 20 | 14.96% | 253 / 245 | +0.24% | 0.48 [-1.98, 3.23] |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp14` | EsBBQ | RaceEthnicity | 20 | 12.30% | 142 / 124 | +0.72% | 2.65 [0.13, 5.54] |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp13` | EsBBQ | Religion | 20 | 15.74% | 47 / 21 | +6.02% | 12.04 [4.66, 19.40] |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp10` | EsBBQ | Gender | 5 | 1.11% | 17 / 20 | -0.09% | -0.18 [-0.90, 0.56] |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp12` | EsBBQ | RaceEthnicity | 5 | 6.87% | 74 / 70 | +0.16% | 0.96 [-1.06, 2.99] |
+| [`llama-3.2-3b_es`](units/llama-3.2-3b_es.md) | `exp2` | EsBBQ | Religion | 5 | 8.33% | 27 / 9 | +4.17% | 8.33 [3.35, 13.90] |
+
+*Legend — **Disambig Flips**: changed answers (`%`) on disambiguated items of the set's own target category (`-` for summary-only `llama-3.2-1b_en`); **A→S / S→A**: flips from anti-stereotype to stereotyped answer and vice versa; **Net→Stereo**: `(A→S − S→A) / n_items` (`%`); **Disambig Bias Δ (95% CI)**: native benchmark disambiguated bias-score delta (`real − baseline`) with paired item-bootstrap 95% CI (BBQ and EsBBQ use different disambiguated bias definitions and must not be compared directly across languages).*
+
+</details>
+
+**Key takeaways:**
+- **No consistent directional bias shift across models:** out of **45** real sets with 95% bootstrap CIs, **38** have intervals crossing `0`, **3** lie strictly below `0` (`Salamandra-7B EN` `real_race20` `-1.75`, `real_race5` `-1.43`; `Llama-3.2-3B EN` `real_religion20` `-5.17`), and **4** lie strictly above `0` (`Llama-3.1-8B ES` `exp11` `+2.76`; `Llama-3.2-3B ES` `exp2` `+8.33`, `exp13` `+12.04`, `exp14` `+2.65`).
+- **Large flip counts are largely symmetric between `A→S` and `S→A`:** even where target-category flip rates are highest, transitions in both directions nearly cancel out (e.g., `Llama-3.1-8B EN real_gender20`: `202 A→S` vs. `214 S→A`, `Δ = -0.85 [-3.67, +1.90]`; `Salamandra-7B EN real_gender20`: `116` vs. `123`, `Δ = -0.49 [-2.54, +1.76]`; `Salamandra-7B ES exp10`: `290` vs. `258`, `Δ = +1.92 [-0.78, +4.51]`).
+- **Implication for framing:** zeroing these neurons perturbs demographic decisions (causal localization), rather than reliably reducing the aggregate bias score in one direction.
 
 ---
 

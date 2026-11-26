@@ -97,7 +97,7 @@ def render_master(tables: dict, manifest: dict) -> str:
         "",
         "## Navigation",
         "",
-        "- **Level 1 — Cross-Unit Overview:** [1.1 Inventory](#11-experiment-inventory) · [1.2 Real vs. Random Controls](#12-primary-result-selected-vs-layer-matched-random-neurons) · [1.3 Localization (All Items)](#13-target-category-concentration-all-items-pooled) · [1.4 Localization (Disambiguated Only)](#14-target-category-concentration-disambiguated-items-only)",
+        "- **Level 1 — Cross-Unit Overview:** [1.1 Inventory](#11-experiment-inventory) · [1.2 Real vs. Random Controls](#12-primary-result-selected-vs-layer-matched-random-neurons) · [1.3 Localization (All Items)](#13-target-category-concentration-all-items-pooled) · [1.4 Localization (Disambiguated Only)](#14-target-category-concentration-disambiguated-items-only) · [1.5 Secondary Bias Score Deltas](#15-secondary-metric-summary-bbq--esbbq-disambiguated-bias-score-deltas)",
         "- **Level 2 — Unit Dossiers:** [2. Index of Units](#2-unit-dossiers-level-2)",
         "- **Level 3 — Diagnostics & Controls:** [3.1 Single-Neuron Ablation (`L31·6950`)](#31-single-neuron-ablation-llama-31-8b-en-l316950) · [3.2 Baseline Margin Mechanism](#32-baseline-indecision-mechanism-margin-deciles) · [3.3 Hardware Noise Controls](#33-hardware-noise-controls-l4-vs-a100) · [3.4 Provenance & Tables](#34-provenance-and-source-tables)",
         "",
@@ -257,6 +257,76 @@ def render_master(tables: dict, manifest: dict) -> str:
         "- **Lower absolute flip rates than pooled, but changes persist on disambiguated items:** restricting to items with a clear factual answer reduces absolute flip rates compared with Table 1.3 (e.g., `Llama-3.1-8B EN Gender·20`: `14.67%` vs. `24.00%`; `Salamandra-7B EN Gender·20`: `8.43%` vs. `16.36%`; `Salamandra-7B ES Gender·5`: `16.47%` vs. `20.34%`), yet substantial changes remain.",
         "- **Cross-category and cross-model patterns match Table 1.3:** `Gender·20` keeps ratios of **2.00×–3.91×** across Llama and Salamandra (EN and ES), and `Gender·5` reaches **4.17×–5.10×** in the three 7–8B units where `K = 5` is active; `Qwen3-4B-Base EN` stays near or below `1×` (**0.46×–1.03×**).",
         "- **Slightly higher ratios for `Religion` on disambiguated items:** excluding ambiguous items raises the `Religion` ratio in several units (`Llama-3.1-8B EN`: `1.54× → 1.96×` at `K = 20`, `2.77× → 3.63×` at `K = 5`; `Salamandra-7B EN`: `2.48× → 3.36×`, `2.76× → 3.94×`; `Llama-3.1-8B ES`: `1.32× → 1.78×`, `1.53× → 2.01×`).",
+        "",
+    ]
+
+    # 1.5 Secondary Metric Summary: BBQ / EsBBQ Disambiguated Bias Score Deltas (own target category)
+    R += [
+        "### 1.5 Secondary Metric Summary: BBQ / EsBBQ Disambiguated Bias Score Deltas",
+        "",
+        "**Why this check:** summarizes how the benchmark's disambiguated bias score moves (`real − baseline`) and how flips split between anti-stereotype→stereotype (`A→S`) and stereotype→anti-stereotype (`S→A`) for every real set on its own target category, testing whether neuron zeroing produces a consistent directional bias shift or largely symmetric flips.",
+        "",
+        "<details>",
+        "<summary>Expand disambiguated bias-score summary table (all 51 real sets across 8 units)</summary>",
+        "",
+    ]
+    sec = tables["secondary"].copy()
+    own_map = loc_real.set_index(["unit", "set"])[["target_category", "k"]].to_dict("index")
+    sec_own = sec[
+        (sec["kind"] == "real")
+        & (sec["context"] == "disambig")
+        & (sec.apply(lambda r: (r["unit"], r["set"]) in own_map and own_map[(r["unit"], r["set"])]["target_category"] == r["category"], axis=1))
+    ].copy()
+    sec_own["_uord"] = sec_own["unit"].map(unit_order)
+    sec_own["_k"] = sec_own.apply(lambda r: own_map[(r["unit"], r["set"])]["k"], axis=1)
+    sec_own = sec_own.sort_values(["_uord", "_k", "category", "set"], ascending=[True, False, True, True])
+
+    rows = []
+    n_ci = n_cross = n_neg = n_pos = 0
+    for _, r in sec_own.iterrows():
+        is_es = r["benchmark"] == "EsBBQ"
+        if is_es:
+            b_delta, b_lo, b_hi = r["esbbq_disamb_bias_delta"], r["esbbq_disamb_bias_delta_ci_low"], r["esbbq_disamb_bias_delta_ci_high"]
+        else:
+            b_delta, b_lo, b_hi = r["disamb_bias_delta"], r["disamb_bias_delta_ci_low"], r["disamb_bias_delta_ci_high"]
+        if pd.notna(b_lo):
+            n_ci += 1
+            if b_hi < 0:
+                n_neg += 1
+            elif b_lo > 0:
+                n_pos += 1
+            else:
+                n_cross += 1
+        flips_str = f"{r['changed_pct']:.2f}%" if pd.notna(r["changed_pct"]) else "-"
+        as_sa_str = f"{fmt_int(r['A_to_S'])} / {fmt_int(r['S_to_A'])}" if pd.notna(r["A_to_S"]) else "-"
+        net_str = f"{r['net_towards_stereotype_pct']:+.2f}%" if pd.notna(r["net_towards_stereotype_pct"]) else "-"
+        bias_str = fmt_val_ci(b_delta, b_lo, b_hi) if pd.notna(b_lo) else (f"{b_delta:+.2f}" if pd.notna(b_delta) else "-")
+        rows.append([
+            f"[`{r['unit']}`](units/{r['unit']}.md)",
+            f"`{r['set']}`",
+            r["benchmark"],
+            r["category"],
+            int(r["_k"]),
+            flips_str,
+            as_sa_str,
+            net_str,
+            bias_str,
+        ])
+    R.append(md_table(
+        ["Unit", "Set", "Bench", "Target Cat.", "K", "Disambig Flips", "A→S / S→A", "Net→Stereo", "Disambig Bias Δ (95% CI)"],
+        rows,
+        ["l", "l", "c", "l", "r", "r", "c", "r", "r"],
+    ))
+    R += [
+        "",
+        "*Legend — **Disambig Flips**: changed answers (`%`) on disambiguated items of the set's own target category (`-` for summary-only `llama-3.2-1b_en`); **A→S / S→A**: flips from anti-stereotype to stereotyped answer and vice versa; **Net→Stereo**: `(A→S − S→A) / n_items` (`%`); **Disambig Bias Δ (95% CI)**: native benchmark disambiguated bias-score delta (`real − baseline`) with paired item-bootstrap 95% CI (BBQ and EsBBQ use different disambiguated bias definitions and must not be compared directly across languages).*",
+        "",
+        "</details>",
+        "",
+        "**Key takeaways:**",
+        f"- **No consistent directional bias shift across models:** out of **{n_ci}** real sets with 95% bootstrap CIs, **{n_cross}** have intervals crossing `0`, **{n_neg}** lie strictly below `0` (`Salamandra-7B EN` `real_race20` `-1.75`, `real_race5` `-1.43`; `Llama-3.2-3B EN` `real_religion20` `-5.17`), and **{n_pos}** lie strictly above `0` (`Llama-3.1-8B ES` `exp11` `+2.76`; `Llama-3.2-3B ES` `exp2` `+8.33`, `exp13` `+12.04`, `exp14` `+2.65`).",
+        "- **Large flip counts are largely symmetric between `A→S` and `S→A`:** even where target-category flip rates are highest, transitions in both directions nearly cancel out (e.g., `Llama-3.1-8B EN real_gender20`: `202 A→S` vs. `214 S→A`, `Δ = -0.85 [-3.67, +1.90]`; `Salamandra-7B EN real_gender20`: `116` vs. `123`, `Δ = -0.49 [-2.54, +1.76]`; `Salamandra-7B ES exp10`: `290` vs. `258`, `Δ = +1.92 [-0.78, +4.51]`).",
+        "- **Implication for framing:** zeroing these neurons perturbs demographic decisions (causal localization), rather than reliably reducing the aggregate bias score in one direction.",
         "",
         "---",
         "",
