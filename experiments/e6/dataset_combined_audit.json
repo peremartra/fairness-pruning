@@ -1,0 +1,133 @@
+{
+  "short_total": 400,
+  "short_by_split": {
+    "train": 320,
+    "val": 80
+  },
+  "short_by_domain": {
+    "arts_social_public": 40,
+    "caregiving_domestic": 40,
+    "driving_risk_safety": 40,
+    "education_academia": 40,
+    "emotions_communication": 40,
+    "finance_negotiation": 40,
+    "healthcare_medicine": 40,
+    "sports_physical": 40,
+    "stem_technical": 40,
+    "workplace_leadership": 40
+  },
+  "short_by_style": {
+    "short_disambig": 200,
+    "short_ambig": 200
+  },
+  "short_by_evidence_alignment": {
+    "counter_stereo": 100,
+    "pro_stereo": 100,
+    "ambig": 200
+  },
+  "short_by_target_gender": {
+    "woman": 200,
+    "man": 200
+  },
+  "short_by_author_agent": {
+    "claude-sonnet": 200,
+    "antigravity-gemini": 200
+  },
+  "short_chosen_words": {
+    "min": 1,
+    "max": 5,
+    "mean": 2.35
+  },
+  "short_rejected_words": {
+    "min": 1,
+    "max": 2,
+    "mean": 1.71
+  },
+  "combined_subtopic_overlaps": {},
+  "short_prompt_pairs_en_5gram_hits": 0,
+  "short_near_dups_ge_0_5": 0,
+  "short_near_dup_samples": [],
+  "short_bbq_check": {
+    "status": "checked",
+    "bbq_docs_checked": 5672,
+    "rows_with_any_6gram_match": 20,
+    "sample_hits": [
+      {
+        "id": "E6_s01_001",
+        "n_shared_6grams": 1,
+        "sample": "a man and a woman were"
+      },
+      {
+        "id": "E6_s01_013",
+        "n_shared_6grams": 2,
+        "sample": "a man and a woman had"
+      },
+      {
+        "id": "E6_s01_018",
+        "n_shared_6grams": 2,
+        "sample": "a woman and a man left"
+      },
+      {
+        "id": "E6_s01_021",
+        "n_shared_6grams": 1,
+        "sample": "a woman and a man each"
+      },
+      {
+        "id": "E6_s01_024",
+        "n_shared_6grams": 1,
+        "sample": "a man and a woman were"
+      },
+      {
+        "id": "E6_s01_032",
+        "n_shared_6grams": 1,
+        "sample": "a man and a woman were"
+      },
+      {
+        "id": "E6_s01_045",
+        "n_shared_6grams": 1,
+        "sample": "a man and a woman were"
+      },
+      {
+        "id": "E6_s01_057",
+        "n_shared_6grams": 1,
+        "sample": "a man and a woman left"
+      },
+      {
+        "id": "E6_s01_061",
+        "n_shared_6grams": 1,
+        "sample": "a woman and a man were"
+      },
+      {
+        "id": "E6_s01_069",
+        "n_shared_6grams": 1,
+        "sample": "a woman and a man were"
+      }
+    ]
+  },
+  "n_errors": 0,
+  "n_warnings": 0,
+  "errors": [],
+  "warnings": [],
+  "output_files": {
+    "short_train": {
+      "path": "experiments/e6/e6_gender_dpo_short_train.jsonl",
+      "rows": 320,
+      "sha256": "69d8c3f4e2cd42f17831a8c1c7bbf6f4720142620d47ea48b7f9ee1d79363126"
+    },
+    "short_val": {
+      "path": "experiments/e6/e6_gender_dpo_short_val.jsonl",
+      "rows": 80,
+      "sha256": "20c219972ea0e8af4ed06e1e685d95ae071f230ba55804235fe0fbc4924b1d92"
+    },
+    "combined_train": {
+      "path": "experiments/e6/e6_gender_dpo_combined_train.jsonl",
+      "rows": 1120,
+      "sha256": "6558029150b4c70f43c18a454928030e31cbd71c336ad2c584c0b562fbeb0c88"
+    },
+    "combined_val": {
+      "path": "experiments/e6/e6_gender_dpo_combined_val.jsonl",
+      "rows": 280,
+      "sha256": "b1034f7a0c9d09fa415adb803c3579e4dae4c6d9e4fd46db00083ccdf9158f05"
+    }
+  }
+}

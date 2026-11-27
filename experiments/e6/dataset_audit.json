@@ -1,0 +1,72 @@
+{
+  "total_rows": 1000,
+  "by_split": {
+    "train": 800,
+    "val": 200
+  },
+  "by_domain": {
+    "arts_social_public": 100,
+    "caregiving_domestic": 100,
+    "driving_risk_safety": 100,
+    "education_academia": 100,
+    "emotions_communication": 100,
+    "finance_negotiation": 100,
+    "healthcare_medicine": 100,
+    "sports_physical": 100,
+    "stem_technical": 100,
+    "workplace_leadership": 100
+  },
+  "by_target_gender": {
+    "woman": 500,
+    "man": 500
+  },
+  "by_style": {
+    "situational": 600,
+    "role_statement": 400
+  },
+  "by_author_agent": {
+    "claude-sonnet": 500,
+    "antigravity-gemini": 500
+  },
+  "subtopic_overlaps": {},
+  "chosen_words": {
+    "min": 11,
+    "max": 21,
+    "mean": 14.69
+  },
+  "rejected_words": {
+    "min": 11,
+    "max": 21,
+    "mean": 15.14
+  },
+  "word_ratio_chosen_over_rejected": {
+    "min": 0.824,
+    "max": 1.2,
+    "mean": 0.972
+  },
+  "prompt_pairs_en_5gram_hits": 0,
+  "near_duplicate_prompts_jacc_ge_0_5": 0,
+  "near_duplicate_samples": [],
+  "bbq_check": {
+    "status": "checked",
+    "bbq_docs_checked": 5672,
+    "rows_with_any_6gram_match": 0,
+    "sample_hits": []
+  },
+  "n_errors": 0,
+  "n_warnings": 0,
+  "errors": [],
+  "warnings": [],
+  "output_files": {
+    "train": {
+      "path": "experiments/e6/e6_gender_dpo_train.jsonl",
+      "rows": 800,
+      "sha256": "32da0caa96da231cfb55c4ef9d38227d07f0b2dfa33d4d0aeabe45c35b21f746"
+    },
+    "val": {
+      "path": "experiments/e6/e6_gender_dpo_val.jsonl",
+      "rows": 200,
+      "sha256": "94d01e4e972d4d3f4952c649e3bfc406e0bbdd011b78621e20fd130aecc241d0"
+    }
+  }
+}
